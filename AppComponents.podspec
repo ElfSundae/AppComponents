@@ -11,12 +11,17 @@ Pod::Spec.new do |s|
   s.platform              = :ios
   s.ios.deployment_target = "7.0"
   s.requires_arc          = true
-  s.pod_target_xcconfig   = { 'OTHER_LDFLAGS' => '-lObjC' }
-  s.source_files          = "AppComponents/*.h"
-  s.private_header_files  = "AppComponents/*.h"
+  s.source_files          = "AppComponents/AppComponents.h"
 
   s.subspec "Core" do |ss|
     ss.source_files         = "AppComponents/Core/**/*.{h,m}"
+    ss.dependency           "ESFramework/Core"
+    ss.dependency           "ESFramework/Additions"
+  end
+
+  s.subspec "Encryptor" do |ss|
+    ss.source_files         = "AppComponents/Encryptor/**/*.{h,m}"
+    ss.dependency           "ESFramework/Core"
   end
 
 end

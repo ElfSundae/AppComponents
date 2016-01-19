@@ -7,3 +7,4 @@
 //
 
 #import <AppComponents/AppComponentsCore.h>
+#import <AppComponents/AppComponentsEncryptor.h>

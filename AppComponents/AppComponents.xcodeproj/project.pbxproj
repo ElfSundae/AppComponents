@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E7A38B411C4DBF8400972B01 /* ACHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACHelper.h; sourceTree = "<group>"; };
-		E7A38B421C4DBF8400972B01 /* ACHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHelper.m; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
+		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
+		E7C3FA931C4E39BC00281993 /* ACConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACConfig.m; sourceTree = "<group>"; };
+		E7C3FA961C4EC29900281993 /* NSDictionary+ACCoreAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ACCoreAdditions.h"; sourceTree = "<group>"; };
+		E7C3FA971C4EC29900281993 /* NSDictionary+ACCoreAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ACCoreAdditions.m"; sourceTree = "<group>"; };
+		E7C3FA991C4ED41400281993 /* ACEncryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACEncryptor.h; sourceTree = "<group>"; };
+		E7C3FA9A1C4ED41400281993 /* ACEncryptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACEncryptor.m; sourceTree = "<group>"; };
+		E7C3FA9B1C4ED6E800281993 /* AppComponentsEncryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsEncryptor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -19,6 +24,7 @@
 			children = (
 				E7A38B441C4DBFBD00972B01 /* AppComponents.h */,
 				E7A38B3A1C4DBE1200972B01 /* Core */,
+				E7C3FA981C4ED3F900281993 /* Encryptor */,
 			);
 			indentWidth = 8;
 			sourceTree = "<group>";
@@ -28,10 +34,22 @@
 			isa = PBXGroup;
 			children = (
 				E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */,
-				E7A38B411C4DBF8400972B01 /* ACHelper.h */,
-				E7A38B421C4DBF8400972B01 /* ACHelper.m */,
+				E7C3FA961C4EC29900281993 /* NSDictionary+ACCoreAdditions.h */,
+				E7C3FA971C4EC29900281993 /* NSDictionary+ACCoreAdditions.m */,
+				E7C3FA921C4E39BC00281993 /* ACConfig.h */,
+				E7C3FA931C4E39BC00281993 /* ACConfig.m */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		E7C3FA981C4ED3F900281993 /* Encryptor */ = {
+			isa = PBXGroup;
+			children = (
+				E7C3FA9B1C4ED6E800281993 /* AppComponentsEncryptor.h */,
+				E7C3FA991C4ED41400281993 /* ACEncryptor.h */,
+				E7C3FA9A1C4ED41400281993 /* ACEncryptor.m */,
+			);
+			path = Encryptor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

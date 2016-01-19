@@ -1,7 +1,15 @@
 PODS:
   - AppComponents (1.0.0):
     - AppComponents/Core (= 1.0.0)
-  - AppComponents/Core (1.0.0)
+    - AppComponents/Encryptor (= 1.0.0)
+  - AppComponents/Core (1.0.0):
+    - ESFramework/Additions
+    - ESFramework/Core
+  - AppComponents/Encryptor (1.0.0):
+    - ESFramework/Core
+  - ESFramework/Additions (2.3.0):
+    - ESFramework/Core
+  - ESFramework/Core (2.3.0)
 
 DEPENDENCIES:
   - AppComponents (from `../AppComponents.podspec`)
@@ -11,6 +19,7 @@ EXTERNAL SOURCES:
     :path: "../AppComponents.podspec"
 
 SPEC CHECKSUMS:
-  AppComponents: 086228ea0c92559fe819b23b673bc57e8a6f0124
+  AppComponents: ecb097409fe1dc9197bac3329dacf9f7e710eba5
+  ESFramework: 9b8e2153b629e75ddc5c34712a3b21cee10e2f71
 
 COCOAPODS: 0.39.0

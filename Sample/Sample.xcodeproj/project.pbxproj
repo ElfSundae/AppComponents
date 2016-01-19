@@ -30,6 +30,7 @@
 		E7A38B5D1C4DC81200972B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7A38B601C4DC81200972B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A38B621C4DC81200972B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7C3FA9C1C4EDD2E00281993 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +62,9 @@
 				298DD36FD9B50AE4EAB106AA /* Pods */,
 				F3F2F0BDF9C5C2F71212E3FE /* Frameworks */,
 			);
+			indentWidth = 8;
 			sourceTree = "<group>";
+			tabWidth = 8;
 		};
 		E7A38B4F1C4DC81200972B01 /* Products */ = {
 			isa = PBXGroup;
@@ -91,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				E7A38B521C4DC81200972B01 /* main.m */,
+				E7C3FA9C1C4EDD2E00281993 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -337,7 +341,9 @@
 			baseConfigurationReference = 562F715A8CB0A5645C046B6E /* Pods-Sample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Sample/PrefixHeader.pch;
 				INFOPLIST_FILE = Sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -349,7 +355,9 @@
 			baseConfigurationReference = C8F1CC45BA5F103B4D3CE5C2 /* Pods-Sample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Sample/PrefixHeader.pch;
 				INFOPLIST_FILE = Sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

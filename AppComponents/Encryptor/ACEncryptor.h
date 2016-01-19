@@ -1,5 +1,5 @@
 //
-//  ACHelper.h
+//  ACEncryptor.h
 //  AppComponents
 //
 //  Created by Elf Sundae on 16/1/19.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ACHelper : NSObject
+@interface ACEncryptor : NSObject
 
-+ (void)test;
++ (NSString *)sampleEncrypt:(NSString *)string password:(NSString *)password;
 
 @end
