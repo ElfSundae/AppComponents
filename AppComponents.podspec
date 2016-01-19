@@ -24,4 +24,11 @@ Pod::Spec.new do |s|
     ss.dependency           "ESFramework/Core"
   end
 
+  s.subspec "UDID" do |ss|
+    ss.source_files         = "AppComponents/UDID/**/*.{h,m}"
+    ss.frameworks           = "AdSupport"
+    ss.dependency           "AppComponents/Core"
+    ss.dependency           "UICKeyChainStore", "~> 2.0"
+  end
+
 end

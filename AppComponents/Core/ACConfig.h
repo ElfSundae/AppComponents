@@ -6,19 +6,13 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <ESFramework/ESFrameworkCore.h>
 
 /**
  * 各个组件的配置信息。
  */
-@interface ACConfig : NSObject
 
-+ (NSMutableDictionary *)config;
-+ (id)get:(NSString *)keyPath;
-+ (BOOL)set:(id)object forKeyPath:(NSString *)keyPath;
-/**
- * @param dictionary { keyPath => object }
- */
-+ (void)setWithDictionary:(NSDictionary *)dictionary;
-
-@end
+ES_EXTERN NSMutableDictionary *ACConfig(void);
+ES_EXTERN id ACConfigGet(NSString *keyPath);
+ES_EXTERN BOOL ACConfigSet(NSString *keyPath, id object);
+ES_EXTERN void ACConfigSetDictionary(NSDictionary *dictionary);

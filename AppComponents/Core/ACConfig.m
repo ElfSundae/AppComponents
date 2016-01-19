@@ -7,12 +7,9 @@
 //
 
 #import "ACConfig.h"
-#import <ESFramework/ESFrameworkCore.h>
 #import "NSDictionary+ACCoreAdditions.h"
 
-@implementation ACConfig
-
-+ (NSMutableDictionary *)config
+NSMutableDictionary *ACConfig(void)
 {
         static NSMutableDictionary *__gConfig = nil;
         static dispatch_once_t onceToken;
@@ -22,23 +19,22 @@
         return __gConfig;
 }
 
-+ (id)get:(NSString *)keyPath
+id ACConfigGet(NSString *keyPath)
 {
-        return [[self config] ac_valueForKeyPath:keyPath];
+        return [ACConfig() ac_valueForKeyPath:keyPath];
 }
 
-+ (BOOL)set:(id)object forKeyPath:(NSString *)keyPath
+BOOL ACConfigSet(NSString *keyPath, id object)
 {
-        return [[self config] ac_setValue:object forKeyPath:keyPath];
+        return [ACConfig() ac_setValue:object forKeyPath:keyPath];
 }
 
-+ (void)setWithDictionary:(NSDictionary *)dictionary
+void ACConfigSetDictionary(NSDictionary *dictionary)
 {
         if (ESIsDictionaryWithItems(dictionary)) {
                 [dictionary enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-                        [self set:obj forKeyPath:key];
+                        ACConfigSet(key, obj);
                 }];
         }
 }
 
-@end

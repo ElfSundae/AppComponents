@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+        NSLog(@"%@", kACConfigKey_ACUDID_IDFAEnabled);
         return YES;
 }
 
