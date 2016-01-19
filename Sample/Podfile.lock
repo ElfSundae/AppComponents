@@ -1,9 +1,13 @@
 PODS:
   - AppComponents (1.0.0):
+    - AppComponents/Ad (= 1.0.0)
     - AppComponents/Core (= 1.0.0)
     - AppComponents/Encryptor (= 1.0.0)
     - AppComponents/UDID (= 1.0.0)
     - AppComponents/View (= 1.0.0)
+  - AppComponents/Ad (1.0.0):
+    - AppComponents/Core
+    - ESFramework/App
   - AppComponents/Core (1.0.0):
     - ESFramework/Additions
     - ESFramework/Core
@@ -11,12 +15,31 @@ PODS:
     - ESFramework/Core
   - AppComponents/UDID (1.0.0):
     - AppComponents/Core
-    - UICKeyChainStore (~> 2.0)
+    - UICKeyChainStore
   - AppComponents/View (1.0.0):
     - AppComponents/Core
+    - ESFramework/UIKit
   - ESFramework/Additions (2.3.0):
     - ESFramework/Core
+  - ESFramework/App (2.3.0):
+    - ESFramework/Additions
+    - ESFramework/Core
   - ESFramework/Core (2.3.0)
+  - ESFramework/UIKit (2.3.0):
+    - ESFramework/UIKit/Animation (= 2.3.0)
+    - ESFramework/UIKit/Controller (= 2.3.0)
+    - ESFramework/UIKit/RefreshControl (= 2.3.0)
+    - ESFramework/UIKit/View (= 2.3.0)
+  - ESFramework/UIKit/Animation (2.3.0)
+  - ESFramework/UIKit/Controller (2.3.0):
+    - ESFramework/App
+    - ESFramework/UIKit/RefreshControl
+    - ESFramework/UIKit/View
+  - ESFramework/UIKit/RefreshControl (2.3.0):
+    - ESFramework/UIKit/View
+  - ESFramework/UIKit/View (2.3.0):
+    - ESFramework/Additions
+    - ESFramework/Core
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
@@ -27,7 +50,7 @@ EXTERNAL SOURCES:
     :path: "../AppComponents.podspec"
 
 SPEC CHECKSUMS:
-  AppComponents: ad892d0ac018beb8e7e32644f245555a15804030
+  AppComponents: 81fe6be349f7c8e806f0622106f724983e29862d
   ESFramework: 9b8e2153b629e75ddc5c34712a3b21cee10e2f71
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 

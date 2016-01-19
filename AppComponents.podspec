@@ -27,12 +27,19 @@ Pod::Spec.new do |s|
   s.subspec "UDID" do |ss|
     ss.source_files         = "AppComponents/UDID/**/*.{h,m}"
     ss.frameworks           = "AdSupport"
+    ss.dependency           "UICKeyChainStore"
     ss.dependency           "AppComponents/Core"
-    ss.dependency           "UICKeyChainStore", "~> 2.0"
   end
 
   s.subspec "View" do |ss|
     ss.source_files         = "AppComponents/View/**/*.{h,m}"
+    ss.dependency           "ESFramework/UIKit"
+    ss.dependency           "AppComponents/Core"
+  end
+
+  s.subspec "Ad" do |ss|
+    ss.source_files         = "AppComponents/Ad/**/*.{h,m}"
+    ss.dependency           "ESFramework/App"
     ss.dependency           "AppComponents/Core"
   end
 
