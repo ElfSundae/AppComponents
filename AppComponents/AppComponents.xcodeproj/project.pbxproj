@@ -18,6 +18,9 @@
 		E7C3FA9B1C4ED6E800281993 /* AppComponentsEncryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsEncryptor.h; sourceTree = "<group>"; };
 		E7C3FA9E1C4EEC9E00281993 /* ACUDID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACUDID.h; sourceTree = "<group>"; };
 		E7C3FA9F1C4EEC9E00281993 /* ACUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACUDID.m; sourceTree = "<group>"; };
+		E7C3FAA11C4EF6B400281993 /* ACBorderLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACBorderLabel.h; sourceTree = "<group>"; };
+		E7C3FAA21C4EF6B400281993 /* ACBorderLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACBorderLabel.m; sourceTree = "<group>"; };
+		E7C3FAA31C4EF6C700281993 /* AppComponentsViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsViews.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -28,6 +31,7 @@
 				E7A38B3A1C4DBE1200972B01 /* Core */,
 				E7C3FA981C4ED3F900281993 /* Encryptor */,
 				E7C3FA9D1C4EEBF600281993 /* UDID */,
+				E7C3FAA01C4EF68900281993 /* View */,
 			);
 			indentWidth = 8;
 			sourceTree = "<group>";
@@ -62,6 +66,16 @@
 				E7C3FA9F1C4EEC9E00281993 /* ACUDID.m */,
 			);
 			path = UDID;
+			sourceTree = "<group>";
+		};
+		E7C3FAA01C4EF68900281993 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E7C3FAA31C4EF6C700281993 /* AppComponentsViews.h */,
+				E7C3FAA11C4EF6B400281993 /* ACBorderLabel.h */,
+				E7C3FAA21C4EF6B400281993 /* ACBorderLabel.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -31,4 +31,9 @@ Pod::Spec.new do |s|
     ss.dependency           "UICKeyChainStore", "~> 2.0"
   end
 
+  s.subspec "View" do |ss|
+    ss.source_files         = "AppComponents/View/**/*.{h,m}"
+    ss.dependency           "AppComponents/Core"
+  end
+
 end

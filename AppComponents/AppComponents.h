@@ -9,3 +9,4 @@
 #import <AppComponents/AppComponentsCore.h>
 #import <AppComponents/AppComponentsEncryptor.h>
 #import <AppComponents/ACUDID.h>
+#import <AppComponents/AppComponentsViews.h>

@@ -3,6 +3,7 @@ PODS:
     - AppComponents/Core (= 1.0.0)
     - AppComponents/Encryptor (= 1.0.0)
     - AppComponents/UDID (= 1.0.0)
+    - AppComponents/View (= 1.0.0)
   - AppComponents/Core (1.0.0):
     - ESFramework/Additions
     - ESFramework/Core
@@ -11,6 +12,8 @@ PODS:
   - AppComponents/UDID (1.0.0):
     - AppComponents/Core
     - UICKeyChainStore (~> 2.0)
+  - AppComponents/View (1.0.0):
+    - AppComponents/Core
   - ESFramework/Additions (2.3.0):
     - ESFramework/Core
   - ESFramework/Core (2.3.0)
@@ -24,7 +27,7 @@ EXTERNAL SOURCES:
     :path: "../AppComponents.podspec"
 
 SPEC CHECKSUMS:
-  AppComponents: 02b507461bd2736e0f5062995eb4f3000b22d789
+  AppComponents: ad892d0ac018beb8e7e32644f245555a15804030
   ESFramework: 9b8e2153b629e75ddc5c34712a3b21cee10e2f71
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
