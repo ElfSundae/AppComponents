@@ -1,0 +1,16 @@
+PODS:
+  - AppComponents (1.0.0):
+    - AppComponents/Core (= 1.0.0)
+  - AppComponents/Core (1.0.0)
+
+DEPENDENCIES:
+  - AppComponents (from `../AppComponents.podspec`)
+
+EXTERNAL SOURCES:
+  AppComponents:
+    :path: "../AppComponents.podspec"
+
+SPEC CHECKSUMS:
+  AppComponents: 086228ea0c92559fe819b23b673bc57e8a6f0124
+
+COCOAPODS: 0.39.0

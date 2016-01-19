@@ -1,0 +1,7 @@
+platform :ios, '7.0'
+
+workspace "../AppComponents.xcworkspace"
+
+target 'Sample', :exclusive => true do
+    pod "AppComponents", :path => "../AppComponents.podspec"
+end

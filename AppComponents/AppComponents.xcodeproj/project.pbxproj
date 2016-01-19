@@ -1,0 +1,89 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		E7A38B411C4DBF8400972B01 /* ACHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACHelper.h; sourceTree = "<group>"; };
+		E7A38B421C4DBF8400972B01 /* ACHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHelper.m; sourceTree = "<group>"; };
+		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
+		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		E7A38B331C4DBD3F00972B01 = {
+			isa = PBXGroup;
+			children = (
+				E7A38B441C4DBFBD00972B01 /* AppComponents.h */,
+				E7A38B3A1C4DBE1200972B01 /* Core */,
+			);
+			indentWidth = 8;
+			sourceTree = "<group>";
+			tabWidth = 8;
+		};
+		E7A38B3A1C4DBE1200972B01 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */,
+				E7A38B411C4DBF8400972B01 /* ACHelper.h */,
+				E7A38B421C4DBF8400972B01 /* ACHelper.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		E7A38B341C4DBD3F00972B01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = www.0x123.com;
+			};
+			buildConfigurationList = E7A38B371C4DBD3F00972B01 /* Build configuration list for PBXProject "AppComponents" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E7A38B331C4DBD3F00972B01;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		E7A38B381C4DBD3F00972B01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		E7A38B391C4DBD3F00972B01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E7A38B371C4DBD3F00972B01 /* Build configuration list for PBXProject "AppComponents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7A38B381C4DBD3F00972B01 /* Debug */,
+				E7A38B391C4DBD3F00972B01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E7A38B341C4DBD3F00972B01 /* Project object */;
+}
