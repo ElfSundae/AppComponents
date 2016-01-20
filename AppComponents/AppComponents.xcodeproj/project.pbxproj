@@ -28,6 +28,18 @@
 		E7C3FAAF1C4EFACB00281993 /* ACAdViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAdViewManager.m; sourceTree = "<group>"; };
 		E7C3FAB11C4F037200281993 /* ACAppUpdater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAppUpdater.h; sourceTree = "<group>"; };
 		E7C3FAB21C4F037200281993 /* ACAppUpdater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAppUpdater.m; sourceTree = "<group>"; };
+		E7C3FAB41C4F0A1F00281993 /* AppComponentsNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsNetworking.h; sourceTree = "<group>"; };
+		E7C3FAB71C4F0B8F00281993 /* ACNetworkingDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNetworkingDefines.h; sourceTree = "<group>"; };
+		E7C3FABA1C4FEBFE00281993 /* ACNetworkingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNetworkingHelper.h; sourceTree = "<group>"; };
+		E7C3FABB1C4FEBFE00281993 /* ACNetworkingHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACNetworkingHelper.m; sourceTree = "<group>"; };
+		E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworkingAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+ACNetworkingAdditions.h"; sourceTree = "<group>"; };
+		E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworkingAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+ACNetworkingAdditions.m"; sourceTree = "<group>"; };
+		E7C3FAC01C4FF57D00281993 /* NSURLSessionTask+ACNetworkingAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionTask+ACNetworkingAdditions.h"; sourceTree = "<group>"; };
+		E7C3FAC11C4FF57D00281993 /* NSURLSessionTask+ACNetworkingAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionTask+ACNetworkingAdditions.m"; sourceTree = "<group>"; };
+		E7C3FAC21C4FFDD400281993 /* ACURLSessionTaskInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACURLSessionTaskInfo.h; sourceTree = "<group>"; };
+		E7C3FAC31C4FFDD400281993 /* ACURLSessionTaskInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACURLSessionTaskInfo.m; sourceTree = "<group>"; };
+		E7C3FAC41C5014B800281993 /* ACHTTPRequestSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACHTTPRequestSerializer.h; sourceTree = "<group>"; };
+		E7C3FAC51C5014B800281993 /* ACHTTPRequestSerializer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHTTPRequestSerializer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -40,6 +52,7 @@
 				E7C3FA9D1C4EEBF600281993 /* UDID */,
 				E7C3FAA01C4EF68900281993 /* View */,
 				E7C3FAA41C4EF96000281993 /* Ad */,
+				E7C3FAB31C4F09FF00281993 /* Networking */,
 				E7C3FAB01C4F035300281993 /* AppUpdater */,
 			);
 			indentWidth = 8;
@@ -106,6 +119,25 @@
 				E7C3FAB21C4F037200281993 /* ACAppUpdater.m */,
 			);
 			path = AppUpdater;
+			sourceTree = "<group>";
+		};
+		E7C3FAB31C4F09FF00281993 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E7C3FAB41C4F0A1F00281993 /* AppComponentsNetworking.h */,
+				E7C3FAB71C4F0B8F00281993 /* ACNetworkingDefines.h */,
+				E7C3FAC21C4FFDD400281993 /* ACURLSessionTaskInfo.h */,
+				E7C3FAC31C4FFDD400281993 /* ACURLSessionTaskInfo.m */,
+				E7C3FAC01C4FF57D00281993 /* NSURLSessionTask+ACNetworkingAdditions.h */,
+				E7C3FAC11C4FF57D00281993 /* NSURLSessionTask+ACNetworkingAdditions.m */,
+				E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworkingAdditions.h */,
+				E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworkingAdditions.m */,
+				E7C3FABA1C4FEBFE00281993 /* ACNetworkingHelper.h */,
+				E7C3FABB1C4FEBFE00281993 /* ACNetworkingHelper.m */,
+				E7C3FAC41C5014B800281993 /* ACHTTPRequestSerializer.h */,
+				E7C3FAC51C5014B800281993 /* ACHTTPRequestSerializer.m */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

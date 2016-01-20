@@ -50,4 +50,11 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/Core"
   end
 
+  s.subspec "Networking" do |ss|
+    ss.source_files         = "AppComponents/Networking/**/*.{h,m}"
+    ss.dependency           "AFNetworking", "~> 3.0"
+    ss.dependency           "ESFramework/App"
+    ss.dependency           "AppComponents/Core"
+    ss.dependency           "AppComponents/Encryptor"
+  end
 end
