@@ -43,4 +43,11 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/Core"
   end
 
+  s.subspec "AppUpdater" do |ss|
+    ss.source_files         = "AppComponents/AppUpdater/**/*.{h,m}"
+    ss.dependency           "ESFramework/App"
+    ss.dependency           "ESFramework/StoreKit"
+    ss.dependency           "AppComponents/Core"
+  end
+
 end

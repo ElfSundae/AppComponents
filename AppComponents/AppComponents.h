@@ -11,3 +11,4 @@
 #import <AppComponents/ACUDID.h>
 #import <AppComponents/AppComponentsViews.h>
 #import <AppComponents/AppComponentsAd.h>
+#import <AppComponents/ACAppUpdater.h>
