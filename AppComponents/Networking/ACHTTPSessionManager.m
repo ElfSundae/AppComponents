@@ -47,11 +47,13 @@
                         
                         if (ACNetworkingResponseCodeSuccess != code && !task.acInfo.dontAlertWhenResponseCodeIsNotSuccess) {
                                 if (msg || errorsString) {
-                                        if (task.acInfo.alertUseTipsWhenResponseCodeIsNotSuccess) {
-                                                [[ESApp sharedApp] showTips:msg detail:errorsString addToView:nil timeInterval:0 animated:YES];
-                                        } else {
-                                                [UIAlertView showWithTitle:msg message:errorsString];
-                                        }
+                                        ESDispatchOnMainThreadAsynchrony(^{
+                                                if (task.acInfo.alertUseTipsWhenResponseCodeIsNotSuccess) {
+                                                        [[ESApp sharedApp] showTips:msg detail:errorsString addToView:nil timeInterval:0 animated:YES];
+                                                } else {
+                                                        [UIAlertView showWithTitle:msg message:errorsString];
+                                                }
+                                        });
                                 }
                         }
                 }
@@ -60,11 +62,13 @@
                         NSString *title, *message;
                         if ([ACNetworkingHelper parseResponseFailedError:error title:&title message:&message] &&
                             (title || message)) {
-                                if (task.acInfo.alertNetworkErrorUseAlertView) {
-                                        [UIAlertView showWithTitle:title message:message];
-                                } else {
-                                        [[ESApp sharedApp] showTips:title detail:message addToView:nil timeInterval:0 animated:YES];
-                                }
+                                ESDispatchOnMainThreadAsynchrony(^{
+                                        if (task.acInfo.alertNetworkErrorUseAlertView) {
+                                                [UIAlertView showWithTitle:title message:message];
+                                        } else {
+                                                [[ESApp sharedApp] showTips:title detail:message addToView:nil timeInterval:0 animated:YES];
+                                        }
+                                });
                         }
                 }
         }

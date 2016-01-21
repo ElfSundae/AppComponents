@@ -16,43 +16,43 @@ PODS:
     - AFNetworking/NSURLSession
   - APIService-TalkingData (2.1.21)
   - APIService-UmengAnalytics (3.6.6)
-  - AppComponents (1.0.0):
-    - AppComponents/Ad (= 1.0.0)
-    - AppComponents/App (= 1.0.0)
-    - AppComponents/AppUpdater (= 1.0.0)
-    - AppComponents/Core (= 1.0.0)
-    - AppComponents/Encryptor (= 1.0.0)
-    - AppComponents/Networking (= 1.0.0)
-    - AppComponents/UDID (= 1.0.0)
-    - AppComponents/View (= 1.0.0)
-  - AppComponents/Ad (1.0.0):
+  - AppComponents (1.0.1):
+    - AppComponents/Ad (= 1.0.1)
+    - AppComponents/App (= 1.0.1)
+    - AppComponents/AppUpdater (= 1.0.1)
+    - AppComponents/Core (= 1.0.1)
+    - AppComponents/Encryptor (= 1.0.1)
+    - AppComponents/Networking (= 1.0.1)
+    - AppComponents/UDID (= 1.0.1)
+    - AppComponents/View (= 1.0.1)
+  - AppComponents/Ad (1.0.1):
     - AppComponents/Core
     - ESFramework/App
-  - AppComponents/App (1.0.0):
+  - AppComponents/App (1.0.1):
     - APIService-TalkingData
     - APIService-UmengAnalytics
     - AppComponents/Core
     - ESFramework/App
     - FontAwesomeKit/FontAwesome
     - MBProgressHUD
-  - AppComponents/AppUpdater (1.0.0):
+  - AppComponents/AppUpdater (1.0.1):
     - AppComponents/Core
     - ESFramework/App
     - ESFramework/StoreKit
-  - AppComponents/Core (1.0.0):
+  - AppComponents/Core (1.0.1):
     - ESFramework/Additions
     - ESFramework/Core
-  - AppComponents/Encryptor (1.0.0):
+  - AppComponents/Encryptor (1.0.1):
     - ESFramework/Core
-  - AppComponents/Networking (1.0.0):
+  - AppComponents/Networking (1.0.1):
     - AFNetworking (~> 3.0)
     - AppComponents/App
     - AppComponents/Encryptor
     - ESFramework/App
-  - AppComponents/UDID (1.0.0):
+  - AppComponents/UDID (1.0.1):
     - AppComponents/Core
     - UICKeyChainStore
-  - AppComponents/View (1.0.0):
+  - AppComponents/View (1.0.1):
     - AppComponents/Core
     - ESFramework/UIKit
   - ESFramework/Additions (2.3.0):
@@ -97,7 +97,7 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   APIService-TalkingData: 0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
-  AppComponents: 96e06fcb91e2657282243cdc229730996d4b6a5c
+  AppComponents: 7212f0d52cab81ba7c813c719f3ca13bb81152ce
   ESFramework: 9b8e2153b629e75ddc5c34712a3b21cee10e2f71
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
