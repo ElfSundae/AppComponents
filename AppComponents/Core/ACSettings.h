@@ -25,7 +25,9 @@ FOUNDATION_EXTERN NSString *const ACSettingsIdentifierKey;
 - (NSString *)settingsIdentifier;
 - (NSString *)settingsUserDefaultsKey;
 
+- (void)cleanUpSettings;
 - (void)saveSettings;
++ (void)deleteSettingsWithIdentifier:(NSString *)identifier;
 
 + (NSString *)userDefaultsKeyForSettingsIdentifier:(NSString *)identifier;
 

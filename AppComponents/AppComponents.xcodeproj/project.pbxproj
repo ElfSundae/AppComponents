@@ -19,6 +19,10 @@
 		E71B7D031C51560B001910C2 /* ACSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACSettings.m; sourceTree = "<group>"; };
 		E71B7D041C515DB1001910C2 /* ESApp+ACSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACSettings.h"; sourceTree = "<group>"; };
 		E71B7D051C515DB1001910C2 /* ESApp+ACSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACSettings.m"; sourceTree = "<group>"; };
+		E71B7D061C516E23001910C2 /* ESApp+ACSettingsSubclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACSettingsSubclass.h"; sourceTree = "<group>"; };
+		E71B7D071C516E23001910C2 /* ESApp+ACSettingsSubclass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACSettingsSubclass.m"; sourceTree = "<group>"; };
+		E71B7D081C5171C9001910C2 /* ACSettings+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACSettings+Private.h"; sourceTree = "<group>"; };
+		E71B7D091C5171C9001910C2 /* ACSettings+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACSettings+Private.m"; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				E71B7CFB1C51314A001910C2 /* ESApp+ACAlertAdditions.m */,
 				E71B7D041C515DB1001910C2 /* ESApp+ACSettings.h */,
 				E71B7D051C515DB1001910C2 /* ESApp+ACSettings.m */,
+				E71B7D061C516E23001910C2 /* ESApp+ACSettingsSubclass.h */,
+				E71B7D071C516E23001910C2 /* ESApp+ACSettingsSubclass.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -95,6 +101,8 @@
 				E7C3FA931C4E39BC00281993 /* ACConfig.m */,
 				E71B7D021C51560B001910C2 /* ACSettings.h */,
 				E71B7D031C51560B001910C2 /* ACSettings.m */,
+				E71B7D081C5171C9001910C2 /* ACSettings+Private.h */,
+				E71B7D091C5171C9001910C2 /* ACSettings+Private.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";

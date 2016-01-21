@@ -9,13 +9,10 @@
 #import "ACSettings.h"
 #import "NSDictionary+ACCoreAdditions.h"
 #import <ESFramework/ESFrameworkCore.h>
+#import "ACSettings+Private.h"
 
 NSString *const ACSettingsUserDefaultsKeyPrefix = @"com.0x123.ACSettings.";
 NSString *const ACSettingsIdentifierKey = @"__ACSettingsIdentifierKey__";
-
-@interface ACSettings ()
-
-@end
 
 @implementation ACSettings
 
@@ -23,17 +20,8 @@ NSString *const ACSettingsIdentifierKey = @"__ACSettingsIdentifierKey__";
 {
         NSString *userDefaultsKey = [self userDefaultsKeyForSettingsIdentifier:identifier];
         ACSettings *settings = (ACSettings *)[self ac_dictionaryFromUserDefaultsWithKey:userDefaultsKey defaultValues:defaultValues];
-        [settings setSettingsIdentifier:identifier];
+        [settings _setSettingsIdentifier:identifier];
         return settings;
-}
-
-- (void)setSettingsIdentifier:(NSString *)identifier
-{
-        if (ESIsStringWithAnyText(identifier)) {
-                self[ACSettingsIdentifierKey] = identifier;
-        } else {
-                [self removeObjectForKey:ACSettingsIdentifierKey];
-        }
 }
 
 - (NSString *)settingsIdentifier
@@ -44,6 +32,13 @@ NSString *const ACSettingsIdentifierKey = @"__ACSettingsIdentifierKey__";
 - (NSString *)settingsUserDefaultsKey
 {
         return [[self class] userDefaultsKeyForSettingsIdentifier:self.settingsIdentifier];
+}
+
+- (void)cleanUpSettings
+{
+        NSString *identifier = [self settingsIdentifier];
+        [self removeAllObjects];
+        [self _setSettingsIdentifier:identifier];
 }
 
 - (void)saveSettings
@@ -57,6 +52,11 @@ NSString *const ACSettingsIdentifierKey = @"__ACSettingsIdentifierKey__";
                 [[NSUserDefaults standardUserDefaults] setObject:self forKey:userDefaultsKey];
         }
         [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)deleteSettingsWithIdentifier:(NSString *)identifier
+{
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:[self userDefaultsKeyForSettingsIdentifier:identifier]];
 }
 
 + (NSString *)userDefaultsKeyForSettingsIdentifier:(NSString *)identifier

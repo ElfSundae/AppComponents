@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |ss|
     ss.source_files         = "AppComponents/Core/**/*.{h,m}"
+    ss.private_header_files = "AppComponents/Core/**/*+Private.{h,m}"
     ss.dependency           "ESFramework/Core"
     ss.dependency           "ESFramework/Additions"
   end

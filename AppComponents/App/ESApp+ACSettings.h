@@ -10,18 +10,13 @@
 #import <AppComponents/ACSettings.h>
 
 FOUNDATION_EXTERN NSString *const ACAppUserSettingsIdentifierPrefix;
+FOUNDATION_EXTERN NSString *const ACAppConfigIdentifier;
 
 @interface ESApp (ACSettings)
 
-/**
- * 针对某用户的settings, App可以重写getter方法返回跟用户相关的ACSettings.
- */
 - (ACSettings *)userSettings;
+- (ACSettings *)appConfig;
 
-/**
- * Returns the shared ACSettings instance.
- */
-- (ACSettings *)sharedUserSettingsWithUserIdentifier:(NSString *)uid defaultValues:(NSDictionary *)defaultValues;
 /**
  * Returns settingsIdentifier for uid: "ACAppUserSettingsIdentifierPrefix + uid"
  */
