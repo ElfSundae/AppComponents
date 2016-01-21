@@ -35,21 +35,21 @@
 #define kACConfigKey_ACNetworking_MaxConcurrentRequestCount     kACConfigKey_ACNetworking@".MaxConcurrentRequestCount" // default is 3
 
 /// 网络连接失败时的弹窗title, default is kACNetworkingLocalNetworkErrorAlertTitle
-#define kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle kACConfigKey_ACNetworking@".LocalNetworkErrorAlertTitle"
+#define kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle   kACConfigKey_ACNetworking@".LocalNetworkErrorAlertTitle"
 /// 发送请求时设置Api Token到request的header, name为nil时不传Api Token, default is nil, e.g. @"X-API-TOKEN"
-#define kACConfigKey_ACNetworking_RequestHeaderApiTokenName kACConfigKey_ACNetworking@".RequestHeaderApiTokenName"
+#define kACConfigKey_ACNetworking_RequestHeaderApiTokenName     kACConfigKey_ACNetworking@".RequestHeaderApiTokenName"
 /// 发送请求时将Cookie中的CSRF Token传到request的header，name为nil时不传CSRF Token. default is nil, e.g. @"X-CSRF-TOKEN"
-#define kACConfigKey_ACNetworking_RequestHeaderCSRFTokenName kACConfigKey_ACNetworking@".RequestHeaderCSRFTokenName"
+#define kACConfigKey_ACNetworking_RequestHeaderCSRFTokenName    kACConfigKey_ACNetworking@".RequestHeaderCSRFTokenName"
 /// 加密Api Token时用的密码, default is nil
-#define kACConfigKey_ACNetworking_ApiTokenPassword kACConfigKey_ACNetworking@".ApiTokenPassword"
+#define kACConfigKey_ACNetworking_ApiTokenPassword              kACConfigKey_ACNetworking@".ApiTokenPassword"
 /// Cookie中CSRF Token的名字, default is @"XSRF-TOKEN"
-#define kACConfigKey_ACNetworking_CSRFTokenCookieName    kACConfigKey_ACNetworking@".CSRFTokenCookieName"
+#define kACConfigKey_ACNetworking_CSRFTokenCookieName           kACConfigKey_ACNetworking@".CSRFTokenCookieName"
 /// default is @"code"
-#define kACConfigKey_ACNetworking_ResponseKeyCode kACConfigKey_ACNetworking@".ResponseKeyCode"
+#define kACConfigKey_ACNetworking_ResponseKeyCode               kACConfigKey_ACNetworking@".ResponseKeyCode"
 /// default is @"msg"
-#define kACConfigKey_ACNetworking_ResponseKeyMessage kACConfigKey_ACNetworking@".ResponseKeyMessage"
+#define kACConfigKey_ACNetworking_ResponseKeyMessage            kACConfigKey_ACNetworking@".ResponseKeyMessage"
 /// default is @"errors"
-#define kACConfigKey_ACNetworking_ResponseKeyErrors kACConfigKey_ACNetworking@".ResponseKeyErrors"
+#define kACConfigKey_ACNetworking_ResponseKeyErrors             kACConfigKey_ACNetworking@".ResponseKeyErrors"
 
 
 #define kACNetworkingRequestHeaderApiTokenName  @"X-API-TOKEN"
@@ -64,13 +64,18 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ACAppUpdater
 #define kACConfigKey_ACAppUpdater @"ACAppUpdater"
-#define kACConfigKey_ACAppUpdater_VersionDataKey_LatestVersion kACConfigKey_ACAppUpdater@".AppVersion.LatestVersion" // version
-#define kACConfigKey_ACAppUpdater_VersionDataKey_UpdateWay kACConfigKey_ACAppUpdater@".AppVersion.UpdateWay" // way
-#define kACConfigKey_ACAppUpdater_VersionDataKey_Description kACConfigKey_ACAppUpdater@".AppVersion.Description" // desc
-#define kACConfigKey_ACAppUpdater_VersionDataKey_DownloadURL kACConfigKey_ACAppUpdater@".AppVersion.DownloadURL" // url
-#define kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode kACConfigKey_ACAppUpdater@".DefaultAppStoreContryCode" // default is nil
+#define kACConfigKey_ACAppUpdater_VersionDataKey_LatestVersion  kACConfigKey_ACAppUpdater@".AppVersion.LatestVersion" // version
+#define kACConfigKey_ACAppUpdater_VersionDataKey_UpdateWay      kACConfigKey_ACAppUpdater@".AppVersion.UpdateWay" // way
+#define kACConfigKey_ACAppUpdater_VersionDataKey_Description    kACConfigKey_ACAppUpdater@".AppVersion.Description" // desc
+#define kACConfigKey_ACAppUpdater_VersionDataKey_DownloadURL    kACConfigKey_ACAppUpdater@".AppVersion.DownloadURL" // url
+#define kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode     kACConfigKey_ACAppUpdater@".DefaultAppStoreContryCode" // default is nil
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ACApp
 #define kACConfigKey_ACApp @"ACApp"
+/// Default is 1.5
+#define kACConfigKey_ACApp_DefaultTipsTimeInterval              kACConfigKey_ACApp@".DefaultTipsTimeInterval"
+/// Default is MBProgressHUDAnimationZoom
+#define kACConfigKey_ACApp_DefaultTipsAnimationType             kACConfigKey_ACApp@".DefaultTipsAnimationType"
+

@@ -13,4 +13,5 @@
 #import <AppComponents/AppComponentsAd.h>
 #import <AppComponents/AppComponentsNetworking.h>
 #import <AppComponents/ACAppUpdater.h>
+#import <AppComponents/AppComponentsApp.h>
 

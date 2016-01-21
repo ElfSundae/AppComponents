@@ -1,101 +1,221 @@
-PODS:
-  - AFNetworking (3.0.4):
-    - AFNetworking/NSURLSession (= 3.0.4)
-    - AFNetworking/Reachability (= 3.0.4)
-    - AFNetworking/Security (= 3.0.4)
-    - AFNetworking/Serialization (= 3.0.4)
-    - AFNetworking/UIKit (= 3.0.4)
-  - AFNetworking/NSURLSession (3.0.4):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.0.4)
-  - AFNetworking/Security (3.0.4)
-  - AFNetworking/Serialization (3.0.4)
-  - AFNetworking/UIKit (3.0.4):
-    - AFNetworking/NSURLSession
-  - APIService-TalkingData (2.1.21)
-  - APIService-UmengAnalytics (3.6.6)
-  - AppComponents (1.0.0):
-    - AppComponents/Ad (= 1.0.0)
-    - AppComponents/App (= 1.0.0)
-    - AppComponents/AppUpdater (= 1.0.0)
-    - AppComponents/Core (= 1.0.0)
-    - AppComponents/Encryptor (= 1.0.0)
-    - AppComponents/Networking (= 1.0.0)
-    - AppComponents/UDID (= 1.0.0)
-    - AppComponents/View (= 1.0.0)
-  - AppComponents/Ad (1.0.0):
-    - AppComponents/Core
-    - ESFramework/App
-  - AppComponents/App (1.0.0):
-    - APIService-TalkingData
-    - APIService-UmengAnalytics
-    - AppComponents/Core
-    - ESFramework/App
-    - MBProgressHUD
-  - AppComponents/AppUpdater (1.0.0):
-    - AppComponents/Core
-    - ESFramework/App
-    - ESFramework/StoreKit
-  - AppComponents/Core (1.0.0):
-    - ESFramework/Additions
-    - ESFramework/Core
-  - AppComponents/Encryptor (1.0.0):
-    - ESFramework/Core
-  - AppComponents/Networking (1.0.0):
-    - AFNetworking (~> 3.0)
-    - AppComponents/App
-    - AppComponents/Encryptor
-    - ESFramework/App
-  - AppComponents/UDID (1.0.0):
-    - AppComponents/Core
-    - UICKeyChainStore
-  - AppComponents/View (1.0.0):
-    - AppComponents/Core
-    - ESFramework/UIKit
-  - ESFramework/Additions (2.3.0):
-    - ESFramework/Core
-  - ESFramework/App (2.3.0):
-    - ESFramework/Additions
-    - ESFramework/Core
-  - ESFramework/Core (2.3.0)
-  - ESFramework/StoreKit (2.3.0):
-    - ESFramework/Additions
-    - ESFramework/App
-    - ESFramework/Core
-  - ESFramework/UIKit (2.3.0):
-    - ESFramework/UIKit/Animation (= 2.3.0)
-    - ESFramework/UIKit/Controller (= 2.3.0)
-    - ESFramework/UIKit/RefreshControl (= 2.3.0)
-    - ESFramework/UIKit/View (= 2.3.0)
-  - ESFramework/UIKit/Animation (2.3.0)
-  - ESFramework/UIKit/Controller (2.3.0):
-    - ESFramework/App
-    - ESFramework/UIKit/RefreshControl
-    - ESFramework/UIKit/View
-  - ESFramework/UIKit/RefreshControl (2.3.0):
-    - ESFramework/UIKit/View
-  - ESFramework/UIKit/View (2.3.0):
-    - ESFramework/Additions
-    - ESFramework/Core
-  - MBProgressHUD (0.9.2)
-  - UICKeyChainStore (2.1.0)
+>-
+  PODS:
+  - >-
+    AFNetworking (3.0.4):
+    - >-
+      AFNetworking/NSURLSession (= 3.0.4)
+    - >-
+      AFNetworking/Reachability (= 3.0.4)
+    - >-
+      AFNetworking/Security (= 3.0.4)
+    - >-
+      AFNetworking/Serialization (= 3.0.4)
+    - >-
+      AFNetworking/UIKit (= 3.0.4)
+  - >-
+    AFNetworking/NSURLSession (3.0.4):
+    - >-
+      AFNetworking/Reachability
+    - >-
+      AFNetworking/Security
+    - >-
+      AFNetworking/Serialization
+  - >-
+    AFNetworking/Reachability (3.0.4)
+  - >-
+    AFNetworking/Security (3.0.4)
+  - >-
+    AFNetworking/Serialization (3.0.4)
+  - >-
+    AFNetworking/UIKit (3.0.4):
+    - >-
+      AFNetworking/NSURLSession
+  - >-
+    APIService-TalkingData (2.1.21)
+  - >-
+    APIService-UmengAnalytics (3.6.6)
+  - >-
+    AppComponents (1.0.0):
+    - >-
+      AppComponents/Ad (= 1.0.0)
+    - >-
+      AppComponents/App (= 1.0.0)
+    - >-
+      AppComponents/AppUpdater (= 1.0.0)
+    - >-
+      AppComponents/Core (= 1.0.0)
+    - >-
+      AppComponents/Encryptor (= 1.0.0)
+    - >-
+      AppComponents/Networking (= 1.0.0)
+    - >-
+      AppComponents/UDID (= 1.0.0)
+    - >-
+      AppComponents/View (= 1.0.0)
+  - >-
+    AppComponents/Ad (1.0.0):
+    - >-
+      AppComponents/Core
+    - >-
+      ESFramework/App
+  - >-
+    AppComponents/App (1.0.0):
+    - >-
+      APIService-TalkingData
+    - >-
+      APIService-UmengAnalytics
+    - >-
+      AppComponents/Core
+    - >-
+      ESFramework/App
+    - >-
+      FontAwesomeKit/FontAwesome
+    - >-
+      MBProgressHUD
+  - >-
+    AppComponents/AppUpdater (1.0.0):
+    - >-
+      AppComponents/Core
+    - >-
+      ESFramework/App
+    - >-
+      ESFramework/StoreKit
+  - >-
+    AppComponents/Core (1.0.0):
+    - >-
+      ESFramework/Additions
+    - >-
+      ESFramework/Core
+  - >-
+    AppComponents/Encryptor (1.0.0):
+    - >-
+      ESFramework/Core
+  - >-
+    AppComponents/Networking (1.0.0):
+    - >-
+      AFNetworking (~> 3.0)
+    - >-
+      AppComponents/App
+    - >-
+      AppComponents/Encryptor
+    - >-
+      ESFramework/App
+  - >-
+    AppComponents/UDID (1.0.0):
+    - >-
+      AppComponents/Core
+    - >-
+      UICKeyChainStore
+  - >-
+    AppComponents/View (1.0.0):
+    - >-
+      AppComponents/Core
+    - >-
+      ESFramework/UIKit
+  - >-
+    ESFramework/Additions (2.3.0):
+    - >-
+      ESFramework/Core
+  - >-
+    ESFramework/App (2.3.0):
+    - >-
+      ESFramework/Additions
+    - >-
+      ESFramework/Core
+  - >-
+    ESFramework/Core (2.3.0)
+  - >-
+    ESFramework/StoreKit (2.3.0):
+    - >-
+      ESFramework/Additions
+    - >-
+      ESFramework/App
+    - >-
+      ESFramework/Core
+  - >-
+    ESFramework/UIKit (2.3.0):
+    - >-
+      ESFramework/UIKit/Animation (= 2.3.0)
+    - >-
+      ESFramework/UIKit/Controller (= 2.3.0)
+    - >-
+      ESFramework/UIKit/RefreshControl (= 2.3.0)
+    - >-
+      ESFramework/UIKit/View (= 2.3.0)
+  - >-
+    ESFramework/UIKit/Animation (2.3.0)
+  - >-
+    ESFramework/UIKit/Controller (2.3.0):
+    - >-
+      ESFramework/App
+    - >-
+      ESFramework/UIKit/RefreshControl
+    - >-
+      ESFramework/UIKit/View
+  - >-
+    ESFramework/UIKit/RefreshControl (2.3.0):
+    - >-
+      ESFramework/UIKit/View
+  - >-
+    ESFramework/UIKit/View (2.3.0):
+    - >-
+      ESFramework/Additions
+    - >-
+      ESFramework/Core
+  - >-
+    FontAwesomeKit/Core (2.2.0)
+  - >-
+    FontAwesomeKit/FontAwesome (2.2.0):
+    - >-
+      FontAwesomeKit/Core
+  - >-
+    MBProgressHUD (0.9.2)
+  - >-
+    UICKeyChainStore (2.1.0)
 
-DEPENDENCIES:
-  - AppComponents (from `../AppComponents.podspec`)
+>-
+  DEPENDENCIES:
+  - >-
+    AppComponents (from `../AppComponents.podspec`)
 
-EXTERNAL SOURCES:
-  AppComponents:
-    :path: "../AppComponents.podspec"
+>-
+  EXTERNAL SOURCES:
+  >-
+    AppComponents:
+    :path: >-
+      ../AppComponents.podspec
 
-SPEC CHECKSUMS:
-  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  APIService-TalkingData: 0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
-  APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
-  AppComponents: 0d2a0721ad7b71c374b6dff22ff41369111b1af5
-  ESFramework: 9b8e2153b629e75ddc5c34712a3b21cee10e2f71
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
+>-
+  SPEC CHECKSUMS:
+  >-
+    AFNetworking: >-
+    a0075feb321559dc78d9d85b55d11caa19eabb93
+  >-
+    APIService-TalkingData: >-
+    0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
+  >-
+    APIService-UmengAnalytics: >-
+    7702860e2b4273017b1c0be38934071af11d0e94
+  >-
+    AppComponents: >-
+    d2f656cd197b72118f4f9bf5967e6ffec714d290
+  >-
+    ESFramework: >-
+    9b8e2153b629e75ddc5c34712a3b21cee10e2f71
+  >-
+    FontAwesomeKit: >-
+    025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
+  >-
+    MBProgressHUD: >-
+    1569cf7ace17a8bac47aabfbb8580a49690386d1
+  >-
+    UICKeyChainStore: >-
+    f1cbd42216a113f0165de1e733e62905b8823432
 
-COCOAPODS: 0.39.0
+>-
+  PODFILE CHECKSUM: >-
+  f326ee94afce081a62cef393acac708021827742
+
+>-
+  COCOAPODS: >-
+  1.0.0.beta.2

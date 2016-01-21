@@ -63,6 +63,7 @@ Pod::Spec.new do |s|
     ss.dependency           "APIService-TalkingData"
     ss.dependency           "ESFramework/App"
     ss.dependency           "MBProgressHUD"
+    ss.dependency           "FontAwesomeKit/FontAwesome"
     ss.dependency           "AppComponents/Core"
   end
 end

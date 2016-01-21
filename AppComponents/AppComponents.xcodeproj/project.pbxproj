@@ -13,6 +13,8 @@
 		E71B7CF51C509D21001910C2 /* ACApiClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACApiClient.m; sourceTree = "<group>"; };
 		E71B7CF71C50A352001910C2 /* AppComponentsApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsApp.h; sourceTree = "<group>"; };
 		E71B7CF91C50A928001910C2 /* AppComponentsDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsDefines.h; sourceTree = "<group>"; };
+		E71B7CFA1C51314A001910C2 /* ESApp+ACAlertAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACAlertAdditions.h"; sourceTree = "<group>"; };
+		E71B7CFB1C51314A001910C2 /* ESApp+ACAlertAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACAlertAdditions.m"; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
@@ -53,6 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				E71B7CF71C50A352001910C2 /* AppComponentsApp.h */,
+				E71B7CFA1C51314A001910C2 /* ESApp+ACAlertAdditions.h */,
+				E71B7CFB1C51314A001910C2 /* ESApp+ACAlertAdditions.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
