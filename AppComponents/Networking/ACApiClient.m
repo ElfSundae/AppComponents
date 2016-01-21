@@ -18,10 +18,10 @@
         dispatch_once(&onceToken, ^{
                 NSURL *url = ESURLValue(ACConfigGet(kACConfigKey_ACNetworking_BaseURL));
                 NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-                sessionConfig.timeoutIntervalForRequest = 45.0;
+                sessionConfig.timeoutIntervalForRequest = ESDoubleValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_RequestTimeout), 45.0);
                 __gDefaultClient = [[self alloc] initWithBaseURL:url
                                             sessionConfiguration:sessionConfig];
-                __gDefaultClient.operationQueue.maxConcurrentOperationCount = 3;
+                __gDefaultClient.operationQueue.maxConcurrentOperationCount = ESIntegerValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_MaxConcurrentRequestCount), 3);
         });
         return __gDefaultClient;
 }

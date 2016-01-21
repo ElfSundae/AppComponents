@@ -8,14 +8,14 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
+#pragma mark - ACUDID
 #define kACConfigKey_ACUDID     @"ACUDID"
 #define kACConfigKey_ACUDID_IDFADisabled        kACConfigKey_ACUDID@".IDFADisabled" // default: NO
 #define kACConfigKey_ACUDID_KeychainAccessGroup kACConfigKey_ACUDID@".KeychainAccessGroup" // default: nil, e.g. @"TeamID.*"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - 
+#pragma mark - ACAdViewManager
 #define kACConfigKey_ACAdViewManager    @"ACAdViewManager"
 #define kACConfigKey_ACAdViewManager_AdConfigKey_Banner         kACConfigKey_ACAdViewManager@".AdConfigKey.Banner" // @"banner"
 #define kACConfigKey_ACAdViewManager_AdConfigKey_Banner_Image   kACConfigKey_ACAdViewManager@".AdConfigKey.Banner_Image" // @"image"
@@ -28,9 +28,12 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - 
+#pragma mark - ACNetworking
 #define kACConfigKey_ACNetworking @"ACNetworking"
-#define kACConfigKey_ACNetworking_BaseURL kACConfigKey_ACNetworking@".baseURL" // NSURL or NSString, default is nil
+#define kACConfigKey_ACNetworking_BaseURL               kACConfigKey_ACNetworking@".baseURL" // NSURL or NSString, default is nil
+#define kACConfigKey_ACNetworking_RequestTimeout        kACConfigKey_ACNetworking@".RequestTimeout" // default is 45.0
+#define kACConfigKey_ACNetworking_MaxConcurrentRequestCount     kACConfigKey_ACNetworking@".MaxConcurrentRequestCount" // default is 3
+
 /// 网络连接失败时的弹窗title, default is kACNetworkingLocalNetworkErrorAlertTitle
 #define kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle kACConfigKey_ACNetworking@".LocalNetworkErrorAlertTitle"
 /// 发送请求时设置Api Token到request的header, name为nil时不传Api Token, default is nil, e.g. @"X-API-TOKEN"
@@ -59,7 +62,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - 
+#pragma mark - ACAppUpdater
 #define kACConfigKey_ACAppUpdater @"ACAppUpdater"
 #define kACConfigKey_ACAppUpdater_VersionDataKey_LatestVersion kACConfigKey_ACAppUpdater@".AppVersion.LatestVersion" // version
 #define kACConfigKey_ACAppUpdater_VersionDataKey_UpdateWay kACConfigKey_ACAppUpdater@".AppVersion.UpdateWay" // way
@@ -69,5 +72,5 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - 
+#pragma mark - ACApp
 #define kACConfigKey_ACApp @"ACApp"
