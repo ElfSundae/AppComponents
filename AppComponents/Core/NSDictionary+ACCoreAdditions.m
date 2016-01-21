@@ -24,6 +24,19 @@
 
 @implementation NSMutableDictionary (ACCoreAdditions)
 
++ (NSMutableDictionary *)ac_dictionaryFromUserDefaultsWithKey:(NSString *)key defaultValues:(NSDictionary *)defaultValues
+{
+        NSMutableDictionary *result = [NSMutableDictionary dictionary];
+        if (ESIsDictionaryWithItems(defaultValues)) {
+                [result setDictionary:defaultValues];
+        }
+        NSDictionary *cached = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+        if (ESIsDictionaryWithItems(cached)) {
+                [result setValuesForKeysWithDictionary:cached];
+        }
+        return result;
+}
+
 - (BOOL)ac_setValue:(id)object forKeyPath:(NSString *)keyPath
 {
         if (![keyPath isKindOfClass:[NSString class]]) {

@@ -20,6 +20,11 @@
 @interface NSMutableDictionary (ACCoreAdditions)
 
 /**
+ * Returns dictionary which backed on NSUserDefaults with the given key.
+ */
++ (NSMutableDictionary *)ac_dictionaryFromUserDefaultsWithKey:(NSString *)key defaultValues:(NSDictionary *)defaultValues;
+
+/**
  * keyPath支持小数点分割的字符串。例如 @"a.b.c" 对应 self[@"a"][@"b"][@"c"] 的值
  */
 - (BOOL)ac_setValue:(id)object forKeyPath:(NSString *)keyPath;
