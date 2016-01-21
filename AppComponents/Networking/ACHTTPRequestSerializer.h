@@ -8,6 +8,9 @@
 
 #import <AFNetworking/AFURLRequestSerialization.h>
 
+/*!
+ * 添加UserAgent, CSRFToken, APIToken到HTTPHeaderFields中
+ */
 @interface ACHTTPRequestSerializer : AFHTTPRequestSerializer
 
 @end

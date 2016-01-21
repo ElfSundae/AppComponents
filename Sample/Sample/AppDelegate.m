@@ -8,16 +8,10 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
-
-@end
-
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-        NSLog(@"%@", kACConfigKey_ACUDID_IDFAEnabled);
         return YES;
 }
 

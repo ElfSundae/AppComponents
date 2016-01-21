@@ -12,3 +12,4 @@
 #import <AppComponents/AFHTTPSessionManager+ACNetworkingAdditions.h>
 #import <AppComponents/ACNetworkingHelper.h>
 #import <AppComponents/ACHTTPRequestSerializer.h>
+#import <AppComponents/ACHTTPSessionManager.h>

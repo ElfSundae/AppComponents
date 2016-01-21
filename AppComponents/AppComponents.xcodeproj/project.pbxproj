@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		E71B7CEF1C5032A4001910C2 /* ACHTTPSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACHTTPSessionManager.h; sourceTree = "<group>"; };
+		E71B7CF01C5032A4001910C2 /* ACHTTPSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHTTPSessionManager.m; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
@@ -136,6 +138,8 @@
 				E7C3FABB1C4FEBFE00281993 /* ACNetworkingHelper.m */,
 				E7C3FAC41C5014B800281993 /* ACHTTPRequestSerializer.h */,
 				E7C3FAC51C5014B800281993 /* ACHTTPRequestSerializer.m */,
+				E71B7CEF1C5032A4001910C2 /* ACHTTPSessionManager.h */,
+				E71B7CF01C5032A4001910C2 /* ACHTTPSessionManager.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
