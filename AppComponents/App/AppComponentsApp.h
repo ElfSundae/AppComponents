@@ -10,3 +10,4 @@
 #import <AppComponents/ESApp+ACSettings.h>
 #import <AppComponents/ESApp+ACSettingsSubclass.h>
 #import <AppComponents/ESApp+ACHelper.h>
+#import <AppComponents/ESApp+ACAnalytics.h>
