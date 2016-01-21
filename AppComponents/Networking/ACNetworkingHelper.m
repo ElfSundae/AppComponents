@@ -11,7 +11,7 @@
 #import <ESFramework/ESFrameworkAdditions.h>
 #import <ESFramework/ESApp.h>
 #import <AppComponents/ACEncryptor.h>
-#import <AppComponents/ACConfig.h>
+#import "ACURLSessionTaskInfo.h"
 
 @implementation ACNetworkingHelper
 

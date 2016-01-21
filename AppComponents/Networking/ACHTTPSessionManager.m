@@ -23,7 +23,7 @@
         return self;
 }
 
-- (void)ac_dataTaskCompletionHandler:(NSURLSessionTask *)task
+- (void)ac_sessionTaskCompletionHandler:(NSURLSessionTask *)task
                             response:(NSURLResponse *)response
                       responseObject:(id)responseObject
                                error:(NSError *)error
@@ -85,7 +85,7 @@
         [super dataTaskWithRequest:request uploadProgress:uploadProgressBlock downloadProgress:downloadProgressBlock completionHandler:^(NSURLResponse *response, id responseObject,  NSError *error)
          {
                  ESStrongSelf;
-                 [_self ac_dataTaskCompletionHandler:task response:response responseObject:responseObject error:error originalHandler:completionHandler];
+                 [_self ac_sessionTaskCompletionHandler:task response:response responseObject:responseObject error:error originalHandler:completionHandler];
          }];
         return task;
 }
@@ -100,7 +100,7 @@
         [super uploadTaskWithRequest:request fromFile:fileURL progress:uploadProgressBlock completionHandler:^(NSURLResponse *response, id responseObject,  NSError *error)
          {
                  ESStrongSelf;
-                 [_self ac_dataTaskCompletionHandler:task response:response responseObject:responseObject error:error originalHandler:completionHandler];
+                 [_self ac_sessionTaskCompletionHandler:task response:response responseObject:responseObject error:error originalHandler:completionHandler];
          }];
         return task;
 }
@@ -115,7 +115,7 @@
         [super uploadTaskWithRequest:request fromData:bodyData progress:uploadProgressBlock completionHandler:^(NSURLResponse *response, id responseObject,  NSError *error)
          {
                  ESStrongSelf;
-                 [_self ac_dataTaskCompletionHandler:task response:response responseObject:responseObject error:error originalHandler:completionHandler];
+                 [_self ac_sessionTaskCompletionHandler:task response:response responseObject:responseObject error:error originalHandler:completionHandler];
          }];
         return task;
 }
@@ -129,7 +129,7 @@
         [super uploadTaskWithStreamedRequest:request progress:uploadProgressBlock completionHandler:^(NSURLResponse *response, id responseObject,  NSError *error)
          {
                  ESStrongSelf;
-                 [_self ac_dataTaskCompletionHandler:task response:response responseObject:responseObject error:error originalHandler:completionHandler];
+                 [_self ac_sessionTaskCompletionHandler:task response:response responseObject:responseObject error:error originalHandler:completionHandler];
          }];
         return task;
 }

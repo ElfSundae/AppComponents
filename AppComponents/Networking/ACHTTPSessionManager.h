@@ -13,15 +13,18 @@
 
 /**
  * 支持 CSRF Token 和 API Token的HTTPSessionManager.
+ * 解析responseObject为NSDictionary.
+ *
+ * App的ApiClient可以直接继承ACHTTPSessionManager.
  */
 @interface ACHTTPSessionManager : AFHTTPSessionManager
 
 @property (nonatomic, strong) ACHTTPRequestSerializer *requestSerializer;
 
 /**
- * Process completion of dataTask.
+ * Process completion of task.
  */
-- (void)ac_dataTaskCompletionHandler:(NSURLSessionTask *)task
+- (void)ac_sessionTaskCompletionHandler:(NSURLSessionTask *)task
                             response:(NSURLResponse *)response
                       responseObject:(id)responseObject
                                error:(NSError *)error
