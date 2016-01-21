@@ -74,8 +74,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ACApp
 #define kACConfigKey_ACApp @"ACApp"
-/// Default is 1.5
+/// Default is 1.2
 #define kACConfigKey_ACApp_DefaultTipsTimeInterval              kACConfigKey_ACApp@".DefaultTipsTimeInterval"
-/// Default is MBProgressHUDAnimationZoom
+/// Default is MBProgressHUDAnimationFade
 #define kACConfigKey_ACApp_DefaultTipsAnimationType             kACConfigKey_ACApp@".DefaultTipsAnimationType"
 
+#define kACAppDefaultTipsTimeInterval   1.3

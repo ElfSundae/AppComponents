@@ -52,7 +52,7 @@
         hud.minSize = CGSizeMake(64.f, 64.f);
         
         if (timeInterval <= 0.0) {
-                timeInterval = ESDoubleValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsTimeInterval), 1.5);
+                timeInterval = ESDoubleValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsTimeInterval), kACAppDefaultTipsTimeInterval);
         }
         [hud hide:animated afterDelay:timeInterval];
         
@@ -72,7 +72,7 @@
                 view = [ESApp keyWindow];
         }
         if (timeInterval <= 0.0) {
-                timeInterval = ESDoubleValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsTimeInterval), 1.5);
+                timeInterval = ESDoubleValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsTimeInterval), kACAppDefaultTipsTimeInterval);
         }
         
         [self hideTipsOnView:view animated:NO];
@@ -81,7 +81,7 @@
         hud.labelText = text;
         hud.detailsLabelText = detail;
         hud.mode = MBProgressHUDModeText;
-        hud.animationType = ESIntegerValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsAnimationType), MBProgressHUDAnimationZoom);
+        hud.animationType = ESIntegerValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsAnimationType), MBProgressHUDAnimationFade);
         [hud hide:animated afterDelay:timeInterval];
         return hud;
 }

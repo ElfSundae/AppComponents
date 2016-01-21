@@ -12,6 +12,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+        [self.window addTapGestureHandler:^(UITapGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView) {
+                [[ESApp sharedApp] showLocalNetworkErrorTipsWithSuperview:nil];
+        }];
         return YES;
 }
 
