@@ -8,37 +8,6 @@
 
 #import <AppComponents/ACConfig.h>
 
-#define kACConfigKey_ACNetworking @"ACNetworking"
-#define kACConfigKey_ACNetworking_BaseURL kACConfigKey_ACNetworking@".baseURL" // NSURL or NSString, default is nil
-
-/// 发送请求时设置Api Token到request的header, name为nil时不传Api Token, default is nil, e.g. @"X-API-TOKEN"
-#define kACConfigKey_ACNetworking_RequestHeaderApiTokenName kACConfigKey_ACNetworking@".RequestHeaderApiTokenName"
-/// 发送请求时将Cookie中的CSRF Token传到request的header，name为nil时不传CSRF Token. default is nil, e.g. @"X-CSRF-TOKEN"
-#define kACConfigKey_ACNetworking_RequestHeaderCSRFTokenName kACConfigKey_ACNetworking@".RequestHeaderCSRFTokenName"
-/// 加密Api Token时用的密码, default is nil
-#define kACConfigKey_ACNetworking_ApiTokenPassword kACConfigKey_ACNetworking@".ApiTokenPassword"
-/// Cookie中CSRF Token的名字, default is @"XSRF-TOKEN"
-#define kACConfigKey_ACNetworking_CSRFTokenCookieName    kACConfigKey_ACNetworking@".CSRFTokenCookieName"
-/// 网络连接失败时的弹窗title, default is kACNetworkingLocalNetworkErrorAlertTitle
-#define kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle kACConfigKey_ACNetworking@".LocalNetworkErrorAlertTitle"
-
-/// default is @"code"
-#define kACConfigKey_ACNetworking_ResponseKeyCode kACConfigKey_ACNetworking@".ResponseKeyCode"
-/// default is @"msg"
-#define kACConfigKey_ACNetworking_ResponseKeyMessage kACConfigKey_ACNetworking@".ResponseKeyMessage"
-/// default is @"errors"
-#define kACConfigKey_ACNetworking_ResponseKeyErrors kACConfigKey_ACNetworking@".ResponseKeyErrors"
-
-#define kACNetworkingRequestHeaderApiTokenName  @"X-API-TOKEN"
-#define kACNetworkingRequestHeaderCSRFTokenName @"X-CSRF-TOKEN"
-#define kACNetworkingCSRFTokenCookieName        @"XSRF-TOKEN"
-
-#define kACNetworkingResponseCodeKey    @"code"
-#define kACNetworkingResponseMessageKey @"msg"
-#define kACNetworkingResponseErrorsKey  @"errors"
-
-#define kACNetworkingLocalNetworkErrorAlertTitle NSLocalizedString(@"Network is not connected.", nil)
-
 typedef NS_ENUM(NSInteger, ACNetworkingResponseCode) {
         ACNetworkingResponseCodeUnknown                 = -999999,
         /// 一般错误

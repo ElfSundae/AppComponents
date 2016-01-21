@@ -77,7 +77,7 @@ static NSString *__sharedNewVersion = nil;
         if (!url) {
                 // 默认打开AppStore
                 url = [ESStoreHelper appStoreLinkForAppID:[ESApp sharedApp].appStoreID
-                                         storeCountryCode:ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode), ESAppStoreCountryCodeChina)];
+                                         storeCountryCode:ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode), nil)];
         }
         
         ESWeakSelf;

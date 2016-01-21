@@ -10,14 +10,6 @@
 #import <ESFramework/ESFrameworkCore.h>
 #import <AppComponents/ACConfig.h>
 
-#define kACConfigKey_ACAppUpdater @"ACAppUpdater"
-#define kACConfigKey_ACAppUpdater_VersionDataKey_LatestVersion kACConfigKey_ACAppUpdater@".AppVersion.LatestVersion" // version
-#define kACConfigKey_ACAppUpdater_VersionDataKey_UpdateWay kACConfigKey_ACAppUpdater@".AppVersion.UpdateWay" // way
-#define kACConfigKey_ACAppUpdater_VersionDataKey_Description kACConfigKey_ACAppUpdater@".AppVersion.Description" // desc
-#define kACConfigKey_ACAppUpdater_VersionDataKey_DownloadURL kACConfigKey_ACAppUpdater@".AppVersion.DownloadURL" // url
-
-#define kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode kACConfigKey_ACAppUpdater@".DefaultAppStoreContryCode" // ESAppStoreCountryCodeChina
-
 /**
  * App版本有所变化，可能发现了新版本， 用 +newVersionExists 检查是否存在新版本。
  */

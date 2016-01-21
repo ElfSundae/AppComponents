@@ -11,6 +11,8 @@
 		E71B7CF01C5032A4001910C2 /* ACHTTPSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHTTPSessionManager.m; sourceTree = "<group>"; };
 		E71B7CF41C509D21001910C2 /* ACApiClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACApiClient.h; sourceTree = "<group>"; };
 		E71B7CF51C509D21001910C2 /* ACApiClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACApiClient.m; sourceTree = "<group>"; };
+		E71B7CF71C50A352001910C2 /* AppComponentsApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsApp.h; sourceTree = "<group>"; };
+		E71B7CF91C50A928001910C2 /* AppComponentsDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsDefines.h; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		E71B7CF61C50A315001910C2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E71B7CF71C50A352001910C2 /* AppComponentsApp.h */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		E7A38B331C4DBD3F00972B01 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 				E7C3FAA41C4EF96000281993 /* Ad */,
 				E7C3FAB31C4F09FF00281993 /* Networking */,
 				E7C3FAB01C4F035300281993 /* AppUpdater */,
+				E71B7CF61C50A315001910C2 /* App */,
 			);
 			indentWidth = 8;
 			sourceTree = "<group>";
@@ -67,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */,
+				E71B7CF91C50A928001910C2 /* AppComponentsDefines.h */,
 				E7C3FA961C4EC29900281993 /* NSDictionary+ACCoreAdditions.h */,
 				E7C3FA971C4EC29900281993 /* NSDictionary+ACCoreAdditions.m */,
 				E7C3FA921C4E39BC00281993 /* ACConfig.h */,

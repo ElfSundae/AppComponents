@@ -11,11 +11,6 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <AppComponents/ACConfig.h>
 
-#define kACConfigKey_ACUDID     @"ACUDID"
-#define kACConfigKey_ACUDID_IDFADisabled        kACConfigKey_ACUDID@".IDFADisabled" // default: NO
-#define kACConfigKey_ACUDID_KeychainAccessGroup kACConfigKey_ACUDID@".KeychainAccessGroup" // default: nil, e.g. @"TeamID.*"
-
-
 ES_EXTERN const NSInteger ACUDIDLength; // 40
 
 /**

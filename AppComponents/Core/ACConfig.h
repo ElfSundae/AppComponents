@@ -7,6 +7,7 @@
 //
 
 #import <ESFramework/ESFrameworkCore.h>
+#import "AppComponentsDefines.h"
 
 /**
  * 各个组件的配置信息。

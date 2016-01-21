@@ -54,7 +54,16 @@ Pod::Spec.new do |s|
     ss.source_files         = "AppComponents/Networking/**/*.{h,m}"
     ss.dependency           "AFNetworking", "~> 3.0"
     ss.dependency           "ESFramework/App"
-    ss.dependency           "AppComponents/Core"
     ss.dependency           "AppComponents/Encryptor"
+    ss.dependency           "AppComponents/App"
+  end
+
+  s.subspec "App" do |ss|
+    ss.source_files         = "AppComponents/App/**/*.{h,m}"
+    ss.dependency           "APIService-UmengAnalytics"
+    ss.dependency           "APIService-TalkingData"
+    ss.dependency           "ESFramework/App"
+    ss.dependency           "MBProgressHUD"
+    ss.dependency           "AppComponents/Core"
   end
 end
