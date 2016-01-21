@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |ss|
     ss.source_files         = "AppComponents/Core/**/*.{h,m}"
-    ss.private_header_files = "AppComponents/Core/**/*+Private.{h,m}"
+    ss.private_header_files = "AppComponents/Core/**/*+Private.h"
     ss.dependency           "ESFramework/Core"
     ss.dependency           "ESFramework/Additions"
   end
@@ -54,7 +54,6 @@ Pod::Spec.new do |s|
   s.subspec "Networking" do |ss|
     ss.source_files         = "AppComponents/Networking/**/*.{h,m}"
     ss.dependency           "AFNetworking", "~> 3.0"
-    ss.dependency           "ESFramework/App"
     ss.dependency           "AppComponents/Encryptor"
     ss.dependency           "AppComponents/App"
   end
@@ -67,5 +66,13 @@ Pod::Spec.new do |s|
     ss.dependency           "MBProgressHUD"
     ss.dependency           "FontAwesomeKit/FontAwesome"
     ss.dependency           "AppComponents/Core"
+  end
+
+  s.subspec "Authentication" do |ss|
+    ss.source_files         = "AppComponents/Authentication/**/*.{h,m}"
+    ss.private_header_files = "AppComponents/Authentication/**/*+Private.h"
+    ss.dependency           "AppComponents/App"
+    ss.dependency           "MOBFoundation_IDFA"
+    ss.dependency           "SMSSDK"
   end
 end

@@ -14,4 +14,5 @@
 #import <AppComponents/AppComponentsNetworking.h>
 #import <AppComponents/ACAppUpdater.h>
 #import <AppComponents/AppComponentsApp.h>
+#import <AppComponents/AppComponentsAuthentication.h>
 
