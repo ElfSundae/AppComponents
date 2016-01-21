@@ -10,6 +10,7 @@
 #import "ACNetworkingDefines.h"
 #import "ACNetworkingHelper.h"
 #import <ESFramework/ESFrameworkAdditions.h>
+#import <AppComponents/ESApp+ACAlertAdditions.h>
 
 @implementation ACHTTPSessionManager
 @dynamic requestSerializer;
@@ -47,8 +48,7 @@
                         if (ACNetworkingResponseCodeSuccess != code && !task.acInfo.dontAlertWhenResponseCodeIsNotSuccess) {
                                 if (msg || errorsString) {
                                         if (task.acInfo.alertUseTipsWhenResponseCodeIsNotSuccess) {
-                                                //TODO:
-                                                // [[ESApp sharedApp] showTips:msg detail:errors addToView:nil timeInterval:0 animated:YES];
+                                                [[ESApp sharedApp] showTips:msg detail:errorsString addToView:nil timeInterval:0 animated:YES];
                                         } else {
                                                 [UIAlertView showWithTitle:msg message:errorsString];
                                         }
@@ -63,8 +63,7 @@
                                 if (task.acInfo.alertNetworkErrorUseAlertView) {
                                         [UIAlertView showWithTitle:title message:message];
                                 } else {
-                                        // TODO:
-                                        // [[ESApp sharedApp] showTips:title detail:message addToView:nil timeInterval:0 animated:YES];
+                                        [[ESApp sharedApp] showTips:title detail:message addToView:nil timeInterval:0 animated:YES];
                                 }
                         }
                 }
