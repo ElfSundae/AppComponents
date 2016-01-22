@@ -68,9 +68,9 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/Core"
   end
 
-  s.subspec "Authentication" do |ss|
-    ss.source_files         = "AppComponents/Authentication/**/*.{h,m}"
-    ss.private_header_files = "AppComponents/Authentication/**/*+Private.h"
+  s.subspec "Auth" do |ss|
+    ss.source_files         = "AppComponents/Auth/**/*.{h,m}"
+    ss.private_header_files = "AppComponents/Auth/**/*+Private.h"
     ss.dependency           "AppComponents/App"
     ss.dependency           "MOBFoundation_IDFA"
     ss.dependency           "SMSSDK"

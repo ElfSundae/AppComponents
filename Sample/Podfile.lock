@@ -20,7 +20,7 @@ PODS:
     - AppComponents/Ad (= 1.0.1)
     - AppComponents/App (= 1.0.1)
     - AppComponents/AppUpdater (= 1.0.1)
-    - AppComponents/Authentication (= 1.0.1)
+    - AppComponents/Auth (= 1.0.1)
     - AppComponents/Core (= 1.0.1)
     - AppComponents/Encryptor (= 1.0.1)
     - AppComponents/Networking (= 1.0.1)
@@ -40,7 +40,7 @@ PODS:
     - AppComponents/Core
     - ESFramework/App
     - ESFramework/StoreKit
-  - AppComponents/Authentication (1.0.1):
+  - AppComponents/Auth (1.0.1):
     - AppComponents/App
     - MOBFoundation_IDFA
     - SMSSDK
@@ -103,7 +103,7 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   APIService-TalkingData: 0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
-  AppComponents: cf2608d58bdeec74afb9fb9aacbc12a835da0a4a
+  AppComponents: 0db30798b6be2bcbbe96ff6f27c8d98e3ce2fbba
   ESFramework: 9b8e2153b629e75ddc5c34712a3b21cee10e2f71
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

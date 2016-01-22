@@ -27,13 +27,16 @@
 		E71B7D0B1C51748A001910C2 /* ESApp+ACHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACHelper.m"; sourceTree = "<group>"; };
 		E71B7D0C1C517889001910C2 /* ESApp+ACAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACAnalytics.h"; sourceTree = "<group>"; };
 		E71B7D0D1C517889001910C2 /* ESApp+ACAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACAnalytics.m"; sourceTree = "<group>"; };
-		E78834B71C5181D400F67C63 /* AppComponentsAuthentication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsAuthentication.h; sourceTree = "<group>"; };
-		E78834B81C51822D00F67C63 /* ACAuthConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthConfig.h; sourceTree = "<group>"; };
-		E78834B91C51822D00F67C63 /* ACAuthConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthConfig.m; sourceTree = "<group>"; };
-		E78834BA1C5182AF00F67C63 /* ACAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthViewController.h; sourceTree = "<group>"; };
-		E78834BB1C5182AF00F67C63 /* ACAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthViewController.m; sourceTree = "<group>"; };
-		E78834BC1C5182E300F67C63 /* ACAuthVerifyPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthVerifyPhoneViewController.h; sourceTree = "<group>"; };
-		E78834BD1C5182E300F67C63 /* ACAuthVerifyPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthVerifyPhoneViewController.m; sourceTree = "<group>"; };
+		E78834C11C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthVerifyPhoneViewController.h; sourceTree = "<group>"; };
+		E78834C21C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthVerifyPhoneViewController.m; sourceTree = "<group>"; };
+		E78834C51C51A0F700F67C63 /* AppComponentsAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsAuth.h; sourceTree = "<group>"; };
+		E78834C91C51AC6000F67C63 /* ACAuthBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthBaseViewController.h; sourceTree = "<group>"; };
+		E78834CA1C51AC6000F67C63 /* ACAuthBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthBaseViewController.m; sourceTree = "<group>"; };
+		E78834CB1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACAuthVerifyPhoneViewController+Private.h"; sourceTree = "<group>"; };
+		E78834CC1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACAuthVerifyPhoneViewController+Private.m"; sourceTree = "<group>"; };
+		E78834CE1C51B29900F67C63 /* ACAuthVerifyPhoneViewController+Action.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACAuthVerifyPhoneViewController+Action.m"; sourceTree = "<group>"; };
+		E78834CF1C51BA0700F67C63 /* ESApp+ACAuthAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACAuthAdditions.h"; sourceTree = "<group>"; };
+		E78834D01C51BA0700F67C63 /* ESApp+ACAuthAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACAuthAdditions.m"; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
@@ -88,25 +91,27 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		E78834B61C5181BD00F67C63 /* Authentication */ = {
+		E78834BE1C51A0C300F67C63 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				E78834B71C5181D400F67C63 /* AppComponentsAuthentication.h */,
-				E78834B81C51822D00F67C63 /* ACAuthConfig.h */,
-				E78834B91C51822D00F67C63 /* ACAuthConfig.m */,
-				E78834BA1C5182AF00F67C63 /* ACAuthViewController.h */,
-				E78834BB1C5182AF00F67C63 /* ACAuthViewController.m */,
-				E78834BC1C5182E300F67C63 /* ACAuthVerifyPhoneViewController.h */,
-				E78834BD1C5182E300F67C63 /* ACAuthVerifyPhoneViewController.m */,
+				E78834C51C51A0F700F67C63 /* AppComponentsAuth.h */,
+				E78834CF1C51BA0700F67C63 /* ESApp+ACAuthAdditions.h */,
+				E78834D01C51BA0700F67C63 /* ESApp+ACAuthAdditions.m */,
+				E78834C91C51AC6000F67C63 /* ACAuthBaseViewController.h */,
+				E78834CA1C51AC6000F67C63 /* ACAuthBaseViewController.m */,
+				E78834C11C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.h */,
+				E78834C21C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.m */,
+				E78834CB1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.h */,
+				E78834CC1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.m */,
+				E78834CE1C51B29900F67C63 /* ACAuthVerifyPhoneViewController+Action.m */,
 			);
-			path = Authentication;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		E7A38B331C4DBD3F00972B01 = {
 			isa = PBXGroup;
 			children = (
 				E7A38B441C4DBFBD00972B01 /* AppComponents.h */,
-				E78834B61C5181BD00F67C63 /* Authentication */,
 				E7A38B3A1C4DBE1200972B01 /* Core */,
 				E7C3FA981C4ED3F900281993 /* Encryptor */,
 				E7C3FA9D1C4EEBF600281993 /* UDID */,
@@ -115,6 +120,7 @@
 				E7C3FAB31C4F09FF00281993 /* Networking */,
 				E7C3FAB01C4F035300281993 /* AppUpdater */,
 				E71B7CF61C50A315001910C2 /* App */,
+				E78834BE1C51A0C300F67C63 /* Auth */,
 			);
 			indentWidth = 8;
 			sourceTree = "<group>";
