@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  RootViewController.h
 //  Sample
 //
-//  Created by Elf Sundae on 16/1/19.
+//  Created by Elf Sundae on 16/1/22.
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface RootViewController : UIViewController
 
 @end
-

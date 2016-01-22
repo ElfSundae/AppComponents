@@ -211,9 +211,7 @@ static NSDate *__gVerifyPhoneSharedDateOfPreviousSendingCode = nil;
                 UIAlertView *alert = [UIAlertView alertViewWithTitle:tips message:tipsMessage cancelButtonTitle:@"继续等待" didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                         ESStrongSelf;
                         if (alertView.cancelButtonIndex != buttonIndex) {
-                                // call super method
-                                struct objc_super super_data = { _self, [_self superclass] };
-                                objc_msgSendSuper(&super_data, @selector(_dismissBarButtonItemAction:), barItem);
+                                [_self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                         }
                 } otherButtonTitles:backTitle, nil];
                 [alert show];

@@ -10,4 +10,6 @@
 
 @interface ESApp (ACAuthAdditions)
 
+- (void)setupMobSMSWithAppKey:(NSString *)appKey appSecret:(NSString *)appSecret enableContactFriends:(BOOL)enableContactFriends;
+
 @end

@@ -52,13 +52,6 @@
 
 - (void)sendCodeToPhone:(NSString *)phoneNumber codeType:(ACAuthVerifyPhoneCodeType)codeType
 {
-#if 0 // MobSMS最新代码已经修复了这个问题
-        if ([UIDevice currentNetworkReachabilityStatus] == ESNetworkReachabilityStatusNotReachable) {
-                [[ESApp sharedApp] showLocalNetworkErrorAlertWithCompletion:nil];
-                return;
-        }
-#endif
-        
         [[self class] setSharedDateOfPreviousSendingCode:[NSDate date]];
         [self startTimerIfNeeded];
         
@@ -66,7 +59,7 @@
         
         
         ESWeakSelf;
-        void (^resultHandler)(SMS_SDKError *) = ^(SMS_SDKError *error) {
+        void (^resultHandler)(NSError *) = ^(NSError *error) {
                 [[ESApp sharedApp] hideProgressHUD:YES];
                 ESStrongSelf;
                 
@@ -75,10 +68,10 @@
                         [_self stopTimer];
                         [_self updateUI];
                         NSString *errorMessage = nil;
-                        if (518 == error.errorCode) {
+                        if (457 == error.code) {
                                 errorMessage = @"请输入正确的手机号！";
                         } else {
-                                errorMessage = NSStringWith(@"%@[%@]", error.errorDescription, @(error.errorCode));
+                                errorMessage = NSStringWith(@"%@[%@]", error.localizedDescription, @(error.code));
                         }
                         UIAlertView *errorAlert = [UIAlertView alertViewWithTitle:@"验证码发送失败" message:errorMessage cancelButtonTitle:@"OK" didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                 ESStrongSelf;
@@ -101,31 +94,24 @@
         };
         
         [[ESApp sharedApp] showProgressHUDWithTitle:@"发送中..." animated:YES];
-        [SMSSDK getVerificationCodeByMethod:(SMSGetCodeMethod)codeType phoneNumber:phoneNumber zone:@"86" customIdentifier:nil result:resultHandler];
+        [SMSSDK getVerificationCodeByMethod:(SMSGetCodeMethod)codeType phoneNumber:phoneNumber zone:@"86" customIdentifier:self.SMSSignature result:resultHandler];
 }
 
 - (void)sendSecondaryCodeToPhone:(NSString *)phoneNumber codeType:(ACAuthVerifyPhoneCodeType)codeType
 {
-#if 0 // MobSMS最新代码已经修复了这个问题
-        if ([UIDevice currentNetworkReachabilityStatus] == ESNetworkReachabilityStatusNotReachable) {
-                [[ESApp sharedApp] showLocalNetworkErrorAlertWithCompletion:nil];
-                return;
-        }
-#endif
-        
         [self.view endEditing:YES]; // 关闭键盘, 键盘可能挡住progressHUD
         
         ESWeakSelf;
-        void (^resultHandler)(SMS_SDKError *) = ^(SMS_SDKError *error) {
+        void (^resultHandler)(NSError *) = ^(NSError *error) {
                 [[ESApp sharedApp] hideProgressHUD:YES];
                 ESStrongSelf;
                 
                 if (error) {
                         NSString *errorMessage = nil;
-                        if (518 == error.errorCode) {
+                        if (457 == error.code) {
                                 errorMessage = @"请输入正确的手机号！";
                         } else {
-                                errorMessage = NSStringWith(@"%@[%@]", error.errorDescription, @(error.errorCode));
+                                errorMessage = NSStringWith(@"%@[%@]", error.localizedDescription, @(error.code));
                         }
                         UIAlertView *errorAlert = [UIAlertView alertViewWithTitle:@"验证码发送失败" message:errorMessage cancelButtonTitle:@"OK" didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                 ESStrongSelf;
@@ -146,13 +132,8 @@
                 }
         };
         
-        if (ACAuthVerifyPhoneCodeTypeSMS == codeType) {
-                [[ESApp sharedApp] showProgressHUDWithTitle:@"发送中..." animated:YES];
-                [SMS_SDK getVerificationCodeBySMSWithPhone:phoneNumber zone:@"86" result:resultHandler];
-        } else if (ACAuthVerifyPhoneCodeTypePhoneCall == codeType) {
-                [[ESApp sharedApp] showProgressHUDWithTitle:@"发送中..." animated:YES];
-                [SMS_SDK getVerificationCodeByVoiceCallWithPhone:phoneNumber zone:@"86" result:resultHandler];
-        }
+        [[ESApp sharedApp] showProgressHUDWithTitle:@"发送中..." animated:YES];
+        [SMSSDK getVerificationCodeByMethod:(SMSGetCodeMethod)codeType phoneNumber:phoneNumber zone:@"86" customIdentifier:self.SMSSignature result:resultHandler];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,9 +153,9 @@
         
         ACAuthVerifyPhoneCodeType codeType = ACAuthVerifyPhoneCodeTypeSMS;
         if (!fromSecondarySendButton) {
-                codeType = [self.supportedCodeTypes.firstObject integerValue];
+                codeType = (ACAuthVerifyPhoneCodeType)[self.supportedCodeTypes.firstObject integerValue];
         } else if (self.supportedCodeTypes.count > 1) {
-                codeType = [self.supportedCodeTypes[1] integerValue];
+                codeType = (ACAuthVerifyPhoneCodeType)[self.supportedCodeTypes[1] integerValue];
         } else {
                 return;
         }
@@ -194,8 +175,8 @@
         NSDictionary *data = @{ @"phone" : phone,
                                 @"zone" : [[self class] sharedPhoneZone] ?: @"86",
                                 @"code": code};
-        if (self.config.actionHandler) {
-                self.config.actionHandler(self.config, UAAuthActionVerifyPhoneCommit, data);
+        if (self.verifyHandler) {
+                self.verifyHandler(self, data);
         }
 }
 

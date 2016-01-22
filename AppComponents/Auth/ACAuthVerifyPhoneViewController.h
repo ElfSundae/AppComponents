@@ -8,11 +8,12 @@
 
 #import "ACAuthBaseViewController.h"
 #import <ESFramework/ESButton.h>
+@class ACAuthVerifyPhoneViewController;
 
 /**
  * 验证手机号的验证码类型
  */
-typedef NS_ENUM(int, ACAuthVerifyPhoneCodeType) {
+typedef NS_ENUM(NSInteger, ACAuthVerifyPhoneCodeType) {
         /// 短信验证码
         ACAuthVerifyPhoneCodeTypeSMS = 0,
         /// 语音验证码
@@ -21,10 +22,12 @@ typedef NS_ENUM(int, ACAuthVerifyPhoneCodeType) {
 
 @interface ACAuthVerifyPhoneViewController : ACAuthBaseViewController
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - 可配置的属性
+@property (nonatomic, copy) void (^verifyHandler)(ACAuthVerifyPhoneViewController *controller, NSDictionary *data);
 
+/**
+ * 短信签名
+ */
+@property (nonatomic, copy) NSString *SMSSignature;
 /**
  * 默认为@"验证手机号"
  */

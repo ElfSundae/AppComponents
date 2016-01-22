@@ -12,7 +12,7 @@
 
 @implementation ESApp (ACAuthAdditions)
 
-+ (void)setupMobSMSWithAppKey:(NSString *)appKey appSecret:(NSString *)appSecret enableContactFriends:(BOOL)enableContactFriends
+- (void)setupMobSMSWithAppKey:(NSString *)appKey appSecret:(NSString *)appSecret enableContactFriends:(BOOL)enableContactFriends
 {
         [SMSSDK enableAppContactFriends:enableContactFriends];
         [SMSSDK registerApp:appKey withSecret:appSecret];

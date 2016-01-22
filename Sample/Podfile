@@ -3,5 +3,6 @@ platform :ios, '7.0'
 workspace "../AppComponents.xcworkspace"
 
 target "Sample" do
+    pod "ESFramework"
     pod "AppComponents", :path => "../AppComponents.podspec"
 end

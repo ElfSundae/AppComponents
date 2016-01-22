@@ -25,7 +25,8 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-        if (self.navigationController.navigationBar.barTintColor.es_isLightColor) {
+        if (!self.navigationController.navigationBar.barTintColor ||
+            self.navigationController.navigationBar.barTintColor.es_isLightColor) {
                 return UIStatusBarStyleDefault;
         } else {
                 return UIStatusBarStyleLightContent;

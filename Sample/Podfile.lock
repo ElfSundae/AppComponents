@@ -59,6 +59,12 @@ PODS:
   - AppComponents/View (1.0.1):
     - AppComponents/Core
     - ESFramework/UIKit
+  - ESFramework (2.3.0):
+    - ESFramework/Additions (= 2.3.0)
+    - ESFramework/App (= 2.3.0)
+    - ESFramework/Core (= 2.3.0)
+    - ESFramework/StoreKit (= 2.3.0)
+    - ESFramework/UIKit (= 2.3.0)
   - ESFramework/Additions (2.3.0):
     - ESFramework/Core
   - ESFramework/App (2.3.0):
@@ -94,6 +100,7 @@ PODS:
 
 DEPENDENCIES:
   - AppComponents (from `../AppComponents.podspec`)
+  - ESFramework
 
 EXTERNAL SOURCES:
   AppComponents:
