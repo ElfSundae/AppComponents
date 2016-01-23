@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, ACAuthVerifyPhoneCodeType) {
 /**
  * 短信签名
  */
-@property (nonatomic, copy) NSString *SMSSignature;
+@property (nonatomic, copy) NSString *MobSMSSignature;
 /**
  * 默认为@"验证手机号"
  */

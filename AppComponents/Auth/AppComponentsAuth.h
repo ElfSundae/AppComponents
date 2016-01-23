@@ -6,5 +6,5 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import <AppComponents/ESApp+ACAuthAdditions.h>
+#import <AppComponents/ACAuthBaseViewController.h>
 #import <AppComponents/ACAuthVerifyPhoneViewController.h>

@@ -36,9 +36,12 @@ static NSDate *__gVerifyPhoneSharedDateOfPreviousSendingCode = nil;
 - (void)viewDidLoad
 {
         [super viewDidLoad];
-        
-        NSAssert(ESIsArrayWithItems(self.supportedCodeTypes), @"没有支持的验证码类型");
-        NSAssert(self.supportedCodeTypes.count <= 2, @"最多支持两种验证码类型");
+        if (!ESIsArrayWithItems(self.supportedCodeTypes)) {
+                [NSException raise:[NSStringFromClass(self.class) stringByAppendingString:@"Exception"] format:@"没有支持的验证码类型"];
+        }
+        if (self.supportedCodeTypes.count > 2) {
+                [NSException raise:[NSStringFromClass(self.class) stringByAppendingString:@"Exception"] format:@"最多支持两种验证码类型"];
+        }
         [self setupUI];
 }
 
@@ -110,7 +113,7 @@ static NSDate *__gVerifyPhoneSharedDateOfPreviousSendingCode = nil;
         UIView *codeLeftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, rowHeight, rowHeight)];
         UILabel *codeLeftIconLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         codeLeftIconLabel.backgroundColor = [UIColor clearColor];
-        FAKFontAwesome *codeLeftIcon = [FAKFontAwesome compassIconWithSize:24]; // fa-expeditedssl
+        FAKFontAwesome *codeLeftIcon = [FAKFontAwesome expeditedsslIconWithSize:24]; // fa-expeditedssl
         [codeLeftIcon setAttributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
         codeLeftIconLabel.attributedText = [codeLeftIcon attributedString];
         [codeLeftIconLabel sizeToFit];

@@ -94,7 +94,7 @@
         };
         
         [[ESApp sharedApp] showProgressHUDWithTitle:@"发送中..." animated:YES];
-        [SMSSDK getVerificationCodeByMethod:(SMSGetCodeMethod)codeType phoneNumber:phoneNumber zone:@"86" customIdentifier:self.SMSSignature result:resultHandler];
+        [SMSSDK getVerificationCodeByMethod:(SMSGetCodeMethod)codeType phoneNumber:phoneNumber zone:@"86" customIdentifier:self.MobSMSSignature result:resultHandler];
 }
 
 - (void)sendSecondaryCodeToPhone:(NSString *)phoneNumber codeType:(ACAuthVerifyPhoneCodeType)codeType
@@ -133,7 +133,7 @@
         };
         
         [[ESApp sharedApp] showProgressHUDWithTitle:@"发送中..." animated:YES];
-        [SMSSDK getVerificationCodeByMethod:(SMSGetCodeMethod)codeType phoneNumber:phoneNumber zone:@"86" customIdentifier:self.SMSSignature result:resultHandler];
+        [SMSSDK getVerificationCodeByMethod:(SMSGetCodeMethod)codeType phoneNumber:phoneNumber zone:@"86" customIdentifier:self.MobSMSSignature result:resultHandler];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
