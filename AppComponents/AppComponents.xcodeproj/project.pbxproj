@@ -142,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				E78835B51C53D61100F67C63 /* AppComponentsVendorServices.h */,
-				E78835B91C53D61100F67C63 /* TalkingDataAnalytics */,
 				E78835BC1C53D61100F67C63 /* UmengAnalytics */,
+				E78835B91C53D61100F67C63 /* TalkingDataAnalytics */,
 				E78835B61C53D61100F67C63 /* MobSMS */,
 				E78835BF1C53D61100F67C63 /* XGPush */,
 			);

@@ -88,21 +88,25 @@ Pod::Spec.new do |s|
 
     ss.subspec "UmengAnalytics" do |sss|
       sss.source_files      = "AppComponents/VendorService/UmengAnalytics/**/*.{h,m}"
+      sss.dependency        "ESFramework/App"
       sss.dependency        "APIService-UmengAnalytics"
     end
 
     ss.subspec "TalkingDataAnalytics" do |sss|
       sss.source_files      = "AppComponents/VendorService/TalkingDataAnalytics/**/*.{h,m}"
+      sss.dependency        "ESFramework/App"
       sss.dependency        "APIService-TalkingData"
     end
 
     ss.subspec "XGPush" do |sss|
       sss.source_files      = "AppComponents/VendorService/XGPush/**/*.{h,m}"
+      sss.dependency        "ESFramework/App"
       sss.dependency        "APIService-XGPush"
     end
 
     ss.subspec "MobSMS" do |sss|
       sss.source_files      = "AppComponents/VendorService/MobSMS/**/*.{h,m}"
+      sss.dependency        "ESFramework/App"
       sss.dependency        "MOBFoundation_IDFA"
       sss.dependency        "SMSSDK"
     end

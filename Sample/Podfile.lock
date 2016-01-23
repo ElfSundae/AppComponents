@@ -62,14 +62,18 @@ PODS:
     - AppComponents/VendorService/UmengAnalytics (= 1.0.2)
     - AppComponents/VendorService/XGPush (= 1.0.2)
   - AppComponents/VendorService/MobSMS (1.0.2):
+    - ESFramework/App
     - MOBFoundation_IDFA
     - SMSSDK
   - AppComponents/VendorService/TalkingDataAnalytics (1.0.2):
     - APIService-TalkingData
+    - ESFramework/App
   - AppComponents/VendorService/UmengAnalytics (1.0.2):
     - APIService-UmengAnalytics
+    - ESFramework/App
   - AppComponents/VendorService/XGPush (1.0.2):
     - APIService-XGPush
+    - ESFramework/App
   - AppComponents/View (1.0.2):
     - AppComponents/Core
     - ESFramework/UIKit
@@ -134,7 +138,7 @@ SPEC CHECKSUMS:
   APIService-TalkingData: 0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 9b5ccf9195752346269d0b09f72fc0d6ad189678
-  AppComponents: 8c7295654a1a02a405d09a5c5c586b1aacf456df
+  AppComponents: 071517eece63a109819c9071bb41ecffc1541c52
   ESFramework: e7dd9a27d5732dc8fa1744a62fa2ddebe28d609f
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9

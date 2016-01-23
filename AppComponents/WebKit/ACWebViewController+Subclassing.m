@@ -7,6 +7,7 @@
 //
 
 #import "ACWebViewController+Private.h"
+#import <AppComponents/ACConfig.h>
 
 @implementation ACWebViewController (Subclassing)
 
@@ -74,9 +75,9 @@
 
 - (void)handleWebViewDidFinishLoad:(UIWebView *)webView
 {
-        self.pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        self.currentPageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
         if (self.showsPageTitle) {
-                self.navigationItem.title = self.pageTitle;
+                self.navigationItem.title = self.currentPageTitle;
         }
 }
 
@@ -140,12 +141,13 @@
 
 - (void)handleWebViewDidFailLoadWithLocalNetworkIsNotReachable:(UIWebView *)webView failingURL:(NSURL *)failingURL error:(NSError *)error isFirstLoading:(BOOL)isFirstLoading
 {
+        NSString *localNetworkErrorAlertTitle = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle), kACNetworkingLocalNetworkErrorAlertTitle);
         if (self.showsErrorViewWhenFailedLoading) {
-                [self showErrorViewForLoadingFailed:kLocalNetworkErrorTipsTitle];
+                [self showErrorViewForLoadingFailed:localNetworkErrorAlertTitle];
                 return;
         }
         
-        [UIAlertView showWithTitle:_e(@"无法打开网页") message:kLocalNetworkErrorTipsTitle];
+        [UIAlertView showWithTitle:_e(@"无法打开网页") message:localNetworkErrorAlertTitle];
 }
 
 - (void)handleWebViewDidFailLoadWithNoPermissionsToRead:(UIWebView *)webView failingURL:(NSURL *)failingURL error:(NSError *)error isFirstLoading:(BOOL)isFirstLoading

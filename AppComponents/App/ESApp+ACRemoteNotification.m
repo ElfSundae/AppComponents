@@ -32,12 +32,12 @@ NSString *const ACRemoteNotificationServiceDefaultAccountIdentifier = @"NULL";
                 NSDictionary *tags = nil;
 
                 
-                for (id st in serviceTypes) {
-                        ACRemoteNotificationServiceType currentType = ESUIntegerValue(st);
-                        if (!shouldRegisterServiceHandler(currentType, &account, &tags)) {
-                                return;
-                        }
-                }
+//                for (id st in serviceTypes) {
+//                        ACRemoteNotificationServiceType currentType = ESUIntegerValue(st);
+//                        if (!shouldRegisterServiceHandler(currentType, &account, &tags)) {
+//                                return;
+//                        }
+//                }
                 
         };
         
@@ -48,17 +48,17 @@ NSString *const ACRemoteNotificationServiceDefaultAccountIdentifier = @"NULL";
         }];
 }
 
-- (void)unregisterForRemoteNotificationsWithServiceType:(ACRemoteNotificationServiceType)serviceType
-{
-        if (ACRemoteNotificationServiceTypeXGPush == serviceType) {
-                Class XGPushClass = NSClassFromString(@"XGPush");
-                if (XGPushClass) {
-                        ESInvokeSelector(XGPushClass, @selector(setAccount:), NULL, ACRemoteNotificationServiceDefaultAccountIdentifier);
-                        // Note: 信鸽的[XGPush unRegisterDevice]可能会执行 [UIApplication unregisterForRemoteNotifications],
-                        // 导致用户在app运行时打开推送开关后appDelegate收不到DidRegisterDeviceToken的回调。
-                }
-        }
-}
+//- (void)unregisterForRemoteNotificationsWithServiceType:(ACRemoteNotificationServiceType)serviceType
+//{
+//        if (ACRemoteNotificationServiceTypeXGPush == serviceType) {
+//                Class XGPushClass = NSClassFromString(@"XGPush");
+//                if (XGPushClass) {
+//                        ESInvokeSelector(XGPushClass, @selector(setAccount:), NULL, ACRemoteNotificationServiceDefaultAccountIdentifier);
+//                        // Note: 信鸽的[XGPush unRegisterDevice]可能会执行 [UIApplication unregisterForRemoteNotifications],
+//                        // 导致用户在app运行时打开推送开关后appDelegate收不到DidRegisterDeviceToken的回调。
+//                }
+//        }
+//}
 
 //- (void)ac_registerRemoteNotificationWithCompletion:(void (^)(NSString *deviceToken, NSError *error))completion
 //{
