@@ -1,8 +1,8 @@
 AppComponents
 ---
 
-[![Build Status](https://travis-ci.org/ESFramework/ESFramework.svg)](https://travis-ci.org/ESFramework/ESFramework)
-[![Pod Version](http://img.shields.io/cocoapods/v/ESFramework.svg)](http://cocoadocs.org/docsets/ESFramework)
+[![Build Status](https://travis-ci.org/ElfSundae/AppComponents.svg)](https://travis-ci.org/ElfSundae/AppComponents)
+[![Pod Version](http://img.shields.io/cocoapods/v/AppComponents.svg)](http://cocoadocs.org/docsets/AppComponents)
 
 **Warning: Work In Process**
 
