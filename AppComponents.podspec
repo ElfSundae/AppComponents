@@ -83,29 +83,29 @@ Pod::Spec.new do |s|
     ss.dependency           "ESFramework/StoreKit"
   end
 
-  s.subspec "VendorService" do |ss|
-    ss.source_files         = "AppComponents/VendorService/*.{h,m}"
+  s.subspec "VendorServices" do |ss|
+    ss.source_files         = "AppComponents/VendorServices/*.{h,m}"
 
     ss.subspec "UmengAnalytics" do |sss|
-      sss.source_files      = "AppComponents/VendorService/UmengAnalytics/**/*.{h,m}"
+      sss.source_files      = "AppComponents/VendorServices/UmengAnalytics/**/*.{h,m}"
       sss.dependency        "ESFramework/App"
       sss.dependency        "APIService-UmengAnalytics"
     end
 
     ss.subspec "TalkingDataAnalytics" do |sss|
-      sss.source_files      = "AppComponents/VendorService/TalkingDataAnalytics/**/*.{h,m}"
+      sss.source_files      = "AppComponents/VendorServices/TalkingDataAnalytics/**/*.{h,m}"
       sss.dependency        "ESFramework/App"
       sss.dependency        "APIService-TalkingData"
     end
 
     ss.subspec "XGPush" do |sss|
-      sss.source_files      = "AppComponents/VendorService/XGPush/**/*.{h,m}"
+      sss.source_files      = "AppComponents/VendorServices/XGPush/**/*.{h,m}"
       sss.dependency        "ESFramework/App"
       sss.dependency        "APIService-XGPush"
     end
 
     ss.subspec "MobSMS" do |sss|
-      sss.source_files      = "AppComponents/VendorService/MobSMS/**/*.{h,m}"
+      sss.source_files      = "AppComponents/VendorServices/MobSMS/**/*.{h,m}"
       sss.dependency        "ESFramework/App"
       sss.dependency        "MOBFoundation_IDFA"
       sss.dependency        "SMSSDK"

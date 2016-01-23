@@ -1,0 +1,15 @@
+language: objective-c
+osx_image: xcode7.2
+xcode_workspace: AppComponents.xcworkspace
+xcode_scheme: Sample
+before_install:
+
+    - env
+    - cd Sample
+    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+    - pod install --no-repo-update
+
+script:
+
+    - pod lib lint ../AppComponents.podspec --allow-warnings
+
