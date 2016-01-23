@@ -7,10 +7,9 @@
 //
 
 #import "ESApp+ACSettings.h"
-#import "ESApp+ACSettingsSubclass.h"
 
-NSString *const ACAppUserSettingsIdentifierPrefix = @"user.";
-NSString *const ACAppConfigIdentifier = @"appconfig";
+NSString *const ACAppUserSettingsIdentifierPrefix = @"User.";
+NSString *const ACAppConfigIdentifier = @"AppConfig";
 
 @implementation ESApp (ACSettings)
 
@@ -40,6 +39,29 @@ NSString *const ACAppConfigIdentifier = @"appconfig";
 - (NSString *)userSettingsIdentifierForUserIdentifier:(NSString *)uid
 {
         return [NSString stringWithFormat:@"%@%@", ACAppUserSettingsIdentifierPrefix, ESIsStringWithAnyText(uid) ? uid : @""];
+}
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ACSettingsSubclass
+
+@implementation ESApp (ACSettingsSubclass)
+
+- (NSString *)currentUserID
+{
+        return nil;
+}
+
+- (NSDictionary *)userSettingsDefaults
+{
+        return nil;
+}
+
+- (NSDictionary *)appConfigDefaults
+{
+        return nil;
 }
 
 @end

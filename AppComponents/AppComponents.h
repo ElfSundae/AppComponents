@@ -15,4 +15,5 @@
 #import <AppComponents/ACAppUpdater.h>
 #import <AppComponents/AppComponentsApp.h>
 #import <AppComponents/AppComponentsAuth.h>
-
+#import <AppComponents/AppComponentsWebKit.h>
+#import <AppComponents/AppComponentsVendorServices.h>

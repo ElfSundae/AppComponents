@@ -4,5 +4,6 @@ workspace "../AppComponents.xcworkspace"
 
 target "Sample" do
     pod "ESFramework"
+    pod "FontAwesomeKit/FontAwesome", :head
     pod "AppComponents", :path => "../AppComponents.podspec"
 end

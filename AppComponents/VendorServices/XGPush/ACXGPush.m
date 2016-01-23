@@ -7,6 +7,7 @@
 //
 
 #import "ACXGPush.h"
+#import <Api>
 
 @implementation ACXGPush
 

@@ -23,3 +23,12 @@ FOUNDATION_EXTERN NSString *const ACAppConfigIdentifier;
 - (NSString *)userSettingsIdentifierForUserIdentifier:(NSString *)uid;
 
 @end
+
+
+@interface ESApp (ACSettingsSubclass)
+
+- (NSString *)currentUserID;
+- (NSDictionary *)userSettingsDefaults;
+- (NSDictionary *)appConfigDefaults;
+
+@end

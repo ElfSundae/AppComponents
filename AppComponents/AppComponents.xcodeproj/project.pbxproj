@@ -19,14 +19,10 @@
 		E71B7D031C51560B001910C2 /* ACSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACSettings.m; sourceTree = "<group>"; };
 		E71B7D041C515DB1001910C2 /* ESApp+ACSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACSettings.h"; sourceTree = "<group>"; };
 		E71B7D051C515DB1001910C2 /* ESApp+ACSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACSettings.m"; sourceTree = "<group>"; };
-		E71B7D061C516E23001910C2 /* ESApp+ACSettingsSubclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACSettingsSubclass.h"; sourceTree = "<group>"; };
-		E71B7D071C516E23001910C2 /* ESApp+ACSettingsSubclass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACSettingsSubclass.m"; sourceTree = "<group>"; };
 		E71B7D081C5171C9001910C2 /* ACSettings+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACSettings+Private.h"; sourceTree = "<group>"; };
 		E71B7D091C5171C9001910C2 /* ACSettings+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACSettings+Private.m"; sourceTree = "<group>"; };
 		E71B7D0A1C51748A001910C2 /* ESApp+ACHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACHelper.h"; sourceTree = "<group>"; };
 		E71B7D0B1C51748A001910C2 /* ESApp+ACHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACHelper.m"; sourceTree = "<group>"; };
-		E71B7D0C1C517889001910C2 /* ESApp+ACAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACAnalytics.h"; sourceTree = "<group>"; };
-		E71B7D0D1C517889001910C2 /* ESApp+ACAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACAnalytics.m"; sourceTree = "<group>"; };
 		E78834C11C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthVerifyPhoneViewController.h; sourceTree = "<group>"; };
 		E78834C21C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthVerifyPhoneViewController.m; sourceTree = "<group>"; };
 		E78834C51C51A0F700F67C63 /* AppComponentsAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsAuth.h; sourceTree = "<group>"; };
@@ -35,8 +31,29 @@
 		E78834CB1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACAuthVerifyPhoneViewController+Private.h"; sourceTree = "<group>"; };
 		E78834CC1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACAuthVerifyPhoneViewController+Private.m"; sourceTree = "<group>"; };
 		E78834CE1C51B29900F67C63 /* ACAuthVerifyPhoneViewController+Action.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACAuthVerifyPhoneViewController+Action.m"; sourceTree = "<group>"; };
-		E78834CF1C51BA0700F67C63 /* ESApp+ACAuthAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACAuthAdditions.h"; sourceTree = "<group>"; };
-		E78834D01C51BA0700F67C63 /* ESApp+ACAuthAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACAuthAdditions.m"; sourceTree = "<group>"; };
+		E788357C1C51ED2C00F67C63 /* ACWebViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACWebViewController+Private.h"; sourceTree = "<group>"; };
+		E788357D1C51ED2C00F67C63 /* ACWebViewController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACWebViewController+Private.m"; sourceTree = "<group>"; };
+		E788357E1C51ED2C00F67C63 /* ACWebViewController+Subclassing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACWebViewController+Subclassing.m"; sourceTree = "<group>"; };
+		E788357F1C51ED2C00F67C63 /* ACWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACWebViewController.h; sourceTree = "<group>"; };
+		E78835801C51ED2C00F67C63 /* ACWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACWebViewController.m; sourceTree = "<group>"; };
+		E78835821C51EE4F00F67C63 /* AppComponentsWebKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsWebKit.h; sourceTree = "<group>"; };
+		E78835851C5264E900F67C63 /* UIWebView+ACWebKitAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWebView+ACWebKitAdditions.h"; sourceTree = "<group>"; };
+		E78835861C5264E900F67C63 /* UIWebView+ACWebKitAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+ACWebKitAdditions.m"; sourceTree = "<group>"; };
+		E78835871C52651B00F67C63 /* ACWebViewHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACWebViewHelper.h; sourceTree = "<group>"; };
+		E78835881C52651B00F67C63 /* ACWebViewHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACWebViewHelper.m; sourceTree = "<group>"; };
+		E78835911C536C1F00F67C63 /* ESApp+ACRemoteNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACRemoteNotification.h"; sourceTree = "<group>"; };
+		E78835921C536C1F00F67C63 /* ESApp+ACRemoteNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACRemoteNotification.m"; sourceTree = "<group>"; };
+		E78835B51C53D61100F67C63 /* AppComponentsVendorServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsVendorServices.h; sourceTree = "<group>"; };
+		E78835B71C53D61100F67C63 /* ESApp+ACMobSMS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACMobSMS.h"; sourceTree = "<group>"; };
+		E78835B81C53D61100F67C63 /* ESApp+ACMobSMS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACMobSMS.m"; sourceTree = "<group>"; };
+		E78835BA1C53D61100F67C63 /* ESApp+ACTalkingDataAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACTalkingDataAnalytics.h"; sourceTree = "<group>"; };
+		E78835BB1C53D61100F67C63 /* ESApp+ACTalkingDataAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACTalkingDataAnalytics.m"; sourceTree = "<group>"; };
+		E78835BD1C53D61100F67C63 /* ESApp+ACUmengAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACUmengAnalytics.h"; sourceTree = "<group>"; };
+		E78835BE1C53D61100F67C63 /* ESApp+ACUmengAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACUmengAnalytics.m"; sourceTree = "<group>"; };
+		E78835C01C53D61100F67C63 /* ACXGPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACXGPush.h; sourceTree = "<group>"; };
+		E78835C11C53D61100F67C63 /* ACXGPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACXGPush.m; sourceTree = "<group>"; };
+		E78835C21C53D61100F67C63 /* ESApp+ACXGPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACXGPush.h"; sourceTree = "<group>"; };
+		E78835C31C53D61100F67C63 /* ESApp+ACXGPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACXGPush.m"; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
@@ -81,12 +98,10 @@
 				E71B7CFB1C51314A001910C2 /* ESApp+ACAlertAdditions.m */,
 				E71B7D041C515DB1001910C2 /* ESApp+ACSettings.h */,
 				E71B7D051C515DB1001910C2 /* ESApp+ACSettings.m */,
-				E71B7D061C516E23001910C2 /* ESApp+ACSettingsSubclass.h */,
-				E71B7D071C516E23001910C2 /* ESApp+ACSettingsSubclass.m */,
 				E71B7D0A1C51748A001910C2 /* ESApp+ACHelper.h */,
 				E71B7D0B1C51748A001910C2 /* ESApp+ACHelper.m */,
-				E71B7D0C1C517889001910C2 /* ESApp+ACAnalytics.h */,
-				E71B7D0D1C517889001910C2 /* ESApp+ACAnalytics.m */,
+				E78835911C536C1F00F67C63 /* ESApp+ACRemoteNotification.h */,
+				E78835921C536C1F00F67C63 /* ESApp+ACRemoteNotification.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -95,8 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				E78834C51C51A0F700F67C63 /* AppComponentsAuth.h */,
-				E78834CF1C51BA0700F67C63 /* ESApp+ACAuthAdditions.h */,
-				E78834D01C51BA0700F67C63 /* ESApp+ACAuthAdditions.m */,
 				E78834C91C51AC6000F67C63 /* ACAuthBaseViewController.h */,
 				E78834CA1C51AC6000F67C63 /* ACAuthBaseViewController.m */,
 				E78834C11C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.h */,
@@ -106,6 +119,73 @@
 				E78834CE1C51B29900F67C63 /* ACAuthVerifyPhoneViewController+Action.m */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		E78835781C51ED2C00F67C63 /* WebKit */ = {
+			isa = PBXGroup;
+			children = (
+				E78835821C51EE4F00F67C63 /* AppComponentsWebKit.h */,
+				E78835851C5264E900F67C63 /* UIWebView+ACWebKitAdditions.h */,
+				E78835861C5264E900F67C63 /* UIWebView+ACWebKitAdditions.m */,
+				E78835871C52651B00F67C63 /* ACWebViewHelper.h */,
+				E78835881C52651B00F67C63 /* ACWebViewHelper.m */,
+				E788357F1C51ED2C00F67C63 /* ACWebViewController.h */,
+				E788357C1C51ED2C00F67C63 /* ACWebViewController+Private.h */,
+				E78835801C51ED2C00F67C63 /* ACWebViewController.m */,
+				E788357D1C51ED2C00F67C63 /* ACWebViewController+Private.m */,
+				E788357E1C51ED2C00F67C63 /* ACWebViewController+Subclassing.m */,
+			);
+			path = WebKit;
+			sourceTree = "<group>";
+		};
+		E78835B41C53D61100F67C63 /* VendorServices */ = {
+			isa = PBXGroup;
+			children = (
+				E78835B51C53D61100F67C63 /* AppComponentsVendorServices.h */,
+				E78835B91C53D61100F67C63 /* TalkingDataAnalytics */,
+				E78835BC1C53D61100F67C63 /* UmengAnalytics */,
+				E78835B61C53D61100F67C63 /* MobSMS */,
+				E78835BF1C53D61100F67C63 /* XGPush */,
+			);
+			path = VendorServices;
+			sourceTree = "<group>";
+		};
+		E78835B61C53D61100F67C63 /* MobSMS */ = {
+			isa = PBXGroup;
+			children = (
+				E78835B71C53D61100F67C63 /* ESApp+ACMobSMS.h */,
+				E78835B81C53D61100F67C63 /* ESApp+ACMobSMS.m */,
+			);
+			path = MobSMS;
+			sourceTree = "<group>";
+		};
+		E78835B91C53D61100F67C63 /* TalkingDataAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				E78835BA1C53D61100F67C63 /* ESApp+ACTalkingDataAnalytics.h */,
+				E78835BB1C53D61100F67C63 /* ESApp+ACTalkingDataAnalytics.m */,
+			);
+			path = TalkingDataAnalytics;
+			sourceTree = "<group>";
+		};
+		E78835BC1C53D61100F67C63 /* UmengAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				E78835BD1C53D61100F67C63 /* ESApp+ACUmengAnalytics.h */,
+				E78835BE1C53D61100F67C63 /* ESApp+ACUmengAnalytics.m */,
+			);
+			path = UmengAnalytics;
+			sourceTree = "<group>";
+		};
+		E78835BF1C53D61100F67C63 /* XGPush */ = {
+			isa = PBXGroup;
+			children = (
+				E78835C01C53D61100F67C63 /* ACXGPush.h */,
+				E78835C11C53D61100F67C63 /* ACXGPush.m */,
+				E78835C21C53D61100F67C63 /* ESApp+ACXGPush.h */,
+				E78835C31C53D61100F67C63 /* ESApp+ACXGPush.m */,
+			);
+			path = XGPush;
 			sourceTree = "<group>";
 		};
 		E7A38B331C4DBD3F00972B01 = {
@@ -121,6 +201,8 @@
 				E7C3FAB01C4F035300281993 /* AppUpdater */,
 				E71B7CF61C50A315001910C2 /* App */,
 				E78834BE1C51A0C300F67C63 /* Auth */,
+				E78835781C51ED2C00F67C63 /* WebKit */,
+				E78835B41C53D61100F67C63 /* VendorServices */,
 			);
 			indentWidth = 8;
 			sourceTree = "<group>";
