@@ -33,8 +33,7 @@ static NSString *__sharedNewVersion = nil;
 
 + (BOOL)newVersionExists
 {
-        return (ESIsStringWithAnyText([self newVersion]) &&
-                ![[self newVersion] isEqualToString:[ESApp appVersion]]);
+        return [[self newVersion] isEqualToString:[ESApp appVersion]];
 }
 
 + (void)checkNewVersionWithData:(NSDictionary *)serverData alertByMinWay:(ACAppUpdateWay)minWay completion:(dispatch_block_t)completion
