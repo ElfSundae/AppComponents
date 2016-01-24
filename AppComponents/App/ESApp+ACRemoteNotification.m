@@ -81,6 +81,8 @@ NSString *const ACRemoteNotificationServiceDefaultAccountIdentifier = @"NULL";
         if (serviceClass && [serviceClass instancesRespondToSelector:@selector(unregisterDevice:)]) {
                 id<ACRemoteNotificationServiceProtocol> service = [[serviceClass alloc] init];
                 [service unregisterDevice:completion];
+        } else {
+                completion(NO);
         }
 }
 
