@@ -7,6 +7,7 @@
 //
 
 #import "ESApp+ACRemoteNotification.h"
+#import <ESFramework/NSError+ESAdditions.h>
 
 NSString *const ACRemoteNotificationServiceDefaultAccountIdentifier = @"NULL";
 
@@ -14,10 +15,10 @@ NSString *const ACRemoteNotificationServiceDefaultAccountIdentifier = @"NULL";
 
 - (void)registerForRemoteNotificationsWithTypes:(ESUserNotificationType)types
                                      categories:(NSSet *)categories
-                                   serviceType:(ACRemoteNotificationServiceType)serviceType
+                                    serviceType:(ACRemoteNotificationServiceType)serviceType
                              deviceTokenHandler:(void (^)(NSData *deviceToken, NSString *deviceTokenString, NSError *error))deviceTokenHandler
-                   shouldRegisterServiceHandler:(BOOL (^)(NSString **account, NSDictionary **tags))shouldRegisterServiceHandler
-                      didRegisterServiceHandler:(void (^)(NSString *serviceClientID, NSError *error))didRegisterServiceHandler
+                   shouldRegisterServiceHandler:(BOOL (^)(NSString **account, NSArray **tags))shouldRegisterServiceHandler
+                      didRegisterServiceHandler:(void (^)(NSError *error))didRegisterServiceHandler
 {
         ESWeakSelf;
         void (^deviceTokenBlock)(NSData *deviceToken, NSString *deviceTokenString, NSError *error) = ^(NSData *deviceToken, NSString *deviceTokenString, NSError *error) {
@@ -25,19 +26,45 @@ NSString *const ACRemoteNotificationServiceDefaultAccountIdentifier = @"NULL";
                 if (deviceTokenHandler) {
                         deviceTokenHandler(deviceToken, deviceTokenString, error);
                 }
+                
                 if (!deviceToken) return;
+                if (0 == serviceType) return;
                 if (!shouldRegisterServiceHandler) return;
                 
-                NSString *account = nil;
-                NSDictionary *tags = nil;
-
+                Class serviceClass = [ACRemoteNotificationServiceRegister classForServiceType:serviceType];
+                if (!serviceClass) {
+                        if (didRegisterServiceHandler) {
+                                didRegisterServiceHandler([NSError errorWithDomain:@"ACRemoteNotificationErrorDomain" code:-1 description:NSStringWith(@"There is no service provider for type %@", @(serviceType))]);
+                        }
+                        return;
+                }
                 
-//                for (id st in serviceTypes) {
-//                        ACRemoteNotificationServiceType currentType = ESUIntegerValue(st);
-//                        if (!shouldRegisterServiceHandler(currentType, &account, &tags)) {
-//                                return;
-//                        }
-//                }
+                if (![serviceClass instancesRespondToSelector:@selector(registerDevice:deviceTokenString:account:tags:completion:)]) {
+                        if (didRegisterServiceHandler) {
+                                didRegisterServiceHandler([NSError errorWithDomain:@"ACRemoteNotificationErrorDomain" code:-2 description:NSStringWith(@"%@ instance is not respond to selector -registerDevice:deviceTokenString:account:tags:completion:", serviceClass)]);
+                        }
+                        return;
+                }
+                
+                NSString *account = nil;
+                NSArray *tags = nil;
+                if (!shouldRegisterServiceHandler(&account, &tags)) {
+                        return;
+                }
+                
+                id<ACRemoteNotificationServiceProtocol> service = [[serviceClass alloc] init];
+                [service registerDevice:deviceToken deviceTokenString:deviceTokenString account:account tags:tags completion:^(BOOL succeed) {
+                        ESDispatchOnMainThreadAsynchrony(^{
+                                ESStrongSelf;
+                                if (didRegisterServiceHandler) {
+                                        NSError *error = nil;
+                                        if (!succeed) {
+                                                error = [NSError errorWithDomain:@"ACRemoteNotificationErrorDomain" code:-2 description:NSStringWith(@"%@ can not be registered.", serviceClass)];
+                                        }
+                                        didRegisterServiceHandler(error);
+                                }
+                        });
+                }];
                 
         };
         
@@ -48,80 +75,13 @@ NSString *const ACRemoteNotificationServiceDefaultAccountIdentifier = @"NULL";
         }];
 }
 
-//- (void)unregisterForRemoteNotificationsWithServiceType:(ACRemoteNotificationServiceType)serviceType
-//{
-//        if (ACRemoteNotificationServiceTypeXGPush == serviceType) {
-//                Class XGPushClass = NSClassFromString(@"XGPush");
-//                if (XGPushClass) {
-//                        ESInvokeSelector(XGPushClass, @selector(setAccount:), NULL, ACRemoteNotificationServiceDefaultAccountIdentifier);
-//                        // Note: 信鸽的[XGPush unRegisterDevice]可能会执行 [UIApplication unregisterForRemoteNotifications],
-//                        // 导致用户在app运行时打开推送开关后appDelegate收不到DidRegisterDeviceToken的回调。
-//                }
-//        }
-//}
-
-//- (void)ac_registerRemoteNotificationWithCompletion:(void (^)(NSString *deviceToken, NSError *error))completion
-//{
-//        [self registerForRemoteNotificationsWithTypes:(ESUserNotificationTypeBadge|ESUserNotificationTypeAlert|ESUserNotificationTypeSound)
-//                                           categories:nil
-//                                              success:^(NSData *deviceToken, NSString *deviceTokenString)
-//         {
-//                 
-//         } failure:^(NSError *error) {
-//                 if (completion) completion(nil, error);
-//         }];
-//        
-//}
-//
-////- (void)ac_register
-//
-//- (void)registerPushWithCompletion:(void (^)(NSString *deviceToken, NSError *error))completion
-//{
-//#if !TARGET_IPHONE_SIMULATOR
-//        if (self.registerRemoteNotificationWithVendorPushServiceCompletion) {
-//                // 正在注册
-//                return;
-//        }
-//        
-//        NSLog(@"开始注册推送");
-//        self.hasRegisteredPushToVendorService = NO;
-//        ESWeakSelf;
-//        BOOL (^shouldRegisterVendor)(NSString **, NSDictionary **) = ^(NSString **account, NSDictionary **tags) {
-//                AppUser *user = [AppUser me];
-//                *account = user.userID;
-//                *tags = @{@"user": user.isLoggedIn ? (user.isVIP ? @"vip" : @"user") : @"guest"};
-//                return YES;
-//        };
-//        
-//        void (^deviceTokenCallback)(NSString *deviceToken, NSError *error) = ^(NSString *deviceToken, NSError *error) {
-//                ESStrongSelf;
-//                NSLog(@"DeviceToken: %@", deviceToken);
-//                if (deviceToken) {
-//                        [_self registerPushDeviceToAppServer:deviceToken];
-//                } else {
-//                        [_self unregisterPushDeviceToAppServer];
-//                        if (completion) {
-//                                completion(nil, error);
-//                        }
-//                }
-//        };
-//        
-//        void (^registerVendorCompletion)(NSString *clientID, NSError *error) = ^(NSString *clientID, NSError *error) {
-//                ESStrongSelf;
-//                NSLog(@"注册第三方推送服务结束. error:%@", error);
-//                _self.hasRegisteredPushToVendorService = !error;
-//                [_self resetRemoteNotificationRegisterCallbacks];
-//                if (completion) {
-//                        completion(_self.remoteNotificationsDeviceToken, error);
-//                }
-//        };
-//        
-//#if _Vendor_XGPush_
-//        [self registerForRemoteNotificationsWithXGPush:deviceTokenCallback shouldRegisterVendorService:shouldRegisterVendor vendorServiceCompletion:registerVendorCompletion];
-//#elif _Vendor_JPush_
-//        [self registerForRemoteNotificationsWithJPush:shouldRegister completion:registerCompletion];
-//#endif
-//#endif
-//}
+- (void)unregisterForRemoteNotificationsWithServiceType:(ACRemoteNotificationServiceType)serviceType completion:(void (^)(BOOL))completion
+{
+        Class serviceClass = [ACRemoteNotificationServiceRegister classForServiceType:serviceType];
+        if (serviceClass && [serviceClass instancesRespondToSelector:@selector(unregisterDevice:)]) {
+                id<ACRemoteNotificationServiceProtocol> service = [[serviceClass alloc] init];
+                [service unregisterDevice:completion];
+        }
+}
 
 @end

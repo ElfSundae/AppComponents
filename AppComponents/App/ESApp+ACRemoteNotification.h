@@ -7,14 +7,20 @@
 //
 
 #import <ESFramework/ESApp.h>
+#import "ACRemoteNotificationServiceRegister.h"
 
 FOUNDATION_EXTERN NSString *const ACRemoteNotificationServiceDefaultAccountIdentifier;
 
-typedef NS_OPTIONS(NSUInteger, ACRemoteNotificationServiceType) {
-        /// 腾讯信鸽
-        ACRemoteNotificationServiceTypeXGPush = 1,
-};
-
 @interface ESApp (ACRemoteNotification)
+
+- (void)registerForRemoteNotificationsWithTypes:(ESUserNotificationType)types
+                                     categories:(NSSet *)categories
+                                    serviceType:(ACRemoteNotificationServiceType)serviceType
+                             deviceTokenHandler:(void (^)(NSData *deviceToken, NSString *deviceTokenString, NSError *error))deviceTokenHandler
+                   shouldRegisterServiceHandler:(BOOL (^)(NSString **account, NSArray **tags))shouldRegisterServiceHandler
+                      didRegisterServiceHandler:(void (^)(NSError *error))didRegisterServiceHandler;
+
+- (void)unregisterForRemoteNotificationsWithServiceType:(ACRemoteNotificationServiceType)serviceType
+                                             completion:(void (^)(BOOL succeed))completion;
 
 @end

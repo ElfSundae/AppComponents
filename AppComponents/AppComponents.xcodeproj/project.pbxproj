@@ -23,6 +23,10 @@
 		E71B7D091C5171C9001910C2 /* ACSettings+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACSettings+Private.m"; sourceTree = "<group>"; };
 		E71B7D0A1C51748A001910C2 /* ESApp+ACHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACHelper.h"; sourceTree = "<group>"; };
 		E71B7D0B1C51748A001910C2 /* ESApp+ACHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACHelper.m"; sourceTree = "<group>"; };
+		E7777D8A1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationServiceRegister.h; sourceTree = "<group>"; };
+		E7777D8B1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACRemoteNotificationServiceRegister.m; sourceTree = "<group>"; };
+		E7777D8C1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationXGPushService.h; sourceTree = "<group>"; };
+		E7777D8D1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACRemoteNotificationXGPushService.m; sourceTree = "<group>"; };
 		E78834C11C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthVerifyPhoneViewController.h; sourceTree = "<group>"; };
 		E78834C21C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthVerifyPhoneViewController.m; sourceTree = "<group>"; };
 		E78834C51C51A0F700F67C63 /* AppComponentsAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsAuth.h; sourceTree = "<group>"; };
@@ -50,8 +54,6 @@
 		E78835BB1C53D61100F67C63 /* ESApp+ACTalkingDataAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACTalkingDataAnalytics.m"; sourceTree = "<group>"; };
 		E78835BD1C53D61100F67C63 /* ESApp+ACUmengAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACUmengAnalytics.h"; sourceTree = "<group>"; };
 		E78835BE1C53D61100F67C63 /* ESApp+ACUmengAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACUmengAnalytics.m"; sourceTree = "<group>"; };
-		E78835C01C53D61100F67C63 /* ACXGPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACXGPush.h; sourceTree = "<group>"; };
-		E78835C11C53D61100F67C63 /* ACXGPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACXGPush.m; sourceTree = "<group>"; };
 		E78835C21C53D61100F67C63 /* ESApp+ACXGPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACXGPush.h"; sourceTree = "<group>"; };
 		E78835C31C53D61100F67C63 /* ESApp+ACXGPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACXGPush.m"; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
@@ -100,6 +102,8 @@
 				E71B7D051C515DB1001910C2 /* ESApp+ACSettings.m */,
 				E71B7D0A1C51748A001910C2 /* ESApp+ACHelper.h */,
 				E71B7D0B1C51748A001910C2 /* ESApp+ACHelper.m */,
+				E7777D8A1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.h */,
+				E7777D8B1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.m */,
 				E78835911C536C1F00F67C63 /* ESApp+ACRemoteNotification.h */,
 				E78835921C536C1F00F67C63 /* ESApp+ACRemoteNotification.m */,
 			);
@@ -180,10 +184,10 @@
 		E78835BF1C53D61100F67C63 /* XGPush */ = {
 			isa = PBXGroup;
 			children = (
-				E78835C01C53D61100F67C63 /* ACXGPush.h */,
-				E78835C11C53D61100F67C63 /* ACXGPush.m */,
 				E78835C21C53D61100F67C63 /* ESApp+ACXGPush.h */,
 				E78835C31C53D61100F67C63 /* ESApp+ACXGPush.m */,
+				E7777D8C1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.h */,
+				E7777D8D1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.m */,
 			);
 			path = XGPush;
 			sourceTree = "<group>";

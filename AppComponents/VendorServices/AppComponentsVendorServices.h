@@ -9,5 +9,5 @@
 #import <AppComponents/ESApp+ACUmengAnalytics.h>
 #import <AppComponents/ESApp+ACTalkingDataAnalytics.h>
 #import <AppComponents/ESApp+ACMobSMS.h>
-#import <AppComponents/ACXGPush.h>
 #import <AppComponents/ESApp+ACXGPush.h>
+#import <AppComponents/ACRemoteNotificationXGPushService.h>
