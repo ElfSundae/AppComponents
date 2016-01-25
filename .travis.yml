@@ -11,5 +11,5 @@ before_install:
 
 script:
 
-    - pod lib lint ../AppComponents.podspec --allow-warnings
+    - pod lib lint ../AppComponents.podspec --allow-warnings --use-libraries
 

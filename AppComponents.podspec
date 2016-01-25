@@ -101,7 +101,7 @@ Pod::Spec.new do |s|
     ss.subspec "XGPush" do |sss|
       sss.source_files      = "AppComponents/VendorServices/XGPush/**/*.{h,m}"
       sss.dependency        "ESFramework/App"
-      sss.dependency        "QQ_XGPush"
+      sss.dependency        "APIService-XGPush"
     end
 
     ss.subspec "MobSMS" do |sss|

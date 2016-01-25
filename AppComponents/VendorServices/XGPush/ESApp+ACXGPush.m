@@ -7,8 +7,8 @@
 //
 
 #import "ESApp+ACXGPush.h"
-#import <QQ_XGPush/XGSetting.h>
-#import <QQ_XGPush/XGPush.h>
+#import <APIService-XGPush/XGSetting.h>
+#import <APIService-XGPush/XGPush.h>
 
 @implementation ESApp (ACXGPush)
 
