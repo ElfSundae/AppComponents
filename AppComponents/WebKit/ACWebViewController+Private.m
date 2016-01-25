@@ -181,58 +181,7 @@
         });
 }
 
-- (BOOL)openImageClickedLinkWithWebView:(UIWebView *)webView request:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-#if 1
-        return NO;
-#else
-        if (![request.URL.scheme isEqualToString:XXWebViewImageBrowserScheme]) {
-                return NO;
-        }
-        
-        ESWeakSelf;
-        NSURL *URL = request.URL;
-        ESDispatchOnDefaultQueue(^{
-                ESStrongSelf;
-                NSDictionary *params = [URL queryDictionary];
-                NSLog(@"%@", params);
-                NSURL *imageURL = ESURLValue(params[@"url"]);
-                if (!imageURL && params.count == 1) {
-                        // 不带url参数： xx-image:http%3A%2F%2F....
-                        imageURL = ESURLValue(params.allKeys.firstObject);
-                }
-                if (!imageURL || !imageURL.scheme.length) {
-                        return;
-                }
-                CGRect rect = CGRectZero;
-                NSString *rectString = ESStringValue(params[@"rect"]);
-                if (rectString) {
-                        NSArray *rectArray = [rectString componentsSeparatedByString:@","];
-                        if (rectArray.count == 4) {
-                                rect = CGRectMake(ESFloatValue(rectArray[0]), ESFloatValue(rectArray[1]), ESFloatValue(rectArray[2]), ESFloatValue(rectArray[3]));
-                        }
-                }
-                if (!CGRectIsEmpty(rect)) {
-                        rect.origin.y += _self.webView.scrollView.contentInset.top;
-                }
-                
-                ESDispatchOnMainThreadAsynchrony(^{
-                        ESStrongSelf;
-                        [[ESApp sharedApp] showImageBrowserFromView:nil imageURL:imageURL placeholder:nil customizedImageInfo:^(JTSImageInfo *imageInfo) {
-                                if (!CGRectIsEmpty(rect)) {
-                                        imageInfo.referenceView = _self.webView;
-                                        imageInfo.referenceRect = rect;
-                                }
-                                imageInfo.canShare = YES;
-                        }];
-                });
-        });
-        
-        return YES;
-#endif
-}
-
-- (void)injectJavascriptForOpenningImageClickedLink:(UIWebView *)webView
+- (void)injectJavascriptForOpenningImageLink:(UIWebView *)webView
 {
         NSString *checkObject = NSStringWith(@"typeof %@ == \'object\';", ACWebViewImageBrowserJavascriptObjectName);
         if (![[webView stringByEvaluatingJavaScriptFromString:checkObject] isEqualToString:@"true"]) {
@@ -243,7 +192,7 @@
                              open: function(e) {        \
                              e.preventDefault();        \
                              var rect = this.getElementsByTagName('img')[0].getBoundingClientRect();   \
-                             window.location.href=\'%@:\' +'url='+encodeURIComponent(this.href) +'&rect='+encodeURIComponent(rect.left+','+rect.top+','+rect.width+','+rect.height);        \
+                             window.location.href=\'%@://\' +'image?url='+encodeURIComponent(this.href) +'&rect='+encodeURIComponent(rect.left+','+rect.top+','+rect.width+','+rect.height);        \
                              }  \
                              }; \
                              \
@@ -256,7 +205,7 @@
                              })();",
                              ACWebViewImageBrowserJavascriptObjectName,
                              ACWebViewImageBrowserJavascriptObjectName,
-                             ACWebViewImageBrowserScheme,
+                             ACWebViewCustomScheme,
                              ACWebViewImageBrowserJavascriptObjectName);
                 [webView stringByEvaluatingJavaScriptFromString:injectJS];
         }

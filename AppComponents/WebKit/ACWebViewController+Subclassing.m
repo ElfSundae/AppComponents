@@ -8,6 +8,7 @@
 
 #import "ACWebViewController+Private.h"
 #import <AppComponents/ACConfig.h>
+#import <AppComponents/ESApp+ACImageViewController.h>
 
 @implementation ACWebViewController (Subclassing)
 
@@ -20,7 +21,7 @@
         webView.mediaPlaybackAllowsAirPlay = YES;
         webView.suppressesIncrementalRendering = NO;
         webView.keyboardDisplayRequiresUserAction = NO;
-        // Fix issue: UIWebView will appear a blank area on bottom, because of webview.scrollView.contentInset.top
+        // Fixed issue: UIWebView will appear a blank area on bottom, because of webview.scrollView.contentInset.top
         webView.opaque = NO;
         webView.backgroundColor = self.view.backgroundColor;
         webView.scrollView.delaysContentTouches = NO;
@@ -42,10 +43,46 @@
         
 }
 
+- (void)handleCustomScheme:(UIWebView *)webView request:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+        NSURL *url = request.URL;
+        if (![url.scheme isEqualToStringCaseInsensitive:ACWebViewCustomScheme]) {
+                return;
+        }
+        NSDictionary *params = [url queryDictionary];
+        if ([url.host isEqualToStringCaseInsensitive:@"image"]) {
+                NSURL *imageURL = ESURLValue(params[@"url"]);
+                if (!imageURL) {
+                        return;
+                }
+                
+                CGRect rect = CGRectZero;
+                NSString *rectString = ESStringValue(params[@"rect"]);
+                if (rectString) {
+                        NSArray *rectArray = [rectString componentsSeparatedByString:@","];
+                        if (rectArray.count == 4) {
+                                rect = CGRectMake(ESFloatValue(rectArray[0]), ESFloatValue(rectArray[1]), ESFloatValue(rectArray[2]), ESFloatValue(rectArray[3]));
+                        }
+                }
+                ESWeakSelf;
+                ESDispatchOnMainThreadAsynchrony(^{
+                        ESStrongSelf;
+                        [[ESApp sharedApp] showImageViewControllerFromView:nil imageURL:imageURL placeholderImage:nil backgroundOptions:[ESApp sharedApp].defaultImageViewControllerBackgroundOptions imageInfoCustomization:^(JTSImageInfo *imageInfo) {
+                                if (!CGRectIsEmpty(rect)) {
+                                        imageInfo.referenceView = webView;
+                                        imageInfo.referenceRect = rect;
+                                }
+                        }];
+                });
+        }
+}
 
 - (BOOL)handleWebView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-        if ([request.URL.scheme isEqualToString:kCustomProtocolScheme]) {
+        if ([request.URL.scheme isEqualToStringCaseInsensitive:kCustomProtocolScheme]) {
+                return NO;
+        } else if ([request.URL.scheme isEqualToStringCaseInsensitive:ACWebViewCustomScheme]) {
+                [self handleCustomScheme:webView request:request navigationType:navigationType];
                 return NO;
         }
         
@@ -75,7 +112,7 @@
 
 - (void)handleWebViewDidFinishLoad:(UIWebView *)webView
 {
-        self.currentPageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        _currentPageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
         if (self.showsPageTitle) {
                 self.navigationItem.title = self.currentPageTitle;
         }

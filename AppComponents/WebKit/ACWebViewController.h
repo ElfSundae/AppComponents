@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <WebViewJavascriptBridge/WebViewJavascriptBridge.h>
 
-/// 用imageBrowser打开图片.
-/// URL格式：xx-image:url=xxx&rect=urlEncoded(1,2,3,4)，其中url为必须参数，rect用docElement.getBoundingClientRect()获得。
-/// 或者只是一个图片地址url: xx-image:urlEncoded(imageURL)
-FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserScheme; // @"acwebimagescheme"
+/**
+ * 自定义协议，支持以下host:
+ * acwebview://image?url=xxx&rect=urlEncoded(1,2,3,4)，其中url为必须参数，rect用docElement.getBoundingClientRect()获得。
+ */
+FOUNDATION_EXTERN NSString *const ACWebViewCustomScheme; // @"acwebview"
+/**
+ * imageBrowserEnabled为YES时，对<a><img></a>注入JS, 使用 -[ESApp imageViewController] 打开图片链接
+ */
+FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserJavascriptObjectName;
 
 @interface ACWebViewController : UIViewController <UIWebViewDelegate>
 
@@ -32,8 +37,8 @@ FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserScheme; // @"acwebimagesc
 @property (nonatomic, copy, readonly) NSURL *initializationURL; // The first loaded URL
 @property (nonatomic, copy, readonly) NSString *initializationTitle;
 @property (nonatomic, copy, readonly) NSString *currentPageTitle;
-- (NSURL *)currentURL;
 @property (nonatomic, strong, readonly) WebViewJavascriptBridge *JSBridge;
+- (NSURL *)currentURL;
 
 ///=============================================
 /// @name Configurations

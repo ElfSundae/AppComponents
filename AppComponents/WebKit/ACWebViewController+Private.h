@@ -13,8 +13,6 @@
 #import <ESFramework/ESFrameworkUIKit.h>
 #import <ESFramework/ESApp.h>
 
-FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserJavascriptObjectName;
-
 @interface ACWebViewController ()
 {
 @protected
@@ -31,14 +29,10 @@ FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserJavascriptObjectName;
         } _flags;
         
         NSInteger _numberOfRequest;
+        NSString *_currentPageTitle;
 }
 
-@property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, getter=isLoading) BOOL loading;
-@property (nonatomic, copy) NSURL *initializationURL;
-@property (nonatomic, copy) NSString *initializationTitle;
-@property (nonatomic, copy) NSString *currentPageTitle;
-@property (nonatomic, strong) WebViewJavascriptBridge *JSBridge;
 
 @property (nonatomic, strong) UIView *activityOverlay;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView; // it is on activityOverlay
@@ -69,18 +63,13 @@ FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserJavascriptObjectName;
 /// 打开应用内iTunes Store, 如果closeOnCompleted为YES, 操作完成后当前界面会被关闭(pop/dismiss)
 - (void)openInAppStoreWithItemURL:(NSURL *)URL showNetworkActivityIndicator:(BOOL)showNetworkActivityIndicator closeOnCompleted:(BOOL)closeOnCompleted;
 
-/// 用imageBrowser打开图片.
-/// URL格式：xx-image:url=xxx&rect=urlEncoded(1,2,3,4)，其中url为必须参数，rect用docElement.getBoundingClientRect()获得。
-/// 或者只是一个图片地址url: xx-image:urlEncoded(imageURL)
-- (BOOL)openImageClickedLinkWithWebView:(UIWebView *)webView request:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
-
-/// 注入打开img链接的js代码
-- (void)injectJavascriptForOpenningImageClickedLink:(UIWebView *)webView;
-
 /// 返回是否iTunes链接， 用于打开SKStoreProductViewController
 - (BOOL)isITunesLinkURL:(NSURL *)URL;
 /// 返回是否需要调用 -[UIApplication openURL:]打开外部链接
 - (BOOL)shouldOpenURL:(NSURL *)URL;
+
+/// 注入打开img链接的js代码
+- (void)injectJavascriptForOpenningImageLink:(UIWebView *)webView;
 
 - (void)networkReachabilityDidChangeNotification:(NSNotification *)notification;
 
@@ -97,10 +86,13 @@ FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserJavascriptObjectName;
 
 - (void)handleJSBridgeData:(id)data responseCallback:(void (^)(id))responseCallback;
 
+- (void)handleCustomScheme:(UIWebView *)webView request:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+
 /**
  * 基类实现：
  *      检查是否需要打开InAppStore
  *      检查是否需要调用OpenURL打开外部链接
+ *      检查ACWebViewCustomScheme
  */
 - (BOOL)handleWebView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
 /**

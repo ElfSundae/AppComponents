@@ -9,7 +9,7 @@
 #import "ACWebViewController+Private.h"
 #import <AppComponents/AppComponentsApp.h>
 
-NSString *const ACWebViewImageBrowserScheme = @"acwebimagescheme";
+NSString *const ACWebViewCustomScheme = @"acwebview";
 NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrowserJavascriptObject";
 
 @implementation ACWebViewController
@@ -30,8 +30,8 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
 {
         self = [super init];
         if (self) {
-                self.initializationURL = ESURLValue(URL);
-                self.initializationTitle = title;
+                _initializationURL = ESURLValue(URL);
+                _initializationTitle = title;
                 [self setupDefaultsConfig];
         }
         return self;
@@ -63,7 +63,7 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
         self.view.backgroundColor = [UIColor colorWithWhite:0.980 alpha:1.000];
         self.navigationItem.title = self.initializationTitle;
         
-        self.webView = [self createWebView];
+        _webView = [self createWebView];
         NSAssert(!!self.webView, @"-createWebView returns nil.");
         if (self.webView.superview != self.view) {
                 [self.webView.superview removeFromSuperview];
@@ -76,7 +76,7 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
         
         // Create JSBridge if needed.
         if (self.isJSBridgeEnabled) {
-                self.JSBridge = [self createJSBridgeForWebView:self.webView];
+                _JSBridge = [self createJSBridgeForWebView:self.webView];
         }
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityDidChangeNotification:) name:ESNetworkReachabilityDidChangeNotification object:nil];
@@ -233,11 +233,13 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
 - (void)setImageBrowserEnabled:(BOOL)value
 {
         if (_flags.isFirstLoading && !self.webView.request) {
+                if (!value) {
+                        _imageBrowserEnabled = NO;
+                }
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-                //TODO:
-                if (!value || [ESApp instancesRespondToSelector:@selector(imageBrowser)]) {
-                        _imageBrowserEnabled = value;
+                else if ([ESApp instancesRespondToSelector:@selector(imageViewControler)]) {
+                        _imageBrowserEnabled = YES;
                 }
 #pragma clang diagnostic pop
         }
@@ -280,10 +282,6 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
 {
         _flags.currentLoadingErrorIsLocalNetworkError = NO;
         
-        if ([self openImageClickedLinkWithWebView:webView request:request navigationType:navigationType]) {
-                return NO;
-        }
-        
         BOOL result = [self handleWebView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
         if (!result) {
                 _flags.isFirstLoading = NO;
@@ -305,7 +303,7 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
         --_numberOfRequest;
         
         if (0 == _numberOfRequest && self.isImageBrowserEnabled) {
-                [self injectJavascriptForOpenningImageClickedLink:webView];
+                [self injectJavascriptForOpenningImageLink:webView];
         }
         
         [self handleWebViewDidFinishLoad:webView];

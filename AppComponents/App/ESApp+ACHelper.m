@@ -93,7 +93,7 @@
                 if (error) {
                         [self hideProgressHUD:YES];
                 } else {
-                        [self showCheckmarkHUDWithTitle:nil timeInterval:1.0 animated:YES];       
+                        [self showCheckmarkHUDWithTitle:nil timeInterval:0.7 animated:YES];
                 }
         }
         if (completion) {
