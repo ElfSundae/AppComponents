@@ -38,6 +38,15 @@ ESDefineAssociatedObjectKey(imageViewControler);
         if (!imageInfo.referenceView) {
                 imageInfo.referenceView = self.rootViewController.view;
                 imageInfo.referenceRect = CGRectMake(self.rootViewController.view.centerX, self.rootViewController.view.centerY, 0, 0);
+        } else {
+                // TODO: 检查rect是否在view中间. 如果view是scrollView, 检查是否在contentSize范围内，并且把scrollView的contentInset.top加上
+                if ([imageInfo.referenceView isKindOfClass:[UIWebView class]]) {
+                        CGRect fixedRect = imageInfo.referenceRect;
+                        if (!CGRectIsEmpty(fixedRect)) {
+                                fixedRect.origin.y += [(UIWebView *)imageInfo.referenceView scrollView].contentInset.top;
+                                imageInfo.referenceRect = fixedRect;
+                        }
+                }
         }
         
         [self dismissImageViewController:NO];
@@ -66,7 +75,6 @@ ESDefineAssociatedObjectKey(imageViewControler);
         imageInfo.image = image;
         imageInfo.imageURL = imageURL;
         imageInfo.placeholderImage = placeholderImage;
-        // TODO: 检查rect是否在view中间. 如果view是scrollView, 检查是否在contentSize范围内，并且把scrollView的contentInset.top加上
         imageInfo.referenceView = view.superview ?: self.rootViewController.view;
         imageInfo.referenceRect = view ? view.frame : CGRectMake(self.rootViewController.view.centerX, self.rootViewController.view.centerY, 0, 0);
         if (view) {
