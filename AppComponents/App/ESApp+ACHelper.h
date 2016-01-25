@@ -18,6 +18,12 @@
 
 /**
  * Returns the shared NSDateFormatter instance with timeZone of [self appWebServerTimeZone],
+ * and dateFormat of @"yyyy'-'MM'-'dd HH':'mm"
+ */
+- (NSDateFormatter *)appWebServerDateFormatterWithFullDateStyle;
+
+/**
+ * Returns the shared NSDateFormatter instance with timeZone of [self appWebServerTimeZone],
  * and dateFormat of @"MM'-'dd HH':'mm"
  */
 - (NSDateFormatter *)appWebServerDateFormatterWithShortStyle;

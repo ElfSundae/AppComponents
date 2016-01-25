@@ -19,14 +19,26 @@
 
 - (NSDateFormatter *)appWebServerDateFormatterWithFullStyle
 {
-        static NSDateFormatter *__appWebServerDateFormatter = nil;
+        static NSDateFormatter *__appWebServerDateFormatterWithFullStyle = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                __appWebServerDateFormatter = [[NSDateFormatter alloc] init];
-                __appWebServerDateFormatter.timeZone = self.appWebServerTimeZone;
-                __appWebServerDateFormatter.dateFormat = @"yyyy'-'MM'-'dd HH':'mm':'ss";
+                __appWebServerDateFormatterWithFullStyle = [[NSDateFormatter alloc] init];
+                __appWebServerDateFormatterWithFullStyle.timeZone = self.appWebServerTimeZone;
+                __appWebServerDateFormatterWithFullStyle.dateFormat = @"yyyy'-'MM'-'dd HH':'mm':'ss";
         });
-        return __appWebServerDateFormatter;
+        return __appWebServerDateFormatterWithFullStyle;
+}
+
+- (NSDateFormatter *)appWebServerDateFormatterWithFullDateStyle
+{
+        static NSDateFormatter *__appWebServerDateFormatterWithFullDateStyle = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                __appWebServerDateFormatterWithFullDateStyle = [[NSDateFormatter alloc] init];
+                __appWebServerDateFormatterWithFullDateStyle.timeZone = self.appWebServerTimeZone;
+                __appWebServerDateFormatterWithFullDateStyle.dateFormat = @"yyyy'-'MM'-'dd HH':'mm";
+        });
+        return __appWebServerDateFormatterWithFullDateStyle;
 }
 
 - (NSDateFormatter *)appWebServerDateFormatterWithShortStyle

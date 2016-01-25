@@ -60,6 +60,8 @@
 		E78835BE1C53D61100F67C63 /* ESApp+ACUmengAnalytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACUmengAnalytics.m"; sourceTree = "<group>"; };
 		E78835C21C53D61100F67C63 /* ESApp+ACXGPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACXGPush.h"; sourceTree = "<group>"; };
 		E78835C31C53D61100F67C63 /* ESApp+ACXGPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACXGPush.m"; sourceTree = "<group>"; };
+		E78F77591C561F5C00B9A33C /* NSDate+ACAppAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+ACAppAdditions.h"; sourceTree = "<group>"; };
+		E78F775A1C561F5C00B9A33C /* NSDate+ACAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ACAppAdditions.m"; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
@@ -110,6 +112,8 @@
 				E7777D8B1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.m */,
 				E78835911C536C1F00F67C63 /* ESApp+ACRemoteNotification.h */,
 				E78835921C536C1F00F67C63 /* ESApp+ACRemoteNotification.m */,
+				E78F77591C561F5C00B9A33C /* NSDate+ACAppAdditions.h */,
+				E78F775A1C561F5C00B9A33C /* NSDate+ACAppAdditions.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
