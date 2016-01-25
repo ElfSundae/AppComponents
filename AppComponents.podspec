@@ -71,6 +71,7 @@ Pod::Spec.new do |s|
     ss.source_files         = "AppComponents/Auth/**/*.{h,m}"
     ss.private_header_files = "AppComponents/Auth/**/*+Private.h"
     ss.dependency           "AppComponents/App"
+    ss.dependency           "AppComponents/VendorServices/MobSMS"
   end
 
   s.subspec "WebKit" do |ss|
