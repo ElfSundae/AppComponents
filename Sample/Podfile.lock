@@ -44,6 +44,7 @@ PODS:
   - AppComponents/Auth (1.0.3):
     - AppComponents/App
     - AppComponents/VendorServices/MobSMS
+    - ESFramework/UIKit/View
   - AppComponents/Core (1.0.3):
     - ESFramework/Additions
     - ESFramework/Core
@@ -77,15 +78,17 @@ PODS:
     - ESFramework/App
   - AppComponents/VendorServices/XGPush (1.0.3):
     - APIService-XGPush
-    - ESFramework/App
+    - AppComponents/App
   - AppComponents/View (1.0.3):
     - AppComponents/Core
     - ESFramework/UIKit
   - AppComponents/WebKit (1.0.3):
     - AppComponents/App
+    - AppComponents/VendorServices/ImageViewController
     - ESFramework/App
     - ESFramework/StoreKit
-    - ESFramework/UIKit
+    - ESFramework/UIKit/RefreshControl
+    - ESFramework/UIKit/View
     - WebViewJavascriptBridge
   - ESFramework (2.3.2):
     - ESFramework/Additions (= 2.3.2)
@@ -118,8 +121,8 @@ PODS:
   - ESFramework/UIKit/View (2.3.2):
     - ESFramework/Additions
     - ESFramework/Core
-  - FontAwesomeKit/Core (HEAD based on 2.2.0)
-  - FontAwesomeKit/FontAwesome (HEAD based on 2.2.0):
+  - FontAwesomeKit/Core (2.2.0)
+  - FontAwesomeKit/FontAwesome (2.2.0):
     - FontAwesomeKit/Core
   - JTSImageViewController (1.5.1)
   - MBProgressHUD (0.9.2)
@@ -130,26 +133,18 @@ PODS:
 
 DEPENDENCIES:
   - AppComponents (from `../AppComponents.podspec`)
-  - ESFramework (from `https://github.com/ESFramework/ESFramework.git`)
-  - FontAwesomeKit/FontAwesome (HEAD)
+  - ESFramework
 
 EXTERNAL SOURCES:
   AppComponents:
     :path: "../AppComponents.podspec"
-  ESFramework:
-    :git: https://github.com/ESFramework/ESFramework.git
-
-CHECKOUT OPTIONS:
-  ESFramework:
-    :commit: fd0808b750f9805f6aa7122c36991bc0526d8bb1
-    :git: https://github.com/ESFramework/ESFramework.git
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   APIService-TalkingData: 0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
-  AppComponents: 5dcce371d8a23a8c961115b719d76ce959fdefe8
+  AppComponents: 3790f43388092066b8e0f69b03cfdf395b280fe3
   ESFramework: 23128a85e9835898044dea8ff5d1f88c64744526
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9

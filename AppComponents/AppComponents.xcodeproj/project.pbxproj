@@ -45,10 +45,6 @@
 		E788357F1C51ED2C00F67C63 /* ACWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACWebViewController.h; sourceTree = "<group>"; };
 		E78835801C51ED2C00F67C63 /* ACWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACWebViewController.m; sourceTree = "<group>"; };
 		E78835821C51EE4F00F67C63 /* AppComponentsWebKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsWebKit.h; sourceTree = "<group>"; };
-		E78835851C5264E900F67C63 /* UIWebView+ACWebKitAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWebView+ACWebKitAdditions.h"; sourceTree = "<group>"; };
-		E78835861C5264E900F67C63 /* UIWebView+ACWebKitAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+ACWebKitAdditions.m"; sourceTree = "<group>"; };
-		E78835871C52651B00F67C63 /* ACWebViewHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACWebViewHelper.h; sourceTree = "<group>"; };
-		E78835881C52651B00F67C63 /* ACWebViewHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACWebViewHelper.m; sourceTree = "<group>"; };
 		E78835911C536C1F00F67C63 /* ESApp+ACRemoteNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACRemoteNotification.h"; sourceTree = "<group>"; };
 		E78835921C536C1F00F67C63 /* ESApp+ACRemoteNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACRemoteNotification.m"; sourceTree = "<group>"; };
 		E78835B51C53D61100F67C63 /* AppComponentsVendorServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsVendorServices.h; sourceTree = "<group>"; };
@@ -148,10 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				E78835821C51EE4F00F67C63 /* AppComponentsWebKit.h */,
-				E78835851C5264E900F67C63 /* UIWebView+ACWebKitAdditions.h */,
-				E78835861C5264E900F67C63 /* UIWebView+ACWebKitAdditions.m */,
-				E78835871C52651B00F67C63 /* ACWebViewHelper.h */,
-				E78835881C52651B00F67C63 /* ACWebViewHelper.m */,
 				E788357F1C51ED2C00F67C63 /* ACWebViewController.h */,
 				E788357C1C51ED2C00F67C63 /* ACWebViewController+Private.h */,
 				E78835801C51ED2C00F67C63 /* ACWebViewController.m */,

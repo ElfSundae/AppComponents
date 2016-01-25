@@ -113,7 +113,7 @@ static NSDate *__gVerifyPhoneSharedDateOfPreviousSendingCode = nil;
         UIView *codeLeftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, rowHeight, rowHeight)];
         UILabel *codeLeftIconLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         codeLeftIconLabel.backgroundColor = [UIColor clearColor];
-        FAKFontAwesome *codeLeftIcon = [FAKFontAwesome expeditedsslIconWithSize:24]; // fa-expeditedssl
+        FAKFontAwesome *codeLeftIcon = [FAKFontAwesome iconWithCode:[FAKFontAwesome allIcons][@"fa-expeditedssl"] size:24];
         [codeLeftIcon setAttributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
         codeLeftIconLabel.attributedText = [codeLeftIcon attributedString];
         [codeLeftIconLabel sizeToFit];

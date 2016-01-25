@@ -71,15 +71,18 @@ Pod::Spec.new do |s|
     ss.private_header_files = "AppComponents/Auth/**/*+Private.h"
     ss.dependency           "AppComponents/App"
     ss.dependency           "AppComponents/VendorServices/MobSMS"
+    ss.dependency           "ESFramework/UIKit/View"
   end
 
   s.subspec "WebKit" do |ss|
     ss.source_files         = "AppComponents/WebKit/**/*.{h,m}"
     ss.private_header_files = "AppComponents/WebKit/**/*+Private.h"
     ss.dependency           "AppComponents/App"
+    ss.dependency           "AppComponents/VendorServices/ImageViewController"
     ss.dependency           "WebViewJavascriptBridge"
     ss.dependency           "ESFramework/App"
-    ss.dependency           "ESFramework/UIKit"
+    ss.dependency           "ESFramework/UIKit/View"
+    ss.dependency           "ESFramework/UIKit/RefreshControl"
     ss.dependency           "ESFramework/StoreKit"
   end
 
@@ -100,7 +103,7 @@ Pod::Spec.new do |s|
 
     ss.subspec "XGPush" do |sss|
       sss.source_files      = "AppComponents/VendorServices/XGPush/**/*.{h,m}"
-      sss.dependency        "ESFramework/App"
+      sss.dependency        "AppComponents/App"
       sss.dependency        "APIService-XGPush"
     end
 
