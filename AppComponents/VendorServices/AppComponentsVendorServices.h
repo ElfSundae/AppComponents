@@ -11,3 +11,4 @@
 #import <AppComponents/ESApp+ACMobSMS.h>
 #import <AppComponents/ESApp+ACXGPush.h>
 #import <AppComponents/ACRemoteNotificationXGPushService.h>
+#import <AppComponents/ESApp+ACImageViewController.h>

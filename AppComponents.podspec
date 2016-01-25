@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "AppComponents"
-  s.version           = "1.0.2"
+  s.version           = "1.0.3"
   s.license           = "MIT"
   s.summary           = "Components for iOS development."
   s.homepage          = "https://github.com/ElfSundae/AppComponents"
@@ -116,6 +116,7 @@ Pod::Spec.new do |s|
       sss.dependency        "AppComponents/App"
       sss.dependency        "JTSImageViewController"
     end
+
   end # VendorService
 
 end

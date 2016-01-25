@@ -16,71 +16,75 @@ PODS:
     - AFNetworking/NSURLSession
   - APIService-TalkingData (2.1.21)
   - APIService-UmengAnalytics (3.6.6)
-  - AppComponents (1.0.2):
-    - AppComponents/Ad (= 1.0.2)
-    - AppComponents/App (= 1.0.2)
-    - AppComponents/AppUpdater (= 1.0.2)
-    - AppComponents/Auth (= 1.0.2)
-    - AppComponents/Core (= 1.0.2)
-    - AppComponents/Encryptor (= 1.0.2)
-    - AppComponents/Networking (= 1.0.2)
-    - AppComponents/UDID (= 1.0.2)
-    - AppComponents/VendorServices (= 1.0.2)
-    - AppComponents/View (= 1.0.2)
-    - AppComponents/WebKit (= 1.0.2)
-  - AppComponents/Ad (1.0.2):
+  - AppComponents (1.0.3):
+    - AppComponents/Ad (= 1.0.3)
+    - AppComponents/App (= 1.0.3)
+    - AppComponents/AppUpdater (= 1.0.3)
+    - AppComponents/Auth (= 1.0.3)
+    - AppComponents/Core (= 1.0.3)
+    - AppComponents/Encryptor (= 1.0.3)
+    - AppComponents/Networking (= 1.0.3)
+    - AppComponents/UDID (= 1.0.3)
+    - AppComponents/VendorServices (= 1.0.3)
+    - AppComponents/View (= 1.0.3)
+    - AppComponents/WebKit (= 1.0.3)
+  - AppComponents/Ad (1.0.3):
     - AppComponents/Core
     - ESFramework/App
-  - AppComponents/App (1.0.2):
+  - AppComponents/App (1.0.3):
     - AppComponents/Core
     - ESFramework/App
     - FontAwesomeKit/FontAwesome
     - MBProgressHUD
-  - AppComponents/AppUpdater (1.0.2):
+  - AppComponents/AppUpdater (1.0.3):
     - AppComponents/Core
     - ESFramework/App
     - ESFramework/StoreKit
-  - AppComponents/Auth (1.0.2):
+  - AppComponents/Auth (1.0.3):
     - AppComponents/App
     - AppComponents/VendorServices/MobSMS
-  - AppComponents/Core (1.0.2):
+  - AppComponents/Core (1.0.3):
     - ESFramework/Additions
     - ESFramework/Core
-  - AppComponents/Encryptor (1.0.2):
+  - AppComponents/Encryptor (1.0.3):
     - ESFramework/Core
-  - AppComponents/Networking (1.0.2):
+  - AppComponents/Networking (1.0.3):
     - AFNetworking (~> 3.0)
     - AppComponents/App
     - AppComponents/Encryptor
-  - AppComponents/UDID (1.0.2):
+  - AppComponents/UDID (1.0.3):
     - AppComponents/Core
     - UICKeyChainStore
-  - AppComponents/VendorServices (1.0.2):
-    - AppComponents/VendorServices/ImageViewController (= 1.0.2)
-    - AppComponents/VendorServices/MobSMS (= 1.0.2)
-    - AppComponents/VendorServices/TalkingDataAnalytics (= 1.0.2)
-    - AppComponents/VendorServices/UmengAnalytics (= 1.0.2)
-    - AppComponents/VendorServices/XGPush (= 1.0.2)
-  - AppComponents/VendorServices/ImageViewController (1.0.2):
+  - AppComponents/VendorServices (1.0.3):
+    - AppComponents/VendorServices/ImageViewController (= 1.0.3)
+    - AppComponents/VendorServices/MobSMS (= 1.0.3)
+    - AppComponents/VendorServices/SQLitePersistentObjects (= 1.0.3)
+    - AppComponents/VendorServices/TalkingDataAnalytics (= 1.0.3)
+    - AppComponents/VendorServices/UmengAnalytics (= 1.0.3)
+    - AppComponents/VendorServices/XGPush (= 1.0.3)
+  - AppComponents/VendorServices/ImageViewController (1.0.3):
     - AppComponents/App
     - JTSImageViewController
-  - AppComponents/VendorServices/MobSMS (1.0.2):
+  - AppComponents/VendorServices/MobSMS (1.0.3):
     - ESFramework/App
     - MOBFoundation_IDFA
     - SMSSDK
-  - AppComponents/VendorServices/TalkingDataAnalytics (1.0.2):
+  - AppComponents/VendorServices/SQLitePersistentObjects (1.0.3):
+    - ESFramework/App
+    - SQLitePersistentObjects
+  - AppComponents/VendorServices/TalkingDataAnalytics (1.0.3):
     - APIService-TalkingData
     - ESFramework/App
-  - AppComponents/VendorServices/UmengAnalytics (1.0.2):
+  - AppComponents/VendorServices/UmengAnalytics (1.0.3):
     - APIService-UmengAnalytics
     - ESFramework/App
-  - AppComponents/VendorServices/XGPush (1.0.2):
+  - AppComponents/VendorServices/XGPush (1.0.3):
     - ESFramework/App
     - QQ_XGPush
-  - AppComponents/View (1.0.2):
+  - AppComponents/View (1.0.3):
     - AppComponents/Core
     - ESFramework/UIKit
-  - AppComponents/WebKit (1.0.2):
+  - AppComponents/WebKit (1.0.3):
     - AppComponents/App
     - ESFramework/App
     - ESFramework/StoreKit
@@ -125,6 +129,7 @@ PODS:
   - MOBFoundation_IDFA (1.3.1)
   - QQ_XGPush (2.4.6)
   - SMSSDK (2.0.0)
+  - SQLitePersistentObjects (1.1.0)
   - UICKeyChainStore (2.1.0)
   - WebViewJavascriptBridge (4.1.5)
 
@@ -148,7 +153,7 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   APIService-TalkingData: 0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
-  AppComponents: 55b765b555832dd600e38e7452b391656b2b99b4
+  AppComponents: cd5b591d2b4b37d38a4e0d42f0c1047f1d796ea6
   ESFramework: 23128a85e9835898044dea8ff5d1f88c64744526
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
@@ -156,6 +161,7 @@ SPEC CHECKSUMS:
   MOBFoundation_IDFA: 0b4f8248e12384fc32b861a9b75a83825e8fb444
   QQ_XGPush: a4aff943fbde8d4f79245ff5ca6a4786a6433d63
   SMSSDK: 3be0004bddcfdc86c305fc96e77d3a724eab1b18
+  SQLitePersistentObjects: 9a7622dfc571917e7261f282c4bfb14c65448117
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   WebViewJavascriptBridge: e7b6669bebfc4f151daa0fdec3c8c24c8dc3a24e
 
