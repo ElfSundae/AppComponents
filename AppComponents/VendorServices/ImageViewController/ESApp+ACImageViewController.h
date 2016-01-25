@@ -14,11 +14,12 @@
 <JTSImageViewControllerDismissalDelegate, JTSImageViewControllerInteractionsDelegate>
 
 @property (nonatomic, strong) JTSImageViewController *imageViewControler;
+@property (nonatomic) JTSImageViewControllerBackgroundOptions defaultImageViewControllerBackgroundOptions;
 
 - (JTSImageViewController *)showImageViewControllerWithImageInfo:(JTSImageInfo *)imageInfo
                                                backgroundOptions:(JTSImageViewControllerBackgroundOptions)backgroundOptions;
 
-/// with JTSImageViewControllerBackgroundOption_Blurred
+/// with [self defaultImageViewControllerBackgroundOptions]
 - (JTSImageViewController *)showImageViewControllerWithImageInfo:(JTSImageInfo *)imageInfo;
 
 - (JTSImageViewController *)showImageViewControllerFromView:(UIView *)view

@@ -9,9 +9,11 @@
 #import "ESApp+ACImageViewController.h"
 #import <ESFramework/UIView+ESShortcut.h>
 #import <ESFramework/UIActionSheet+ESBlock.h>
+#import <ESFramework/NSObject+ESAssociatedObjectHelper.h>
 #import <AppComponents/ESApp+ACHelper.h>
 
 ESDefineAssociatedObjectKey(imageViewControler);
+ESDefineAssociatedObjectKey(defaultImageViewControllerBackgroundOptions);
 
 @implementation ESApp (ACImageViewController)
 
@@ -23,6 +25,16 @@ ESDefineAssociatedObjectKey(imageViewControler);
 - (void)setImageViewControler:(JTSImageViewController *)imageViewControler
 {
         ESSetAssociatedObject(self, imageViewControlerKey, imageViewControler, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (JTSImageViewControllerBackgroundOptions)defaultImageViewControllerBackgroundOptions
+{
+        return [self es_getAssociatedIntegerWithKey:defaultImageViewControllerBackgroundOptionsKey defaultValue:JTSImageViewControllerBackgroundOption_Blurred];
+}
+
+- (void)setDefaultImageViewControllerBackgroundOptions:(JTSImageViewControllerBackgroundOptions)value
+{
+        [self es_setAssociatedIntegerWithKey:defaultImageViewControllerBackgroundOptionsKey value:value];
 }
 
 - (JTSImageViewController *)showImageViewControllerWithImageInfo:(JTSImageInfo *)imageInfo
@@ -61,7 +73,7 @@ ESDefineAssociatedObjectKey(imageViewControler);
 
 - (JTSImageViewController *)showImageViewControllerWithImageInfo:(JTSImageInfo *)imageInfo
 {
-        return [self showImageViewControllerWithImageInfo:imageInfo backgroundOptions:JTSImageViewControllerBackgroundOption_Blurred];
+        return [self showImageViewControllerWithImageInfo:imageInfo backgroundOptions:self.defaultImageViewControllerBackgroundOptions];
 }
 
 - (JTSImageViewController *)ac_showImageViewControllerFromView:(UIView *)view
@@ -115,6 +127,11 @@ ESDefineAssociatedObjectKey(imageViewControler);
                 [self.imageViewControler dismiss:animated];
                 self.imageViewControler = nil;
         }
+}
+
+- (JTSImageViewControllerBackgroundOptions)defaultImageViewControllerBackgroundOptions
+{
+        return (JTSImageViewControllerBackgroundOption_Blurred);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
