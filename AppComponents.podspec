@@ -64,7 +64,6 @@ Pod::Spec.new do |s|
     ss.dependency           "ESFramework/App"
     ss.dependency           "MBProgressHUD"
     ss.dependency           "FontAwesomeKit/FontAwesome"
-    ss.dependency           "JTSImageViewController"
   end
 
   s.subspec "Auth" do |ss|
@@ -110,6 +109,12 @@ Pod::Spec.new do |s|
       sss.dependency        "ESFramework/App"
       sss.dependency        "MOBFoundation_IDFA"
       sss.dependency        "SMSSDK"
+    end
+
+    ss.subspec "ImageViewController" do |sss|
+      sss.source_files      = "AppComponents/VendorServices/ImageViewController/**/*.{h,m}"
+      sss.dependency        "AppComponents/App"
+      sss.dependency        "JTSImageViewController"
     end
   end # VendorService
 

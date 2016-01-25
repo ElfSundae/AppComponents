@@ -27,6 +27,10 @@
 		E7777D8B1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACRemoteNotificationServiceRegister.m; sourceTree = "<group>"; };
 		E7777D8C1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationXGPushService.h; sourceTree = "<group>"; };
 		E7777D8D1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACRemoteNotificationXGPushService.m; sourceTree = "<group>"; };
+		E7777D8F1C55C5AD005E41C7 /* ESApp+ACImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACImageViewController.h"; sourceTree = "<group>"; };
+		E7777D901C55C5AD005E41C7 /* ESApp+ACImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACImageViewController.m"; sourceTree = "<group>"; };
+		E7777D911C55E912005E41C7 /* JTSImageInfo+ACAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JTSImageInfo+ACAdditions.h"; sourceTree = "<group>"; };
+		E7777D921C55E912005E41C7 /* JTSImageInfo+ACAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JTSImageInfo+ACAdditions.m"; sourceTree = "<group>"; };
 		E78834C11C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthVerifyPhoneViewController.h; sourceTree = "<group>"; };
 		E78834C21C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthVerifyPhoneViewController.m; sourceTree = "<group>"; };
 		E78834C51C51A0F700F67C63 /* AppComponentsAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsAuth.h; sourceTree = "<group>"; };
@@ -110,6 +114,17 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		E7777D8E1C55C58C005E41C7 /* ImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E7777D911C55E912005E41C7 /* JTSImageInfo+ACAdditions.h */,
+				E7777D921C55E912005E41C7 /* JTSImageInfo+ACAdditions.m */,
+				E7777D8F1C55C5AD005E41C7 /* ESApp+ACImageViewController.h */,
+				E7777D901C55C5AD005E41C7 /* ESApp+ACImageViewController.m */,
+			);
+			path = ImageViewController;
+			sourceTree = "<group>";
+		};
 		E78834BE1C51A0C300F67C63 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +165,7 @@
 				E78835B91C53D61100F67C63 /* TalkingDataAnalytics */,
 				E78835B61C53D61100F67C63 /* MobSMS */,
 				E78835BF1C53D61100F67C63 /* XGPush */,
+				E7777D8E1C55C58C005E41C7 /* ImageViewController */,
 			);
 			path = VendorServices;
 			sourceTree = "<group>";
