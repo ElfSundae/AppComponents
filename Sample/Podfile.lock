@@ -90,12 +90,6 @@ PODS:
     - ESFramework/UIKit/RefreshControl
     - ESFramework/UIKit/View
     - WebViewJavascriptBridge
-  - ESFramework (2.3.2):
-    - ESFramework/Additions (= 2.3.2)
-    - ESFramework/App (= 2.3.2)
-    - ESFramework/Core (= 2.3.2)
-    - ESFramework/StoreKit (= 2.3.2)
-    - ESFramework/UIKit (= 2.3.2)
   - ESFramework/Additions (2.3.2):
     - ESFramework/Core
   - ESFramework/App (2.3.2):
@@ -133,7 +127,6 @@ PODS:
 
 DEPENDENCIES:
   - AppComponents (from `../AppComponents.podspec`)
-  - ESFramework
 
 EXTERNAL SOURCES:
   AppComponents:

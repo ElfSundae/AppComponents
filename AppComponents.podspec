@@ -80,7 +80,6 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/App"
     ss.dependency           "AppComponents/VendorServices/ImageViewController"
     ss.dependency           "WebViewJavascriptBridge"
-    ss.dependency           "ESFramework/App"
     ss.dependency           "ESFramework/UIKit/View"
     ss.dependency           "ESFramework/UIKit/RefreshControl"
     ss.dependency           "ESFramework/StoreKit"
