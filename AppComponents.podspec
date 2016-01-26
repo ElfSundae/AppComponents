@@ -63,7 +63,6 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/Core"
     ss.dependency           "ESFramework/App"
     ss.dependency           "MBProgressHUD"
-    ss.dependency           "FontAwesomeKit/FontAwesome"
   end
 
   s.subspec "Auth" do |ss|
@@ -72,6 +71,7 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/App"
     ss.dependency           "AppComponents/VendorServices/MobSMS"
     ss.dependency           "ESFramework/UIKit/View"
+    ss.dependency           "FontAwesomeKit/FontAwesome"
   end
 
   s.subspec "WebKit" do |ss|

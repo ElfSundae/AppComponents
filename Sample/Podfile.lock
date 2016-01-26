@@ -35,7 +35,6 @@ PODS:
   - AppComponents/App (1.0.3):
     - AppComponents/Core
     - ESFramework/App
-    - FontAwesomeKit/FontAwesome
     - MBProgressHUD
   - AppComponents/AppUpdater (1.0.3):
     - AppComponents/Core
@@ -45,6 +44,7 @@ PODS:
     - AppComponents/App
     - AppComponents/VendorServices/MobSMS
     - ESFramework/UIKit/View
+    - FontAwesomeKit/FontAwesome
   - AppComponents/Core (1.0.3):
     - ESFramework/Additions
     - ESFramework/Core
@@ -85,7 +85,6 @@ PODS:
   - AppComponents/WebKit (1.0.3):
     - AppComponents/App
     - AppComponents/VendorServices/ImageViewController
-    - ESFramework/App
     - ESFramework/StoreKit
     - ESFramework/UIKit/RefreshControl
     - ESFramework/UIKit/View
@@ -137,7 +136,7 @@ SPEC CHECKSUMS:
   APIService-TalkingData: 0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
-  AppComponents: 3790f43388092066b8e0f69b03cfdf395b280fe3
+  AppComponents: dc682aeba6c13ed06c77a2d7746448b532056067
   ESFramework: 23128a85e9835898044dea8ff5d1f88c64744526
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9

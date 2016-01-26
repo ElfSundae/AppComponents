@@ -7,7 +7,6 @@
 //
 
 #import "ESApp+ACAlertAdditions.h"
-#import <FontAwesomeKit/FAKFontAwesome.h>
 #import <ESFramework/ESFrameworkAdditions.h>
 #import <AppComponents/ACConfig.h>
 
@@ -37,20 +36,37 @@
 
 - (MBProgressHUD *)showCheckmarkHUDWithTitle:(NSString *)title timeInterval:(NSTimeInterval)timeInterval animated:(BOOL)animated
 {
-        MBProgressHUD *hud = self.progressHUD ?: [self showProgressHUDWithTitle:title animated:animated];
-        hud.labelText = title;
-        hud.detailsLabelText = nil;
-        hud.mode = MBProgressHUDModeCustomView;
-        static UIImage *__gCheckmarkHUDImage = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                FAKFontAwesome *icon = [FAKFontAwesome checkIconWithSize:40.f];
-                [icon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
-                __gCheckmarkHUDImage = [icon imageWithSize:CGSizeMake(40.f, 40.f)];
-        });
-        hud.customView = [[UIImageView alloc] initWithImage:__gCheckmarkHUDImage];
-        hud.minSize = CGSizeMake(64.f, 64.f);
+        MBProgressHUD *hud = self.progressHUD ?: [self showProgressHUDWithTitle:nil animated:animated];
+        Class FAKFontAwesomeClass = NSClassFromString(@"FAKFontAwesome");
+        if (FAKFontAwesomeClass) {
+                hud.labelText = title;
+                hud.detailsLabelText = nil;
+                hud.mode = MBProgressHUDModeCustomView;
+                static UIImage *__gCheckmarkHUDImage = nil;
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+                        void *iconResult = nil;
+                        if (ESInvokeSelector(FAKFontAwesomeClass, @selector(checkIconWithSize:), &iconResult, 40.f)) {
+                                id icon = (__bridge id)iconResult;
+                                ESInvokeSelector(icon, @selector(addAttribute:value:), NULL, NSForegroundColorAttributeName, [UIColor whiteColor]);
+                                void *iconImageResult;
+                                ESInvokeSelector(icon, @selector(imageWithSize:), &iconImageResult, CGSizeMake(40.f, 40.f));
+                                __gCheckmarkHUDImage = (__bridge id)iconImageResult;
+                        }
+#pragma clang diagnostic pop
+                });
+                hud.customView = [[UIImageView alloc] initWithImage:__gCheckmarkHUDImage];
+        } else {
+                hud.labelFont = [UIFont boldSystemFontOfSize:42.f];
+                hud.labelText = @"✓";
+                hud.detailsLabelFont = [UIFont boldSystemFontOfSize:16.f];
+                hud.detailsLabelText = title;
+                hud.mode = MBProgressHUDModeText;
+        }
         
+        hud.minSize = CGSizeMake(64.f, 64.f);
         if (timeInterval <= 0.0) {
                 timeInterval = ESDoubleValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsTimeInterval), kACAppDefaultTipsTimeInterval);
         }
