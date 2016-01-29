@@ -32,8 +32,9 @@ Pod::Spec.new do |s|
     ss.dependency           "UICKeyChainStore"
   end
 
-  s.subspec "View" do |ss|
-    ss.source_files         = "AppComponents/View/**/*.{h,m}"
+  s.subspec "UIKit" do |ss|
+    ss.source_files         = "AppComponents/UIKit/**/*.{h,m}"
+    ss.private_header_files = "AppComponents/UIKit/**/*+Private.h"
     ss.dependency           "AppComponents/Core"
     ss.dependency           "ESFramework/UIKit"
   end

@@ -26,8 +26,8 @@ PODS:
     - AppComponents/Encryptor (= 1.0.3)
     - AppComponents/Networking (= 1.0.3)
     - AppComponents/UDID (= 1.0.3)
+    - AppComponents/UIKit (= 1.0.3)
     - AppComponents/VendorServices (= 1.0.3)
-    - AppComponents/View (= 1.0.3)
     - AppComponents/WebKit (= 1.0.3)
   - AppComponents/Ad (1.0.3):
     - AppComponents/Core
@@ -57,6 +57,9 @@ PODS:
   - AppComponents/UDID (1.0.3):
     - AppComponents/Core
     - UICKeyChainStore
+  - AppComponents/UIKit (1.0.3):
+    - AppComponents/Core
+    - ESFramework/UIKit
   - AppComponents/VendorServices (1.0.3):
     - AppComponents/VendorServices/ImageViewController (= 1.0.3)
     - AppComponents/VendorServices/MobSMS (= 1.0.3)
@@ -79,9 +82,6 @@ PODS:
   - AppComponents/VendorServices/XGPush (1.0.3):
     - APIService-XGPush
     - AppComponents/App
-  - AppComponents/View (1.0.3):
-    - AppComponents/Core
-    - ESFramework/UIKit
   - AppComponents/WebKit (1.0.3):
     - AppComponents/App
     - AppComponents/VendorServices/ImageViewController
@@ -136,7 +136,7 @@ SPEC CHECKSUMS:
   APIService-TalkingData: 0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
-  AppComponents: dc682aeba6c13ed06c77a2d7746448b532056067
+  AppComponents: 845ed011354caedf9e386989cafe9241876b8680
   ESFramework: 23128a85e9835898044dea8ff5d1f88c64744526
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9

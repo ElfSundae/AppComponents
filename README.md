@@ -37,7 +37,7 @@ pod 'AppComponents', :git => 'https://github.com/ElfSundae/AppComponents.git', :
 + `AppComponents/Core`
 + `AppComponents/Encryptor` encryption and decryption
 + `AppComponents/UDID` generates Unique Device Identifier via IDFA
-+ `AppComponents/View`
++ `AppComponents/UIKit`
 + `AppComponents/Ad` shows a simple ad banner while app is reviewing, to use IDFA in app
 + `AppComponents/AppUpdater` check/alert/download app new version
 + `AppComponents/Networking` backed on AFNetworking

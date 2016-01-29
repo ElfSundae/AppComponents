@@ -7,6 +7,7 @@
 //
 
 #import "ACBorderLabel.h"
+#import <ESFramework/UIColor+ESAdditions.h>
 
 @implementation ACBorderLabel
 
