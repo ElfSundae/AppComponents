@@ -9,7 +9,5 @@
 #import "RootViewController.h"
 
 @interface App : ESApp
-
 @property (nonatomic, strong) UINavigationController *rootViewController;
-
 @end

@@ -63,6 +63,11 @@
 		E78F78371C5B4B7B00B9A33C /* ACBorderLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACBorderLabel.m; sourceTree = "<group>"; };
 		E78F784F1C5B509800B9A33C /* ACTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACTableViewCell.h; sourceTree = "<group>"; };
 		E78F78501C5B509800B9A33C /* ACTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACTableViewCell.m; sourceTree = "<group>"; };
+		E78F78511C5B84E600B9A33C /* ACTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACTableViewController.h; sourceTree = "<group>"; };
+		E78F78521C5B84E600B9A33C /* ACTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACTableViewController.m; sourceTree = "<group>"; };
+		E78F78531C5B85F100B9A33C /* ACTableViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACTableViewController+Private.h"; sourceTree = "<group>"; };
+		E78F78561C5B860000B9A33C /* ACTableViewController+Subclassing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACTableViewController+Subclassing.m"; sourceTree = "<group>"; };
+		E78F78581C5B863A00B9A33C /* ACTableViewController+TableViewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACTableViewController+TableViewDataSource.m"; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
@@ -231,6 +236,11 @@
 			children = (
 				E78F784F1C5B509800B9A33C /* ACTableViewCell.h */,
 				E78F78501C5B509800B9A33C /* ACTableViewCell.m */,
+				E78F78511C5B84E600B9A33C /* ACTableViewController.h */,
+				E78F78531C5B85F100B9A33C /* ACTableViewController+Private.h */,
+				E78F78521C5B84E600B9A33C /* ACTableViewController.m */,
+				E78F78561C5B860000B9A33C /* ACTableViewController+Subclassing.m */,
+				E78F78581C5B863A00B9A33C /* ACTableViewController+TableViewDataSource.m */,
 			);
 			path = TableView;
 			sourceTree = "<group>";

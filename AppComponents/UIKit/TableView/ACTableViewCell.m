@@ -8,6 +8,9 @@
 
 #import "ACTableViewCell.h"
 
+CGFloat const ACTableViewCellDefaultHeight = 44.f;
+CGFloat const ACTableViewCellDefaultIconSize = 24.f;
+
 @implementation ACTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -15,10 +18,13 @@
         self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
         if (self) {
                 _cellStyle = (ACTableViewCellStyle)style;
-                self.iconImageViewEdgeInsets = [[self class] defaultIconImageEdgeInsets];
+                self.iconImageViewInset = [[self class] defaultIconImageViewInset];
                 self.iconImageViewBorderColor = [[self class] defaultBorderColor];
-                self.detailImageViewEdgeInsets = [[self class] defaultDetailImageEdgeInsets];
+                self.detailImageViewInset = [[self class] defaultDetailImageViewInset];
                 self.detailImageViewBorderColor = [[self class] defaultBorderColor];
+                self.cellPadding = 5.f;
+                self.cellMarginLeft = 10.f;
+                self.cellMarginRight = 10.f;
         }
         return self;
 }
@@ -28,9 +34,6 @@
         if (!_iconImageView) {
                 _iconImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
                 _iconImageView.backgroundColor = [UIColor clearColor];
-        }
-        
-        if (!_iconImageView.superview) {
                 [self.contentView addSubview:_iconImageView];
         }
         return _iconImageView;
@@ -41,35 +44,30 @@
         if (!_detailImageView) {
                 _detailImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
                 _detailImageView.backgroundColor = [UIColor clearColor];
-        }
-        if (!_detailImageView.superview) {
                 [self.contentView addSubview:_detailImageView];
         }
         return _detailImageView;
 }
 
-- (void)setLeftBadgeView:(UIView *)leftBadgeView
+- (void)setLeftBadgeView:(UIView *)view
 {
-        if (_leftBadgeView == leftBadgeView) {
-                return;
+        if (_leftBadgeView != view) {
+                [_leftBadgeView removeFromSuperview];
         }
-        
-        [_leftBadgeView removeFromSuperview];
-        _leftBadgeView = leftBadgeView;
-        if (_leftBadgeView.superview != self.contentView) {
+        _leftBadgeView = view;
+        if (_leftBadgeView && _leftBadgeView.superview != self.contentView) {
                 [_leftBadgeView removeFromSuperview];
                 [self.contentView addSubview:_leftBadgeView];
         }
 }
 
-- (void)setRightBadgeView:(UIView *)rightBadgeView
+- (void)setRightBadgeView:(UIView *)view
 {
-        if (_rightBadgeView == rightBadgeView) {
-                return;
+        if (_rightBadgeView != view) {
+                [_rightBadgeView removeFromSuperview];
         }
-        [_rightBadgeView removeFromSuperview];
-        _rightBadgeView = rightBadgeView;
-        if (_rightBadgeView.superview != self.contentView) {
+        _rightBadgeView = view;
+        if (_rightBadgeView && _rightBadgeView.superview != self.contentView) {
                 [_rightBadgeView removeFromSuperview];
                 [self.contentView addSubview:_rightBadgeView];
         }
@@ -80,34 +78,43 @@
         [super layoutSubviews];
         
         // iconImageView, on the most Left
-        CGRect imageFrame = CGRectZero;
-        if (self.alwaysShowIconImageView || self.iconImageView.image) {
-                imageFrame.origin.x = self.iconImageViewEdgeInsets.left;
-                imageFrame.size.height = self.contentView.height - self.iconImageViewEdgeInsets.top - self.iconImageViewEdgeInsets.bottom;
-                imageFrame.size.width = imageFrame.size.height;
-                imageFrame.origin.y = (self.contentView.height - imageFrame.size.height) / 2.f;
+        CGRect iconImageFrame = CGRectZero;
+        if (self.alwaysShowsIconImageView || _iconImageView.image) {
+                iconImageFrame.origin.x = self.iconImageViewInset.left;
+                if (self.iconImageViewSize.width > 0 && self.iconImageViewSize.height > 0) {
+                        iconImageFrame.size = self.iconImageViewSize;
+                } else {
+                        iconImageFrame.size.height = self.contentView.height - self.iconImageViewInset.top - self.iconImageViewInset.bottom;
+                        iconImageFrame.size.width = iconImageFrame.size.height;
+                }
+                iconImageFrame.origin.y = (self.contentView.height - iconImageFrame.size.height) / 2.f;
+                self.iconImageView.frame = iconImageFrame;
+        } else if (_iconImageView) {
+                self.iconImageView.frame = CGRectZero;
         }
-        self.iconImageView.frame = imageFrame;
         
         // iconImageView's corner and border
-        if (self.iconImageView.width > 0 && self.iconImageViewCornerRadius > 0 && self.iconImageViewBorderWidth > 0) {
-                self.iconImageView.layer.mask = nil;
-                [self.iconImageView setCornerRadius:self.iconImageViewCornerRadius borderWidth:self.iconImageViewBorderWidth borderColor:self.iconImageViewBorderColor];
-        } else if (self.iconImageView.width > 0  && self.iconImageViewCornerRadius > 0) {
-                self.iconImageView.layer.masksToBounds = NO;
-                self.iconImageView.layer.cornerRadius = 0.f;
-                self.iconImageView.layer.borderWidth = 0.f;
-                [self.iconImageView setMaskLayerWithCornerRadius:self.iconImageViewCornerRadius];
-        } else {
-                self.iconImageView.layer.mask = nil;
-                self.iconImageView.layer.masksToBounds = NO;
-                self.iconImageView.layer.cornerRadius = 0.f;
-                self.iconImageView.layer.borderWidth = 0.f;
+        if (_iconImageView) {
+                if (!CGRectIsEmpty(self.iconImageView.frame) && self.iconImageViewCornerRadius > 0 && self.iconImageViewBorderWidth > 0) {
+                        self.iconImageView.layer.mask = nil;
+                        [self.iconImageView setCornerRadius:self.iconImageViewCornerRadius borderWidth:self.iconImageViewBorderWidth borderColor:self.iconImageViewBorderColor];
+                } else if (!CGRectIsEmpty(self.iconImageView.frame)  && self.iconImageViewCornerRadius > 0) {
+                        self.iconImageView.layer.masksToBounds = NO;
+                        self.iconImageView.layer.cornerRadius = 0.f;
+                        self.iconImageView.layer.borderWidth = 0.f;
+                        [self.iconImageView setMaskLayerWithCornerRadius:self.iconImageViewCornerRadius];
+                } else {
+                        self.iconImageView.layer.mask = nil;
+                        self.iconImageView.layer.masksToBounds = NO;
+                        self.iconImageView.layer.cornerRadius = 0.f;
+                        self.iconImageView.layer.borderWidth = 0.f;
+                }
         }
         
+        
         // textLabel, right aligned to iconImageView
-        if (self.iconImageView.width > 0 && ACTableViewCellStyleCenterLabel != self.cellStyle) {
-                self.textLabel.left = self.iconImageView.right + self.iconImageViewEdgeInsets.right;
+        if (_iconImageView && !CGRectIsEmpty(self.iconImageView.frame) && ACTableViewCellStyleCenterLabel != self.cellStyle) {
+                self.textLabel.left = self.iconImageView.right + self.iconImageViewInset.right;
         }
         
         // detailTextLabel
@@ -117,79 +124,75 @@
         
         // leftBadgeView, right aligned to iconImageView or textLabel
         CGRect leftBadgeFrame = CGRectZero;
-        if (self.leftBadgeView) {
+        if (_leftBadgeView) {
                 leftBadgeFrame.size = self.leftBadgeView.size;
-        }
-        leftBadgeFrame.origin.y = (self.contentView.height - leftBadgeFrame.size.height) / 2.f;
-        if (ACTableViewCellStyleCenterLabel != self.cellStyle) {
-                if (self.textLabel.width > 0) {
-                        leftBadgeFrame.origin.x = self.textLabel.right + self.detailImageViewEdgeInsets.left;
-                } else if (self.iconImageView.width > 0) {
-                        leftBadgeFrame.origin.x = self.iconImageView.right + self.iconImageViewEdgeInsets.right;
+                leftBadgeFrame.origin.y = (self.contentView.height - leftBadgeFrame.size.height) / 2.f;
+                if (ACTableViewCellStyleCenterLabel != self.cellStyle && !CGRectIsEmpty(self.textLabel.frame)) {
+                        leftBadgeFrame.origin.x = self.textLabel.right + self.cellPadding;
+                } else if (!CGRectIsEmpty(iconImageFrame)) {
+                        leftBadgeFrame.origin.x = iconImageFrame.origin.x + iconImageFrame.size.width + self.iconImageViewInset.right;
                 } else {
-                        leftBadgeFrame.origin.x = self.iconImageViewEdgeInsets.left;
+                       leftBadgeFrame.origin.x = self.cellMarginLeft;
                 }
-        } else {
-                if (self.iconImageView.width > 0) {
-                        leftBadgeFrame.origin.x = self.iconImageView.right + self.iconImageViewEdgeInsets.right;
-                } else {
-                        leftBadgeFrame.origin.x = self.iconImageViewEdgeInsets.left;
-                }
+                self.leftBadgeView.frame = leftBadgeFrame;
         }
-        self.leftBadgeView.frame = leftBadgeFrame;
         
-        // detailImageView, on the most right, or left aligned to detailTextLabel(cellStyleValue1)
+        // detailImageView, on the most right, or left aligned to detailTextLabel
         CGRect detailImageFrame = CGRectZero;
-        if (self.alwaysShowDetailImageView || self.detailImageView.image) {
-                detailImageFrame.size.height = (self.detailImageSize.height > 0.f && self.detailImageSize.height <= self.contentView.height ?
-                                                self.detailImageSize.height :
-                                                self.contentView.height - self.detailImageViewEdgeInsets.top - self.detailImageViewEdgeInsets.bottom);
-                detailImageFrame.size.width = (self.detailImageSize.width > 0.f ? self.detailImageSize.width :
-                                               detailImageFrame.size.height);
+        if (self.alwaysShowsDetailImageView || _detailImageView.image) {
+                if (self.detailImageViewSize.width > 0 && self.detailImageViewSize.height > 0) {
+                        detailImageFrame.size = self.detailImageViewSize;
+                } else {
+                        detailImageFrame.size.height = (self.contentView.height - self.detailImageViewInset.top - self.detailImageViewInset.bottom);
+                        detailImageFrame.size.width = detailImageFrame.size.height;
+                }
+                detailImageFrame.origin.y = (self.contentView.height - detailImageFrame.size.height) / 2.f;
+                if (!self.isDetailImageViewMostRight && ACTableViewCellStyleDefault == self.cellStyle && !CGRectIsEmpty(self.detailTextLabel.frame)) {
+                        detailImageFrame.origin.x = self.detailTextLabel.left - self.detailImageViewInset.right - detailImageFrame.size.width;
+                } else if (self.contentView.right == self.width) {
+                        detailImageFrame.origin.x = self.contentView.width - self.cellMarginRight - detailImageFrame.size.width;
+                } else {
+                        detailImageFrame.origin.x = self.contentView.width - self.cellPadding - detailImageFrame.size.width;
+                }
+                self.detailImageView.frame = detailImageFrame;
+        } else if (_detailImageView) {
+                _detailImageView.frame = CGRectZero;
         }
-        detailImageFrame.origin.y = (self.contentView.height - detailImageFrame.size.height) / 2.f;
-        if (UITableViewCellStyleValue1 == self.cellStyle && self.detailTextLabel.width > 0) {
-                detailImageFrame.origin.x = self.detailTextLabel.left - self.detailImageViewEdgeInsets.right - detailImageFrame.size.width;
-        } else if (UITableViewCellAccessoryNone == self.accessoryType) {
-                detailImageFrame.origin.x = self.contentView.width - self.iconImageViewEdgeInsets.left - detailImageFrame.size.width;
-        } else {
-                detailImageFrame.origin.x = self.contentView.width - detailImageFrame.size.width;
-        }
-        self.detailImageView.frame = detailImageFrame;
         
         // detailImageView's corner and border
-        if (detailImageFrame.size.width > 0 && self.detailImageViewCornerRadius > 0 && self.detailImageViewBorderWidth > 0) {
-                self.detailImageView.layer.mask = nil;
-                [self.detailImageView setCornerRadius:self.detailImageViewCornerRadius borderWidth:self.detailImageViewBorderWidth borderColor:self.detailImageViewBorderColor];
-        } else if (detailImageFrame.size.width > 0 && self.detailImageViewCornerRadius > 0) {
-                self.detailImageView.layer.masksToBounds = NO;
-                self.detailImageView.layer.cornerRadius = 0.f;
-                self.detailImageView.layer.borderWidth = 0.f;
-                [self.detailImageView setMaskLayerWithCornerRadius:self.detailImageViewCornerRadius];
-        } else {
-                self.detailImageView.layer.mask = nil;
-                self.detailImageView.layer.masksToBounds = NO;
-                self.detailImageView.layer.cornerRadius = 0.f;
-                self.detailImageView.layer.borderWidth = 0.f;
-                
-        }
-        
-        // rightBadgeView, left aligned to detailImageView
-        CGRect rightBadgeFrame = CGRectZero;
-        if (self.rightBadgeView) {
-                rightBadgeFrame.size = self.rightBadgeView.frame.size;
-                
-                if (self.rightBadgeView.superview != self.contentView) {
-                        [self.rightBadgeView removeFromSuperview];
-                        [self.contentView addSubview:self.rightBadgeView];
+        if (_detailImageView) {
+                if (!CGRectIsEmpty(detailImageFrame) && self.detailImageViewCornerRadius > 0 && self.detailImageViewBorderWidth > 0) {
+                        self.detailImageView.layer.mask = nil;
+                        [self.detailImageView setCornerRadius:self.detailImageViewCornerRadius borderWidth:self.detailImageViewBorderWidth borderColor:self.detailImageViewBorderColor];
+                } else if (!CGRectIsEmpty(detailImageFrame) && self.detailImageViewCornerRadius > 0) {
+                        self.detailImageView.layer.masksToBounds = NO;
+                        self.detailImageView.layer.cornerRadius = 0.f;
+                        self.detailImageView.layer.borderWidth = 0.f;
+                        [self.detailImageView setMaskLayerWithCornerRadius:self.detailImageViewCornerRadius];
+                } else {
+                        self.detailImageView.layer.mask = nil;
+                        self.detailImageView.layer.masksToBounds = NO;
+                        self.detailImageView.layer.cornerRadius = 0.f;
+                        self.detailImageView.layer.borderWidth = 0.f;
                 }
         }
-        rightBadgeFrame.origin.y = (self.contentView.height - rightBadgeFrame.size.height) / 2.f;
-        rightBadgeFrame.origin.x = detailImageFrame.origin.x - rightBadgeFrame.size.width;
-        if (detailImageFrame.size.width > 0) {
-                rightBadgeFrame.origin.x -= self.detailImageViewEdgeInsets.left;
+        
+        // rightBadgeView, left aligned to detailImageView or detailTextLabel
+        CGRect rightBadgeFrame = CGRectZero;
+        if (_rightBadgeView) {
+                rightBadgeFrame.size = self.rightBadgeView.frame.size;
+                rightBadgeFrame.origin.y = (self.contentView.height - rightBadgeFrame.size.height) / 2.f;
+                if (!self.isDetailImageViewMostRight && !CGRectIsEmpty(detailImageFrame)) {
+                        rightBadgeFrame.origin.x = detailImageFrame.origin.x - self.detailImageViewInset.left - rightBadgeFrame.size.width;
+                } else if (ACTableViewCellStyleDefault == self.cellStyle && !CGRectIsEmpty(self.detailTextLabel.frame)) {
+                        rightBadgeFrame.origin.x = self.detailTextLabel.left - self.cellPadding - rightBadgeFrame.size.width;
+                } else if (self.contentView.right == self.width) {
+                        rightBadgeFrame.origin.x = self.contentView.width - self.cellMarginRight - rightBadgeFrame.size.width;
+                } else {
+                        rightBadgeFrame.origin.x = self.contentView.width - self.cellPadding - rightBadgeFrame.size.width;
+                }
+                self.rightBadgeView.frame = rightBadgeFrame;
         }
-        self.rightBadgeView.frame = rightBadgeFrame;
 }
 
 + (UIColor *)defaultBorderColor
@@ -197,12 +200,12 @@
         return [UIColor es_lightBorderColor];
 }
 
-+ (UIEdgeInsets)defaultIconImageEdgeInsets
++ (UIEdgeInsets)defaultIconImageViewInset
 {
         return UIEdgeInsetsMake(10.f, 10.f, 10.f, 10.f);
 }
 
-+ (UIEdgeInsets)defaultDetailImageEdgeInsets
++ (UIEdgeInsets)defaultDetailImageViewInset
 {
         return UIEdgeInsetsMake(10.f, 5.f, 10.f, 5.f);
 }

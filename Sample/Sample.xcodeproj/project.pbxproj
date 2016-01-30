@@ -13,6 +13,7 @@
 		E7A38B531C4DC81200972B01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A38B521C4DC81200972B01 /* main.m */; };
 		E7A38B5E1C4DC81200972B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A38B5D1C4DC81200972B01 /* Assets.xcassets */; };
 		E7A38B611C4DC81200972B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A38B5F1C4DC81200972B01 /* LaunchScreen.storyboard */; };
+		E7E93D891C5B89040034494E /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E93D881C5B89040034494E /* DemoTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		E7A38B601C4DC81200972B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A38B621C4DC81200972B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7C3FA9C1C4EDD2E00281993 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E7E93D871C5B89040034494E /* DemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableViewController.h; sourceTree = "<group>"; };
+		E7E93D881C5B89040034494E /* DemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				E78834D21C51D55E00F67C63 /* App.m */,
 				E78834D41C51D61A00F67C63 /* RootViewController.h */,
 				E78834D51C51D61A00F67C63 /* RootViewController.m */,
+				E7E93D871C5B89040034494E /* DemoTableViewController.h */,
+				E7E93D881C5B89040034494E /* DemoTableViewController.m */,
 				E7A38B5D1C4DC81200972B01 /* Assets.xcassets */,
 				E7A38B5F1C4DC81200972B01 /* LaunchScreen.storyboard */,
 				E7A38B621C4DC81200972B01 /* Info.plist */,
@@ -230,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7E93D891C5B89040034494E /* DemoTableViewController.m in Sources */,
 				E78834D31C51D55E00F67C63 /* App.m in Sources */,
 				E7A38B531C4DC81200972B01 /* main.m in Sources */,
 				E78834D61C51D61A00F67C63 /* RootViewController.m in Sources */,
