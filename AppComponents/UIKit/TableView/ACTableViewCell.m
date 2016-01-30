@@ -34,17 +34,6 @@ CGFloat const ACTableViewCellDefaultIconSize = 24.f;
         return self;
 }
 
-- (void)applyDefaults
-{
-        self.iconImageViewInset = [[self class] defaultIconImageViewInset];
-        self.iconImageViewBorderColor = [[self class] defaultBorderColor];
-        self.detailImageViewInset = [[self class] defaultDetailImageViewInset];
-        self.detailImageViewBorderColor = [[self class] defaultBorderColor];
-        self.cellPadding = [[self class] defaultCellPadding];
-        self.cellMarginLeft = [[self class] defaultCellMarginLeft];
-        self.cellMarginRight = [[self class] defaultCellMarginRight];
-}
-
 - (UIImageView *)iconImageView
 {
         if (!_iconImageView) {
@@ -87,6 +76,25 @@ CGFloat const ACTableViewCellDefaultIconSize = 24.f;
                 [_rightBadgeView removeFromSuperview];
                 [self.contentView addSubview:_rightBadgeView];
         }
+}
+
+- (void)setCellData:(id)cellData
+{
+        [super setCellData:cellData];
+        if (self.configuresCellWithDictionaryUsingCellData) {
+                [self configureCellWithDictionary:cellData];
+        }
+}
+
+- (void)applyDefaults
+{
+        self.iconImageViewInset = [[self class] defaultIconImageViewInset];
+        self.iconImageViewBorderColor = [[self class] defaultBorderColor];
+        self.detailImageViewInset = [[self class] defaultDetailImageViewInset];
+        self.detailImageViewBorderColor = [[self class] defaultBorderColor];
+        self.cellPadding = [[self class] defaultCellPadding];
+        self.cellMarginLeft = [[self class] defaultCellMarginLeft];
+        self.cellMarginRight = [[self class] defaultCellMarginRight];
 }
 
 - (void)configureCellWithDictionary:(NSDictionary *)cellData

@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
 @property (nonatomic, readonly) ACTableViewCellStyle cellStyle;
 
 /// Uses self.cellData as NSDictionary to configure cell, defaults to NO.
-@property (nonatomic) BOOL configureCellWithDictionaryUsingCellData;
+@property (nonatomic) BOOL configuresCellWithDictionaryUsingCellData;
 
 /// default is nil. iconImageView will be created if necessary.
 @property (nonatomic, strong, readonly) UIImageView *iconImageView;
