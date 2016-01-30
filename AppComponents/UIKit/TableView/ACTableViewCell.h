@@ -7,13 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ESFramework/UIView+ESShortcut.h>
-#import <ESFramework/UIView+ESAdditions.h>
-#import <ESFramework/UIColor+ESAdditions.h>
 
 FOUNDATION_EXTERN CGFloat const ACTableViewCellDefaultHeight; // 44.f
 FOUNDATION_EXTERN CGFloat const ACTableViewCellDefaultIconSize; // 24.f (44-10-10)
-
 
 typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
         /// Simple cell with text label and optional image view (behavior of UITableViewCell in iPhoneOS 2.x)
@@ -44,7 +40,12 @@ typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
         UIView *_rightBadgeView;
 }
 
+- (instancetype)initWithCellStyle:(ACTableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+
 @property (nonatomic, readonly) ACTableViewCellStyle cellStyle;
+
+/// Uses self.cellData as NSDictionary to configure cell, defaults to NO.
+@property (nonatomic) BOOL configureCellWithDictionaryUsingCellData;
 
 /// default is nil. iconImageView will be created if necessary.
 @property (nonatomic, strong, readonly) UIImageView *iconImageView;
@@ -90,6 +91,11 @@ typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
 @property (nonatomic) CGFloat cellMarginLeft;
 /// defualt is 10.f
 @property (nonatomic) CGFloat cellMarginRight;
+
+/**
+ * Applies defaults value for properties
+ */
+- (void)applyDefaults;
 
 /**
  * cellData: {

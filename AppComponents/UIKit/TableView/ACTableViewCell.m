@@ -7,8 +7,11 @@
 //
 
 #import "ACTableViewCell.h"
-#import <ESFramework/ESTableViewController.h>
+#import <ESFramework/UIView+ESShortcut.h>
+#import <ESFramework/UIView+ESAdditions.h>
+#import <ESFramework/UIColor+ESAdditions.h>
 #import <ESFramework/ESValue.h>
+#import <ESFramework/ESTableViewController.h>
 #import <UIImageView+WebCache.h>
 
 CGFloat const ACTableViewCellDefaultHeight = 44.f;
@@ -18,18 +21,28 @@ CGFloat const ACTableViewCellDefaultIconSize = 24.f;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-        self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+        return [self initWithCellStyle:(ACTableViewCellStyle)style reuseIdentifier:reuseIdentifier];
+}
+
+- (instancetype)initWithCellStyle:(ACTableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+        self = [super initWithStyle:(UITableViewCellStyle)style reuseIdentifier:reuseIdentifier];
         if (self) {
-                _cellStyle = (ACTableViewCellStyle)style;
-                self.iconImageViewInset = [[self class] defaultIconImageViewInset];
-                self.iconImageViewBorderColor = [[self class] defaultBorderColor];
-                self.detailImageViewInset = [[self class] defaultDetailImageViewInset];
-                self.detailImageViewBorderColor = [[self class] defaultBorderColor];
-                self.cellPadding = [[self class] defaultCellPadding];
-                self.cellMarginLeft = [[self class] defaultCellMarginLeft];
-                self.cellMarginRight = [[self class] defaultCellMarginRight];
+                _cellStyle = style;
+                [self applyDefaults];
         }
         return self;
+}
+
+- (void)applyDefaults
+{
+        self.iconImageViewInset = [[self class] defaultIconImageViewInset];
+        self.iconImageViewBorderColor = [[self class] defaultBorderColor];
+        self.detailImageViewInset = [[self class] defaultDetailImageViewInset];
+        self.detailImageViewBorderColor = [[self class] defaultBorderColor];
+        self.cellPadding = [[self class] defaultCellPadding];
+        self.cellMarginLeft = [[self class] defaultCellMarginLeft];
+        self.cellMarginRight = [[self class] defaultCellMarginRight];
 }
 
 - (UIImageView *)iconImageView
