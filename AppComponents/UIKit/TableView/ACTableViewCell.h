@@ -81,7 +81,6 @@ typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
 @property (nonatomic) CGFloat detailImageViewBorderWidth;
 /// default is +[ACTableViewCell defaultBorderColor]
 @property (nonatomic, strong) UIColor *detailImageViewBorderColor;
-
 /// Determines the detailImageView is on the mostright of contentView, defaults to NO.
 @property (nonatomic, getter=isDetailImageViewMostRight) BOOL detailImageViewMostRight;
 
@@ -92,11 +91,50 @@ typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
 /// defualt is 10.f
 @property (nonatomic) CGFloat cellMarginRight;
 
+/**
+ * cellData: {
+ *      leftBadgeView:                  UIView instance
+ *      rightBadgeView:                 UIView instance
+ *      text:                           NSString/NSAttributedString
+ *      detailText:                     NSString/NSAttributedString
+ *      iconImage:                      UIImage/NSURL/NSString
+ *      detailImage:                    UIImage/NSURL/NSString 
+ *      iconImagePlaceholder:           UIImage
+ *      detailImagePlaceholder:         UIImage
+ *
+ *      accessoryType:                  NSNumber with UITableViewCellAccessoryType
+ *      selectionStyle:                 NSNumber with UITableViewCellSelectionStyle
+ *      alwaysShowsIconImageView:       NSNumber with BOOL
+ *      iconImageViewSize:              NSValue with CGSize
+ *      iconImageViewInset:             NSValue with UIEdgeInsets
+ *      iconImageViewCornerRadius:      NSNumber with CGFloat
+ *      iconImageViewBorderWidth:       NSNumber with CGFloat
+ *      iconImageViewBorderColor:       UIColor
+ *      alwaysShowsDetailImageView:     NSNumber with BOOL
+ *      detailImageViewSize:            NSValue with CGSize
+ *      detailImageViewInset:           NSValue with UIEdgeInsets
+ *      detailImageViewCornerRadius:    NSNumber with CGFloat
+ *      detailImageViewBorderWidth:     NSNumber with CGFloat
+ *      detailImageViewBorderColor:     UIColor
+ *      detailImageViewMostRight:       NSNumber with BOOL
+ *      cellPadding:                    NSNumber with CGFloat
+ *      cellMarginLeft:                 NSNumber with CGFloat
+ *      cellMarginRight:                NSNumber with CGFloat
+ * }
+ */
+- (void)configureCellWithDictionary:(NSDictionary *)cellData;
+
 /// [UIColor es_lightBorderColor]
 + (UIColor *)defaultBorderColor;
 /// (10.f, 10.f, 10.f, 10.f)
 + (UIEdgeInsets)defaultIconImageViewInset;
 /// (10.f, 5.f, 10.f, 5.f)
 + (UIEdgeInsets)defaultDetailImageViewInset;
+/// 5.f
++ (CGFloat)defaultCellPadding;
+/// 10.f
++ (CGFloat)defaultCellMarginLeft;
+/// 10.f
++ (CGFloat)defaultCellMarginRight;
 
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "ACTableViewCell.h"
+#import <ESFramework/ESTableViewController.h>
+#import <ESFramework/ESValue.h>
+#import <UIImageView+WebCache.h>
 
 CGFloat const ACTableViewCellDefaultHeight = 44.f;
 CGFloat const ACTableViewCellDefaultIconSize = 24.f;
@@ -22,9 +25,9 @@ CGFloat const ACTableViewCellDefaultIconSize = 24.f;
                 self.iconImageViewBorderColor = [[self class] defaultBorderColor];
                 self.detailImageViewInset = [[self class] defaultDetailImageViewInset];
                 self.detailImageViewBorderColor = [[self class] defaultBorderColor];
-                self.cellPadding = 5.f;
-                self.cellMarginLeft = 10.f;
-                self.cellMarginRight = 10.f;
+                self.cellPadding = [[self class] defaultCellPadding];
+                self.cellMarginLeft = [[self class] defaultCellMarginLeft];
+                self.cellMarginRight = [[self class] defaultCellMarginRight];
         }
         return self;
 }
@@ -71,6 +74,103 @@ CGFloat const ACTableViewCellDefaultIconSize = 24.f;
                 [_rightBadgeView removeFromSuperview];
                 [self.contentView addSubview:_rightBadgeView];
         }
+}
+
+- (void)configureCellWithDictionary:(NSDictionary *)cellData
+{
+        if (!ESIsDictionaryWithItems(cellData)) {
+                return;
+        }
+        
+        self.accessoryType = ESIntegerValueWithDefault(cellData[@"accessoryType"], UITableViewCellAccessoryNone);
+        self.selectionStyle = ESIntegerValueWithDefault(cellData[@"selectionStyle"], UITableViewCellSelectionStyleDefault);
+        self.leftBadgeView = [cellData[@"leftBadgeView"] isKindOfClass:[UIView class]] ? cellData[@"leftBadgeView"] : nil;
+        self.rightBadgeView = [cellData[@"rightBadgeView"] isKindOfClass:[UIView class]] ? cellData[@"rightBadgeView"] : nil;
+        id text = cellData[@"text"];
+        if ([text isKindOfClass:[NSAttributedString class]]) {
+                self.textLabel.text = nil;
+                self.textLabel.attributedText = text;
+        } else if ([text isKindOfClass:[NSString class]]) {
+                self.textLabel.text = text;
+                self.textLabel.attributedText = nil;
+        } else {
+                self.textLabel.text = nil;
+                self.textLabel.attributedText = nil;
+        }
+        id detailText = cellData[@"detailText"];
+        if ([detailText isKindOfClass:[NSAttributedString class]]) {
+                self.detailTextLabel.text = nil;
+                self.detailTextLabel.attributedText = detailText;
+        } else if ([detailText isKindOfClass:[NSString class]]) {
+                self.detailTextLabel.text = detailText;
+                self.detailTextLabel.attributedText = nil;
+        } else {
+                self.detailTextLabel.text = nil;
+                self.detailTextLabel.attributedText = nil;
+        }
+        
+        self.alwaysShowsIconImageView = ESBoolValue(cellData[@"alwaysShowsIconImageView"]);
+        self.iconImageViewSize = ([cellData[@"iconImageViewSize"] isKindOfClass:[NSValue class]] ?
+                                  [(NSValue *)cellData[@"iconImageViewSize"] CGSizeValue] :
+                                  CGSizeZero);
+        self.iconImageViewInset = ([cellData[@"iconImageViewInset"] isKindOfClass:[NSValue class]] ?
+                                   [(NSValue *)cellData[@"iconImageViewInset"] UIEdgeInsetsValue] :
+                                   [[self class] defaultIconImageViewInset]);
+        self.iconImageViewCornerRadius = ESFloatValue(cellData[@"iconImageViewCornerRadius"]);
+        self.iconImageViewBorderWidth = ESFloatValue(cellData[@"iconImageViewBorderWidth"]);
+        self.iconImageViewBorderColor = ([cellData[@"iconImageViewBorderColor"] isKindOfClass:[UIColor class]] ?
+                                         cellData[@"iconImageViewBorderColor"] :
+                                         [[self class] defaultBorderColor]);
+
+        self.alwaysShowsDetailImageView = ESBoolValue(cellData[@"alwaysShowsDetailImageView"]);
+        self.detailImageViewSize = ([cellData[@"detailImageViewSize"] isKindOfClass:[NSValue class]] ?
+                                    [(NSValue *)cellData[@"detailImageViewSize"] CGSizeValue] :
+                                    CGSizeZero);
+        self.detailImageViewInset = ([cellData[@"detailImageViewInset"] isKindOfClass:[NSValue class]] ?
+                                     [(NSValue *)cellData[@"detailImageViewInset"] UIEdgeInsetsValue] :
+                                     [[self class] defaultDetailImageViewInset]);
+        self.detailImageViewCornerRadius = ESFloatValue(cellData[@"detailImageViewCornerRadius"]);
+        self.detailImageViewBorderWidth = ESFloatValue(cellData[@"detailImageViewBorderWidth"]);
+        self.detailImageViewBorderColor = ([cellData[@"detailImageViewBorderColor"] isKindOfClass:[UIColor class]] ?
+                                           cellData[@"detailImageViewBorderColor"] :
+                                           [[self class] defaultBorderColor]);
+        self.detailImageViewMostRight = ESBoolValue(cellData[@"detailImageViewMostRight"]);
+        self.cellPadding = ESFloatValueWithDefault(cellData[@"cellPadding"], [[self class] defaultCellPadding]);
+        self.cellMarginLeft = ESFloatValueWithDefault(cellData[@"cellMarginLeft"], [[self class] defaultCellMarginLeft]);
+        self.cellMarginRight = ESFloatValueWithDefault(cellData[@"cellMarginRight"], [[self class] defaultCellMarginRight]);
+        
+        UIImage *iconImagePlaceholder = [cellData[@"iconImagePlaceholder"] isKindOfClass:[UIImage class]] ? cellData[@"iconImagePlaceholder"] : nil;
+        UIImage *detailImagePlaceholder = [cellData[@"detailImagePlaceholder"] isKindOfClass:[UIImage class]] ? cellData[@"detailImagePlaceholder"] : nil;
+        
+        NSURL *iconImageURL = ESURLValue(cellData[@"iconImage"]);
+        if (iconImageURL) {
+                ESWeakSelf;
+                [self.iconImageView sd_setImageWithURL:iconImageURL placeholderImage:iconImagePlaceholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                        ESStrongSelf;
+                        if (!_self.alwaysShowsIconImageView) {
+                                [_self setNeedsLayout];
+                        }
+                }];
+        } else {
+                [self.iconImageView sd_cancelCurrentImageLoad];
+                self.iconImageView.image = ([cellData[@"iconImage"] isKindOfClass:[UIImage class]] ? cellData[@"iconImage"] : iconImagePlaceholder);
+        }
+        
+        NSURL *detailImageURL = ESURLValue(cellData[@"detailImage"]);
+        if (detailImageURL) {
+                ESWeakSelf;
+                [self.detailImageView sd_setImageWithURL:detailImageURL placeholderImage:detailImagePlaceholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                        ESStrongSelf;
+                        if (!_self.alwaysShowsDetailImageView) {
+                                [_self setNeedsLayout];
+                        }
+                }];
+        } else {
+                [self.detailImageView sd_cancelCurrentImageLoad];
+                self.detailImageView.image = ([cellData[@"detailImage"] isKindOfClass:[UIImage class]] ? cellData[@"detailImage"] : detailImagePlaceholder);
+        }
+                
+        [self setNeedsLayout];
 }
 
 - (void)layoutSubviews
@@ -208,6 +308,19 @@ CGFloat const ACTableViewCellDefaultIconSize = 24.f;
 + (UIEdgeInsets)defaultDetailImageViewInset
 {
         return UIEdgeInsetsMake(10.f, 5.f, 10.f, 5.f);
+}
+
++ (CGFloat)defaultCellPadding
+{
+        return 5.f;
+}
++ (CGFloat)defaultCellMarginLeft
+{
+        return 10.f;
+}
++ (CGFloat)defaultCellMarginRight
+{
+        return 10.f;
 }
 
 @end

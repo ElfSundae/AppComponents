@@ -37,6 +37,7 @@ Pod::Spec.new do |s|
     ss.private_header_files = "AppComponents/UIKit/**/*+Private.h"
     ss.dependency           "AppComponents/Core"
     ss.dependency           "ESFramework/UIKit"
+    ss.dependency           "SDWebImage/Core"
   end
 
   s.subspec "Ad" do |ss|
