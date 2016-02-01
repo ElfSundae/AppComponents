@@ -8,7 +8,7 @@
 
 #import "ESApp+ACMobSMS.h"
 #import <SMS_SDK/SMSSDK.h>
-#import <SMS_SDK/SMSSDK+AddressBookMethods.h>
+#import <SMS_SDK/Extend/SMSSDK+AddressBookMethods.h>
 
 @implementation ESApp (ACMobSMS)
 
