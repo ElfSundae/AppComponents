@@ -37,6 +37,7 @@ Pod::Spec.new do |s|
     ss.private_header_files = "AppComponents/UIKit/**/*+Private.h"
     ss.dependency           "AppComponents/App"
     ss.dependency           "ESFramework/UIKit"
+    ss.dependency           "FontAwesomeKit/FontAwesome"
     ss.dependency           "SDWebImage/Core"
   end
 
