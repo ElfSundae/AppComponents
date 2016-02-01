@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - APIService-TalkingData (2.1.21)
+  - APIService-TalkingData (2.2.24)
   - APIService-UmengAnalytics (3.6.6)
   - APIService-XGPush (2.4.6.1)
   - AppComponents (1.0.4):
@@ -154,7 +154,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  APIService-TalkingData: 0316fa7de7ee2f9d01c0e4fc322681ab81359fc4
+  APIService-TalkingData: 82f6ca2c19e56d0e1acfc3eb8cc46367ca07f07c
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
   AppComponents: da3ff46710ac2a938b89e805fbbe8fabd7e797d4
