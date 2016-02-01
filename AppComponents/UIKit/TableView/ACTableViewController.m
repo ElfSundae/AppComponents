@@ -16,29 +16,39 @@
         [self _removeTableViewsObservers];
 }
 
-- (instancetype)initWithStyle:(UITableViewStyle)style
+- (instancetype)initWithStyle:(UITableViewStyle)style initializationFlags:(ACTableViewControllerInitializationFlags)initializationFlags
 {
         self = [super initWithStyle:style];
         if (self) {
-                self.tableData = [NSMutableArray array];
-                _flags.loadingMoreViewHasTopLine = NO;
-                _flags.useTableFooterViewAsLoadingMoreView = YES;
+                _tableData = [NSMutableArray array];
+                _initializationFlags = initializationFlags;
                 _loadingMoreViewHeight = 44.f;
         }
         return self;
+}
+
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+        ACTableViewControllerInitializationFlags flags;
+        flags.useTableFooterViewAsLoadingMoreView = YES;
+        return [self initWithStyle:style initializationFlags:flags];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+        if (!self.navigationController.navigationBar.barTintColor ||
+            self.navigationController.navigationBar.barTintColor.es_isLightColor) {
+                return UIStatusBarStyleDefault;
+        } else {
+                return UIStatusBarStyleLightContent;
+        }
 }
 
 - (void)viewDidLoad
 {
         [super viewDidLoad];
         self.view.backgroundColor = [UIColor es_viewBackgroundColor];
-        if (_flags.hasRefreshControl) {
-                ESWeakSelf;
-                self.tableView.refreshControl = [ESRefreshControl controlWithStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
-                        ESStrongSelf;
-                        [_self startRefreshData];
-                }];
-        }
+        [self _checkRefreshControl];
         self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
@@ -65,22 +75,9 @@
         }
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-        if (self.navigationController.navigationBar.barTintColor.es_isLightColor) {
-                return UIStatusBarStyleDefault;
-        } else {
-                return UIStatusBarStyleLightContent;
-        }
-}
-
-- (UIView *)loadingMoreView
-{
-        if (!_loadingMoreView) {
-                _loadingMoreView = [[UIView alloc] initWithFrame:CGRectZero];
-        }
-        return _loadingMoreView;
-}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Private
 
 - (void)_addTableViewsObservers
 {
@@ -108,24 +105,50 @@
         }
 }
 
-- (UIView *)oldTableFooterView
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Getter / Setter
+
+- (void)setShowsRefreshControl:(BOOL)showsRefreshControl
 {
-        if (!_oldTableFooterView) {
-                _oldTableFooterView = self.tableView.tableFooterView;
+        if (_showsRefreshControl != showsRefreshControl) {
+                _showsRefreshControl = showsRefreshControl;
+                [self _checkRefreshControl];
         }
-        return _oldTableFooterView;
+}
+
+- (UIView *)originalTableFooterView
+{
+        _originalTableFooterView || (_originalTableFooterView = self.tableView.tableFooterView);
+        return _originalTableFooterView;
+}
+
+- (void)setRefreshingData:(BOOL)refreshing
+{
+        _refreshingData = refreshing;
+        if (!_refreshingData && self.tableView.refreshControl && self.tableView.refreshControl.isRefreshing) {
+                [self.tableView.refreshControl endRefreshing];
+        }
+}
+
+- (UIView *)loadingMoreView
+{
+        if (!_loadingMoreView) {
+                _loadingMoreView = [[UIView alloc] initWithFrame:CGRectZero];
+        }
+        return _loadingMoreView;
 }
 
 - (void)setHasMoreData:(BOOL)hasMoreData
 {
         _hasMoreData = hasMoreData;
         
-        if (!_flags.useTableFooterViewAsLoadingMoreView) {
+        if (!self.initializationFlags.useTableFooterViewAsLoadingMoreView) {
                 return;
         }
         
         if (!_hasMoreData) {
-                self.tableView.tableFooterView = self.oldTableFooterView;
+                self.tableView.tableFooterView = self.originalTableFooterView;
                 [self _removeTableViewsObservers];
                 return;
         }
@@ -143,7 +166,7 @@
                 self.loadingMoreActivityLabel = label;
                 [self.loadingMoreView addSubview:self.loadingMoreActivityLabel];
                 
-                if (_flags.loadingMoreViewHasTopLine) {
+                if (self.initializationFlags.loadingMoreViewHasTopLine) {
                         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0.7f, self.loadingMoreView.width - 40.f, 0.7f)];
                         line.centerX = self.loadingMoreView.width / 2.f;
                         line.autoresizingMask = (UIViewAutoresizingFlexibleWidth);
@@ -153,127 +176,10 @@
         }
         
         if (self.tableView.tableFooterView != self.loadingMoreView) {
-                self.oldTableFooterView = self.tableView.tableFooterView;
+                self.originalTableFooterView = self.tableView.tableFooterView;
         }
         self.tableView.tableFooterView = self.loadingMoreView;
         [self _addTableViewsObservers];
-}
-
-- (void)setRefreshingData:(BOOL)refreshing
-{
-        _refreshingData = refreshing;
-        if (!_refreshingData && self.tableView.refreshControl && self.tableView.refreshControl.isRefreshing) {
-                [self.tableView.refreshControl endRefreshing];
-        }
-}
-
-- (void)startRefreshData
-{
-        if (self.isRefreshingData) {
-                return;
-        }
-        
-        if (self.tableView.refreshControl && !self.tableView.refreshControl.isRefreshing) {
-                [self.tableView.refreshControl beginRefreshing];
-        } else {
-                self.hasMoreData = NO;
-                [self cancelLoadingMoreData];
-                
-                self.refreshingData = YES;
-                [self hideErrorView];
-                [self refreshData];
-        }
-}
-
-- (void)startLoadMoreData
-{
-        if (self.isRefreshingData || self.isLoadingMoreData || !self.hasMoreData) {
-                return;
-        }
-        
-        self.loadingMoreData = YES;
-        [self loadMoreData];
-}
-
-- (ESErrorView *)showErrorViewWithTitle:(NSString *)title subtitle:(NSString *)subtitle image:(UIImage *)image tag:(NSInteger)tag actionButtonTitle:(NSString *)actionButtonTitle actionButtonHandle:(ESUIControlHandler)actionButtonHandler
-{
-        if (self.errorView && tag == self.errorView.tag) {
-                return self.errorView;
-        }
-        
-        [self hideErrorView];
-        self.errorView = [[ESErrorView alloc] initWithFrame:self.view.bounds title:title subtitle:subtitle image:image];
-        // self.errorView.backgroundColor = self.view.backgroundColor;
-        self.errorView.tag = tag;
-        if (actionButtonTitle) {
-                ESButton *button = [ESButton buttonWithStyle:ESButtonStyleRoundedRect];
-                [button setTitle:actionButtonTitle forState:UIControlStateNormal];
-                [button setButtonColor:[UIColor es_successButtonColor]];
-                [button sizeToFit];
-                button.width = fmaxf(button.width, self.view.width * 0.4f);
-                [button addEventHandler:actionButtonHandler forControlEvents:UIControlEventTouchUpInside];
-                self.errorView.actionButton = button;
-        }
-        [self.view addSubview:self.errorView];
-        return self.errorView;
-}
-
-- (ESErrorView *)showErrorViewForNoData:(NSString *)title
-{
-        ESWeakSelf;
-        ESErrorView *errorView = [self showErrorViewWithTitle:(title?:@"暂无数据") subtitle:nil image:nil tag:0 actionButtonTitle:@"刷新" actionButtonHandle:^(id sender, UIControlEvents controlEvent) {
-                ESStrongSelf;
-                [_self hideErrorView];
-                [_self.tableView.refreshControl beginRefreshing];
-        }];
-        return errorView;
-}
-
-- (void)hideErrorView
-{
-        if (self.errorView) {
-                [self.errorView removeFromSuperview];
-                self.errorView = nil;
-        }
-}
-
-- (void)scrollTableViewToTop:(BOOL)animated
-{
-        [self.tableView setContentOffset:CGPointZero animated:animated];
-}
-
-- (void)setVisibleCellsNeedDisplay
-{
-        [self.tableView.visibleCells makeObjectsPerformSelector:@selector(setNeedsDisplay)];
-}
-
-- (void)setVisibleCellsNeedLayout
-{
-        [self.tableView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
-}
-
-- (NSDictionary *)iconCellDataForIndexPath:(NSIndexPath *)indexPath
-{
-        if (_flags.configureIconCellWithTableData) {
-                return self.tableData[indexPath.section][indexPath.row];
-        }
-        return nil;
-}
-
-- (NSString *)iconCellClassNameForIndexPath:(NSIndexPath *)indexPath
-{
-        if (_flags.configureIconCellWithTableData) {
-                return [self iconCellDataForIndexPath:indexPath][@"cell_class"] ?: @"XXIconDefaultStyleTableViewCell";
-        }
-        return @"UITableViewCell";
-}
-
-- (NSString *)iconCellTitleForIndexPath:(NSIndexPath *)indexPath
-{
-        if (_flags.configureIconCellWithTableData) {
-                return [self iconCellDataForIndexPath:indexPath][@"title"];
-        }
-        return nil;
 }
 
 @end

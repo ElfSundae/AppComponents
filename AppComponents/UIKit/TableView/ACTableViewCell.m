@@ -14,9 +14,6 @@
 #import <ESFramework/ESTableViewController.h>
 #import <UIImageView+WebCache.h>
 
-CGFloat const ACTableViewCellDefaultHeight = 44.f;
-CGFloat const ACTableViewCellDefaultIconSize = 24.f;
-
 @implementation ACTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

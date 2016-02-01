@@ -7,8 +7,23 @@
 //
 
 #import <ESFramework/ESTableViewController.h>
-#import <AppComponents/ACTableViewCell.h>
+
+typedef struct {
+        unsigned int loadingMoreViewHasTopLine:1;
+        /// tableData是二维数组，包含用与设置 ACTableViewCell 的dictionary.
+        /// tableView的sectionNumber是tableData.count.
+        unsigned int configuresCellWithTableData:1;
+        /// 用tableView.tableFooterView来显示loadingMoreView, default is YES
+        unsigned int useTableFooterViewAsLoadingMoreView:1;
+} ACTableViewControllerInitializationFlags;
 
 @interface ACTableViewController : ESTableViewController
+
+- (instancetype)initWithStyle:(UITableViewStyle)style initializationFlags:(ACTableViewControllerInitializationFlags)initializationFlags;
+
+@property (nonatomic, strong, readonly) NSMutableArray *tableData;
+@property (nonatomic, readonly) ACTableViewControllerInitializationFlags initializationFlags;
+
+@property (nonatomic) BOOL showsRefreshControl;
 
 @end

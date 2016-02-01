@@ -12,7 +12,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-        if (_flags.configureIconCellWithTableData) {
+        if (self.initializationFlags.configuresCellWithTableData) {
                 return self.tableData.count;
         }
         return 0;
@@ -20,29 +20,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        if (_flags.configureIconCellWithTableData) {
+        if (self.initializationFlags.configuresCellWithTableData) {
                 return [self.tableData[section] count];
         }
         return 0;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (id)tableView:(UITableView *)tableView cellDataForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        if (_flags.configureIconCellWithTableData) {
-                return ESFloatValueWithDefault([self iconCellDataForIndexPath:indexPath][@"cell_height"], ACTableViewCellDefaultHeight);
-        }
-        return tableView.rowHeight ?: ACTableViewCellDefaultHeight;
+        return [self ac_cellDataForIndexPath:indexPath];
 }
 
 - (Class)tableView:(UITableView *)tableView cellClassForRowAtIndexPath:(NSIndexPath *)indexPath cellData:(id)cellData
 {
-        return NSClassFromString([self iconCellClassNameForIndexPath:indexPath]);
+        return [self ac_cellClassForIndexPath:indexPath];
 }
 
-- (id)tableView:(UITableView *)tableView cellDataForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellNewInstanceForRowAtIndexPath:(NSIndexPath *)indexPath cellClass:(Class)cellClass reuseIdentifier:(NSString *)reuseIdentifier
 {
-        if (_flags.configureIconCellWithTableData) {
-                return [self iconCellDataForIndexPath:indexPath];
+        if ([cellClass isSubclassOfClass:[ACTableViewCell class]]) {
+                return [[cellClass alloc] initWithCellStyle:[self ac_cellStyleForIndexPath:indexPath] reuseIdentifier:reuseIdentifier];
         }
         return nil;
 }

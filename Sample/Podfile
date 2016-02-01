@@ -3,6 +3,6 @@ platform :ios, '7.0'
 workspace "../AppComponents.xcworkspace"
 
 target "Sample" do
-    # pod "ESFramework", :git => 'https://github.com/ESFramework/ESFramework.git'
+    pod "ESFramework", :git => 'https://github.com/ESFramework/ESFramework.git', :branch => 'develop'
     pod "AppComponents", :path => "../AppComponents.podspec"
 end

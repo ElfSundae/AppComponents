@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-FOUNDATION_EXTERN CGFloat const ACTableViewCellDefaultHeight; // 44.f
-FOUNDATION_EXTERN CGFloat const ACTableViewCellDefaultIconSize; // 24.f (44-10-10)
-
 typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
         /// Simple cell with text label and optional image view (behavior of UITableViewCell in iPhoneOS 2.x)
         ACTableViewCellStyleSimple = UITableViewCellStyleDefault,
