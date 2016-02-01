@@ -162,7 +162,9 @@ NSString *const ACTableViewCellConfigurationKeyCellStyle = @"cellStyle";
         if (!self.loadingMoreActivityLabel) {
                 ESActivityLabel *label = [self createLoadingMoreActivityLabel];
                 if (!label) {
-                        label = [[ESActivityLabel alloc] initWithStyle:ESActivityLabelStyleGray text:@"加载中..."];
+                        label = [[ESActivityLabel alloc] initWithFrame:CGRectMake(0, 0, self.loadingMoreView.width, 0)
+                                            activityIndicatorViewStyle:UIActivityIndicatorViewStyleGray
+                                                        attributedText:[[NSAttributedString alloc] initWithString:@"加载中..." attributes:[ESActivityLabel defaultTextAttributes]]];
                 }
                 [label sizeToFit];
                 label.center = CGPointMake(self.loadingMoreView.width / 2.f, self.loadingMoreView.height / 2.f);

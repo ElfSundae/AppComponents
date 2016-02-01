@@ -149,7 +149,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ESFramework:
-    :commit: dd8bd1a6308c7f0d6c0eba7fcf1d6d1018e3eb34
+    :commit: daacc8c73af56bc7237edd10d91d2f6cc140bcf9
     :git: https://github.com/ESFramework/ESFramework.git
 
 SPEC CHECKSUMS:
