@@ -8,9 +8,6 @@
 
 #import "ACTableViewController+Private.h"
 
-NSString *const ACTableViewCellConfigurationKeyCellClass = @"cellClass";
-NSString *const ACTableViewCellConfigurationKeyCellStyle = @"cellStyle";
-
 @implementation ACTableViewController (Private)
 
 - (void)_checkRefreshControl

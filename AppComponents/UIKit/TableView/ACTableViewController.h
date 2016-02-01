@@ -8,6 +8,9 @@
 
 #import <ESFramework/ESTableViewController.h>
 
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigurationKeyCellClass;
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigurationKeyCellStyle;
+
 typedef struct {
         unsigned int loadingMoreViewHasTopLine:1;
         /// tableData是二维数组，包含用与设置 ACTableViewCell 的dictionary.

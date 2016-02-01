@@ -14,9 +14,6 @@
 #import <ESFramework/ESButton.h>
 #import <AppComponents/ACTableViewCell.h>
 
-FOUNDATION_EXTERN NSString *const ACTableViewCellConfigurationKeyCellClass;
-FOUNDATION_EXTERN NSString *const ACTableViewCellConfigurationKeyCellStyle;
-
 @interface ACTableViewController ()
 {
 @protected
