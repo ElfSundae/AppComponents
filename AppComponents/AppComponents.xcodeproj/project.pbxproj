@@ -25,6 +25,12 @@
 		E71B7D0B1C51748A001910C2 /* ESApp+ACHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACHelper.m"; sourceTree = "<group>"; };
 		E72B980A1C5F349C00968230 /* WebViewJavascriptBridge+ACMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebViewJavascriptBridge+ACMessageHandler.h"; sourceTree = "<group>"; };
 		E72B980B1C5F349C00968230 /* WebViewJavascriptBridge+ACMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WebViewJavascriptBridge+ACMessageHandler.m"; sourceTree = "<group>"; };
+		E72B980E1C5F5C4600968230 /* ACBorderLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACBorderLabel.h; sourceTree = "<group>"; };
+		E72B980F1C5F5C4600968230 /* ACBorderLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACBorderLabel.m; sourceTree = "<group>"; };
+		E72B98101C5F5C9100968230 /* ACFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFeedbackViewController.h; sourceTree = "<group>"; };
+		E72B98111C5F5C9100968230 /* ACFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFeedbackViewController.m; sourceTree = "<group>"; };
+		E72B98121C5F5CA700968230 /* ACAboutAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAboutAppViewController.h; sourceTree = "<group>"; };
+		E72B98131C5F5CA700968230 /* ACAboutAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAboutAppViewController.m; sourceTree = "<group>"; };
 		E7777D8A1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationServiceRegister.h; sourceTree = "<group>"; };
 		E7777D8B1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACRemoteNotificationServiceRegister.m; sourceTree = "<group>"; };
 		E7777D8C1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationXGPushService.h; sourceTree = "<group>"; };
@@ -61,8 +67,6 @@
 		E78F77591C561F5C00B9A33C /* NSDate+ACAppAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+ACAppAdditions.h"; sourceTree = "<group>"; };
 		E78F775A1C561F5C00B9A33C /* NSDate+ACAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ACAppAdditions.m"; sourceTree = "<group>"; };
 		E78F78321C59B0ED00B9A33C /* AppComponentsUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsUIKit.h; sourceTree = "<group>"; };
-		E78F78361C5B4B7B00B9A33C /* ACBorderLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACBorderLabel.h; sourceTree = "<group>"; };
-		E78F78371C5B4B7B00B9A33C /* ACBorderLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACBorderLabel.m; sourceTree = "<group>"; };
 		E78F784F1C5B509800B9A33C /* ACTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACTableViewCell.h; sourceTree = "<group>"; };
 		E78F78501C5B509800B9A33C /* ACTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACTableViewCell.m; sourceTree = "<group>"; };
 		E78F78511C5B84E600B9A33C /* ACTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACTableViewController.h; sourceTree = "<group>"; };
@@ -124,13 +128,6 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		E72B97FE1C5DAA5200968230 /* Additions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Additions;
-			sourceTree = "<group>";
-		};
 		E72B98071C5F322B00968230 /* WebViewJavascriptBridge */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +135,26 @@
 				E72B980B1C5F349C00968230 /* WebViewJavascriptBridge+ACMessageHandler.m */,
 			);
 			path = WebViewJavascriptBridge;
+			sourceTree = "<group>";
+		};
+		E72B980C1C5F5C2700968230 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E72B98101C5F5C9100968230 /* ACFeedbackViewController.h */,
+				E72B98111C5F5C9100968230 /* ACFeedbackViewController.m */,
+				E72B98121C5F5CA700968230 /* ACAboutAppViewController.h */,
+				E72B98131C5F5CA700968230 /* ACAboutAppViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E72B980D1C5F5C4600968230 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E72B980E1C5F5C4600968230 /* ACBorderLabel.h */,
+				E72B980F1C5F5C4600968230 /* ACBorderLabel.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E7777D8E1C55C58C005E41C7 /* ImageViewController */ = {
@@ -234,21 +251,12 @@
 		E78F78311C59B0CF00B9A33C /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				E72B97FE1C5DAA5200968230 /* Additions */,
 				E78F78321C59B0ED00B9A33C /* AppComponentsUIKit.h */,
-				E78F78351C5B4B6900B9A33C /* View */,
+				E72B980D1C5F5C4600968230 /* Views */,
+				E72B980C1C5F5C2700968230 /* Controllers */,
 				E78F78381C5B4BFC00B9A33C /* TableView */,
 			);
 			path = UIKit;
-			sourceTree = "<group>";
-		};
-		E78F78351C5B4B6900B9A33C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E78F78361C5B4B7B00B9A33C /* ACBorderLabel.h */,
-				E78F78371C5B4B7B00B9A33C /* ACBorderLabel.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		E78F78381C5B4BFC00B9A33C /* TableView */ = {

@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   s.subspec "UIKit" do |ss|
     ss.source_files         = "AppComponents/UIKit/**/*.{h,m}"
     ss.private_header_files = "AppComponents/UIKit/**/*+Private.h"
-    ss.dependency           "AppComponents/Core"
+    ss.dependency           "AppComponents/App"
     ss.dependency           "ESFramework/UIKit"
     ss.dependency           "SDWebImage/Core"
   end
