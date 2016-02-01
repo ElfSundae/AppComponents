@@ -144,6 +144,49 @@ static NSDate *__gVerifyPhoneSharedDateOfPreviousSendingCode = nil;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:self.codeTextFiled];
 }
 
+- (void)updateUI
+{
+        // phoneNumber
+        NSString *phoneNumber = nil;
+        int retryTimeRemains = 0;
+        BOOL canSendCode = [self canSendCode:&phoneNumber timeRemains:&retryTimeRemains];
+        
+        // sendCodeButton
+        NSString *sendCodeButtonNormalTitle = self.sendCodeButtonTitles[self.supportedCodeTypes.firstObject];
+        if (canSendCode) {
+                [self setTextFieldRightButtonTitle:self.sendCodeButton title:sendCodeButtonNormalTitle enabled:YES];
+                [self stopTimer];
+        } else {
+                if (retryTimeRemains > 0) {
+                        [self setTextFieldRightButtonTitle:self.sendCodeButton title:NSStringWith(@" %ds ", retryTimeRemains) enabled:NO];
+                } else if (!phoneNumber) {
+                        [self setTextFieldRightButtonTitle:self.sendCodeButton title:sendCodeButtonNormalTitle enabled:NO];
+                        [self stopTimer];
+                }
+        }
+        
+        // sendSecondaryCodeButton
+        if ([[self class] sharedPhoneNumber] && self.canShowSendSecondaryCodeButton && self.supportedCodeTypes.count > 1 && retryTimeRemains > 0) {
+                NSString *sendSendaryCodeButtonNormalTitle = self.sendCodeButtonTitles[self.supportedCodeTypes[1]];
+                NSAssert(sendSendaryCodeButtonNormalTitle, @"There is no title for sendSecondaryCodeButton.");
+                NSTimeInterval waittedTime = self.timeIntervalForRetrySendingCode - [self currentTimeRemainsToEnableSendingCode];
+                if (waittedTime >= self.timeIntervalBeforeShowingSendSecondaryCodeButton) {
+                        [self setTextFieldRightButtonTitle:self.sendSecondaryCodeButton title:sendSendaryCodeButtonNormalTitle enabled:YES];
+                } else {
+                        [self setTextFieldRightButtonTitle:self.sendSecondaryCodeButton title:nil enabled:NO];
+                }
+        } else {
+                [self setTextFieldRightButtonTitle:self.sendSecondaryCodeButton title:nil enabled:NO];
+        }
+        
+        // codeTextFiled
+        self.codeTextFiled.enabled = !!phoneNumber;
+        
+        // commitButton
+        self.commitButton.enabled = !!phoneNumber && self.codeTextFiled.text.length > 3;
+        
+}
+
 - (void)viewWillLayoutSubviews
 {
         [super viewWillLayoutSubviews];

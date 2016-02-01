@@ -27,9 +27,6 @@
 
 @interface ACAuthVerifyPhoneViewController (Private)
 
-/// 更新各个UI控件的状态
-- (void)updateUI;
-
 /**
  * 设置textField右边button的 title 和 enable，并自动跟textField对齐. title为nil时隐藏textField的rightView
  */

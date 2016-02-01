@@ -61,6 +61,10 @@ typedef NS_ENUM(NSInteger, ACAuthVerifyPhoneCodeType) {
  */
 + (void)cleanUp;
 
+/// 更新各个UI控件的状态
+- (void)updateUI;
+
+
 @property (nonatomic, strong) UITextField *phoneTextField;
 @property (nonatomic, strong) ESButton *sendCodeButton; // 在phoneTextField右边
 @property (nonatomic, strong) UITextField *codeTextFiled;
