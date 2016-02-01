@@ -36,13 +36,13 @@
 
 /// 网络连接失败时的弹窗title, default is kACNetworkingLocalNetworkErrorAlertTitle
 #define kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle   kACConfigKey_ACNetworking@".LocalNetworkErrorAlertTitle"
-/// 发送请求时设置Api Token到request的header, name为nil时不传Api Token, default is nil, e.g. @"X-API-TOKEN"
+/// 发送请求时设置ApiToken到request的header, name为nil时不传ApiToken, default is kACNetworkingRequestHeaderApiTokenName
 #define kACConfigKey_ACNetworking_RequestHeaderApiTokenName     kACConfigKey_ACNetworking@".RequestHeaderApiTokenName"
-/// 发送请求时将Cookie中的CSRF Token传到request的header，name为nil时不传CSRF Token. default is nil, e.g. @"X-CSRF-TOKEN"
+/// 发送请求时将Cookie中的CSRF-Token传到request的header，name为nil时不传CSRF-Token. default is kACNetworkingRequestHeaderCSRFTokenName
 #define kACConfigKey_ACNetworking_RequestHeaderCSRFTokenName    kACConfigKey_ACNetworking@".RequestHeaderCSRFTokenName"
 /// 加密Api Token时用的密码, default is nil
 #define kACConfigKey_ACNetworking_ApiTokenPassword              kACConfigKey_ACNetworking@".ApiTokenPassword"
-/// Cookie中CSRF Token的名字, default is @"XSRF-TOKEN"
+/// Cookie中CSRF Token的名字, default is kACNetworkingCSRFTokenCookieName
 #define kACConfigKey_ACNetworking_CSRFTokenCookieName           kACConfigKey_ACNetworking@".CSRFTokenCookieName"
 /// default is @"code"
 #define kACConfigKey_ACNetworking_ResponseKeyCode               kACConfigKey_ACNetworking@".ResponseKeyCode"
