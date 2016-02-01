@@ -94,39 +94,39 @@ PODS:
     - ESFramework/StoreKit
     - ESFramework/UIKit/RefreshControl
     - ESFramework/UIKit/View
-  - ESFramework (2.3.2):
-    - ESFramework/Additions (= 2.3.2)
-    - ESFramework/App (= 2.3.2)
-    - ESFramework/Core (= 2.3.2)
-    - ESFramework/StoreKit (= 2.3.2)
-    - ESFramework/UIKit (= 2.3.2)
-  - ESFramework/Additions (2.3.2):
+  - ESFramework (2.3.3):
+    - ESFramework/Additions (= 2.3.3)
+    - ESFramework/App (= 2.3.3)
+    - ESFramework/Core (= 2.3.3)
+    - ESFramework/StoreKit (= 2.3.3)
+    - ESFramework/UIKit (= 2.3.3)
+  - ESFramework/Additions (2.3.3):
     - ESFramework/Core
-  - ESFramework/App (2.3.2):
+  - ESFramework/App (2.3.3):
     - ESFramework/Additions
     - ESFramework/Core
-  - ESFramework/Core (2.3.2)
-  - ESFramework/StoreKit (2.3.2):
+  - ESFramework/Core (2.3.3)
+  - ESFramework/StoreKit (2.3.3):
     - ESFramework/Additions
     - ESFramework/App
     - ESFramework/Core
-  - ESFramework/UIKit (2.3.2):
-    - ESFramework/UIKit/Animation (= 2.3.2)
-    - ESFramework/UIKit/Controller (= 2.3.2)
-    - ESFramework/UIKit/RefreshControl (= 2.3.2)
-    - ESFramework/UIKit/View (= 2.3.2)
-  - ESFramework/UIKit/Animation (2.3.2)
-  - ESFramework/UIKit/Controller (2.3.2):
+  - ESFramework/UIKit (2.3.3):
+    - ESFramework/UIKit/Animation (= 2.3.3)
+    - ESFramework/UIKit/Controller (= 2.3.3)
+    - ESFramework/UIKit/RefreshControl (= 2.3.3)
+    - ESFramework/UIKit/View (= 2.3.3)
+  - ESFramework/UIKit/Animation (2.3.3)
+  - ESFramework/UIKit/Controller (2.3.3):
     - ESFramework/App
     - ESFramework/UIKit/RefreshControl
     - ESFramework/UIKit/View
-  - ESFramework/UIKit/RefreshControl (2.3.2):
+  - ESFramework/UIKit/RefreshControl (2.3.3):
     - ESFramework/UIKit/View
-  - ESFramework/UIKit/View (2.3.2):
+  - ESFramework/UIKit/View (2.3.3):
     - ESFramework/Additions
     - ESFramework/Core
-  - FontAwesomeKit/Core (2.2.1)
-  - FontAwesomeKit/FontAwesome (2.2.1):
+  - FontAwesomeKit/Core (2.2.0)
+  - FontAwesomeKit/FontAwesome (2.2.0):
     - FontAwesomeKit/Core
   - JTSImageViewController (1.5.1)
   - MBProgressHUD (0.9.2)
@@ -138,27 +138,11 @@ PODS:
 
 DEPENDENCIES:
   - AppComponents (from `../AppComponents.podspec`)
-  - ESFramework (from `https://github.com/ESFramework/ESFramework.git`, branch `develop`)
-  - FontAwesomeKit/FontAwesome (from `https://github.com/PrideChung/FontAwesomeKit.git`,
-    branch `master`)
+  - ESFramework
 
 EXTERNAL SOURCES:
   AppComponents:
     :path: "../AppComponents.podspec"
-  ESFramework:
-    :branch: develop
-    :git: https://github.com/ESFramework/ESFramework.git
-  FontAwesomeKit:
-    :branch: master
-    :git: https://github.com/PrideChung/FontAwesomeKit.git
-
-CHECKOUT OPTIONS:
-  ESFramework:
-    :commit: daacc8c73af56bc7237edd10d91d2f6cc140bcf9
-    :git: https://github.com/ESFramework/ESFramework.git
-  FontAwesomeKit:
-    :commit: e0923ecdc9ef5661b24adaf2be725386f9590d1d
-    :git: https://github.com/PrideChung/FontAwesomeKit.git
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -166,8 +150,8 @@ SPEC CHECKSUMS:
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
   AppComponents: 79fb14264a884333a5dbfd9095a3ebdd11a86f6d
-  ESFramework: 23128a85e9835898044dea8ff5d1f88c64744526
-  FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
+  ESFramework: 7534b2dedb81a2b964d5ba159376fe4408c18880
+  FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MOBFoundation_IDFA: 0b4f8248e12384fc32b861a9b75a83825e8fb444

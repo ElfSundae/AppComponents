@@ -41,7 +41,7 @@
         self.contactTextField.height = ceilf(self.contactTextField.font.lineHeight) + 22.f;
         self.contactTextField.width = self.view.width;
         [self.contactTextField setCornerRadius:0.001 borderWidth:1.f borderColor:[UIColor es_lightBorderColor]];
-        FAKFontAwesome *leftIcon = [FAKFontAwesome iconWithIdentifier:@"fa-mobile" size:28.f error:NULL];
+        FAKFontAwesome *leftIcon = [FAKFontAwesome mobileIconWithSize:28.f];
         [leftIcon addAttribute:NSForegroundColorAttributeName value:[UIColor es_oceanDarkColor]];
         UIImageView *leftView = [[UIImageView alloc] initWithImage:[leftIcon imageWithSize:CGSizeMake(28.f, 28.f)]];
         leftView.contentMode = UIViewContentModeRight;
