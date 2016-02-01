@@ -86,7 +86,7 @@
 
 - (WebViewJavascriptBridge *)createJSBridgeForWebView:(UIWebView *)webView;
 
-- (void)handleJSBridgeData:(id)data responseCallback:(void (^)(id))responseCallback;
+- (void)handleJSBridgeMessage:(NSString *)name data:(id)data responseCallback:(void (^)(id))responseCallback;
 
 - (void)handleCustomScheme:(UIWebView *)webView request:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
 

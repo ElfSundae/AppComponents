@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <WebViewJavascriptBridge/WebViewJavascriptBridge.h>
+#import <AppComponents/WebViewJavascriptBridge+ACMessageHandler.h>
 
 /**
  * 自定义协议，支持以下host:

@@ -23,6 +23,8 @@
 		E71B7D091C5171C9001910C2 /* ACSettings+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACSettings+Private.m"; sourceTree = "<group>"; };
 		E71B7D0A1C51748A001910C2 /* ESApp+ACHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACHelper.h"; sourceTree = "<group>"; };
 		E71B7D0B1C51748A001910C2 /* ESApp+ACHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACHelper.m"; sourceTree = "<group>"; };
+		E72B980A1C5F349C00968230 /* WebViewJavascriptBridge+ACMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebViewJavascriptBridge+ACMessageHandler.h"; sourceTree = "<group>"; };
+		E72B980B1C5F349C00968230 /* WebViewJavascriptBridge+ACMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WebViewJavascriptBridge+ACMessageHandler.m"; sourceTree = "<group>"; };
 		E7777D8A1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationServiceRegister.h; sourceTree = "<group>"; };
 		E7777D8B1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACRemoteNotificationServiceRegister.m; sourceTree = "<group>"; };
 		E7777D8C1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationXGPushService.h; sourceTree = "<group>"; };
@@ -129,6 +131,15 @@
 			path = Additions;
 			sourceTree = "<group>";
 		};
+		E72B98071C5F322B00968230 /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				E72B980A1C5F349C00968230 /* WebViewJavascriptBridge+ACMessageHandler.h */,
+				E72B980B1C5F349C00968230 /* WebViewJavascriptBridge+ACMessageHandler.m */,
+			);
+			path = WebViewJavascriptBridge;
+			sourceTree = "<group>";
+		};
 		E7777D8E1C55C58C005E41C7 /* ImageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +188,7 @@
 				E78835B61C53D61100F67C63 /* MobSMS */,
 				E78835BF1C53D61100F67C63 /* XGPush */,
 				E7777D8E1C55C58C005E41C7 /* ImageViewController */,
+				E72B98071C5F322B00968230 /* WebViewJavascriptBridge */,
 			);
 			path = VendorServices;
 			sourceTree = "<group>";

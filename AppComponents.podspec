@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
     ss.private_header_files = "AppComponents/WebKit/**/*+Private.h"
     ss.dependency           "AppComponents/App"
     ss.dependency           "AppComponents/VendorServices/ImageViewController"
-    ss.dependency           "WebViewJavascriptBridge"
+    ss.dependency           "AppComponents/VendorServices/WebViewJavascriptBridge"
     ss.dependency           "ESFramework/UIKit/View"
     ss.dependency           "ESFramework/UIKit/RefreshControl"
     ss.dependency           "ESFramework/StoreKit"
@@ -92,35 +92,40 @@ Pod::Spec.new do |s|
 
     ss.subspec "UmengAnalytics" do |sss|
       sss.source_files      = "AppComponents/VendorServices/UmengAnalytics/**/*.{h,m}"
-      sss.dependency        "ESFramework/App"
       sss.dependency        "APIService-UmengAnalytics"
+      sss.dependency        "ESFramework/App"
     end
 
     ss.subspec "TalkingDataAnalytics" do |sss|
       sss.source_files      = "AppComponents/VendorServices/TalkingDataAnalytics/**/*.{h,m}"
-      sss.dependency        "ESFramework/App"
       sss.dependency        "APIService-TalkingData"
+      sss.dependency        "ESFramework/App"
     end
 
     ss.subspec "XGPush" do |sss|
       sss.source_files      = "AppComponents/VendorServices/XGPush/**/*.{h,m}"
-      sss.dependency        "AppComponents/App"
       sss.dependency        "APIService-XGPush"
+      sss.dependency        "AppComponents/App"
     end
 
     ss.subspec "MobSMS" do |sss|
       sss.source_files      = "AppComponents/VendorServices/MobSMS/**/*.{h,m}"
-      sss.dependency        "ESFramework/App"
       sss.dependency        "MOBFoundation_IDFA"
       sss.dependency        "SMSSDK"
+      sss.dependency        "ESFramework/App"
     end
 
     ss.subspec "ImageViewController" do |sss|
       sss.source_files      = "AppComponents/VendorServices/ImageViewController/**/*.{h,m}"
-      sss.dependency        "AppComponents/App"
       sss.dependency        "JTSImageViewController"
+      sss.dependency        "AppComponents/App"
     end
 
+    ss.subspec "WebViewJavascriptBridge" do |sss|
+      sss.source_files      = "AppComponents/VendorServices/WebViewJavascriptBridge/**/*.{h,m}"
+      sss.dependency        "WebViewJavascriptBridge", "~> 5.0"
+      sss.dependency        "ESFramework/Core"
+    end
   end # VendorService
 
 end

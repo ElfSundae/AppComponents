@@ -30,15 +30,17 @@
 
 - (WebViewJavascriptBridge *)createJSBridgeForWebView:(UIWebView *)webView
 {
+        WebViewJavascriptBridge *bridge = [WebViewJavascriptBridge bridgeForWebView:webView];
+        [bridge setWebViewDelegate:webView.delegate];
         ESWeakSelf;
-        WebViewJavascriptBridge *bridge = [WebViewJavascriptBridge bridgeForWebView:webView webViewDelegate:webView.delegate handler:^(id data, WVJBResponseCallback responseCallback) {
+        bridge.ac_messageHandler = ^(NSString *handlerName, id data, WVJBResponseCallback responseCallback) {
                 ESStrongSelf;
-                [_self handleJSBridgeData:data responseCallback:responseCallback];
-        }];
+                [_self handleJSBridgeMessage:handlerName data:data responseCallback:responseCallback];
+        };
         return bridge;
 }
 
-- (void)handleJSBridgeData:(id)data responseCallback:(void (^)(id))responseCallback
+- (void)handleJSBridgeMessage:(NSString *)name data:(id)data responseCallback:(void (^)(id))responseCallback
 {
         
 }
