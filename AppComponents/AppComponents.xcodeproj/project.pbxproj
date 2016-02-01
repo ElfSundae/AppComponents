@@ -29,8 +29,6 @@
 		E72B980F1C5F5C4600968230 /* ACBorderLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACBorderLabel.m; sourceTree = "<group>"; };
 		E72B98101C5F5C9100968230 /* ACFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFeedbackViewController.h; sourceTree = "<group>"; };
 		E72B98111C5F5C9100968230 /* ACFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFeedbackViewController.m; sourceTree = "<group>"; };
-		E72B98121C5F5CA700968230 /* ACAboutAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAboutAppViewController.h; sourceTree = "<group>"; };
-		E72B98131C5F5CA700968230 /* ACAboutAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAboutAppViewController.m; sourceTree = "<group>"; };
 		E7777D8A1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationServiceRegister.h; sourceTree = "<group>"; };
 		E7777D8B1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACRemoteNotificationServiceRegister.m; sourceTree = "<group>"; };
 		E7777D8C1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationXGPushService.h; sourceTree = "<group>"; };
@@ -142,8 +140,6 @@
 			children = (
 				E72B98101C5F5C9100968230 /* ACFeedbackViewController.h */,
 				E72B98111C5F5C9100968230 /* ACFeedbackViewController.m */,
-				E72B98121C5F5CA700968230 /* ACAboutAppViewController.h */,
-				E72B98131C5F5CA700968230 /* ACAboutAppViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
