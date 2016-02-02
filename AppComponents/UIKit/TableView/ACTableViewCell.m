@@ -14,6 +14,33 @@
 #import <ESFramework/ESTableViewController.h>
 #import <UIImageView+WebCache.h>
 
+NSString *const ACTableViewCellConfigKeyAccessoryType               = @"accessoryType";
+NSString *const ACTableViewCellConfigKeySelectionStyle              = @"selectionStyle";
+NSString *const ACTableViewCellConfigKeyText                        = @"text";
+NSString *const ACTableViewCellConfigKeyDetailText                  = @"detailText";
+NSString *const ACTableViewCellConfigKeyLeftBadgeView               = @"leftBadgeView";
+NSString *const ACTableViewCellConfigKeyRightBadgeView              = @"rightBadgeView";
+NSString *const ACTableViewCellConfigKeyIconImage                   = @"iconImage";
+NSString *const ACTableViewCellConfigKeyIconImagePlaceholder        = @"iconImagePlaceholder";
+NSString *const ACTableViewCellConfigKeyAlwaysShowsIconImageView    = @"alwaysShowsIconImageView";
+NSString *const ACTableViewCellConfigKeyIconImageViewSize           = @"iconImageViewSize";
+NSString *const ACTableViewCellConfigKeyIconImageViewInset          = @"iconImageViewInset";
+NSString *const ACTableViewCellConfigKeyIconImageViewCornerRadius   = @"iconImageViewCornerRadius";
+NSString *const ACTableViewCellConfigKeyIconImageViewBorderWidth    = @"iconImageViewBorderWidth";
+NSString *const ACTableViewCellConfigKeyIconImageViewBorderColor    = @"iconImageViewBorderColor";
+NSString *const ACTableViewCellConfigKeyDetailImage                 = @"detailImage";
+NSString *const ACTableViewCellConfigKeyDetailImagePlaceholder      = @"detailImagePlaceholder";
+NSString *const ACTableViewCellConfigKeyAlwaysShowsDetailImageView  = @"alwaysShowsDetailImageView";
+NSString *const ACTableViewCellConfigKeyDetailImageViewSize         = @"detailImageViewSize";
+NSString *const ACTableViewCellConfigKeyDetailImageViewInset        = @"detailImageViewInset";
+NSString *const ACTableViewCellConfigKeyDetailImageViewCornerRadius = @"detailImageViewCornerRadius";
+NSString *const ACTableViewCellConfigKeyDetailImageViewBorderWidth  = @"detailImageViewBorderWidth";
+NSString *const ACTableViewCellConfigKeyDetailImageViewBorderColor  = @"detailImageViewBorderColor";
+NSString *const ACTableViewCellConfigKeyDetailImageViewMostRight    = @"detailImageViewMostRight";
+NSString *const ACTableViewCellConfigKeyCellPadding                 = @"cellPadding";
+NSString *const ACTableViewCellConfigKeyCellMarginLeft              = @"cellMarginLeft";
+NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarginRight";
+
 @implementation ACTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -100,11 +127,11 @@
                 return;
         }
         
-        self.accessoryType = ESIntegerValueWithDefault(cellData[@"accessoryType"], UITableViewCellAccessoryNone);
-        self.selectionStyle = ESIntegerValueWithDefault(cellData[@"selectionStyle"], UITableViewCellSelectionStyleDefault);
-        self.leftBadgeView = [cellData[@"leftBadgeView"] isKindOfClass:[UIView class]] ? cellData[@"leftBadgeView"] : nil;
-        self.rightBadgeView = [cellData[@"rightBadgeView"] isKindOfClass:[UIView class]] ? cellData[@"rightBadgeView"] : nil;
-        id text = cellData[@"text"];
+        self.accessoryType = ESIntegerValueWithDefault(cellData[ACTableViewCellConfigKeyAccessoryType], UITableViewCellAccessoryNone);
+        self.selectionStyle = ESIntegerValueWithDefault(cellData[ACTableViewCellConfigKeySelectionStyle], UITableViewCellSelectionStyleDefault);
+        self.leftBadgeView = [cellData[ACTableViewCellConfigKeyLeftBadgeView] isKindOfClass:[UIView class]] ? cellData[ACTableViewCellConfigKeyLeftBadgeView] : nil;
+        self.rightBadgeView = [cellData[ACTableViewCellConfigKeyRightBadgeView] isKindOfClass:[UIView class]] ? cellData[ACTableViewCellConfigKeyRightBadgeView] : nil;
+        id text = cellData[ACTableViewCellConfigKeyText];
         if ([text isKindOfClass:[NSAttributedString class]]) {
                 self.textLabel.text = nil;
                 self.textLabel.attributedText = text;
@@ -115,7 +142,7 @@
                 self.textLabel.text = nil;
                 self.textLabel.attributedText = nil;
         }
-        id detailText = cellData[@"detailText"];
+        id detailText = cellData[ACTableViewCellConfigKeyDetailText];
         if ([detailText isKindOfClass:[NSAttributedString class]]) {
                 self.detailTextLabel.text = nil;
                 self.detailTextLabel.attributedText = detailText;
@@ -127,40 +154,40 @@
                 self.detailTextLabel.attributedText = nil;
         }
         
-        self.alwaysShowsIconImageView = ESBoolValue(cellData[@"alwaysShowsIconImageView"]);
-        self.iconImageViewSize = ([cellData[@"iconImageViewSize"] isKindOfClass:[NSValue class]] ?
-                                  [(NSValue *)cellData[@"iconImageViewSize"] CGSizeValue] :
+        self.alwaysShowsIconImageView = ESBoolValue(cellData[ACTableViewCellConfigKeyAlwaysShowsIconImageView]);
+        self.iconImageViewSize = ([cellData[ACTableViewCellConfigKeyIconImageViewSize] isKindOfClass:[NSValue class]] ?
+                                  [(NSValue *)cellData[ACTableViewCellConfigKeyIconImageViewSize] CGSizeValue] :
                                   CGSizeZero);
-        self.iconImageViewInset = ([cellData[@"iconImageViewInset"] isKindOfClass:[NSValue class]] ?
-                                   [(NSValue *)cellData[@"iconImageViewInset"] UIEdgeInsetsValue] :
+        self.iconImageViewInset = ([cellData[ACTableViewCellConfigKeyIconImageViewInset] isKindOfClass:[NSValue class]] ?
+                                   [(NSValue *)cellData[ACTableViewCellConfigKeyIconImageViewInset] UIEdgeInsetsValue] :
                                    [[self class] defaultIconImageViewInset]);
-        self.iconImageViewCornerRadius = ESFloatValue(cellData[@"iconImageViewCornerRadius"]);
-        self.iconImageViewBorderWidth = ESFloatValue(cellData[@"iconImageViewBorderWidth"]);
-        self.iconImageViewBorderColor = ([cellData[@"iconImageViewBorderColor"] isKindOfClass:[UIColor class]] ?
-                                         cellData[@"iconImageViewBorderColor"] :
+        self.iconImageViewCornerRadius = ESFloatValue(cellData[ACTableViewCellConfigKeyIconImageViewCornerRadius]);
+        self.iconImageViewBorderWidth = ESFloatValue(cellData[ACTableViewCellConfigKeyIconImageViewBorderWidth]);
+        self.iconImageViewBorderColor = ([cellData[ACTableViewCellConfigKeyIconImageViewBorderColor] isKindOfClass:[UIColor class]] ?
+                                         cellData[ACTableViewCellConfigKeyIconImageViewBorderColor] :
                                          [[self class] defaultBorderColor]);
-
-        self.alwaysShowsDetailImageView = ESBoolValue(cellData[@"alwaysShowsDetailImageView"]);
-        self.detailImageViewSize = ([cellData[@"detailImageViewSize"] isKindOfClass:[NSValue class]] ?
-                                    [(NSValue *)cellData[@"detailImageViewSize"] CGSizeValue] :
+        
+        self.alwaysShowsDetailImageView = ESBoolValue(cellData[ACTableViewCellConfigKeyAlwaysShowsDetailImageView]);
+        self.detailImageViewSize = ([cellData[ACTableViewCellConfigKeyDetailImageViewSize] isKindOfClass:[NSValue class]] ?
+                                    [(NSValue *)cellData[ACTableViewCellConfigKeyDetailImageViewSize] CGSizeValue] :
                                     CGSizeZero);
-        self.detailImageViewInset = ([cellData[@"detailImageViewInset"] isKindOfClass:[NSValue class]] ?
-                                     [(NSValue *)cellData[@"detailImageViewInset"] UIEdgeInsetsValue] :
+        self.detailImageViewInset = ([cellData[ACTableViewCellConfigKeyDetailImageViewInset] isKindOfClass:[NSValue class]] ?
+                                     [(NSValue *)cellData[ACTableViewCellConfigKeyDetailImageViewInset] UIEdgeInsetsValue] :
                                      [[self class] defaultDetailImageViewInset]);
-        self.detailImageViewCornerRadius = ESFloatValue(cellData[@"detailImageViewCornerRadius"]);
-        self.detailImageViewBorderWidth = ESFloatValue(cellData[@"detailImageViewBorderWidth"]);
-        self.detailImageViewBorderColor = ([cellData[@"detailImageViewBorderColor"] isKindOfClass:[UIColor class]] ?
-                                           cellData[@"detailImageViewBorderColor"] :
+        self.detailImageViewCornerRadius = ESFloatValue(cellData[ACTableViewCellConfigKeyDetailImageViewCornerRadius]);
+        self.detailImageViewBorderWidth = ESFloatValue(cellData[ACTableViewCellConfigKeyDetailImageViewBorderWidth]);
+        self.detailImageViewBorderColor = ([cellData[ACTableViewCellConfigKeyDetailImageViewBorderColor] isKindOfClass:[UIColor class]] ?
+                                           cellData[ACTableViewCellConfigKeyDetailImageViewBorderColor] :
                                            [[self class] defaultBorderColor]);
-        self.detailImageViewMostRight = ESBoolValue(cellData[@"detailImageViewMostRight"]);
-        self.cellPadding = ESFloatValueWithDefault(cellData[@"cellPadding"], [[self class] defaultCellPadding]);
-        self.cellMarginLeft = ESFloatValueWithDefault(cellData[@"cellMarginLeft"], [[self class] defaultCellMarginLeft]);
-        self.cellMarginRight = ESFloatValueWithDefault(cellData[@"cellMarginRight"], [[self class] defaultCellMarginRight]);
+        self.detailImageViewMostRight = ESBoolValue(cellData[ACTableViewCellConfigKeyDetailImageViewMostRight]);
+        self.cellPadding = ESFloatValueWithDefault(cellData[ACTableViewCellConfigKeyCellPadding], [[self class] defaultCellPadding]);
+        self.cellMarginLeft = ESFloatValueWithDefault(cellData[ACTableViewCellConfigKeyCellMarginLeft], [[self class] defaultCellMarginLeft]);
+        self.cellMarginRight = ESFloatValueWithDefault(cellData[ACTableViewCellConfigKeyCellMarginRight], [[self class] defaultCellMarginRight]);
         
-        UIImage *iconImagePlaceholder = [cellData[@"iconImagePlaceholder"] isKindOfClass:[UIImage class]] ? cellData[@"iconImagePlaceholder"] : nil;
-        UIImage *detailImagePlaceholder = [cellData[@"detailImagePlaceholder"] isKindOfClass:[UIImage class]] ? cellData[@"detailImagePlaceholder"] : nil;
+        UIImage *iconImagePlaceholder = [cellData[ACTableViewCellConfigKeyIconImagePlaceholder] isKindOfClass:[UIImage class]] ? cellData[ACTableViewCellConfigKeyIconImagePlaceholder] : nil;
+        UIImage *detailImagePlaceholder = [cellData[ACTableViewCellConfigKeyDetailImagePlaceholder] isKindOfClass:[UIImage class]] ? cellData[ACTableViewCellConfigKeyDetailImagePlaceholder] : nil;
         
-        NSURL *iconImageURL = ESURLValue(cellData[@"iconImage"]);
+        NSURL *iconImageURL = ESURLValue(cellData[ACTableViewCellConfigKeyIconImage]);
         if (iconImageURL) {
                 ESWeakSelf;
                 [self.iconImageView sd_setImageWithURL:iconImageURL placeholderImage:iconImagePlaceholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -171,10 +198,10 @@
                 }];
         } else {
                 [self.iconImageView sd_cancelCurrentImageLoad];
-                self.iconImageView.image = ([cellData[@"iconImage"] isKindOfClass:[UIImage class]] ? cellData[@"iconImage"] : iconImagePlaceholder);
+                self.iconImageView.image = ([cellData[ACTableViewCellConfigKeyIconImage] isKindOfClass:[UIImage class]] ? cellData[ACTableViewCellConfigKeyIconImage] : iconImagePlaceholder);
         }
         
-        NSURL *detailImageURL = ESURLValue(cellData[@"detailImage"]);
+        NSURL *detailImageURL = ESURLValue(cellData[ACTableViewCellConfigKeyDetailImage]);
         if (detailImageURL) {
                 ESWeakSelf;
                 [self.detailImageView sd_setImageWithURL:detailImageURL placeholderImage:detailImagePlaceholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -185,9 +212,9 @@
                 }];
         } else {
                 [self.detailImageView sd_cancelCurrentImageLoad];
-                self.detailImageView.image = ([cellData[@"detailImage"] isKindOfClass:[UIImage class]] ? cellData[@"detailImage"] : detailImagePlaceholder);
+                self.detailImageView.image = ([cellData[ACTableViewCellConfigKeyDetailImage] isKindOfClass:[UIImage class]] ? cellData[ACTableViewCellConfigKeyDetailImage] : detailImagePlaceholder);
         }
-                
+        
         [self setNeedsLayout];
 }
 

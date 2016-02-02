@@ -8,8 +8,10 @@
 
 #import <ESFramework/ESTableViewController.h>
 
-FOUNDATION_EXTERN NSString *const ACTableViewCellConfigurationKeyCellClass;
-FOUNDATION_EXTERN NSString *const ACTableViewCellConfigurationKeyCellStyle;
+/// Class
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellClass;
+/// NSNumber with ACTableViewCellStyle
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellStyle;
 
 typedef struct {
         unsigned int loadingMoreViewHasTopLine:1;

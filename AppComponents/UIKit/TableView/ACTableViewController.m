@@ -8,8 +8,8 @@
 
 #import "ACTableViewController+Subclassing.h"
 
-NSString *const ACTableViewCellConfigurationKeyCellClass = @"cellClass";
-NSString *const ACTableViewCellConfigurationKeyCellStyle = @"cellStyle";
+NSString *const ACTableViewCellConfigKeyCellClass = @"cellClass";
+NSString *const ACTableViewCellConfigKeyCellStyle = @"cellStyle";
 
 @implementation ACTableViewController
 

@@ -113,7 +113,7 @@
 - (Class)ac_cellClassForIndexPath:(NSIndexPath *)indexPath
 {
         if (self.initializationFlags.configuresCellWithTableData) {
-                NSString *cellClass = ESStringValue([self ac_cellDataForIndexPath:indexPath][ACTableViewCellConfigurationKeyCellClass]);
+                NSString *cellClass = ESStringValue([self ac_cellDataForIndexPath:indexPath][ACTableViewCellConfigKeyCellClass]);
                 return cellClass ? NSClassFromString(cellClass) : [ACTableViewCell class];
         }
         return [UITableViewCell class];
@@ -122,7 +122,7 @@
 - (ACTableViewCellStyle)ac_cellStyleForIndexPath:(NSIndexPath *)indexPath
 {
         if (self.initializationFlags.configuresCellWithTableData) {
-                NSInteger cellStyle = ESIntegerValueWithDefault([self ac_cellDataForIndexPath:indexPath][ACTableViewCellConfigurationKeyCellStyle], ACTableViewCellStyleDefault);
+                NSInteger cellStyle = ESIntegerValueWithDefault([self ac_cellDataForIndexPath:indexPath][ACTableViewCellConfigKeyCellStyle], ACTableViewCellStyleDefault);
                 return cellStyle;
         }
         return ACTableViewCellStyleDefault;

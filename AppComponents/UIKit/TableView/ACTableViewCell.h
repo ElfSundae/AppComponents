@@ -19,6 +19,59 @@ typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
         ACTableViewCellStyleCenterLabel = UITableViewCellStyleValue2,
 };
 
+/// NSNumber with UITableViewCellAccessoryType
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyAccessoryType;
+/// NSNumber with UITableViewCellSelectionStyle
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeySelectionStyle;
+/// NSString/NSAttributedString
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyText;
+/// NSString/NSAttributedString
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyDetailText;
+/// UIView instance
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyLeftBadgeView;
+/// UIView instance
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyRightBadgeView;
+/// UIImage/NSURL/NSString
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyIconImage;
+/// UIImage
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyIconImagePlaceholder;
+/// NSNumber with BOOL
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyAlwaysShowsIconImageView;
+/// NSValue with CGSize
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyIconImageViewSize;
+/// NSValue with UIEdgeInsets
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyIconImageViewInset;
+/// NSNumber with CGFloat
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyIconImageViewCornerRadius;
+/// NSNumber with CGFloat
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyIconImageViewBorderWidth;
+/// UIColor
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyIconImageViewBorderColor;
+/// UIImage/NSURL/NSString
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyDetailImage;
+/// UIImage
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyDetailImagePlaceholder;
+/// NSNumber with BOOL
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyAlwaysShowsDetailImageView;
+/// NSValue with CGSize
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyDetailImageViewSize;
+/// NSValue with UIEdgeInsets
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyDetailImageViewInset;
+/// NSNumber with CGFloat
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyDetailImageViewCornerRadius;
+/// NSNumber with CGFloat
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyDetailImageViewBorderWidth;
+/// UIColor
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyDetailImageViewBorderColor;
+/// NSNumber with BOOL
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyDetailImageViewMostRight;
+/// NSNumber with CGFloat
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellPadding;
+/// NSNumber with CGFloat
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellMarginLeft;
+/// NSNumber with CGFloat
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellMarginRight;
+
 /*!
  * Cell struct:
  *
@@ -94,37 +147,6 @@ typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
  */
 - (void)applyDefaults;
 
-/**
- * cellData: {
- *      leftBadgeView:                  UIView instance
- *      rightBadgeView:                 UIView instance
- *      text:                           NSString/NSAttributedString
- *      detailText:                     NSString/NSAttributedString
- *      iconImage:                      UIImage/NSURL/NSString
- *      detailImage:                    UIImage/NSURL/NSString 
- *      iconImagePlaceholder:           UIImage
- *      detailImagePlaceholder:         UIImage
- *
- *      accessoryType:                  NSNumber with UITableViewCellAccessoryType
- *      selectionStyle:                 NSNumber with UITableViewCellSelectionStyle
- *      alwaysShowsIconImageView:       NSNumber with BOOL
- *      iconImageViewSize:              NSValue with CGSize
- *      iconImageViewInset:             NSValue with UIEdgeInsets
- *      iconImageViewCornerRadius:      NSNumber with CGFloat
- *      iconImageViewBorderWidth:       NSNumber with CGFloat
- *      iconImageViewBorderColor:       UIColor
- *      alwaysShowsDetailImageView:     NSNumber with BOOL
- *      detailImageViewSize:            NSValue with CGSize
- *      detailImageViewInset:           NSValue with UIEdgeInsets
- *      detailImageViewCornerRadius:    NSNumber with CGFloat
- *      detailImageViewBorderWidth:     NSNumber with CGFloat
- *      detailImageViewBorderColor:     UIColor
- *      detailImageViewMostRight:       NSNumber with BOOL
- *      cellPadding:                    NSNumber with CGFloat
- *      cellMarginLeft:                 NSNumber with CGFloat
- *      cellMarginRight:                NSNumber with CGFloat
- * }
- */
 - (void)configureCellWithDictionary:(NSDictionary *)cellData;
 
 /// [UIColor es_lightBorderColor]
