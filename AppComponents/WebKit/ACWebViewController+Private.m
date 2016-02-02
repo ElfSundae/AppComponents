@@ -6,7 +6,7 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ACWebViewController+Private.h"
+#import "ACWebViewController+Subclassing.h"
 #import <ESFramework/ESFrameworkStoreKit.h>
 
 @implementation ACWebViewController (Private)

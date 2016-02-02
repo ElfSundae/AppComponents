@@ -78,7 +78,6 @@ Pod::Spec.new do |s|
 
   s.subspec "WebKit" do |ss|
     ss.source_files         = "AppComponents/WebKit/**/*.{h,m}"
-    ss.private_header_files = "AppComponents/WebKit/**/*+Private.h"
     ss.dependency           "AppComponents/App"
     ss.dependency           "AppComponents/VendorServices/ImageViewController"
     ss.dependency           "AppComponents/VendorServices/WebViewJavascriptBridge"
