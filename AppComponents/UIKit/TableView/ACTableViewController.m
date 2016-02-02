@@ -6,7 +6,7 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ACTableViewController+Private.h"
+#import "ACTableViewController+Subclassing.h"
 
 NSString *const ACTableViewCellConfigurationKeyCellClass = @"cellClass";
 NSString *const ACTableViewCellConfigurationKeyCellStyle = @"cellStyle";
