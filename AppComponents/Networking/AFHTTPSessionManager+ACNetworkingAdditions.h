@@ -11,6 +11,11 @@
 @interface AFHTTPSessionManager (ACNetworkingAdditions)
 
 /**
+ * Returns the full URL for the given `path`.
+ */
+- (NSURL *)fullURL:(NSString *)path;
+
+/**
  * 返回指定URLString和method的任务， 没有对应task时返回空数组。
  *
  * @param URLString 如果self.baseURL不为nil，URLString可只传路径path。

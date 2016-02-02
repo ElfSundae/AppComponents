@@ -10,11 +10,16 @@
 
 @implementation AFHTTPSessionManager (ACNetworkingAdditions)
 
+- (NSURL *)fullURL:(NSString *)path
+{
+        return [NSURL URLWithString:path relativeToURL:self.baseURL];
+}
+
 - (NSArray <NSURLSessionTask *> *)tasksWithURL:(NSString *)URLString method:(NSString *)method
 {
         NSMutableArray *result = [NSMutableArray array];
         if ([URLString isKindOfClass:[NSString class]]) {
-                NSString *fullURLString = [NSURL URLWithString:URLString relativeToURL:self.baseURL].absoluteString;
+                NSString *fullURLString = [self fullURL:URLString].absoluteString;
                 NSArray *allTasks = self.tasks;
                 for (NSURLSessionTask *t in allTasks) {
                         if ([t.originalRequest.URL.absoluteString isEqualToString:fullURLString]) {
