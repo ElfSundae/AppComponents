@@ -34,7 +34,6 @@ Pod::Spec.new do |s|
 
   s.subspec "UIKit" do |ss|
     ss.source_files         = "AppComponents/UIKit/**/*.{h,m}"
-    ss.private_header_files = "AppComponents/UIKit/**/*+Private.h"
     ss.dependency           "AppComponents/App"
     ss.dependency           "ESFramework/UIKit"
     ss.dependency           "FontAwesomeKit/FontAwesome"
@@ -125,6 +124,12 @@ Pod::Spec.new do |s|
     ss.subspec "WebViewJavascriptBridge" do |sss|
       sss.source_files      = "AppComponents/VendorServices/WebViewJavascriptBridge/**/*.{h,m}"
       sss.dependency        "WebViewJavascriptBridge", "~> 5.0"
+      sss.dependency        "ESFramework/Core"
+    end
+
+    ss.subspec "FontAwesomeKit" do |sss|
+      sss.source_files      = "AppComponents/VendorServices/FontAwesomeKit/**/*.{h,m}"
+      sss.dependency        "FontAwesomeKit/Core"
       sss.dependency        "ESFramework/Core"
     end
   end # VendorService

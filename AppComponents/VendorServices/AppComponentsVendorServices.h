@@ -13,3 +13,4 @@
 #import <AppComponents/ACRemoteNotificationXGPushService.h>
 #import <AppComponents/ESApp+ACImageViewController.h>
 #import <AppComponents/WebViewJavascriptBridge+ACMessageHandler.h>
+#import <AppComponents/FAKIcon+ACAdditions.h>

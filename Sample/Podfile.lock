@@ -63,12 +63,16 @@ PODS:
     - FontAwesomeKit/FontAwesome
     - SDWebImage/Core
   - AppComponents/VendorServices (1.0.4):
+    - AppComponents/VendorServices/FontAwesomeKit (= 1.0.4)
     - AppComponents/VendorServices/ImageViewController (= 1.0.4)
     - AppComponents/VendorServices/MobSMS (= 1.0.4)
     - AppComponents/VendorServices/TalkingDataAnalytics (= 1.0.4)
     - AppComponents/VendorServices/UmengAnalytics (= 1.0.4)
     - AppComponents/VendorServices/WebViewJavascriptBridge (= 1.0.4)
     - AppComponents/VendorServices/XGPush (= 1.0.4)
+  - AppComponents/VendorServices/FontAwesomeKit (1.0.4):
+    - ESFramework/Core
+    - FontAwesomeKit/Core
   - AppComponents/VendorServices/ImageViewController (1.0.4):
     - AppComponents/App
     - JTSImageViewController
@@ -150,7 +154,7 @@ SPEC CHECKSUMS:
   APIService-TalkingData: 82f6ca2c19e56d0e1acfc3eb8cc46367ca07f07c
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
-  AppComponents: a64f9e2802e3824260ab0594d36d981a745224ee
+  AppComponents: 09bdca4e94c9b670444e674d1407dce606d48374
   ESFramework: 7534b2dedb81a2b964d5ba159376fe4408c18880
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9

@@ -103,6 +103,8 @@
 		E7C3FAC51C5014B800281993 /* ACHTTPRequestSerializer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHTTPRequestSerializer.m; sourceTree = "<group>"; };
 		E7E93D8A1C5DA2080034494E /* ACTableViewController+Subclassing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACTableViewController+Subclassing.h"; sourceTree = "<group>"; };
 		E7E93D8B1C5DA2080034494E /* ACTableViewController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACTableViewController+Private.m"; sourceTree = "<group>"; };
+		E7FF27831C605BFD00C104BF /* UIImage+ACFontAwesomeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ACFontAwesomeKit.h"; sourceTree = "<group>"; };
+		E7FF27841C605BFD00C104BF /* UIImage+ACFontAwesomeKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ACFontAwesomeKit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -202,6 +204,7 @@
 				E78835BF1C53D61100F67C63 /* XGPush */,
 				E7777D8E1C55C58C005E41C7 /* ImageViewController */,
 				E72B98071C5F322B00968230 /* WebViewJavascriptBridge */,
+				E7FF27801C6058BF00C104BF /* FontAwesomeKit */,
 			);
 			path = VendorServices;
 			sourceTree = "<group>";
@@ -368,6 +371,15 @@
 				E71B7CF51C509D21001910C2 /* ACApiClient.m */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		E7FF27801C6058BF00C104BF /* FontAwesomeKit */ = {
+			isa = PBXGroup;
+			children = (
+				E7FF27831C605BFD00C104BF /* UIImage+ACFontAwesomeKit.h */,
+				E7FF27841C605BFD00C104BF /* UIImage+ACFontAwesomeKit.m */,
+			);
+			path = FontAwesomeKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
