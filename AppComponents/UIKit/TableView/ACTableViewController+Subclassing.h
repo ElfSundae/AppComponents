@@ -66,16 +66,16 @@
 /// 刷新(请求)数据
 - (void)refreshData;
 /// 取消刷新
-- (void)cancelRefreshingData;
+- (void)cancelRefreshingData __attribute__((objc_requires_super));
 /// 刷新数据完成，设置hasMore
-- (void)refreshingDataDidFinish:(id)data;
+- (void)refreshingDataDidFinish:(id)data __attribute__((objc_requires_super));
 
 /// 加载更多数据
 - (void)loadMoreData;
 /// 取消加载更多
-- (void)cancelLoadingMoreData;
+- (void)cancelLoadingMoreData __attribute__((objc_requires_super));
 /// 加载更多数据完成，设置hasMore
-- (void)loadingMoreDataDidFinish:(id)data;
+- (void)loadingMoreDataDidFinish:(id)data __attribute__((objc_requires_super));
 
 - (ESActivityLabel *)createLoadingMoreActivityLabel;
 @end
