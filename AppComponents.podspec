@@ -35,8 +35,9 @@ Pod::Spec.new do |s|
   s.subspec "UIKit" do |ss|
     ss.source_files         = "AppComponents/UIKit/**/*.{h,m}"
     ss.dependency           "AppComponents/App"
-    ss.dependency           "ESFramework/UIKit"
     ss.dependency           "FontAwesomeKit/FontAwesome"
+    ss.dependency           "AppComponents/VendorServices/FontAwesomeKit"
+    ss.dependency           "ESFramework/UIKit"
     ss.dependency           "SDWebImage/Core"
   end
 
