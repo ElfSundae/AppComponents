@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "AppComponents"
-  s.version           = "1.0.4"
+  s.version           = "1.0.5"
   s.license           = "MIT"
   s.summary           = "Components for iOS development."
   s.homepage          = "https://github.com/ElfSundae/AppComponents"
@@ -131,6 +131,6 @@ Pod::Spec.new do |s|
       sss.dependency        "FontAwesomeKit/Core"
       sss.dependency        "ESFramework/Core"
     end
-  end # VendorService
+  end # VendorServices
 
 end

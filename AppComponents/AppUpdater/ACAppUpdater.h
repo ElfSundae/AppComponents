@@ -13,7 +13,7 @@
 /**
  * App版本有所变化，可能发现了新版本， 用 +newVersionExists 检查是否存在新版本。
  */
-ES_EXTERN NSString *const ACAppUpdaterNewVersionDidChangeNotification;
+FOUNDATION_EXTERN NSString *const ACAppUpdaterNewVersionDidChangeNotification;
 
 /**
  * App更新方式： 可选，强制

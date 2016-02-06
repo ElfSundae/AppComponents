@@ -13,7 +13,7 @@
  * 各个组件的配置信息。
  */
 
-ES_EXTERN NSMutableDictionary *ACConfig(void);
-ES_EXTERN id ACConfigGet(NSString *keyPath);
-ES_EXTERN BOOL ACConfigSet(NSString *keyPath, id object);
-ES_EXTERN void ACConfigSetDictionary(NSDictionary *dictionary);
+FOUNDATION_EXTERN NSMutableDictionary *ACConfig(void);
+FOUNDATION_EXTERN id ACConfigGet(NSString *keyPath);
+FOUNDATION_EXTERN BOOL ACConfigSet(NSString *keyPath, id object);
+FOUNDATION_EXTERN void ACConfigSetDictionary(NSDictionary *dictionary);

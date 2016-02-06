@@ -17,117 +17,111 @@ PODS:
   - APIService-TalkingData (2.2.24)
   - APIService-UmengAnalytics (3.6.6)
   - APIService-XGPush (2.4.6.1)
-  - AppComponents (1.0.4):
-    - AppComponents/Ad (= 1.0.4)
-    - AppComponents/App (= 1.0.4)
-    - AppComponents/AppUpdater (= 1.0.4)
-    - AppComponents/Auth (= 1.0.4)
-    - AppComponents/Core (= 1.0.4)
-    - AppComponents/Encryptor (= 1.0.4)
-    - AppComponents/Networking (= 1.0.4)
-    - AppComponents/UDID (= 1.0.4)
-    - AppComponents/UIKit (= 1.0.4)
-    - AppComponents/VendorServices (= 1.0.4)
-    - AppComponents/WebKit (= 1.0.4)
-  - AppComponents/Ad (1.0.4):
+  - AppComponents (1.0.5):
+    - AppComponents/Ad (= 1.0.5)
+    - AppComponents/App (= 1.0.5)
+    - AppComponents/AppUpdater (= 1.0.5)
+    - AppComponents/Auth (= 1.0.5)
+    - AppComponents/Core (= 1.0.5)
+    - AppComponents/Encryptor (= 1.0.5)
+    - AppComponents/Networking (= 1.0.5)
+    - AppComponents/UDID (= 1.0.5)
+    - AppComponents/UIKit (= 1.0.5)
+    - AppComponents/VendorServices (= 1.0.5)
+    - AppComponents/WebKit (= 1.0.5)
+  - AppComponents/Ad (1.0.5):
     - AppComponents/Core
     - ESFramework/App
-  - AppComponents/App (1.0.4):
+  - AppComponents/App (1.0.5):
     - AppComponents/Core
     - ESFramework/App
     - MBProgressHUD
-  - AppComponents/AppUpdater (1.0.4):
+  - AppComponents/AppUpdater (1.0.5):
     - AppComponents/Core
     - ESFramework/App
     - ESFramework/StoreKit
-  - AppComponents/Auth (1.0.4):
+  - AppComponents/Auth (1.0.5):
     - AppComponents/App
     - AppComponents/VendorServices/MobSMS
     - ESFramework/UIKit/View
     - FontAwesomeKit/FontAwesome
-  - AppComponents/Core (1.0.4):
+  - AppComponents/Core (1.0.5):
     - ESFramework/Additions
     - ESFramework/Core
-  - AppComponents/Encryptor (1.0.4):
+  - AppComponents/Encryptor (1.0.5):
     - ESFramework/Core
-  - AppComponents/Networking (1.0.4):
+  - AppComponents/Networking (1.0.5):
     - AFNetworking (~> 3.0)
     - AppComponents/App
     - AppComponents/Encryptor
-  - AppComponents/UDID (1.0.4):
+  - AppComponents/UDID (1.0.5):
     - AppComponents/Core
     - UICKeyChainStore
-  - AppComponents/UIKit (1.0.4):
+  - AppComponents/UIKit (1.0.5):
     - AppComponents/App
     - ESFramework/UIKit
     - FontAwesomeKit/FontAwesome
     - SDWebImage/Core
-  - AppComponents/VendorServices (1.0.4):
-    - AppComponents/VendorServices/FontAwesomeKit (= 1.0.4)
-    - AppComponents/VendorServices/ImageViewController (= 1.0.4)
-    - AppComponents/VendorServices/MobSMS (= 1.0.4)
-    - AppComponents/VendorServices/TalkingDataAnalytics (= 1.0.4)
-    - AppComponents/VendorServices/UmengAnalytics (= 1.0.4)
-    - AppComponents/VendorServices/WebViewJavascriptBridge (= 1.0.4)
-    - AppComponents/VendorServices/XGPush (= 1.0.4)
-  - AppComponents/VendorServices/FontAwesomeKit (1.0.4):
+  - AppComponents/VendorServices (1.0.5):
+    - AppComponents/VendorServices/FontAwesomeKit (= 1.0.5)
+    - AppComponents/VendorServices/ImageViewController (= 1.0.5)
+    - AppComponents/VendorServices/MobSMS (= 1.0.5)
+    - AppComponents/VendorServices/TalkingDataAnalytics (= 1.0.5)
+    - AppComponents/VendorServices/UmengAnalytics (= 1.0.5)
+    - AppComponents/VendorServices/WebViewJavascriptBridge (= 1.0.5)
+    - AppComponents/VendorServices/XGPush (= 1.0.5)
+  - AppComponents/VendorServices/FontAwesomeKit (1.0.5):
     - ESFramework/Core
     - FontAwesomeKit/Core
-  - AppComponents/VendorServices/ImageViewController (1.0.4):
+  - AppComponents/VendorServices/ImageViewController (1.0.5):
     - AppComponents/App
     - JTSImageViewController
-  - AppComponents/VendorServices/MobSMS (1.0.4):
+  - AppComponents/VendorServices/MobSMS (1.0.5):
     - ESFramework/App
     - MOBFoundation_IDFA
     - SMSSDK
-  - AppComponents/VendorServices/TalkingDataAnalytics (1.0.4):
+  - AppComponents/VendorServices/TalkingDataAnalytics (1.0.5):
     - APIService-TalkingData
     - ESFramework/App
-  - AppComponents/VendorServices/UmengAnalytics (1.0.4):
+  - AppComponents/VendorServices/UmengAnalytics (1.0.5):
     - APIService-UmengAnalytics
     - ESFramework/App
-  - AppComponents/VendorServices/WebViewJavascriptBridge (1.0.4):
+  - AppComponents/VendorServices/WebViewJavascriptBridge (1.0.5):
     - ESFramework/Core
     - WebViewJavascriptBridge (~> 5.0)
-  - AppComponents/VendorServices/XGPush (1.0.4):
+  - AppComponents/VendorServices/XGPush (1.0.5):
     - APIService-XGPush
     - AppComponents/App
-  - AppComponents/WebKit (1.0.4):
+  - AppComponents/WebKit (1.0.5):
     - AppComponents/App
     - AppComponents/VendorServices/ImageViewController
     - AppComponents/VendorServices/WebViewJavascriptBridge
     - ESFramework/StoreKit
     - ESFramework/UIKit/RefreshControl
     - ESFramework/UIKit/View
-  - ESFramework (2.3.3):
-    - ESFramework/Additions (= 2.3.3)
-    - ESFramework/App (= 2.3.3)
-    - ESFramework/Core (= 2.3.3)
-    - ESFramework/StoreKit (= 2.3.3)
-    - ESFramework/UIKit (= 2.3.3)
-  - ESFramework/Additions (2.3.3):
+  - ESFramework/Additions (2.3.5):
     - ESFramework/Core
-  - ESFramework/App (2.3.3):
+  - ESFramework/App (2.3.5):
     - ESFramework/Additions
     - ESFramework/Core
-  - ESFramework/Core (2.3.3)
-  - ESFramework/StoreKit (2.3.3):
+  - ESFramework/Core (2.3.5)
+  - ESFramework/StoreKit (2.3.5):
     - ESFramework/Additions
     - ESFramework/App
     - ESFramework/Core
-  - ESFramework/UIKit (2.3.3):
-    - ESFramework/UIKit/Animation (= 2.3.3)
-    - ESFramework/UIKit/Controller (= 2.3.3)
-    - ESFramework/UIKit/RefreshControl (= 2.3.3)
-    - ESFramework/UIKit/View (= 2.3.3)
-  - ESFramework/UIKit/Animation (2.3.3)
-  - ESFramework/UIKit/Controller (2.3.3):
+  - ESFramework/UIKit (2.3.5):
+    - ESFramework/UIKit/Animation (= 2.3.5)
+    - ESFramework/UIKit/Controller (= 2.3.5)
+    - ESFramework/UIKit/RefreshControl (= 2.3.5)
+    - ESFramework/UIKit/View (= 2.3.5)
+  - ESFramework/UIKit/Animation (2.3.5)
+  - ESFramework/UIKit/Controller (2.3.5):
     - ESFramework/App
     - ESFramework/UIKit/RefreshControl
     - ESFramework/UIKit/View
-  - ESFramework/UIKit/RefreshControl (2.3.3):
+  - ESFramework/UIKit/RefreshControl (2.3.5):
     - ESFramework/UIKit/View
-  - ESFramework/UIKit/View (2.3.3):
+  - ESFramework/UIKit/View (2.3.5):
     - ESFramework/Additions
     - ESFramework/Core
   - FontAwesomeKit/Core (2.2.0)
@@ -139,11 +133,10 @@ PODS:
   - SDWebImage/Core (3.7.5)
   - SMSSDK (2.0.2)
   - UICKeyChainStore (2.1.0)
-  - WebViewJavascriptBridge (5.0.2)
+  - WebViewJavascriptBridge (5.0.5)
 
 DEPENDENCIES:
   - AppComponents (from `../AppComponents.podspec`)
-  - ESFramework
 
 EXTERNAL SOURCES:
   AppComponents:
@@ -154,8 +147,8 @@ SPEC CHECKSUMS:
   APIService-TalkingData: 82f6ca2c19e56d0e1acfc3eb8cc46367ca07f07c
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
-  AppComponents: c2167f8b9723c2e69d5431549ddca4d22e838fe1
-  ESFramework: 7534b2dedb81a2b964d5ba159376fe4408c18880
+  AppComponents: 37e44f324225117f1f51a813da134e2e2b50098b
+  ESFramework: 0885b31f92891dad032602737731d7466ad243a7
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
@@ -163,6 +156,6 @@ SPEC CHECKSUMS:
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SMSSDK: 4c369e5df6d6998b5341f53bf98a0c18a5b90719
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
-  WebViewJavascriptBridge: 73dbe510639e50881bee3e9d10eff7a1cdb25f13
+  WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
 
 COCOAPODS: 0.39.0

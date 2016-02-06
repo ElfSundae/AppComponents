@@ -155,9 +155,9 @@ ESDefineAssociatedObjectKey(defaultImageViewControllerBackgroundOptions);
                 return;
         }
         
-        ESWeak_(imageViewer);
+        ESWeak(imageViewer);
         UIActionSheet *action = [UIActionSheet actionSheetWithTitle:nil cancelButtonTitle:nil didDismissBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                ESStrong_(imageViewer);
+                ESStrong(imageViewer);
                 NSString *actionTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
                 if ([actionTitle isEqualToString:@"保存到手机"]) {
                         [[ESApp sharedApp] saveImageToPhotoLibrary:_imageViewer.image showsProgress:YES userInfo:nil completion:nil];

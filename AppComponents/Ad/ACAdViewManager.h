@@ -14,7 +14,7 @@
 /**
  * Posted when bannerView is showing or hidden.
  */
-ES_EXTERN NSString *ACAdBannerViewDidUpdateNotification;
+FOUNDATION_EXTERN NSString *ACAdBannerViewDidUpdateNotification;
 
 @interface ACAdViewManager : NSObject
 

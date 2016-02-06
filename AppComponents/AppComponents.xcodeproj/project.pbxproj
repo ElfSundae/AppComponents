@@ -103,8 +103,8 @@
 		E7C3FAC51C5014B800281993 /* ACHTTPRequestSerializer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHTTPRequestSerializer.m; sourceTree = "<group>"; };
 		E7E93D8A1C5DA2080034494E /* ACTableViewController+Subclassing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACTableViewController+Subclassing.h"; sourceTree = "<group>"; };
 		E7E93D8B1C5DA2080034494E /* ACTableViewController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACTableViewController+Private.m"; sourceTree = "<group>"; };
-		E7FF27831C605BFD00C104BF /* UIImage+ACFontAwesomeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ACFontAwesomeKit.h"; sourceTree = "<group>"; };
-		E7FF27841C605BFD00C104BF /* UIImage+ACFontAwesomeKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ACFontAwesomeKit.m"; sourceTree = "<group>"; };
+		E7FF27881C60C93C00C104BF /* FAKIcon+ACAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FAKIcon+ACAdditions.h"; sourceTree = "<group>"; };
+		E7FF27891C60C93C00C104BF /* FAKIcon+ACAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FAKIcon+ACAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -376,8 +376,8 @@
 		E7FF27801C6058BF00C104BF /* FontAwesomeKit */ = {
 			isa = PBXGroup;
 			children = (
-				E7FF27831C605BFD00C104BF /* UIImage+ACFontAwesomeKit.h */,
-				E7FF27841C605BFD00C104BF /* UIImage+ACFontAwesomeKit.m */,
+				E7FF27881C60C93C00C104BF /* FAKIcon+ACAdditions.h */,
+				E7FF27891C60C93C00C104BF /* FAKIcon+ACAdditions.m */,
 			);
 			path = FontAwesomeKit;
 			sourceTree = "<group>";

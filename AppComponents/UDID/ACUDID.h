@@ -11,18 +11,18 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <AppComponents/ACConfig.h>
 
-ES_EXTERN const NSInteger ACUDIDLength; // 40
+FOUNDATION_EXTERN const NSInteger ACUDIDLength; // 40
 
 /**
  * 标记UDID最前面的32位串是什么值的md5。
  */
 
-ES_EXTERN NSString *const ACUDIDBasedUUIDTag;           // "a"
-ES_EXTERN NSString *const ACUDIDBasedRandomTag;         // "b"
-ES_EXTERN NSString *const ACUDIDBasedIDFAPossibleTag;   // 除了 ACUDIDBasedUUIDTag 和 ACUDIDBasedRandomTag 之外的0-9a-f 字符, 默认为"f"
+FOUNDATION_EXTERN NSString *const ACUDIDBasedUUIDTag;           // "a"
+FOUNDATION_EXTERN NSString *const ACUDIDBasedRandomTag;         // "b"
+FOUNDATION_EXTERN NSString *const ACUDIDBasedIDFAPossibleTag;   // 除了 ACUDIDBasedUUIDTag 和 ACUDIDBasedRandomTag 之外的0-9a-f 字符, 默认为"f"
 
-ES_EXTERN NSString *const ACUDIDKeychainService;// "ACUDIDService"
-ES_EXTERN NSString *const ACUDIDKeychainKey;    // "ACUDIDKey"
+FOUNDATION_EXTERN NSString *const ACUDIDKeychainService;// "ACUDIDService"
+FOUNDATION_EXTERN NSString *const ACUDIDKeychainKey;    // "ACUDIDKey"
 
 /*!
  * 生成设备UDID.
@@ -62,7 +62,7 @@ ES_EXTERN NSString *const ACUDIDKeychainKey;    // "ACUDIDKey"
 /**
  * 获取设备UDID.
  */
-ES_EXTERN NSString *ACGetUDID(void);
+FOUNDATION_EXTERN NSString *ACGetUDID(void);
 
 /**
  * 重写设备UDID.
@@ -72,22 +72,22 @@ ES_EXTERN NSString *ACGetUDID(void);
  *
  * @warning newUDID 必须通过 +ac_isDeviceIdentifierValid:: 的验证才能重写成功。
  */
-ES_EXTERN BOOL ACSetUDID(NSString *newUDID);
+FOUNDATION_EXTERN BOOL ACSetUDID(NSString *newUDID);
 
 /**
  * Validates a given deviceIdentifier whether is valid.
  */
-ES_EXTERN BOOL ACIsUDIDValid(NSString *UDID, NSString **outBasedTag);
+FOUNDATION_EXTERN BOOL ACIsUDIDValid(NSString *UDID, NSString **outBasedTag);
 
 /**
  * Returns the shared and lazy loaded Keychain Store which used to store UDID to Keychain.
  *
  * @warning After saving new UDID to the Keychain, this shared UDIDKeychainStore will be set to nil, and it will re-created if you call this again.
  */
-ES_EXTERN UICKeyChainStore *ACUDIDKeychainStore(void);
+FOUNDATION_EXTERN UICKeyChainStore *ACUDIDKeychainStore(void);
 
 /**
  * Set the shared UDIDKeychainStore instance to nil or other instance of UICKeyChainStore.
  */
-ES_EXTERN BOOL ACUDIDSetKeychainStore(UICKeyChainStore *store);
+FOUNDATION_EXTERN BOOL ACUDIDSetKeychainStore(UICKeyChainStore *store);
 

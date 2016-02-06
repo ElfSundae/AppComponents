@@ -47,13 +47,14 @@
                 dispatch_once(&onceToken, ^{
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-                        void *iconResult = nil;
-                        if (ESInvokeSelector(FAKFontAwesomeClass, @selector(checkIconWithSize:), &iconResult, 40.f)) {
-                                id icon = (__bridge id)iconResult;
-                                ESInvokeSelector(icon, @selector(addAttribute:value:), NULL, NSForegroundColorAttributeName, [UIColor whiteColor]);
-                                void *iconImageResult;
-                                ESInvokeSelector(icon, @selector(imageWithSize:), &iconImageResult, CGSizeMake(40.f, 40.f));
-                                __gCheckmarkHUDImage = (__bridge id)iconImageResult;
+                        id __autoreleasing checkIcon = nil;
+                        if (ESInvokeSelector(FAKFontAwesomeClass, @selector(checkIconWithSize:), NO, &checkIcon, 40.f)) {
+                                ESInvokeSelector(checkIcon, @selector(addAttribute:value:), NO, NULL, [UIColor whiteColor]);
+                                UIImage *__autoreleasing iconImage = nil;
+                                ESInvokeSelector(checkIcon, @selector(imageWithSize:), NO, &iconImage, CGSizeMake(40.f, 40.f));
+                                if (iconImage) {
+                                        __gCheckmarkHUDImage = iconImage;
+                                }
                         }
 #pragma clang diagnostic pop
                 });
