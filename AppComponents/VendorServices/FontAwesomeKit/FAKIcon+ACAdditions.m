@@ -24,7 +24,9 @@
 {
         FAKIcon *__autoreleasing icon;
         if ([self invokeSelector:@selector(iconWithIdentifier:size:error:) retainArguments:NO result:&icon, identifier, fontSize, NULL] && icon) {
-                [icon addAttribute:NSForegroundColorAttributeName value:color];
+                if (color) {
+                        [icon addAttribute:NSForegroundColorAttributeName value:color];
+                }
                 icon.drawingBackgroundColor = backgroundColor;
                 icon.drawingPositionAdjustment = positionAdjustment;
                 if (ESIsDictionaryWithItems(attributes)) {
