@@ -73,14 +73,14 @@ ESDefineAssociatedObjectKey(ac_messageHandler);
 
 - (void)ac_flushMessageQueue:(NSString *)messageQueueString
 {
-        if (ESIsStringWithAnyText(messageQueueString)) {
+        if (self.ac_messageHandler && ESIsStringWithAnyText(messageQueueString)) {
                 id messages = [self performSelector:@selector(_deserializeMessageJSON:) withObject:messageQueueString];
                 for (WVJBMessage* message in messages) {
                         if (![message isKindOfClass:[WVJBMessage class]]) {
                                 NSLog(@"WebViewJavascriptBridge: WARNING: Invalid %@ received: %@", [message class], message);
                                 continue;
                         }
-                        ESInvokeSelector(self, @selector(_log:json:), NO, NULL, @"RCVD", message);
+                        [self invokeSelector:@selector(_log:json:) retainArguments:NO result:NULL, @"RCVD", message];
                         
                         NSString* responseId = message[@"responseId"];
                         if (responseId) {
@@ -119,10 +119,10 @@ ESDefineAssociatedObjectKey(ac_messageHandler);
                                 handler(message[@"data"], responseCallback);
                         }
                 }
+        } else {
+                // invoke the original implementation
+                [self ac_flushMessageQueue:messageQueueString];
         }
-        
-        // invoke the original implementation
-        [self ac_flushMessageQueue:messageQueueString];
 }
 
 @end
