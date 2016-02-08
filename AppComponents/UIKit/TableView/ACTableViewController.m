@@ -33,6 +33,8 @@ NSString *const ACTableViewCellConfigKeyCellStyle = @"cellStyle";
 - (instancetype)initWithStyle:(UITableViewStyle)style
 {
         ACTableViewControllerInitializationFlags flags;
+        flags.loadingMoreViewHasTopLine = NO;
+        flags.configuresCellWithTableData = NO;
         flags.useTableFooterViewAsLoadingMoreView = YES;
         return [self initWithStyle:style initializationFlags:flags];
 }
