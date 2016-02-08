@@ -80,7 +80,7 @@ ESDefineAssociatedObjectKey(ac_messageHandler);
                                 NSLog(@"WebViewJavascriptBridge: WARNING: Invalid %@ received: %@", [message class], message);
                                 continue;
                         }
-                        // [self invokeSelector:@selector(_log:json:) retainArguments:NO result:NULL, @"RCVD", message];
+                        [self invokeSelector:@selector(_log:json:) retainArguments:NO result:NULL, @"RCVD", message];
                         
                         NSString* responseId = message[@"responseId"];
                         if (responseId) {
