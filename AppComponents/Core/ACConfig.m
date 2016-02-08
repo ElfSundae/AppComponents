@@ -32,9 +32,9 @@ BOOL ACConfigSet(NSString *keyPath, id object)
 void ACConfigSetDictionary(NSDictionary *dictionary)
 {
         if (ESIsDictionaryWithItems(dictionary)) {
-                [dictionary enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-                        ACConfigSet(key, obj);
-                }];
+                for (NSString *key in dictionary.allKeys) {
+                        ACConfigSet(key, dictionary[key]);
+                }
         }
 }
 
