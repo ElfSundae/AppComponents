@@ -14,11 +14,19 @@
 - (void)viewDidLoad
 {
         [super viewDidLoad];
+        self.view.backgroundColor = [UIColor es_viewBackgroundColor];
+        self.navigationItem.title = [ESApp sharedApp].appDisplayName;
+        
         ESWeakSelf;
         self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"Table" handler:^(UIBarButtonItem *barButtonItem) {
                 ESStrongSelf;
                 DemoTableViewController *tableVC = [[DemoTableViewController alloc] init];
-                [self.navigationController pushViewController:tableVC animated:YES];
+                [_self.navigationController pushViewController:tableVC animated:YES];
+        }];
+        self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:@"Feedback" handler:^(UIBarButtonItem *barButtonItem) {
+                ESStrongSelf;
+                ACFeedbackViewController *feedback = [[ACFeedbackViewController alloc] init];
+                [_self.navigationController pushViewController:feedback animated:YES];
         }];
 }
 
