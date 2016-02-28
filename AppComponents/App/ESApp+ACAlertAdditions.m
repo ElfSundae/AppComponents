@@ -19,14 +19,14 @@
 
 - (void)hideProgressHUD:(BOOL)animated
 {
-        [MBProgressHUD hideAllHUDsForView:[ESApp keyWindow] animated:animated];
+        [MBProgressHUD hideHUDForView:[ESApp keyWindow] animated:animated];
 }
 
 - (MBProgressHUD *)showProgressHUDWithTitle:(NSString *)title animated:(BOOL)animated
 {
         [self hideProgressHUD:NO];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ESApp keyWindow] animated:animated];
-        hud.labelText = title;
+        hud.label.text = title;
         return hud;
 }
 
@@ -36,43 +36,15 @@
 
 - (MBProgressHUD *)showCheckmarkHUDWithTitle:(NSString *)title timeInterval:(NSTimeInterval)timeInterval animated:(BOOL)animated
 {
-        MBProgressHUD *hud = self.progressHUD ?: [self showProgressHUDWithTitle:nil animated:animated];
-        Class FAKFontAwesomeClass = NSClassFromString(@"FAKFontAwesome");
-        if (FAKFontAwesomeClass) {
-                hud.labelText = title;
-                hud.detailsLabelText = nil;
-                hud.mode = MBProgressHUDModeCustomView;
-                static UIImage *__gCheckmarkHUDImage = nil;
-                static dispatch_once_t onceToken;
-                dispatch_once(&onceToken, ^{
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-                        id __autoreleasing checkIcon = nil;
-                        if (ESInvokeSelector(FAKFontAwesomeClass, @selector(checkIconWithSize:), NO, &checkIcon, 40.f)) {
-                                ESInvokeSelector(checkIcon, @selector(addAttribute:value:), NO, NULL, [UIColor whiteColor]);
-                                UIImage *__autoreleasing iconImage = nil;
-                                ESInvokeSelector(checkIcon, @selector(imageWithSize:), NO, &iconImage, CGSizeMake(40.f, 40.f));
-                                if (iconImage) {
-                                        __gCheckmarkHUDImage = iconImage;
-                                }
-                        }
-#pragma clang diagnostic pop
-                });
-                hud.customView = [[UIImageView alloc] initWithImage:__gCheckmarkHUDImage];
-        } else {
-                hud.labelFont = [UIFont boldSystemFontOfSize:42.f];
-                hud.labelText = @"✓";
-                hud.detailsLabelFont = [UIFont boldSystemFontOfSize:16.f];
-                hud.detailsLabelText = title;
-                hud.mode = MBProgressHUDModeText;
-        }
-        
-        hud.minSize = CGSizeMake(64.f, 64.f);
+        MBProgressHUD *hud = [self showProgressHUDWithTitle:title animated:animated];
+        hud.mode = MBProgressHUDModeCustomView;
+        UIImage *image = [[UIImage imageNamed:@"ACProgressHUD-Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        hud.customView = [[UIImageView alloc] initWithImage:image];
+        hud.square = YES;        
         if (timeInterval <= 0.0) {
                 timeInterval = ESDoubleValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsTimeInterval), kACAppDefaultTipsTimeInterval);
         }
-        [hud hide:animated afterDelay:timeInterval];
-        
+        [hud hideAnimated:animated afterDelay:timeInterval];
         return hud;
 }
 
@@ -95,11 +67,11 @@
         [self hideTipsOnView:view animated:NO];
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:animated];
-        hud.labelText = text;
-        hud.detailsLabelText = detail;
+        hud.label.text = text;
+        hud.detailsLabel.text = detail;
         hud.mode = MBProgressHUDModeText;
         hud.animationType = ESIntegerValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsAnimationType), MBProgressHUDAnimationFade);
-        [hud hide:animated afterDelay:timeInterval];
+        [hud hideAnimated:animated afterDelay:timeInterval];
         return hud;
 }
 
@@ -118,7 +90,7 @@
         if (![view isKindOfClass:[UIView class]]) {
                 view = [ESApp keyWindow];
         }
-        [MBProgressHUD hideAllHUDsForView:view animated:animated];
+        [MBProgressHUD hideHUDForView:view animated:animated];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

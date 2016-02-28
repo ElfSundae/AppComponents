@@ -10,8 +10,7 @@
 #import <ESFramework/ESFrameworkAdditions.h>
 #import <ESFramework/ESApp.h>
 #import <AppComponents/AppComponentsApp.h>
-#import <FontAwesomeKit/FAKFontAwesome.h>
-#import <AppComponents/FAKIcon+ACAdditions.h>
+#import <IconFontsKit/IFFontAwesome.h>
 
 @implementation ACFeedbackViewController
 
@@ -42,7 +41,7 @@
         self.contactTextField.height = ceilf(self.contactTextField.font.lineHeight) + 22.f;
         self.contactTextField.width = self.view.width;
         [self.contactTextField setCornerRadius:0.001 borderWidth:1.f borderColor:[UIColor es_lightBorderColor]];
-        UIImageView *leftView = [[UIImageView alloc] initWithImage:[FAKFontAwesome imageWithIconIdentifier:@"fa-mobile" color:[UIColor es_oceanDarkColor] fontSize:28.f]];
+        UIImageView *leftView = [[UIImageView alloc] initWithImage:[IFFontAwesome imageWithType:IFFAMobile color:[UIColor es_oceanDarkColor] fontSize:28.0]];
         leftView.contentMode = UIViewContentModeRight;
         leftView.width += 6.f;
         self.contactTextField.leftView = leftView;

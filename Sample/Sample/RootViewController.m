@@ -8,7 +8,6 @@
 
 #import "RootViewController.h"
 #import "DemoTableViewController.h"
-#import <FontAwesomeKit/FAKFontAwesome.h>
 
 @implementation RootViewController
 
@@ -21,13 +20,6 @@
                 DemoTableViewController *tableVC = [[DemoTableViewController alloc] init];
                 [self.navigationController pushViewController:tableVC animated:YES];
         }];
-        
-        self.view.backgroundColor = [UIColor blueColor];
-        
-        UIImage *image = [FAKFontAwesome imageWithIconIdentifier:@"fa-mobile" color:[UIColor redColor] fontSize:45];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.center = CGPointMake(100, 200);
-        [self.view addSubview:imageView];
 }
 
 @end

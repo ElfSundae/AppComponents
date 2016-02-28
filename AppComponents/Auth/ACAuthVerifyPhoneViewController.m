@@ -7,8 +7,8 @@
 //
 
 #import "ACAuthVerifyPhoneViewController+Private.h"
-#import <FontAwesomeKit/FAKFontAwesome.h>
 #import <objc/message.h>
+#import <IconFontsKit/IFFontAwesome.h>
 
 static NSString *__gPhoneNumberRegexPattern = @"^1\\d{10}$";
 static NSString *__gVerifyPhoneSharedPhoneZone = nil;
@@ -91,8 +91,7 @@ static NSDate *__gVerifyPhoneSharedDateOfPreviousSendingCode = nil;
         UIView *phoneLeftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, rowHeight, rowHeight)];
         UILabel *phoneIconLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         phoneIconLabel.backgroundColor = [UIColor clearColor];
-        FAKFontAwesome *phoneIcon = [FAKFontAwesome mobileIconWithSize:30.f];
-        [phoneIcon setAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
+        IFFontAwesome *phoneIcon = [IFFontAwesome iconWithType:IFFAMobile fontSize:30.0 color:[UIColor lightGrayColor]];
         phoneIconLabel.attributedText = [phoneIcon attributedString];
         [phoneIconLabel sizeToFit];
         [phoneLeftView addSubview:phoneIconLabel];
@@ -113,8 +112,7 @@ static NSDate *__gVerifyPhoneSharedDateOfPreviousSendingCode = nil;
         UIView *codeLeftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, rowHeight, rowHeight)];
         UILabel *codeLeftIconLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         codeLeftIconLabel.backgroundColor = [UIColor clearColor];
-        FAKFontAwesome *codeLeftIcon = [FAKFontAwesome iconWithCode:[FAKFontAwesome allIcons][@"fa-expeditedssl"] size:24];
-        [codeLeftIcon setAttributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
+        IFFontAwesome *codeLeftIcon = [IFFontAwesome iconWithType:IFFAExpeditedssl fontSize:24.0 color:[UIColor lightGrayColor]];
         codeLeftIconLabel.attributedText = [codeLeftIcon attributedString];
         [codeLeftIconLabel sizeToFit];
         [codeLeftView addSubview:codeLeftIconLabel];

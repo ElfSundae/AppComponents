@@ -32,15 +32,6 @@ Pod::Spec.new do |s|
     ss.dependency           "UICKeyChainStore"
   end
 
-  s.subspec "UIKit" do |ss|
-    ss.source_files         = "AppComponents/UIKit/**/*.{h,m}"
-    ss.dependency           "AppComponents/App"
-    ss.dependency           "FontAwesomeKit/FontAwesome"
-    ss.dependency           "AppComponents/VendorServices/FontAwesomeKit"
-    ss.dependency           "ESFramework/UIKit"
-    ss.dependency           "SDWebImage/Core"
-  end
-
   s.subspec "Ad" do |ss|
     ss.source_files         = "AppComponents/Ad/**/*.{h,m}"
     ss.dependency           "AppComponents/Core"
@@ -66,6 +57,15 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/Core"
     ss.dependency           "ESFramework/App"
     ss.dependency           "MBProgressHUD"
+    ss.resource             = "AppComponents/App/Resources/*.png"
+  end
+
+  s.subspec "UIKit" do |ss|
+    ss.source_files         = "AppComponents/UIKit/**/*.{h,m}"
+    ss.dependency           "AppComponents/App"
+    ss.dependency           "IconFontsKit/FontAwesome"
+    ss.dependency           "ESFramework/UIKit"
+    ss.dependency           "SDWebImage/Core"
   end
 
   s.subspec "Auth" do |ss|
@@ -74,7 +74,7 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/App"
     ss.dependency           "AppComponents/VendorServices/MobSMS"
     ss.dependency           "ESFramework/UIKit/View"
-    ss.dependency           "FontAwesomeKit/FontAwesome"
+    ss.dependency           "IconFontsKit/FontAwesome"
   end
 
   s.subspec "WebKit" do |ss|
@@ -127,11 +127,6 @@ Pod::Spec.new do |s|
       sss.dependency        "ESFramework/Core"
     end
 
-    ss.subspec "FontAwesomeKit" do |sss|
-      sss.source_files      = "AppComponents/VendorServices/FontAwesomeKit/**/*.{h,m}"
-      sss.dependency        "FontAwesomeKit/Core"
-      sss.dependency        "ESFramework/Core"
-    end
   end # VendorServices
 
 end
