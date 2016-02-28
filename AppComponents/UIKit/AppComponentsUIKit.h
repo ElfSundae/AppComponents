@@ -7,5 +7,6 @@
 //
 
 #import <AppComponents/ACBorderLabel.h>
+#import <AppComponents/ACFeedbackViewController.h>
 #import <AppComponents/ACTableViewCell.h>
 #import <AppComponents/ACTableViewController.h>

@@ -30,20 +30,18 @@
         self.view.backgroundColor = [UIColor es_viewBackgroundColor];
         
         self.contentTextView = [[UITextView alloc] initWithFrame:CGRectZero];
-        self.contentTextView.font = [UIFont systemFontOfSize:16.f];
+        self.contentTextView.font = [UIFont systemFontOfSize:16.];
         self.contentTextView.enablesReturnKeyAutomatically = YES;
         [self.view addSubview:self.contentTextView];
         
         self.contactTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.contactTextField.font = [UIFont systemFontOfSize:16.f];
+        self.contactTextField.font = [UIFont systemFontOfSize:16.];
         self.contactTextField.borderStyle = UITextBorderStyleNone;
         self.contactTextField.backgroundColor = [UIColor whiteColor];
-        self.contactTextField.height = ceilf(self.contactTextField.font.lineHeight) + 22.f;
+        self.contactTextField.height = ceil(self.contactTextField.font.lineHeight) + 22.;
         self.contactTextField.width = self.view.width;
-        [self.contactTextField setCornerRadius:0.001 borderWidth:1.f borderColor:[UIColor es_lightBorderColor]];
-        UIImageView *leftView = [[UIImageView alloc] initWithImage:[IFFontAwesome imageWithType:IFFAMobile color:[UIColor es_oceanDarkColor] fontSize:28.0]];
-        leftView.contentMode = UIViewContentModeRight;
-        leftView.width += 6.f;
+        [self.contactTextField setCornerRadius:0.001 borderWidth:1. borderColor:[UIColor es_lightBorderColor]];
+        UIImageView *leftView = [[UIImageView alloc] initWithImage:[IFFontAwesome imageWithType:IFFAMobile color:[UIColor es_oceanDarkColor] imageSize:CGSizeMake(28., 36.)]];
         self.contactTextField.leftView = leftView;
         self.contactTextField.leftViewMode = UITextFieldViewModeAlways;
         self.contactTextField.placeholder = @"联系方式: 手机号/邮箱/微信/QQ号";
