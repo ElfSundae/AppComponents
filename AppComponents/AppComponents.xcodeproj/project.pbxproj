@@ -297,8 +297,8 @@
 				E71B7CF61C50A315001910C2 /* App */,
 				E78834BE1C51A0C300F67C63 /* Auth */,
 				E78835781C51ED2C00F67C63 /* WebKit */,
-				E78835B41C53D61100F67C63 /* VendorServices */,
 				E78F78311C59B0CF00B9A33C /* UIKit */,
+				E78835B41C53D61100F67C63 /* VendorServices */,
 			);
 			indentWidth = 8;
 			sourceTree = "<group>";
