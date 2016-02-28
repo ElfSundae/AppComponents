@@ -31,7 +31,7 @@
 - (WebViewJavascriptBridge *)createJSBridgeForWebView:(UIWebView *)webView
 {
         WebViewJavascriptBridge *bridge = [WebViewJavascriptBridge bridgeForWebView:webView];
-        [bridge setWebViewDelegate:webView.delegate];
+        [bridge setWebViewDelegate:self];
         ESWeakSelf;
         bridge.ac_messageHandler = ^(NSString *handlerName, id data, WVJBResponseCallback responseCallback) {
                 ESStrongSelf;
