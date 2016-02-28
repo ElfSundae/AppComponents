@@ -131,7 +131,7 @@
 - (NSString *)ac_cellTextForIndexPath:(NSIndexPath *)indexPath
 {
         if (self.initializationFlags.configuresCellWithTableData) {
-                id text = [self ac_cellDataForIndexPath:indexPath][@"text"];
+                id text = [self ac_cellDataForIndexPath:indexPath][ACTableViewCellConfigKeyText];
                 if ([text isKindOfClass:[NSAttributedString class]]) {
                         return [(NSAttributedString *)text string];
                 } else if ([text isKindOfClass:[NSString class]]) {
