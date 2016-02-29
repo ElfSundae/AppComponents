@@ -57,7 +57,7 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/Core"
     ss.dependency           "ESFramework/App"
     ss.dependency           "MBProgressHUD"
-    ss.resource             = "AppComponents/App/Resources/*.png"
+    ss.resource             = "AppComponents/App/AppComponentsApp.bundle"
   end
 
   s.subspec "UIKit" do |ss|

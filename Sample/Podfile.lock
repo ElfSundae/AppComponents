@@ -124,7 +124,7 @@ PODS:
   - IconFontsKit/FontAwesome (1.2.0):
     - IconFontsKit/Core
   - JTSImageViewController (1.5.1)
-  - MBProgressHUD (HEAD based on 0.9.2)
+  - MBProgressHUD (0.9.2)
   - MOBFoundation_IDFA (1.4.0)
   - SDWebImage/Core (3.7.5)
   - SMSSDK (2.0.2)
@@ -133,7 +133,6 @@ PODS:
 
 DEPENDENCIES:
   - AppComponents (from `../AppComponents.podspec`)
-  - MBProgressHUD (HEAD)
 
 EXTERNAL SOURCES:
   AppComponents:
@@ -144,7 +143,7 @@ SPEC CHECKSUMS:
   APIService-TalkingData: 82f6ca2c19e56d0e1acfc3eb8cc46367ca07f07c
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
-  AppComponents: 1d86b0912256595a059e0c93e3e4ed1654c1e38f
+  AppComponents: 7f38e5793b984d850c07f74fcee9be7ec5d95d0d
   ESFramework: 0885b31f92891dad032602737731d7466ad243a7
   IconFontsKit: f0588bbacea848f49ee5dfe58c218b6d3ecb2d97
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9

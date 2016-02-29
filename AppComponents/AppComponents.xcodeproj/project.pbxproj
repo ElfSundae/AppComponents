@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E706D1861C82BF0E00A64C7D /* ACProgressHUD-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACProgressHUD-Checkmark.png"; sourceTree = "<group>"; };
-		E706D1871C82BF0E00A64C7D /* ACProgressHUD-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACProgressHUD-Checkmark@2x.png"; sourceTree = "<group>"; };
-		E706D1881C82BF0E00A64C7D /* ACProgressHUD-Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACProgressHUD-Checkmark@3x.png"; sourceTree = "<group>"; };
+		E706D1891C84734200A64C7D /* AppComponentsApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppComponentsApp.bundle; sourceTree = "<group>"; };
 		E71B7CEF1C5032A4001910C2 /* ACHTTPSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACHTTPSessionManager.h; sourceTree = "<group>"; };
 		E71B7CF01C5032A4001910C2 /* ACHTTPSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHTTPSessionManager.m; sourceTree = "<group>"; };
 		E71B7CF41C509D21001910C2 /* ACApiClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACApiClient.h; sourceTree = "<group>"; };
@@ -109,16 +107,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		E706D1821C82BEBB00A64C7D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E706D1861C82BF0E00A64C7D /* ACProgressHUD-Checkmark.png */,
-				E706D1871C82BF0E00A64C7D /* ACProgressHUD-Checkmark@2x.png */,
-				E706D1881C82BF0E00A64C7D /* ACProgressHUD-Checkmark@3x.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		E71B7CF61C50A315001910C2 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +123,7 @@
 				E78835921C536C1F00F67C63 /* ESApp+ACRemoteNotification.m */,
 				E78F77591C561F5C00B9A33C /* NSDate+ACAppAdditions.h */,
 				E78F775A1C561F5C00B9A33C /* NSDate+ACAppAdditions.m */,
-				E706D1821C82BEBB00A64C7D /* Resources */,
+				E706D1891C84734200A64C7D /* AppComponentsApp.bundle */,
 			);
 			path = App;
 			sourceTree = "<group>";

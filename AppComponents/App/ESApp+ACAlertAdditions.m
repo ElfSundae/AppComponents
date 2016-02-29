@@ -26,7 +26,16 @@
 {
         [self hideProgressHUD:NO];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ESApp keyWindow] animated:animated];
-        hud.label.text = title;
+        // TODO: remove -respondsToSelector: after MBProgressHUD released new Pod version
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        if ([hud respondsToSelector:@selector(label)]) {
+                [(UILabel *)[hud valueForKey:@"label"] setText:title];
+        } else {
+#pragma clang diagnostic ignored "-Wdeprecated"
+                hud.labelText = title;
+        }
+#pragma clang diagnostic pop
         return hud;
 }
 
@@ -38,13 +47,22 @@
 {
         MBProgressHUD *hud = [self showProgressHUDWithTitle:title animated:animated];
         hud.mode = MBProgressHUDModeCustomView;
-        UIImage *image = [[UIImage imageNamed:@"ACProgressHUD-Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage *image = [[UIImage imageNamed:@"AppComponentsApp.bundle/Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         hud.customView = [[UIImageView alloc] initWithImage:image];
         hud.square = YES;        
         if (timeInterval <= 0.0) {
                 timeInterval = ESDoubleValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsTimeInterval), kACAppDefaultTipsTimeInterval);
         }
-        [hud hideAnimated:animated afterDelay:timeInterval];
+        // TODO: remove -respondsToSelector: after MBProgressHUD released new Pod version
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        if ([hud respondsToSelector:@selector(hideAnimated:afterDelay:)]) {
+                ESInvokeSelector(hud, @selector(hideAnimated:afterDelay:), NO, NULL, animated, timeInterval);
+        } else {
+                #pragma clang diagnostic ignored "-Wdeprecated"
+                [hud hide:animated afterDelay:timeInterval];
+        }
+#pragma clang diagnostic pop
         return hud;
 }
 
@@ -67,11 +85,22 @@
         [self hideTipsOnView:view animated:NO];
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:animated];
-        hud.label.text = text;
-        hud.detailsLabel.text = detail;
         hud.mode = MBProgressHUDModeText;
         hud.animationType = ESIntegerValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsAnimationType), MBProgressHUDAnimationFade);
-        [hud hideAnimated:animated afterDelay:timeInterval];
+        // TODO: remove -respondsToSelector: after MBProgressHUD released new Pod version
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        if ([hud respondsToSelector:@selector(label)]) {
+                [(UILabel *)[hud valueForKey:@"label"] setText:text];
+                [(UILabel *)[hud valueForKey:@"detailsLabel"] setText:detail];
+                ESInvokeSelector(hud, @selector(hideAnimated:afterDelay:), NO, NULL, animated, timeInterval);
+        } else {
+#pragma clang diagnostic ignored "-Wdeprecated"
+                hud.labelText = text;
+                hud.detailsLabelText = detail;
+                [hud hide:animated afterDelay:timeInterval];
+        }
+#pragma clang diagnostic pop
         return hud;
 }
 
