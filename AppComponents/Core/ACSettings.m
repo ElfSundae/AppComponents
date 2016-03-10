@@ -9,61 +9,107 @@
 #import "ACSettings.h"
 #import "NSDictionary+ACCoreAdditions.h"
 #import <ESFramework/ESFrameworkCore.h>
-#import "ACSettings+Private.h"
 
-NSString *const ACSettingsUserDefaultsKeyPrefix = @"com.0x123.ACSettings.";
-NSString *const ACSettingsIdentifierKey = @"__ACSettingsIdentifierKey__";
+NSString *const ACSettingsIdentifierKey = @"__ACSettingsIdentifier__";
+
+@interface ACSettings ()
+@property (nonatomic, strong) NSMutableDictionary *dictionary;
+@end
 
 @implementation ACSettings
 
-+ (instancetype)settingsWithIdentifier:(NSString *)identifier defaultValues:(NSDictionary *)defaultValues
+- (instancetype)initWithIdentifier:(NSString *)identifier defaultValues:(NSDictionary *)defaultValues
 {
-        NSString *userDefaultsKey = [self userDefaultsKeyForSettingsIdentifier:identifier];
-        ACSettings *settings = (ACSettings *)[self ac_dictionaryFromUserDefaultsWithKey:userDefaultsKey defaultValues:defaultValues];
-        [settings _setSettingsIdentifier:identifier];
-        return settings;
-}
-
-- (NSString *)settingsIdentifier
-{
-        return ESStringValueWithDefault(self[ACSettingsIdentifierKey], nil);
-}
-
-- (NSString *)settingsUserDefaultsKey
-{
-        return [[self class] userDefaultsKeyForSettingsIdentifier:self.settingsIdentifier];
-}
-
-- (void)cleanUpSettings
-{
-        NSString *identifier = [self settingsIdentifier];
-        [self removeAllObjects];
-        [self _setSettingsIdentifier:identifier];
-}
-
-- (void)saveSettings
-{
-        NSString *userDefaultsKey = self.settingsUserDefaultsKey;
-        if (self.count == 0 ||
-            (self.count == 1 && [self.allKeys.firstObject isKindOfClass:[NSString class]] && [self.allKeys.firstObject isEqualToString:ACSettingsIdentifierKey])) {
-                // 只剩下settingsIdentifier
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:userDefaultsKey];
-        } else {
-                [[NSUserDefaults standardUserDefaults] setObject:self forKey:userDefaultsKey];
+        self = [super init];
+        if (self) {
+                self.dictionary = [NSMutableDictionary dictionary];
+                if (ESIsDictionaryWithItems(defaultValues)) {
+                        [self.dictionary setDictionary:defaultValues];
+                }
+                NSString *key = [[self class] keyForIdentifier:identifier];
+                NSDictionary *stored = [[self class] savedDictionaryForKey:key];
+                if (ESIsDictionaryWithItems(stored)) {
+                        [self.dictionary setValuesForKeysWithDictionary:stored];
+                }
+                [self _setIdentifier:identifier];
         }
+        return self;
+}
+
+- (NSString *)identifier
+{
+        return self.dictionary[ACSettingsIdentifierKey];
+}
+
+- (void)_setIdentifier:(NSString *)identifier
+{
+        if (identifier) {
+                self.dictionary[ACSettingsIdentifierKey] = identifier;
+        } else {
+                [self.dictionary removeObjectForKey:ACSettingsIdentifierKey];
+        }
+}
+
+- (NSString *)key
+{
+        return [[self class] keyForIdentifier:self.identifier];
+}
+
+- (void)cleanUp
+{
+        NSString *identifier = self.identifier;
+        [self.dictionary removeAllObjects];
+        [self _setIdentifier:identifier];
+}
+
+- (void)save
+{
+        NSString *key = [self key];
+        if (self.dictionary.count == 0) {
+                [[self class] deleteDictionaryForKey:key];
+                return;
+        }
+        
+        if (self.identifier && self.dictionary.count == 1) {
+                NSString *firstKey = self.dictionary.allKeys.firstObject;
+                if ([firstKey isKindOfClass:[NSString class]] && [firstKey isEqualToString:self.identifier]) {
+                        [[self class] deleteDictionaryForKey:key];
+                        return;
+                }
+        }
+        
+        [[self class] saveDictionary:self.dictionary forKey:key];
+}
+
++ (void)deleteWithIdentifier:(NSString *)identifier
+{
+        [self deleteDictionaryForKey:[self keyForIdentifier:identifier]];
+}
+
++ (NSString *)keyForIdentifier:(NSString *)identifier
+{
+        return [NSString stringWithFormat:@"%@-%@", NSStringFromClass(self), identifier ?: @"" ];
+}
+
+@end
+
+@implementation ACSettings (Subclassing)
+
++ (NSDictionary<NSString *,id> *)savedDictionaryForKey:(NSString *)key
+{
+        return [[NSUserDefaults standardUserDefaults] dictionaryForKey:key];
+}
+
++ (void)saveDictionary:(NSDictionary *)dictionary forKey:(NSString *)key
+{
+        [[NSUserDefaults standardUserDefaults] setObject:dictionary forKey:key];
         [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+ (void)deleteSettingsWithIdentifier:(NSString *)identifier
++ (void)deleteDictionaryForKey:(NSString *)key
 {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:[self userDefaultsKeyForSettingsIdentifier:identifier]];
-}
-
-+ (NSString *)userDefaultsKeyForSettingsIdentifier:(NSString *)identifier
-{
-        return [NSString stringWithFormat:@"%@%@",
-                ACSettingsUserDefaultsKeyPrefix,
-                ESIsStringWithAnyText(identifier) ? identifier : @""];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
