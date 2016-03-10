@@ -20,8 +20,6 @@
 		E71B7D031C51560B001910C2 /* ACSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACSettings.m; sourceTree = "<group>"; };
 		E71B7D041C515DB1001910C2 /* ESApp+ACSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACSettings.h"; sourceTree = "<group>"; };
 		E71B7D051C515DB1001910C2 /* ESApp+ACSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACSettings.m"; sourceTree = "<group>"; };
-		E71B7D081C5171C9001910C2 /* ACSettings+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACSettings+Private.h"; sourceTree = "<group>"; };
-		E71B7D091C5171C9001910C2 /* ACSettings+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACSettings+Private.m"; sourceTree = "<group>"; };
 		E71B7D0A1C51748A001910C2 /* ESApp+ACHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACHelper.h"; sourceTree = "<group>"; };
 		E71B7D0B1C51748A001910C2 /* ESApp+ACHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACHelper.m"; sourceTree = "<group>"; };
 		E72B980A1C5F349C00968230 /* WebViewJavascriptBridge+ACMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebViewJavascriptBridge+ACMessageHandler.h"; sourceTree = "<group>"; };
@@ -303,8 +301,6 @@
 				E7C3FA931C4E39BC00281993 /* ACConfig.m */,
 				E71B7D021C51560B001910C2 /* ACSettings.h */,
 				E71B7D031C51560B001910C2 /* ACSettings.m */,
-				E71B7D081C5171C9001910C2 /* ACSettings+Private.h */,
-				E71B7D091C5171C9001910C2 /* ACSettings+Private.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
