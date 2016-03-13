@@ -45,7 +45,7 @@
         
          [self.tableData addObject:
           @[@{ ACTableViewCellConfigKeyText: @"WebViewController",
-               ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDetailDisclosureButton),
+               ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDetailButton),
                kCellConfigKeyAction: @"openWebViewController" }]
           ];
 }
@@ -81,6 +81,11 @@
                 dispatch_block_t block = action;
                 block();
         }
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(nonnull NSIndexPath *)indexPath
+{
+        [self tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 @end
