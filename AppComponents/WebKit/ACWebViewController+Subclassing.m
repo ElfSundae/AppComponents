@@ -23,7 +23,8 @@
         webView.keyboardDisplayRequiresUserAction = NO;
         // Fixed issue: UIWebView will appear a blank area on bottom, because of webview.scrollView.contentInset.top
         webView.opaque = NO;
-        webView.backgroundColor = self.view.backgroundColor;
+        webView.backgroundColor = [UIColor whiteColor];
+        webView.scrollView.backgroundColor = self.view.backgroundColor;
         webView.scrollView.delaysContentTouches = NO;
         return webView;
 }

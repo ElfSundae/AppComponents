@@ -60,7 +60,7 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
 - (void)viewDidLoad
 {
         [super viewDidLoad];
-        self.view.backgroundColor = [UIColor colorWithWhite:0.980 alpha:1.000];
+        self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
         self.navigationItem.title = self.initializationTitle;
         
         _webView = [self createWebView];
