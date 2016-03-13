@@ -64,10 +64,10 @@
 - (UIView *)ac_createLoadingMoreView
 {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 44.)];
-        NSAttributedString *text = [[NSAttributedString alloc] initWithString:@"加载中..." attributes:[ESActivityLabel defaultTextAttributes]];
+        // NSAttributedString *text = [[NSAttributedString alloc] initWithString:@"加载中..." attributes:[ESActivityLabel defaultTextAttributes]];
         ESActivityLabel *activityLabel = [[ESActivityLabel alloc] initWithFrame:CGRectMake(0, 0, view.width, 0)
                                           activityIndicatorViewStyle:UIActivityIndicatorViewStyleGray
-                                                                 attributedText:text];
+                                                                 attributedText:nil];
         [activityLabel sizeToFit];
         activityLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         activityLabel.center = CGPointMake(view.width / 2., view.height / 2.);
@@ -75,7 +75,8 @@
         [view addSubview:activityLabel];
         
         if (self.showsLoadingMoreViewTopBorder) {
-                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.width, 0.7)];
+                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.width * 0.8, 0.8)];
+                line.centerX = view.width / 2.;
                 line.backgroundColor = [UIColor es_lightBorderColor];
                 line.tag = 101;
                 [view addSubview:line];

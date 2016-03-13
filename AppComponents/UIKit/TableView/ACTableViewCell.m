@@ -185,10 +185,24 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
         self.cellMarginLeft = ESFloatValueWithDefault(configDictionary[ACTableViewCellConfigKeyCellMarginLeft], [[self class] defaultCellMarginLeft]);
         self.cellMarginRight = ESFloatValueWithDefault(configDictionary[ACTableViewCellConfigKeyCellMarginRight], [[self class] defaultCellMarginRight]);
         
-        UIImage *iconImagePlaceholder = [configDictionary[ACTableViewCellConfigKeyIconImagePlaceholder] isKindOfClass:[UIImage class]] ? configDictionary[ACTableViewCellConfigKeyIconImagePlaceholder] : nil;
-        UIImage *detailImagePlaceholder = [configDictionary[ACTableViewCellConfigKeyDetailImagePlaceholder] isKindOfClass:[UIImage class]] ? configDictionary[ACTableViewCellConfigKeyDetailImagePlaceholder] : nil;
-        
+        UIImage *iconImagePlaceholder = configDictionary[ACTableViewCellConfigKeyIconImagePlaceholder];
+        [iconImagePlaceholder isKindOfClass:[UIImage class]] || (iconImagePlaceholder = nil);
+        UIImage *iconImage = configDictionary[ACTableViewCellConfigKeyIconImage];
+        [iconImage isKindOfClass:[UIImage class]] || (iconImage = iconImagePlaceholder);
+        UIImage *detailImagePlaceholder = configDictionary[ACTableViewCellConfigKeyDetailImagePlaceholder];
+        [detailImagePlaceholder isKindOfClass:[UIImage class]] || (detailImagePlaceholder = nil);
+        UIImage *detailImage = configDictionary[ACTableViewCellConfigKeyDetailImage];
+        [detailImage isKindOfClass:[UIImage class]] || (detailImage = nil);
         NSURL *iconImageURL = ESURLValue(configDictionary[ACTableViewCellConfigKeyIconImage]);
+        NSURL *detailImageURL = ESURLValue(configDictionary[ACTableViewCellConfigKeyDetailImage]);
+        
+        if (self.alwaysShowsIconImageView || iconImage) {
+                [self iconImageView];
+        }
+        if (self.alwaysShowsDetailImageView || detailImage) {
+                [self detailImageView];
+        }
+        
         if (iconImageURL) {
                 ESWeakSelf;
                 [self.iconImageView sd_setImageWithURL:iconImageURL placeholderImage:iconImagePlaceholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -199,10 +213,9 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                 }];
         } else if (_iconImageView){
                 [self.iconImageView sd_cancelCurrentImageLoad];
-                self.iconImageView.image = ([configDictionary[ACTableViewCellConfigKeyIconImage] isKindOfClass:[UIImage class]] ? configDictionary[ACTableViewCellConfigKeyIconImage] : iconImagePlaceholder);
+                self.iconImageView.image = iconImage;
         }
         
-        NSURL *detailImageURL = ESURLValue(configDictionary[ACTableViewCellConfigKeyDetailImage]);
         if (detailImageURL) {
                 ESWeakSelf;
                 [self.detailImageView sd_setImageWithURL:detailImageURL placeholderImage:detailImagePlaceholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -213,7 +226,7 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                 }];
         } else if (_detailImageView) {
                 [self.detailImageView sd_cancelCurrentImageLoad];
-                self.detailImageView.image = ([configDictionary[ACTableViewCellConfigKeyDetailImage] isKindOfClass:[UIImage class]] ? configDictionary[ACTableViewCellConfigKeyDetailImage] : detailImagePlaceholder);
+                self.detailImageView.image = detailImage;
         }
         
         [self setNeedsLayout];

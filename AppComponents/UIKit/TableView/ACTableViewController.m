@@ -176,7 +176,7 @@ NSString *const ACTableViewCellConfigKeyCellReuseIdentifier = @"cellReuseIdentif
         
         [self hideErrorView];
         _errorView = [[ESErrorView alloc] initWithFrame:self.view.bounds title:title subtitle:subtitle image:image];
-        _errorView.backgroundColor = self.view.backgroundColor;
+        _errorView.backgroundColor = self.tableView.backgroundColor;
         _errorView.tag = tag;
         if ([_errorView.backgroundColor es_isLightColor]) {
                 _errorView.titleLabel.textColor = [UIColor colorWithRed:0.376 green:0.404 blue:0.435 alpha:1.000];
@@ -199,7 +199,7 @@ NSString *const ACTableViewCellConfigKeyCellReuseIdentifier = @"cellReuseIdentif
 - (ESErrorView *)showErrorViewForNoData:(NSString *)title
 {
         ESWeakSelf;
-        ESErrorView *errorView = [self showErrorViewWithTitle:(title?:@"暂无数据") subtitle:nil image:nil tag:0 actionButtonTitle:@"刷新" actionButtonHandle:^(id sender, UIControlEvents controlEvent) {
+        ESErrorView *errorView = [self showErrorViewWithTitle:title subtitle:nil image:nil tag:0 actionButtonTitle:@"刷新" actionButtonHandle:^(id sender, UIControlEvents controlEvent) {
                 ESStrongSelf;
                 [_self hideErrorView];
                 [_self refreshData];
