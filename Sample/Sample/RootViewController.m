@@ -7,31 +7,76 @@
 //
 
 #import "RootViewController.h"
+#import <IconFontsKit/IFFontAwesome.h>
+#import <ESFramework/ESBadgeView.h>
 
-@interface Dict : NSDictionary
-@end
-
-@implementation Dict
-
-@end
+#define kCellConfigKeyAction @"action"
 
 @implementation RootViewController
+
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+        self = [super initWithStyle:UITableViewStyleGrouped];
+        self.showsRefreshControl = YES;
+        self.configuresCellWithTableData = YES;
+        return self;
+}
 
 - (void)viewDidLoad
 {
         [super viewDidLoad];
-        self.view.backgroundColor = [UIColor es_viewBackgroundColor];
-        self.navigationItem.title = [ESApp sharedApp].appDisplayName;
+        self.navigationItem.title = @"AppComponents";
         
-        ESWeakSelf;
-        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"Table" handler:^(UIBarButtonItem *barButtonItem) {
-                ESStrongSelf;
-        }];
-        self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:@"Feedback" handler:^(UIBarButtonItem *barButtonItem) {
-                ESStrongSelf;
-                ACFeedbackViewController *feedback = [[ACFeedbackViewController alloc] init];
-                [_self.navigationController pushViewController:feedback animated:YES];
-        }];
+        dispatch_block_t helloAction = ^(){
+                [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+                [[ESApp sharedApp] showCheckmarkHUDWithTitle:nil timeInterval:1 animated:YES];
+        };
+        
+        [self.tableData addObject:
+         @[@{ ACTableViewCellConfigKeyText: @"Hello",
+              ACTableViewCellConfigKeyCellReuseIdentifier: @"HelloIdentifier",
+              ACTableViewCellConfigKeyIconImage: [IFFontAwesome imageWithType:IFFAStar color:nil fontSize:20],
+              ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
+              ACTableViewCellConfigKeyDetailText: [[NSAttributedString alloc] initWithString:@"world" attributes:@{NSForegroundColorAttributeName: [UIColor es_orangeColor]}],
+              ACTableViewCellConfigKeyDetailImage: [IFFontAwesome imageWithType:IFFATwitter color:[UIColor es_twitterColor] fontSize:20],
+              ACTableViewCellConfigKeyRightBadgeView: [ESBadgeView badgeViewWithText:@"New"],
+              kCellConfigKeyAction:[helloAction copy] }]
+         ];
+        
+         [self.tableData addObject:
+          @[@{ ACTableViewCellConfigKeyText: @"WebViewController",
+               ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDetailDisclosureButton),
+               kCellConfigKeyAction: @"openWebViewController" }]
+          ];
+}
+
+- (BOOL)refreshData
+{
+        if ([super refreshData]) {
+                ESDispatchOnDefaultQueue(^{
+                        [NSThread sleepForTimeInterval:2];
+                        [self refreshingDataDidFinish:nil];
+                });
+                return YES;
+        }
+        return NO;
+}
+
+- (void)openWebViewController
+{
+        ACWebViewController *webController = [[ACWebViewController alloc] initWithURL:[NSURL URLWithString:@"https://github.com/ElfSundae/AppComponents"]];
+        [self.navigationController pushViewController:webController animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        id action = [self cellConfigDictionaryForIndexPath:indexPath][kCellConfigKeyAction];
+        if ([action isKindOfClass:[NSString class]]) {
+                ESInvokeSelector(self, NSSelectorFromString(action), NO, NULL);
+        } else if (action) {
+                dispatch_block_t block = action;
+                block();
+        }
 }
 
 @end

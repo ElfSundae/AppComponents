@@ -6,8 +6,5 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface RootViewController : UIViewController
-
+@interface RootViewController : ACTableViewController
 @end
