@@ -46,7 +46,7 @@ FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserJavascriptObjectName;
 /// @name Configurations
 ///=============================================
 
-/// Default is YES
+/// Default is YES. Use AFNetworkActivityIndicatorManager to show or hide network activity indicator.
 @property (nonatomic, getter=isNetworkActivityIndicatorEnabeld) BOOL networkActivityIndicatorEnabeld;
 /// Default is NO
 @property (nonatomic, getter=isActivityOverlayEnabeld) BOOL activityOverlayEnabeld;
@@ -84,5 +84,12 @@ FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserJavascriptObjectName;
 - (void)stopLoading;
 /// 刷新当前网页或加载initializedURL
 - (void)reload;
+
+///=============================================
+/// @name Private Methods
+///=============================================
+
+/// Shows or Hides the network activiy indicator
+- (void)showNetworkActivityIndicator:(BOOL)show;
 
 @end

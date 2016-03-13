@@ -32,6 +32,7 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
         if (self) {
                 _initializationURL = ESURLValue(URL);
                 _initializationTitle = title;
+                _storedAFNetworkActivityIndicatorManagerEnabled = [self _getAFNetworkActivityIndicatorSharedManagerEnabled];
                 [self setupDefaultsConfig];
         }
         return self;
@@ -119,7 +120,9 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
 - (void)viewWillDisappear:(BOOL)animated
 {
         [super viewWillDisappear:animated];
-        if (self.isMovingFromParentViewController || self.isBeingDismissed) {
+        if (self.isBeingDismissed || self.isMovingFromParentViewController ||
+            self.navigationController.isBeingDismissed || self.navigationController.isMovingFromParentViewController) {
+                [self _setAFNetworkActivityIndicatorSharedManagerEnabled:_storedAFNetworkActivityIndicatorManagerEnabled];
                 if (self.webView.isLoading) {
                         self.webView.delegate = nil;
                         [self.webView stopLoading];
@@ -170,6 +173,7 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
 {
         if (_networkActivityIndicatorEnabeld != enabled) {
                 _networkActivityIndicatorEnabeld = enabled;
+                [self _setAFNetworkActivityIndicatorSharedManagerEnabled:_networkActivityIndicatorEnabeld];
                 // 确保ActivityCount数目平衡
                 if (self.isLoading) {
                         [self showNetworkActivityIndicator:_networkActivityIndicatorEnabeld];
@@ -282,6 +286,43 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
         } else if (self.initializationURL) {
                 [self loadURL:self.initializationURL];
         }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NetworkActivityIndicator
+
+- (id)_AFNetworkActivityIndicatorSharedManager
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        Class AFNetworkActivityIndicatorManagerClass = NSClassFromString(@"AFNetworkActivityIndicatorManager");
+        return [AFNetworkActivityIndicatorManagerClass performSelector:@selector(sharedManager)];
+#pragma clang diagnostic pop
+}
+
+- (BOOL)_getAFNetworkActivityIndicatorSharedManagerEnabled
+{
+        BOOL enabled = NO;
+        ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(isEnabled), NO, &enabled);
+        return enabled;
+}
+
+- (void)_setAFNetworkActivityIndicatorSharedManagerEnabled:(BOOL)enabled
+{
+        ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(setEnabled:), NO, NULL, enabled);
+}
+
+- (void)showNetworkActivityIndicator:(BOOL)show
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        if (show) {
+                [[self _AFNetworkActivityIndicatorSharedManager] performSelector:@selector(incrementActivityCount)];
+        } else {
+                [[self _AFNetworkActivityIndicatorSharedManager] performSelector:@selector(decrementActivityCount)];
+        }
+#pragma clang diagnostic pop
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

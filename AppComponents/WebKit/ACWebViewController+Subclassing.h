@@ -31,6 +31,7 @@
         
         NSInteger _numberOfRequest;
         NSString *_currentPageTitle;
+        BOOL _storedAFNetworkActivityIndicatorManagerEnabled;
 }
 
 @property (nonatomic, getter=isLoading) BOOL loading;
@@ -45,9 +46,6 @@
 
 /// 根据配置showsRefreshControl创建或销毁refreshControl
 - (void)checkRefreshControl;
-
-/// Shows or Hides the network activyIndicator
-- (void)showNetworkActivityIndicator:(BOOL)show;
 
 - (void)showActivityOverlay;
 - (void)hideActivityOverlay;

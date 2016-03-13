@@ -29,23 +29,6 @@
         }
 }
 
-- (void)showNetworkActivityIndicator:(BOOL)show
-{
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-        Class AFNetworkActivityIndicatorManagerClass = NSClassFromString(@"AFNetworkActivityIndicatorManager");
-        if (AFNetworkActivityIndicatorManagerClass) {
-                id manager = [AFNetworkActivityIndicatorManagerClass performSelector:@selector(sharedManager)];
-                if (show) {
-                        [manager performSelector:@selector(incrementActivityCount)];
-                } else {
-                        [manager performSelector:@selector(decrementActivityCount)];
-                }
-        }
-        
-#pragma clang diagnostic pop
-}
-
 - (void)showActivityOverlay
 {
         if (!self.isViewLoaded) {
