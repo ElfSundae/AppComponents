@@ -45,14 +45,19 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-        return [self initWithCellStyle:(ACTableViewCellStyle)style reuseIdentifier:reuseIdentifier];
-}
-
-- (instancetype)initWithCellStyle:(ACTableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-        self = [super initWithStyle:(UITableViewCellStyle)style reuseIdentifier:reuseIdentifier];
+        self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
         if (self) {
                 _cellStyle = style;
+                [self applyDefaults];
+        }
+        return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+        self = [super initWithCoder:aDecoder];
+        if (self) {
+                _cellStyle = [aDecoder decodeIntegerForKey:@"cellStyle"];
                 [self applyDefaults];
         }
         return self;
@@ -102,12 +107,10 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
         }
 }
 
-- (void)setCellData:(id)cellData
+- (void)setConfigDictionary:(NSDictionary *)configDictionary
 {
-        [super setCellData:cellData];
-        if (self.configuresCellWithDictionaryUsingCellData) {
-                [self configureCellWithDictionary:cellData];
-        }
+        _configDictionary = configDictionary;
+        [self configureWithDictionary:_configDictionary];
 }
 
 - (void)applyDefaults
@@ -121,17 +124,15 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
         self.cellMarginRight = [[self class] defaultCellMarginRight];
 }
 
-- (void)configureCellWithDictionary:(NSDictionary *)cellData
+- (void)configureWithDictionary:(NSDictionary *)configDictionary
 {
-        if (!ESIsDictionaryWithItems(cellData)) {
-                return;
-        }
+        configDictionary || (configDictionary = @{});
         
-        self.accessoryType = ESIntegerValueWithDefault(cellData[ACTableViewCellConfigKeyAccessoryType], UITableViewCellAccessoryNone);
-        self.selectionStyle = ESIntegerValueWithDefault(cellData[ACTableViewCellConfigKeySelectionStyle], UITableViewCellSelectionStyleDefault);
-        self.leftBadgeView = [cellData[ACTableViewCellConfigKeyLeftBadgeView] isKindOfClass:[UIView class]] ? cellData[ACTableViewCellConfigKeyLeftBadgeView] : nil;
-        self.rightBadgeView = [cellData[ACTableViewCellConfigKeyRightBadgeView] isKindOfClass:[UIView class]] ? cellData[ACTableViewCellConfigKeyRightBadgeView] : nil;
-        id text = cellData[ACTableViewCellConfigKeyText];
+        self.accessoryType = ESIntegerValueWithDefault(configDictionary[ACTableViewCellConfigKeyAccessoryType], UITableViewCellAccessoryNone);
+        self.selectionStyle = ESIntegerValueWithDefault(configDictionary[ACTableViewCellConfigKeySelectionStyle], UITableViewCellSelectionStyleDefault);
+        self.leftBadgeView = [configDictionary[ACTableViewCellConfigKeyLeftBadgeView] isKindOfClass:[UIView class]] ? configDictionary[ACTableViewCellConfigKeyLeftBadgeView] : nil;
+        self.rightBadgeView = [configDictionary[ACTableViewCellConfigKeyRightBadgeView] isKindOfClass:[UIView class]] ? configDictionary[ACTableViewCellConfigKeyRightBadgeView] : nil;
+        id text = configDictionary[ACTableViewCellConfigKeyText];
         if ([text isKindOfClass:[NSAttributedString class]]) {
                 self.textLabel.text = nil;
                 self.textLabel.attributedText = text;
@@ -142,7 +143,7 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                 self.textLabel.text = nil;
                 self.textLabel.attributedText = nil;
         }
-        id detailText = cellData[ACTableViewCellConfigKeyDetailText];
+        id detailText = configDictionary[ACTableViewCellConfigKeyDetailText];
         if ([detailText isKindOfClass:[NSAttributedString class]]) {
                 self.detailTextLabel.text = nil;
                 self.detailTextLabel.attributedText = detailText;
@@ -154,40 +155,40 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                 self.detailTextLabel.attributedText = nil;
         }
         
-        self.alwaysShowsIconImageView = ESBoolValue(cellData[ACTableViewCellConfigKeyAlwaysShowsIconImageView]);
-        self.iconImageViewSize = ([cellData[ACTableViewCellConfigKeyIconImageViewSize] isKindOfClass:[NSValue class]] ?
-                                  [(NSValue *)cellData[ACTableViewCellConfigKeyIconImageViewSize] CGSizeValue] :
+        self.alwaysShowsIconImageView = ESBoolValue(configDictionary[ACTableViewCellConfigKeyAlwaysShowsIconImageView]);
+        self.iconImageViewSize = ([configDictionary[ACTableViewCellConfigKeyIconImageViewSize] isKindOfClass:[NSValue class]] ?
+                                  [(NSValue *)configDictionary[ACTableViewCellConfigKeyIconImageViewSize] CGSizeValue] :
                                   CGSizeZero);
-        self.iconImageViewInset = ([cellData[ACTableViewCellConfigKeyIconImageViewInset] isKindOfClass:[NSValue class]] ?
-                                   [(NSValue *)cellData[ACTableViewCellConfigKeyIconImageViewInset] UIEdgeInsetsValue] :
+        self.iconImageViewInset = ([configDictionary[ACTableViewCellConfigKeyIconImageViewInset] isKindOfClass:[NSValue class]] ?
+                                   [(NSValue *)configDictionary[ACTableViewCellConfigKeyIconImageViewInset] UIEdgeInsetsValue] :
                                    [[self class] defaultIconImageViewInset]);
-        self.iconImageViewCornerRadius = ESFloatValue(cellData[ACTableViewCellConfigKeyIconImageViewCornerRadius]);
-        self.iconImageViewBorderWidth = ESFloatValue(cellData[ACTableViewCellConfigKeyIconImageViewBorderWidth]);
-        self.iconImageViewBorderColor = ([cellData[ACTableViewCellConfigKeyIconImageViewBorderColor] isKindOfClass:[UIColor class]] ?
-                                         cellData[ACTableViewCellConfigKeyIconImageViewBorderColor] :
+        self.iconImageViewCornerRadius = ESFloatValue(configDictionary[ACTableViewCellConfigKeyIconImageViewCornerRadius]);
+        self.iconImageViewBorderWidth = ESFloatValue(configDictionary[ACTableViewCellConfigKeyIconImageViewBorderWidth]);
+        self.iconImageViewBorderColor = ([configDictionary[ACTableViewCellConfigKeyIconImageViewBorderColor] isKindOfClass:[UIColor class]] ?
+                                         configDictionary[ACTableViewCellConfigKeyIconImageViewBorderColor] :
                                          [[self class] defaultBorderColor]);
         
-        self.alwaysShowsDetailImageView = ESBoolValue(cellData[ACTableViewCellConfigKeyAlwaysShowsDetailImageView]);
-        self.detailImageViewSize = ([cellData[ACTableViewCellConfigKeyDetailImageViewSize] isKindOfClass:[NSValue class]] ?
-                                    [(NSValue *)cellData[ACTableViewCellConfigKeyDetailImageViewSize] CGSizeValue] :
+        self.alwaysShowsDetailImageView = ESBoolValue(configDictionary[ACTableViewCellConfigKeyAlwaysShowsDetailImageView]);
+        self.detailImageViewSize = ([configDictionary[ACTableViewCellConfigKeyDetailImageViewSize] isKindOfClass:[NSValue class]] ?
+                                    [(NSValue *)configDictionary[ACTableViewCellConfigKeyDetailImageViewSize] CGSizeValue] :
                                     CGSizeZero);
-        self.detailImageViewInset = ([cellData[ACTableViewCellConfigKeyDetailImageViewInset] isKindOfClass:[NSValue class]] ?
-                                     [(NSValue *)cellData[ACTableViewCellConfigKeyDetailImageViewInset] UIEdgeInsetsValue] :
+        self.detailImageViewInset = ([configDictionary[ACTableViewCellConfigKeyDetailImageViewInset] isKindOfClass:[NSValue class]] ?
+                                     [(NSValue *)configDictionary[ACTableViewCellConfigKeyDetailImageViewInset] UIEdgeInsetsValue] :
                                      [[self class] defaultDetailImageViewInset]);
-        self.detailImageViewCornerRadius = ESFloatValue(cellData[ACTableViewCellConfigKeyDetailImageViewCornerRadius]);
-        self.detailImageViewBorderWidth = ESFloatValue(cellData[ACTableViewCellConfigKeyDetailImageViewBorderWidth]);
-        self.detailImageViewBorderColor = ([cellData[ACTableViewCellConfigKeyDetailImageViewBorderColor] isKindOfClass:[UIColor class]] ?
-                                           cellData[ACTableViewCellConfigKeyDetailImageViewBorderColor] :
+        self.detailImageViewCornerRadius = ESFloatValue(configDictionary[ACTableViewCellConfigKeyDetailImageViewCornerRadius]);
+        self.detailImageViewBorderWidth = ESFloatValue(configDictionary[ACTableViewCellConfigKeyDetailImageViewBorderWidth]);
+        self.detailImageViewBorderColor = ([configDictionary[ACTableViewCellConfigKeyDetailImageViewBorderColor] isKindOfClass:[UIColor class]] ?
+                                           configDictionary[ACTableViewCellConfigKeyDetailImageViewBorderColor] :
                                            [[self class] defaultBorderColor]);
-        self.detailImageViewMostRight = ESBoolValue(cellData[ACTableViewCellConfigKeyDetailImageViewMostRight]);
-        self.cellPadding = ESFloatValueWithDefault(cellData[ACTableViewCellConfigKeyCellPadding], [[self class] defaultCellPadding]);
-        self.cellMarginLeft = ESFloatValueWithDefault(cellData[ACTableViewCellConfigKeyCellMarginLeft], [[self class] defaultCellMarginLeft]);
-        self.cellMarginRight = ESFloatValueWithDefault(cellData[ACTableViewCellConfigKeyCellMarginRight], [[self class] defaultCellMarginRight]);
+        self.detailImageViewMostRight = ESBoolValue(configDictionary[ACTableViewCellConfigKeyDetailImageViewMostRight]);
+        self.cellPadding = ESFloatValueWithDefault(configDictionary[ACTableViewCellConfigKeyCellPadding], [[self class] defaultCellPadding]);
+        self.cellMarginLeft = ESFloatValueWithDefault(configDictionary[ACTableViewCellConfigKeyCellMarginLeft], [[self class] defaultCellMarginLeft]);
+        self.cellMarginRight = ESFloatValueWithDefault(configDictionary[ACTableViewCellConfigKeyCellMarginRight], [[self class] defaultCellMarginRight]);
         
-        UIImage *iconImagePlaceholder = [cellData[ACTableViewCellConfigKeyIconImagePlaceholder] isKindOfClass:[UIImage class]] ? cellData[ACTableViewCellConfigKeyIconImagePlaceholder] : nil;
-        UIImage *detailImagePlaceholder = [cellData[ACTableViewCellConfigKeyDetailImagePlaceholder] isKindOfClass:[UIImage class]] ? cellData[ACTableViewCellConfigKeyDetailImagePlaceholder] : nil;
+        UIImage *iconImagePlaceholder = [configDictionary[ACTableViewCellConfigKeyIconImagePlaceholder] isKindOfClass:[UIImage class]] ? configDictionary[ACTableViewCellConfigKeyIconImagePlaceholder] : nil;
+        UIImage *detailImagePlaceholder = [configDictionary[ACTableViewCellConfigKeyDetailImagePlaceholder] isKindOfClass:[UIImage class]] ? configDictionary[ACTableViewCellConfigKeyDetailImagePlaceholder] : nil;
         
-        NSURL *iconImageURL = ESURLValue(cellData[ACTableViewCellConfigKeyIconImage]);
+        NSURL *iconImageURL = ESURLValue(configDictionary[ACTableViewCellConfigKeyIconImage]);
         if (iconImageURL) {
                 ESWeakSelf;
                 [self.iconImageView sd_setImageWithURL:iconImageURL placeholderImage:iconImagePlaceholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -196,12 +197,12 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                                 [_self setNeedsLayout];
                         }
                 }];
-        } else {
+        } else if (_iconImageView){
                 [self.iconImageView sd_cancelCurrentImageLoad];
-                self.iconImageView.image = ([cellData[ACTableViewCellConfigKeyIconImage] isKindOfClass:[UIImage class]] ? cellData[ACTableViewCellConfigKeyIconImage] : iconImagePlaceholder);
+                self.iconImageView.image = ([configDictionary[ACTableViewCellConfigKeyIconImage] isKindOfClass:[UIImage class]] ? configDictionary[ACTableViewCellConfigKeyIconImage] : iconImagePlaceholder);
         }
         
-        NSURL *detailImageURL = ESURLValue(cellData[ACTableViewCellConfigKeyDetailImage]);
+        NSURL *detailImageURL = ESURLValue(configDictionary[ACTableViewCellConfigKeyDetailImage]);
         if (detailImageURL) {
                 ESWeakSelf;
                 [self.detailImageView sd_setImageWithURL:detailImageURL placeholderImage:detailImagePlaceholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -210,9 +211,9 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                                 [_self setNeedsLayout];
                         }
                 }];
-        } else {
+        } else if (_detailImageView) {
                 [self.detailImageView sd_cancelCurrentImageLoad];
-                self.detailImageView.image = ([cellData[ACTableViewCellConfigKeyDetailImage] isKindOfClass:[UIImage class]] ? cellData[ACTableViewCellConfigKeyDetailImage] : detailImagePlaceholder);
+                self.detailImageView.image = ([configDictionary[ACTableViewCellConfigKeyDetailImage] isKindOfClass:[UIImage class]] ? configDictionary[ACTableViewCellConfigKeyDetailImage] : detailImagePlaceholder);
         }
         
         [self setNeedsLayout];
@@ -258,12 +259,12 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
         
         
         // textLabel, right aligned to iconImageView
-        if (_iconImageView && !CGRectIsEmpty(self.iconImageView.frame) && ACTableViewCellStyleCenterLabel != self.cellStyle) {
+        if (_iconImageView && !CGRectIsEmpty(self.iconImageView.frame) && UITableViewCellStyleValue2 != self.cellStyle) {
                 self.textLabel.left = self.iconImageView.right + self.iconImageViewInset.right;
         }
         
         // detailTextLabel
-        if (ACTableViewCellStyleSubtitle == self.cellStyle) {
+        if (UITableViewCellStyleSubtitle == self.cellStyle) {
                 self.detailTextLabel.left = self.textLabel.left;
         }
         
@@ -272,7 +273,7 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
         if (_leftBadgeView) {
                 leftBadgeFrame.size = self.leftBadgeView.size;
                 leftBadgeFrame.origin.y = (self.contentView.height - leftBadgeFrame.size.height) / 2.f;
-                if (ACTableViewCellStyleCenterLabel != self.cellStyle && !CGRectIsEmpty(self.textLabel.frame)) {
+                if (UITableViewCellStyleValue2 != self.cellStyle && !CGRectIsEmpty(self.textLabel.frame)) {
                         leftBadgeFrame.origin.x = self.textLabel.right + self.cellPadding;
                 } else if (!CGRectIsEmpty(iconImageFrame)) {
                         leftBadgeFrame.origin.x = iconImageFrame.origin.x + iconImageFrame.size.width + self.iconImageViewInset.right;
@@ -292,7 +293,7 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                         detailImageFrame.size.width = detailImageFrame.size.height;
                 }
                 detailImageFrame.origin.y = (self.contentView.height - detailImageFrame.size.height) / 2.f;
-                if (!self.isDetailImageViewMostRight && ACTableViewCellStyleDefault == self.cellStyle && !CGRectIsEmpty(self.detailTextLabel.frame)) {
+                if (!self.isDetailImageViewMostRight && UITableViewCellStyleValue1 == self.cellStyle && !CGRectIsEmpty(self.detailTextLabel.frame)) {
                         detailImageFrame.origin.x = self.detailTextLabel.left - self.detailImageViewInset.right - detailImageFrame.size.width;
                 } else if (self.contentView.right == self.width) {
                         detailImageFrame.origin.x = self.contentView.width - self.cellMarginRight - detailImageFrame.size.width;
@@ -329,7 +330,7 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                 rightBadgeFrame.origin.y = (self.contentView.height - rightBadgeFrame.size.height) / 2.f;
                 if (!self.isDetailImageViewMostRight && !CGRectIsEmpty(detailImageFrame)) {
                         rightBadgeFrame.origin.x = detailImageFrame.origin.x - self.detailImageViewInset.left - rightBadgeFrame.size.width;
-                } else if (ACTableViewCellStyleDefault == self.cellStyle && !CGRectIsEmpty(self.detailTextLabel.frame)) {
+                } else if (UITableViewCellStyleValue1 == self.cellStyle && !CGRectIsEmpty(self.detailTextLabel.frame)) {
                         rightBadgeFrame.origin.x = self.detailTextLabel.left - self.cellPadding - rightBadgeFrame.size.width;
                 } else if (self.contentView.right == self.width) {
                         rightBadgeFrame.origin.x = self.contentView.width - self.cellMarginRight - rightBadgeFrame.size.width;
@@ -366,6 +367,37 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
 + (CGFloat)defaultCellMarginRight
 {
         return 10.f;
+}
+
+@end
+
+
+@implementation ACTableViewDetailCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+        self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+        return self;
+}
+
+@end
+
+@implementation ACTableViewCenterLabelCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+        self = [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:reuseIdentifier];
+        return self;
+}
+
+@end
+
+@implementation ACTableViewSubtitleCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+        self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
+        return self;
 }
 
 @end

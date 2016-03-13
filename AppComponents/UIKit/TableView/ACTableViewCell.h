@@ -8,17 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, ACTableViewCellStyle) {
-        /// Simple cell with text label and optional image view (behavior of UITableViewCell in iPhoneOS 2.x)
-        ACTableViewCellStyleSimple = UITableViewCellStyleDefault,
-        /// Left aligned label on left and right aligned label on right with blue text (Used in Settings)
-        ACTableViewCellStyleDefault = UITableViewCellStyleValue1,
-        /// Left aligned label on top and left aligned label on bottom with gray text (Used in iPod).
-        ACTableViewCellStyleSubtitle = UITableViewCellStyleSubtitle,
-        /// Right aligned label on left with blue text and left aligned label on right (Used in Phone/Contacts)
-        ACTableViewCellStyleCenterLabel = UITableViewCellStyleValue2,
-};
-
 /// NSNumber with UITableViewCellAccessoryType
 FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyAccessoryType;
 /// NSNumber with UITableViewCellSelectionStyle
@@ -78,24 +67,19 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellMarginRight;
  * @code
  * [iconImageView] textLabel [leftBadgeView] [rightBadgeView] [detailImageView] [detailTextLabel]
  * @endcode
- *
- * TODO: 支持系统的imageView（代替iconImageView）
  */
 @interface ACTableViewCell : UITableViewCell
 {
-@protected
         UIImageView *_iconImageView;
         UIImageView *_detailImageView;
         UIView *_leftBadgeView;
         UIView *_rightBadgeView;
 }
 
-- (instancetype)initWithCellStyle:(ACTableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+@property (nonatomic, readonly) UITableViewCellStyle cellStyle;
 
-@property (nonatomic, readonly) ACTableViewCellStyle cellStyle;
-
-/// Uses self.cellData as NSDictionary to configure cell, defaults to NO.
-@property (nonatomic) BOOL configuresCellWithDictionaryUsingCellData;
+/// a dictionary of cell configurations.
+@property (nonatomic, strong) NSDictionary *configDictionary;
 
 /// default is nil. iconImageView will be created if necessary.
 @property (nonatomic, strong, readonly) UIImageView *iconImageView;
@@ -147,7 +131,10 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellMarginRight;
  */
 - (void)applyDefaults;
 
-- (void)configureCellWithDictionary:(NSDictionary *)cellData;
+/**
+ * Config cell with dictionary.
+ */
+- (void)configureWithDictionary:(NSDictionary *)configDictionary;
 
 /// [UIColor es_lightBorderColor]
 + (UIColor *)defaultBorderColor;
@@ -162,4 +149,16 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellMarginRight;
 /// 10.f
 + (CGFloat)defaultCellMarginRight;
 
+@end
+
+/// ACTableViewCell with UITableViewCellStyleValue1 style.
+@interface ACTableViewDetailCell : ACTableViewCell
+@end
+
+/// ACTableViewCell with UITableViewCellStyleValue2 style.
+@interface ACTableViewCenterLabelCell : ACTableViewCell
+@end
+
+/// ACTableViewCell with UITableViewCellStyleSubtitle style.
+@interface ACTableViewSubtitleCell : ACTableViewCell
 @end

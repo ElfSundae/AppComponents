@@ -9,6 +9,13 @@
 #import "RootViewController.h"
 #import "DemoTableViewController.h"
 
+@interface Dict : NSDictionary
+@end
+
+@implementation Dict
+
+@end
+
 @implementation RootViewController
 
 - (void)viewDidLoad

@@ -6,139 +6,103 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ACTableViewController+Subclassing.h"
+#import "ACTableViewController.h"
 
 @implementation ACTableViewController (Private)
 
-- (void)_checkRefreshControl
+- (void)ac_checkRefreshControl
 {
         if (!self.isViewLoaded) {
                 return;
         }
-        if (self.showsRefreshControl && !self.tableView.refreshControl) {
+        if (self.showsRefreshControl && !self.refreshControl) {
                 ESWeakSelf;
-                self.tableView.refreshControl = [ESRefreshControl controlWithStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
+                self.refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
                         ESStrongSelf;
-                        [_self startRefreshData];
+                        [_self refreshData];
                 }];
-        } else if (!self.showsRefreshControl && self.tableView.refreshControl) {
-                [self.tableView.refreshControl endRefreshing];
-                self.tableView.refreshControl = nil;
+        } else if (!self.showsRefreshControl && self.refreshControl) {
+                [self.refreshControl endRefreshing];
+                self.refreshControl = nil;
         }
 }
 
-- (void)startRefreshData
+- (void)ac_checkLoadingMoreView
 {
-        if (self.isRefreshingData) {
+        if (!self.isViewLoaded) {
                 return;
         }
         
-        if (self.tableView.refreshControl && !self.tableView.refreshControl.isRefreshing) {
-                [self.tableView.refreshControl beginRefreshing];
-        } else {
-                self.hasMoreData = NO;
-                [self cancelLoadingMoreData];
-                
-                self.refreshingData = YES;
-                [self hideErrorView];
-                [self refreshData];
+        if (self.usesTableFooterViewAsLoadingMoreView && self.hasMoreData) {
+                if (!_loadingMoreView) {
+                        _loadingMoreView = [self ac_createLoadingMoreView];
+                        NSAssert(_loadingMoreView, @"-ac_createLoadingMoreView must return a view.");
+                }
+                if (self.tableView.tableFooterView != _loadingMoreView) {
+                        _originalTableFooterView = self.tableView.tableFooterView;
+                        self.tableView.tableFooterView = _loadingMoreView;
+                        [self ac_addTableViewsObserversForLoadingMoreView];
+                }
+        } else if (self.usesTableFooterViewAsLoadingMoreView && !self.hasMoreData) {
+                if (_loadingMoreView && self.tableView.tableFooterView == _loadingMoreView) {
+                        self.tableView.tableFooterView = _originalTableFooterView;
+                }
+        } else if (!self.usesTableFooterViewAsLoadingMoreView && _loadingMoreView) {
+                if (self.tableView.tableFooterView == _loadingMoreView) {
+                        self.tableView.tableFooterView = _originalTableFooterView;
+                }
+                [_loadingMoreView removeFromSuperview];
+                _loadingMoreView = nil;
+                _originalTableFooterView = nil;
         }
 }
 
-- (void)startLoadMoreData
+- (UIView *)ac_createLoadingMoreView
 {
-        if (self.isRefreshingData || self.isLoadingMoreData || !self.hasMoreData) {
-                return;
-        }
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 44.)];
+        NSAttributedString *text = [[NSAttributedString alloc] initWithString:@"加载中..." attributes:[ESActivityLabel defaultTextAttributes]];
+        ESActivityLabel *activityLabel = [[ESActivityLabel alloc] initWithFrame:CGRectMake(0, 0, view.width, 0)
+                                          activityIndicatorViewStyle:UIActivityIndicatorViewStyleGray
+                                                                 attributedText:text];
+        [activityLabel sizeToFit];
+        activityLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+        activityLabel.center = CGPointMake(view.width / 2., view.height / 2.);
+        activityLabel.tag = 100;
+        [view addSubview:activityLabel];
         
-        self.loadingMoreData = YES;
-        [self loadMoreData];
+        if (self.showsLoadingMoreViewTopBorder) {
+                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.width, 0.7)];
+                line.backgroundColor = [UIColor es_lightBorderColor];
+                line.tag = 101;
+                [view addSubview:line];
+        }
+        return view;
 }
 
-- (ESErrorView *)showErrorViewWithTitle:(NSString *)title subtitle:(NSString *)subtitle image:(UIImage *)image tag:(NSInteger)tag actionButtonTitle:(NSString *)actionButtonTitle actionButtonHandle:(ESUIControlHandler)actionButtonHandler
+- (void)ac_addTableViewsObserversForLoadingMoreView
 {
-        if (self.errorView && tag == self.errorView.tag) {
-                return self.errorView;
-        }
-        
-        [self hideErrorView];
-        self.errorView = [[ESErrorView alloc] initWithFrame:self.view.bounds title:title subtitle:subtitle image:image];
-        self.errorView.backgroundColor = self.view.backgroundColor;
-        self.errorView.tag = tag;
-        if ([self.errorView.backgroundColor es_isLightColor]) {
-                self.errorView.titleLabel.textColor = [UIColor colorWithRed:0.376 green:0.404 blue:0.435 alpha:1.000];
-        } else {
-                self.errorView.titleLabel.textColor = [UIColor es_lightBorderColor];
-        }
-        if (actionButtonTitle) {
-                ESButton *button = [ESButton buttonWithStyle:ESButtonStyleRoundedRect];
-                [button setTitle:actionButtonTitle forState:UIControlStateNormal];
-                [button setButtonColor:[UIColor es_successButtonColor]];
-                [button sizeToFit];
-                button.width = fmaxf(button.width, self.view.width * 0.4f);
-                [button addEventHandler:actionButtonHandler forControlEvents:UIControlEventTouchUpInside];
-                self.errorView.actionButton = button;
-        }
-        [self.view addSubview:self.errorView];
-        return self.errorView;
-}
-
-- (ESErrorView *)showErrorViewForNoData:(NSString *)title
-{
-        ESWeakSelf;
-        ESErrorView *errorView = [self showErrorViewWithTitle:(title?:@"暂无数据") subtitle:nil image:nil tag:0 actionButtonTitle:@"刷新" actionButtonHandle:^(id sender, UIControlEvents controlEvent) {
-                ESStrongSelf;
-                [_self hideErrorView];
-                [_self.tableView.refreshControl beginRefreshing];
-        }];
-        return errorView;
-}
-
-- (void)hideErrorView
-{
-        if (self.errorView) {
-                [self.errorView removeFromSuperview];
-                self.errorView = nil;
-        }
-}
-
-- (NSDictionary *)ac_cellDataForIndexPath:(NSIndexPath *)indexPath
-{
-        if (self.initializationFlags.configuresCellWithTableData) {
-                return self.tableData[indexPath.section][indexPath.row];
-        }
-        return nil;
-}
-
-- (Class)ac_cellClassForIndexPath:(NSIndexPath *)indexPath
-{
-        if (self.initializationFlags.configuresCellWithTableData) {
-                NSString *cellClass = ESStringValue([self ac_cellDataForIndexPath:indexPath][ACTableViewCellConfigKeyCellClass]);
-                return cellClass ? NSClassFromString(cellClass) : [ACTableViewCell class];
-        }
-        return [UITableViewCell class];
-}
-
-- (ACTableViewCellStyle)ac_cellStyleForIndexPath:(NSIndexPath *)indexPath
-{
-        if (self.initializationFlags.configuresCellWithTableData) {
-                NSInteger cellStyle = ESIntegerValueWithDefault([self ac_cellDataForIndexPath:indexPath][ACTableViewCellConfigKeyCellStyle], ACTableViewCellStyleDefault);
-                return cellStyle;
-        }
-        return ACTableViewCellStyleDefault;
-}
-
-- (NSString *)ac_cellTextForIndexPath:(NSIndexPath *)indexPath
-{
-        if (self.initializationFlags.configuresCellWithTableData) {
-                id text = [self ac_cellDataForIndexPath:indexPath][ACTableViewCellConfigKeyText];
-                if ([text isKindOfClass:[NSAttributedString class]]) {
-                        return [(NSAttributedString *)text string];
-                } else if ([text isKindOfClass:[NSString class]]) {
-                        return (NSString *)text;
+        if (_loadingMoreView && self.tableView.tableFooterView == _loadingMoreView) {
+                if (!_flags.isObserveredTableViewsContentSize) {
+                        [self.tableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
+                        _flags.isObserveredTableViewsContentSize = YES;
+                }
+                if (!_flags.isObserveredTableViewsContentOffset) {
+                        [self.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:NULL];
+                        _flags.isObserveredTableViewsContentOffset = YES;
                 }
         }
-        return nil;
+}
+
+- (void)ac_removeTableViewsObservers
+{
+        if (_flags.isObserveredTableViewsContentSize) {
+                [self.tableView removeObserver:self forKeyPath:@"contentSize"];
+                _flags.isObserveredTableViewsContentSize = NO;
+        }
+        if (_flags.isObserveredTableViewsContentOffset) {
+                [self.tableView removeObserver:self forKeyPath:@"contentOffset"];
+                _flags.isObserveredTableViewsContentOffset = NO;
+        }
 }
 
 @end

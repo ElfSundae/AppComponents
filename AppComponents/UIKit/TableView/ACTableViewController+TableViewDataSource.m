@@ -6,13 +6,41 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ACTableViewController+Subclassing.h"
+#import "ACTableViewController.h"
 
 @implementation ACTableViewController (TableViewDataSource)
 
+- (NSDictionary *)cellConfigDictionaryForIndexPath:(NSIndexPath *)indexPath
+{
+        return (self.configuresCellWithTableData ? self.tableData[indexPath.section][indexPath.row]: nil);
+}
+
+- (Class)cellClassForIndexPath:(NSIndexPath *)indexPath
+{
+        if (self.configuresCellWithTableData) {
+                NSString *className = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellClassName]);
+                return className ? NSClassFromString(className) : [ACTableViewDetailCell class];
+        }
+        return [UITableViewCell class];
+}
+
+- (NSString *)cellReuseIdentifierForIndexPath:(NSIndexPath *)indexPath
+{
+        NSString *identifier = nil;
+        if (self.configuresCellWithTableData) {
+                identifier = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellReuseIdentifier]);
+                
+        }
+        return identifier ?: NSStringFromClass([self cellClassForIndexPath:indexPath]);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-        if (self.initializationFlags.configuresCellWithTableData) {
+        if (self.configuresCellWithTableData) {
                 return self.tableData.count;
         }
         return 0;
@@ -20,36 +48,28 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        if (self.initializationFlags.configuresCellWithTableData) {
+        if (self.configuresCellWithTableData) {
                 return [self.tableData[section] count];
         }
         return 0;
 }
 
-- (id)tableView:(UITableView *)tableView cellDataForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return [self ac_cellDataForIndexPath:indexPath];
-}
-
-- (Class)tableView:(UITableView *)tableView cellClassForRowAtIndexPath:(NSIndexPath *)indexPath cellData:(id)cellData
-{
-        return [self ac_cellClassForIndexPath:indexPath];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellNewInstanceForRowAtIndexPath:(NSIndexPath *)indexPath cellClass:(Class)cellClass reuseIdentifier:(NSString *)reuseIdentifier
-{
-        if ([cellClass isSubclassOfClass:[ACTableViewCell class]]) {
-                return [[cellClass alloc] initWithCellStyle:[self ac_cellStyleForIndexPath:indexPath] reuseIdentifier:reuseIdentifier];
+        if (self.configuresCellWithTableData) {
+                NSString *identifier = [self cellReuseIdentifierForIndexPath:indexPath];
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+                if (!cell) {
+                        Class cellClass = [self cellClassForIndexPath:indexPath];
+                        cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                }
+                if ([cell isKindOfClass:[ACTableViewCell class]]) {
+                        ACTableViewCell *acCell = (ACTableViewCell *)cell;
+                        acCell.configDictionary = [self cellConfigDictionaryForIndexPath:indexPath];
+                }
+                return cell;
         }
         return nil;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-        if (tableView.style == UITableViewStyleGrouped) {
-                return (0 == section) ? 15.f : 2.f;
-        }
-        return 0;
 }
 
 @end

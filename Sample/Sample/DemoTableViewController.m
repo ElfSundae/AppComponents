@@ -7,7 +7,22 @@
 //
 
 #import "DemoTableViewController.h"
+#import <AppComponents/ACTableViewController+Subclassing.h>
 
 @implementation DemoTableViewController
+
+- (instancetype)initWithStyle:(UITableViewStyle)style initializationFlags:(ACTableViewControllerInitializationFlags)initializationFlags
+{
+        initializationFlags.configuresCellWithTableData = YES;
+        self = [super initWithStyle:style initializationFlags:initializationFlags];
+        self.showsRefreshControl = YES;
+        return self;
+}
+
+- (void)viewDidLoad
+{
+        [super viewDidLoad];
+        [self.tableData addObject:@[@{ACTableViewCellConfigKeyText: @"Cell Title"}]];
+}
 
 @end
