@@ -42,12 +42,13 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellReuseIdentifier;
 ///=============================================
 
 /**
- * Determines whether to show the refreshControl.
+ * Determines whether to show the refreshControl. Default is NO.
  */
 @property (nonatomic) BOOL showsRefreshControl;
 /**
  * self.tableData是二维数组，用于在 -tableView:cellForRowAtIndexPath: 设置给ACTableViewCell的configDictionary.
  * tableView的sectionNumber是tableData.count.
+ * Default is NO.
  */
 @property (nonatomic) BOOL configuresCellWithTableData;
 /**
@@ -55,7 +56,7 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellReuseIdentifier;
  */
 @property (nonatomic) BOOL usesTableFooterViewAsLoadingMoreView;
 /**
- * Determines whether to show the top border of loadingMoreView
+ * Determines whether to show the top border of loadingMoreView. Default is NO.
  */
 @property (nonatomic) BOOL showsLoadingMoreViewTopBorder;
 
