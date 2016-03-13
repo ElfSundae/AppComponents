@@ -53,7 +53,7 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
         self.automaticallyReloadWhenNetworkBecomesReachable = YES;
         self.requestUserAgent = [ESApp sharedApp].userAgentForWebView;
         self.inAppStoreEnabled = YES;
-        self.JSBridgeEnabled = YES;
+        self.JSBridgeEnabled = NO;
         self.imageBrowserEnabled = YES;
 }
 

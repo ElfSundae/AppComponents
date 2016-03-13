@@ -67,7 +67,7 @@ FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserJavascriptObjectName;
 /// Default is YES, uses `SKStoreProductViewController` to open iTunes links like https//itunes.apple.com/xx/idxxxx
 /// @warning It can only be set before the first loading.
 @property (nonatomic, getter=isInAppStoreEnabled) BOOL inAppStoreEnabled;
-/// Default is YES.
+/// Default is NO.
 /// @warning It can only be set before the first loading.
 @property (nonatomic, getter=isJSBridgeEnabled) BOOL JSBridgeEnabled;
 /// Default is NO: 由WebViewController自动对网页里的图片支持查看大图，用imageController打开大图。 为NO时仅支持网页里的 xx-image: 查看大图指令。
