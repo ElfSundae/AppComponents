@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AppComponents/WebViewJavascriptBridge+ACMessageHandler.h>
+#import <ESFramework/ESRefreshControl.h>
 
 /**
  * 自定义协议，支持以下host:
@@ -33,6 +34,7 @@ FOUNDATION_EXTERN NSString *const ACWebViewImageBrowserJavascriptObjectName;
 ///=============================================
 
 @property (nonatomic, strong, readonly) UIWebView *webView;
+@property (nonatomic, strong) ESRefreshControl *refreshControl;
 @property (nonatomic, getter=isLoading, readonly) BOOL loading;
 @property (nonatomic, copy, readonly) NSURL *initializationURL; // The first loaded URL
 @property (nonatomic, copy, readonly) NSString *initializationTitle;

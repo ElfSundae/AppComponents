@@ -17,15 +17,15 @@
                 return;
         }
         
-        if (self.showsRefreshControl && !self.webView.scrollView.refreshControl) {
+        if (self.showsRefreshControl && !self.refreshControl) {
                 ESWeakSelf;
-                self.webView.scrollView.refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
+                self.refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
                         ESStrongSelf;
                         [_self reload];
                 }];
-        } else if (!self.showsRefreshControl && self.webView.scrollView.refreshControl) {
-                [self.webView.scrollView.refreshControl endRefreshing];
-                self.webView.scrollView.refreshControl = nil;
+        } else if (!self.showsRefreshControl && self.refreshControl) {
+                [self.refreshControl endRefreshing];
+                self.refreshControl = nil;
         }
 }
 

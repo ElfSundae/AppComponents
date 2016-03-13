@@ -12,7 +12,6 @@
 #import <ESFramework/ESFrameworkAdditions.h>
 #import <ESFramework/ESErrorView.h>
 #import <ESFramework/ESButton.h>
-#import <ESFramework/ESRefreshControl.h>
 #import <ESFramework/ESApp.h>
 
 @interface ACWebViewController ()

@@ -132,6 +132,16 @@ NSString *const ACWebViewImageBrowserJavascriptObjectName = @"ACWebViewImageBrow
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Getter & Setter
 
+- (ESRefreshControl *)refreshControl
+{
+        return _webView.scrollView.refreshControl;
+}
+
+- (void)setRefreshControl:(ESRefreshControl *)refreshControl
+{
+        _webView.scrollView.refreshControl = refreshControl;
+}
+
 - (void)setLoading:(BOOL)loading
 {
         if (_loading != loading) {
