@@ -56,10 +56,11 @@
         // TODO: remove -respondsToSelector: after MBProgressHUD released new Pod version
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated"
         if ([hud respondsToSelector:@selector(hideAnimated:afterDelay:)]) {
                 ESInvokeSelector(hud, @selector(hideAnimated:afterDelay:), NO, NULL, animated, timeInterval);
         } else {
-                #pragma clang diagnostic ignored "-Wdeprecated"
+                hud.customView.tintColor = hud.labelColor;
                 [hud hide:animated afterDelay:timeInterval];
         }
 #pragma clang diagnostic pop
