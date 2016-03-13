@@ -7,7 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "DemoTableViewController.h"
 
 @interface Dict : NSDictionary
 @end
@@ -27,8 +26,6 @@
         ESWeakSelf;
         self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"Table" handler:^(UIBarButtonItem *barButtonItem) {
                 ESStrongSelf;
-                DemoTableViewController *tableVC = [[DemoTableViewController alloc] init];
-                [_self.navigationController pushViewController:tableVC animated:YES];
         }];
         self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:@"Feedback" handler:^(UIBarButtonItem *barButtonItem) {
                 ESStrongSelf;
