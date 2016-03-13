@@ -12,49 +12,53 @@
 
 - (void)ac_checkRefreshControl
 {
-        if (!self.isViewLoaded) {
-                return;
-        }
-        if (self.showsRefreshControl && !self.refreshControl) {
-                ESWeakSelf;
-                self.refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
-                        ESStrongSelf;
-                        [_self refreshData];
-                }];
-        } else if (!self.showsRefreshControl && self.refreshControl) {
-                [self.refreshControl endRefreshing];
-                self.refreshControl = nil;
-        }
+        ESDispatchOnMainThreadAsynchrony(^{
+                if (!self.isViewLoaded) {
+                        return;
+                }
+                if (self.showsRefreshControl && !self.refreshControl) {
+                        ESWeakSelf;
+                        self.refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
+                                ESStrongSelf;
+                                [_self refreshData];
+                        }];
+                } else if (!self.showsRefreshControl && self.refreshControl) {
+                        [self.refreshControl endRefreshing];
+                        self.refreshControl = nil;
+                }
+        });
 }
 
 - (void)ac_checkLoadingMoreView
 {
-        if (!self.isViewLoaded) {
-                return;
-        }
-        
-        if (self.usesTableFooterViewAsLoadingMoreView && self.hasMoreData) {
-                if (!_loadingMoreView) {
-                        _loadingMoreView = [self ac_createLoadingMoreView];
-                        NSAssert(_loadingMoreView, @"-ac_createLoadingMoreView must return a view.");
+        ESDispatchOnMainThreadAsynchrony(^{
+                if (!self.isViewLoaded) {
+                        return;
                 }
-                if (self.tableView.tableFooterView != _loadingMoreView) {
-                        _originalTableFooterView = self.tableView.tableFooterView;
-                        self.tableView.tableFooterView = _loadingMoreView;
-                        [self ac_addTableViewsObserversForLoadingMoreView];
+                
+                if (self.usesTableFooterViewAsLoadingMoreView && self.hasMoreData) {
+                        if (!_loadingMoreView) {
+                                _loadingMoreView = [self ac_createLoadingMoreView];
+                                NSAssert(_loadingMoreView, @"-ac_createLoadingMoreView must return a view.");
+                        }
+                        if (self.tableView.tableFooterView != _loadingMoreView) {
+                                _originalTableFooterView = self.tableView.tableFooterView;
+                                self.tableView.tableFooterView = _loadingMoreView;
+                                [self ac_addTableViewsObserversForLoadingMoreView];
+                        }
+                } else if (self.usesTableFooterViewAsLoadingMoreView && !self.hasMoreData) {
+                        if (_loadingMoreView && self.tableView.tableFooterView == _loadingMoreView) {
+                                self.tableView.tableFooterView = _originalTableFooterView;
+                        }
+                } else if (!self.usesTableFooterViewAsLoadingMoreView && _loadingMoreView) {
+                        if (self.tableView.tableFooterView == _loadingMoreView) {
+                                self.tableView.tableFooterView = _originalTableFooterView;
+                        }
+                        [_loadingMoreView removeFromSuperview];
+                        _loadingMoreView = nil;
+                        _originalTableFooterView = nil;
                 }
-        } else if (self.usesTableFooterViewAsLoadingMoreView && !self.hasMoreData) {
-                if (_loadingMoreView && self.tableView.tableFooterView == _loadingMoreView) {
-                        self.tableView.tableFooterView = _originalTableFooterView;
-                }
-        } else if (!self.usesTableFooterViewAsLoadingMoreView && _loadingMoreView) {
-                if (self.tableView.tableFooterView == _loadingMoreView) {
-                        self.tableView.tableFooterView = _originalTableFooterView;
-                }
-                [_loadingMoreView removeFromSuperview];
-                _loadingMoreView = nil;
-                _originalTableFooterView = nil;
-        }
+        });
 }
 
 - (UIView *)ac_createLoadingMoreView

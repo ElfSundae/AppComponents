@@ -113,9 +113,11 @@ NSString *const ACTableViewCellConfigKeyCellReuseIdentifier = @"cellReuseIdentif
 - (void)_ac_refreshingDataDidFinish
 {
         _refreshingData = NO;
-        if (self.refreshControl && self.refreshControl.isRefreshing) {
-                [self.refreshControl endRefreshing];
-        }
+        ESDispatchOnMainThreadAsynchrony(^{
+                if (self.refreshControl && self.refreshControl.isRefreshing) {
+                        [self.refreshControl endRefreshing];
+                }     
+        });
 }
 
 - (void)cancelRefreshingData
