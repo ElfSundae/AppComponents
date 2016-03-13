@@ -19,7 +19,7 @@
         
         if (self.showsRefreshControl && !self.webView.scrollView.refreshControl) {
                 ESWeakSelf;
-                self.webView.scrollView.refreshControl = [ESRefreshControl controlWithStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
+                self.webView.scrollView.refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
                         ESStrongSelf;
                         [_self reload];
                 }];
