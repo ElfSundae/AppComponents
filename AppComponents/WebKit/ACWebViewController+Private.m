@@ -47,9 +47,9 @@
                 self.activityIndicatorView.center = CGPointMake(self.activityOverlay.width / 2.f, self.activityOverlay.height / 2.f);
                 self.activityIndicatorView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin);
                 if ([self.webView.backgroundColor es_isLightColor]) {
-                        self.activityIndicatorView.color = [UIColor colorWithWhite:0.08 alpha:1.0];
+                        self.activityIndicatorView.color = [UIColor colorWithWhite:0.333 alpha:1.000];
                 } else {
-                        self.activityIndicatorView.color = [UIColor colorWithWhite:0.8 alpha:1.0];
+                        self.activityIndicatorView.color = [UIColor colorWithWhite:0.888 alpha:1.0];
                 }
                 [self.activityOverlay addSubview:self.activityIndicatorView];
         }
