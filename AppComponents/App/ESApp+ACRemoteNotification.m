@@ -13,7 +13,7 @@ NSString *const ACRemoteNotificationServiceDefaultAccountIdentifier = @"NULL";
 
 @implementation ESApp (ACRemoteNotification)
 
-- (void)registerForRemoteNotificationsWithTypes:(ESUserNotificationType)types
+- (void)registerForRemoteNotificationsWithTypes:(UIUserNotificationType)types
                                      categories:(NSSet *)categories
                                     serviceType:(ACRemoteNotificationServiceType)serviceType
                              deviceTokenHandler:(void (^)(NSData *deviceToken, NSString *deviceTokenString, NSError *error))deviceTokenHandler
