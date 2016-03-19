@@ -55,8 +55,6 @@ FOUNDATION_EXTERN NSString *const kACUDIDKeychainKey;           // "ACUDIDKey"
  *       39BE6EBD-D28D-493C-B265-82541B05B730 => 320cffc5ee0b5c6871dc6db6adaa89c48984cc21
  *       1C6EB703-35A7-4EBE-A683-F0789703C7B3 => 0a0a064b12ee03831b3acb762ae3b2643d50137e
  *
- *
- * TODO: 对UDID加密后再缓存。
  */
 
 /**

@@ -16,19 +16,9 @@ Pod::Spec.new do |s|
   s.subspec "Core" do |ss|
     ss.source_files         = "AppComponents/Core/**/*.{h,m}"
     ss.private_header_files = "AppComponents/Core/**/*+Private.h"
+    ss.frameworks           = "AdSupport"
     ss.dependency           "ESFramework/Core"
     ss.dependency           "ESFramework/Additions"
-  end
-
-  s.subspec "Encryptor" do |ss|
-    ss.source_files         = "AppComponents/Encryptor/**/*.{h,m}"
-    ss.dependency           "ESFramework/Core"
-  end
-
-  s.subspec "UDID" do |ss|
-    ss.source_files         = "AppComponents/UDID/**/*.{h,m}"
-    ss.frameworks           = "AdSupport"
-    ss.dependency           "AppComponents/Core"
     ss.dependency           "UICKeyChainStore"
   end
 
@@ -49,7 +39,6 @@ Pod::Spec.new do |s|
     ss.source_files         = "AppComponents/Networking/**/*.{h,m}"
     ss.dependency           "AFNetworking", "~> 3.0"
     ss.dependency           "AppComponents/App"
-    ss.dependency           "AppComponents/Encryptor"
   end
 
   s.subspec "App" do |ss|

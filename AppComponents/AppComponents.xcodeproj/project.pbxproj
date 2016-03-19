@@ -8,6 +8,10 @@
 
 /* Begin PBXFileReference section */
 		E706D1891C84734200A64C7D /* AppComponentsApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppComponentsApp.bundle; sourceTree = "<group>"; };
+		E71004751C9CF79000EB14AE /* ACEncryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACEncryptor.h; sourceTree = "<group>"; };
+		E71004761C9CF79000EB14AE /* ACEncryptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACEncryptor.m; sourceTree = "<group>"; };
+		E71004771C9D025C00EB14AE /* ACUDID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACUDID.h; sourceTree = "<group>"; };
+		E71004781C9D025C00EB14AE /* ACUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACUDID.m; sourceTree = "<group>"; };
 		E71B7CEF1C5032A4001910C2 /* ACHTTPSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACHTTPSessionManager.h; sourceTree = "<group>"; };
 		E71B7CF01C5032A4001910C2 /* ACHTTPSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHTTPSessionManager.m; sourceTree = "<group>"; };
 		E71B7CF41C509D21001910C2 /* ACApiClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACApiClient.h; sourceTree = "<group>"; };
@@ -75,11 +79,6 @@
 		E7C3FA931C4E39BC00281993 /* ACConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACConfig.m; sourceTree = "<group>"; };
 		E7C3FA961C4EC29900281993 /* NSDictionary+ACCoreAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ACCoreAdditions.h"; sourceTree = "<group>"; };
 		E7C3FA971C4EC29900281993 /* NSDictionary+ACCoreAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ACCoreAdditions.m"; sourceTree = "<group>"; };
-		E7C3FA991C4ED41400281993 /* ACEncryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACEncryptor.h; sourceTree = "<group>"; };
-		E7C3FA9A1C4ED41400281993 /* ACEncryptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACEncryptor.m; sourceTree = "<group>"; };
-		E7C3FA9B1C4ED6E800281993 /* AppComponentsEncryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsEncryptor.h; sourceTree = "<group>"; };
-		E7C3FA9E1C4EEC9E00281993 /* ACUDID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACUDID.h; sourceTree = "<group>"; };
-		E7C3FA9F1C4EEC9E00281993 /* ACUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACUDID.m; sourceTree = "<group>"; };
 		E7C3FAA51C4EF97500281993 /* AppComponentsAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsAd.h; sourceTree = "<group>"; };
 		E7C3FAAA1C4EF9CC00281993 /* ACAdBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAdBannerView.h; sourceTree = "<group>"; };
 		E7C3FAAB1C4EF9CC00281993 /* ACAdBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAdBannerView.m; sourceTree = "<group>"; };
@@ -271,8 +270,6 @@
 			children = (
 				E7A38B441C4DBFBD00972B01 /* AppComponents.h */,
 				E7A38B3A1C4DBE1200972B01 /* Core */,
-				E7C3FA981C4ED3F900281993 /* Encryptor */,
-				E7C3FA9D1C4EEBF600281993 /* UDID */,
 				E7C3FAA41C4EF96000281993 /* Ad */,
 				E7C3FAB31C4F09FF00281993 /* Networking */,
 				E7C3FAB01C4F035300281993 /* AppUpdater */,
@@ -297,27 +294,12 @@
 				E7C3FA931C4E39BC00281993 /* ACConfig.m */,
 				E71B7D021C51560B001910C2 /* ACSettings.h */,
 				E71B7D031C51560B001910C2 /* ACSettings.m */,
+				E71004751C9CF79000EB14AE /* ACEncryptor.h */,
+				E71004761C9CF79000EB14AE /* ACEncryptor.m */,
+				E71004771C9D025C00EB14AE /* ACUDID.h */,
+				E71004781C9D025C00EB14AE /* ACUDID.m */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		E7C3FA981C4ED3F900281993 /* Encryptor */ = {
-			isa = PBXGroup;
-			children = (
-				E7C3FA9B1C4ED6E800281993 /* AppComponentsEncryptor.h */,
-				E7C3FA991C4ED41400281993 /* ACEncryptor.h */,
-				E7C3FA9A1C4ED41400281993 /* ACEncryptor.m */,
-			);
-			path = Encryptor;
-			sourceTree = "<group>";
-		};
-		E7C3FA9D1C4EEBF600281993 /* UDID */ = {
-			isa = PBXGroup;
-			children = (
-				E7C3FA9E1C4EEC9E00281993 /* ACUDID.h */,
-				E7C3FA9F1C4EEC9E00281993 /* ACUDID.m */,
-			);
-			path = UDID;
 			sourceTree = "<group>";
 		};
 		E7C3FAA41C4EF96000281993 /* Ad */ = {
