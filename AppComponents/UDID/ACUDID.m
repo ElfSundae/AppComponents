@@ -9,14 +9,14 @@
 #import "ACUDID.h"
 #import <AdSupport/AdSupport.h>
 
-const NSInteger ACUDIDLength                    = 40;
+const NSInteger kACUDIDLength                    = 40;
 
-NSString *const ACUDIDBasedUUIDTag              = @"a";
-NSString *const ACUDIDBasedRandomTag            = @"b";
-NSString *const ACUDIDBasedIDFAPossibleTag      = @"f";
+NSString *const kACUDIDBasedUUIDTag              = @"a";
+NSString *const kACUDIDBasedRandomTag            = @"b";
+NSString *const kACUDIDBasedIDFAPossibleTag      = @"f";
 
-NSString *const ACUDIDKeychainService           = @"ACUDIDService";
-NSString *const ACUDIDKeychainKey               = @"ACUDIDKey";
+NSString *const kACUDIDKeychainService           = @"ACUDIDService";
+NSString *const kACUDIDKeychainKey               = @"ACUDIDKey";
 
 
 static UICKeyChainStore *__gACUDIDKeychainStore = nil;
@@ -34,13 +34,13 @@ static NSString *_ACUDIDCachedFilePath(void)
 static BOOL _ACUDIDSaveToKeychain(NSString *UDID)
 {
         return (ESIsStringWithAnyText(UDID) ?
-                [ACUDIDKeychainStore() setString:UDID forKey:ACUDIDKeychainKey] :
-                [ACUDIDKeychainStore() removeItemForKey:ACUDIDKeychainKey]);
+                [ACUDIDKeychainStore() setString:UDID forKey:kACUDIDKeychainKey] :
+                [ACUDIDKeychainStore() removeItemForKey:kACUDIDKeychainKey]);
 }
 
 static NSString *_ACUDIDGetFromKeychain(void)
 {
-        NSString *udid = [ACUDIDKeychainStore() stringForKey:ACUDIDKeychainKey];
+        NSString *udid = [ACUDIDKeychainStore() stringForKey:kACUDIDKeychainKey];
         if (ACIsUDIDValid(udid, NULL)) {
                 return udid;
         } else {
@@ -84,26 +84,26 @@ static NSString *_ACUDIDCreate(void)
         
         if (!ESIsStringWithAnyText(baseString)) {
                 baseString = ESUUID();
-                basedTag = ACUDIDBasedUUIDTag;
+                basedTag = kACUDIDBasedUUIDTag;
         }
         
         if (!ESIsStringWithAnyText(baseString)) {
                 baseString = ESRandomStringOfLength(36);
-                basedTag = ACUDIDBasedRandomTag;
+                basedTag = kACUDIDBasedRandomTag;
         }
         
         const NSString *baseStringMD5 = [baseString es_md5HashString];
         
         if (!basedTag) {
                 basedTag = [baseStringMD5 substringWithRange:NSMakeRange(15, 1)];
-                if ([basedTag isEqualToString:ACUDIDBasedUUIDTag] || [basedTag isEqualToString:ACUDIDBasedRandomTag]) {
-                        basedTag = ACUDIDBasedIDFAPossibleTag;
+                if ([basedTag isEqualToString:kACUDIDBasedUUIDTag] || [basedTag isEqualToString:kACUDIDBasedRandomTag]) {
+                        basedTag = kACUDIDBasedIDFAPossibleTag;
                 }
         }
         
         NSString *resetString = [baseString stringByReplacingOccurrencesOfString:@"-" withString:@""];
         resetString = [[@"abcdwxyz0123456789" stringByAppendingString:resetString] es_md5HashString];
-        resetString = [resetString substringWithRange:NSMakeRange(17, ACUDIDLength - baseStringMD5.length - basedTag.length)];
+        resetString = [resetString substringWithRange:NSMakeRange(17, kACUDIDLength - baseStringMD5.length - basedTag.length)];
         
         NSString *result = [NSString stringWithFormat:@"%@%@%@", baseStringMD5, basedTag, resetString];
         return (NSString *)result;
@@ -117,33 +117,18 @@ NSString *ACGetUDID(void)
 {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                BOOL shouldSaveToKeychain = NO;
-                BOOL shouldSaveToFile = NO;
+                _ACUDIDSaveToKeychain(nil);
                 
-                NSString *udid = _ACUDIDGetFromKeychain();
-                udid || (shouldSaveToKeychain = YES);
+                NSString *udidFromKeychain = _ACUDIDGetFromKeychain();
                 NSString *udidFromFile = _ACUDIDGetFromFile();
-                udidFromFile || (shouldSaveToFile = YES);
-                
-                if (!shouldSaveToFile && !(udid && udidFromFile && [udid isEqualToString:udidFromFile])) {
-                        shouldSaveToFile = YES;
-                }
-                
-                udid || (udid = udidFromFile);
-                
-                if (!udid) {
-                        udid = _ACUDIDCreate();
-                }
+                NSString *udid = ((udidFromKeychain ?: udidFromFile) ?: _ACUDIDCreate());
                 __gACUDID = udid.copy;
                 
                 ESDispatchOnDefaultQueue(^{
-                        if (shouldSaveToKeychain) {
-                                BOOL saved = _ACUDIDSaveToKeychain(udid);
-                                if (!saved) {
-                                        printf("ACUDID: Could not save UDID to Keychain, make sure Entitlements.plist and kACUDIDKeychainAccessGroup are correctly configured.\n");
-                                }
+                        if (!udidFromKeychain || ![udidFromKeychain isEqualToString:udid]) {
+                                _ACUDIDSaveToKeychain(udid);
                         }
-                        if (shouldSaveToFile) {
+                        if (!udidFromFile || ![udidFromFile isEqualToString:udid]) {
                                 _ACUDIDSaveToFile(udid);
                         }
                         ACUDIDSetKeychainStore(nil);
@@ -165,7 +150,7 @@ BOOL ACSetUDID(NSString *newUDID)
 BOOL ACIsUDIDValid(NSString *UDID, NSString **outBasedTag)
 {
         if ([UDID isKindOfClass:[NSString class]] &&
-            [UDID isMatch:NSStringWith(@"^[0-9a-f]{%d}$", (int)ACUDIDLength)]) {
+            [UDID isMatch:NSStringWith(@"^[0-9a-f]{%d}$", (int)kACUDIDLength)]) {
                 if (outBasedTag) {
                         *outBasedTag = [UDID substringWithRange:NSMakeRange(33, 1)];
                 }
@@ -177,7 +162,7 @@ BOOL ACIsUDIDValid(NSString *UDID, NSString **outBasedTag)
 UICKeyChainStore *ACUDIDKeychainStore(void)
 {
         if (!__gACUDIDKeychainStore) {
-                __gACUDIDKeychainStore = [UICKeyChainStore keyChainStoreWithService:ACUDIDKeychainService
+                __gACUDIDKeychainStore = [UICKeyChainStore keyChainStoreWithService:kACUDIDKeychainService
                                                                         accessGroup:ACConfigGet(kACConfigKey_ACUDID_KeychainAccessGroup)];
         }
         return __gACUDIDKeychainStore;

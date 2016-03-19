@@ -11,18 +11,18 @@
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <AppComponents/ACConfig.h>
 
-FOUNDATION_EXTERN const NSInteger ACUDIDLength; // 40
+FOUNDATION_EXTERN const NSInteger kACUDIDLength; // 40
 
 /**
  * 标记UDID最前面的32位串是什么值的md5。
  */
 
-FOUNDATION_EXTERN NSString *const ACUDIDBasedUUIDTag;           // "a"
-FOUNDATION_EXTERN NSString *const ACUDIDBasedRandomTag;         // "b"
-FOUNDATION_EXTERN NSString *const ACUDIDBasedIDFAPossibleTag;   // 除了 ACUDIDBasedUUIDTag 和 ACUDIDBasedRandomTag 之外的0-9a-f 字符, 默认为"f"
+FOUNDATION_EXTERN NSString *const kACUDIDBasedUUIDTag;          // "a"
+FOUNDATION_EXTERN NSString *const kACUDIDBasedRandomTag;        // "b"
+FOUNDATION_EXTERN NSString *const kACUDIDBasedIDFAPossibleTag;  // 除了 kACUDIDBasedUUIDTag 和 kACUDIDBasedRandomTag 之外的0-9a-f 字符, 默认为"f"
 
-FOUNDATION_EXTERN NSString *const ACUDIDKeychainService;// "ACUDIDService"
-FOUNDATION_EXTERN NSString *const ACUDIDKeychainKey;    // "ACUDIDKey"
+FOUNDATION_EXTERN NSString *const kACUDIDKeychainService;       // "ACUDIDService"
+FOUNDATION_EXTERN NSString *const kACUDIDKeychainKey;           // "ACUDIDKey"
 
 /*!
  * 生成设备UDID.
@@ -35,9 +35,9 @@ FOUNDATION_EXTERN NSString *const ACUDIDKeychainKey;    // "ACUDIDKey"
  *      + 40位小写的[0-9a-f]字符串
  *      + 前32位是 baseString (IDFA或者UUID或者随机串) 的md5值
  *      + 第33位是 basedTag: 表达了baseString是什么类型.
- *        基于UUID的UDID的basedTag是 "a" (ACUDIDBasedUUIDTag).
- *        基于随机串的UDID的basedTag是 "b" (ACUDIDBasedRandomTag).
- *        基于IDFA的UDID的basedTag是上一步生成的baseString的md5的第15位，如果这个字符是a或者b, 那么basedTag就是"f"(ACUDIDBasedIDFAPossibleTag).
+ *        基于UUID的UDID的basedTag是 "a" (kACUDIDBasedUUIDTag).
+ *        基于随机串的UDID的basedTag是 "b" (kACUDIDBasedRandomTag).
+ *        基于IDFA的UDID的basedTag是上一步生成的baseString的md5的第15位，如果这个字符是a或者b, 那么basedTag就是"f"(kACUDIDBasedIDFAPossibleTag).
  *      + 最后7位是：拼接 "abcdwxyz0123456789" 和 baseString ，然后对其进行md5，从md5结果的第17位开始取7位
  *        这样可以在IDFA不变的情况下不同app可以生成同样的串。
  *
@@ -70,7 +70,7 @@ FOUNDATION_EXTERN NSString *ACGetUDID(void);
  * 设备号如果变化了（新安装、用户重置了系统、用户其他hack行为、用户变换了idfa等），可以由服务端通过idfa或者
  * push token来判断当前设备是不是已经存在了，如果是同一个设备的话，可以由服务端把这个设备号返回并写进客户端缓存。
  *
- * @warning newUDID 必须通过 +ac_isDeviceIdentifierValid:: 的验证才能重写成功。
+ * @warning newUDID 必须通过 ACIsUDIDValid() 的验证才能重写成功。
  */
 FOUNDATION_EXTERN BOOL ACSetUDID(NSString *newUDID);
 
