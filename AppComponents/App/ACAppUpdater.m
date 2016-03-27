@@ -9,7 +9,6 @@
 #import "ACAppUpdater.h"
 #import <ESFramework/ESApp.h>
 #import <ESFramework/ESStoreHelper.h>
-#import <ESFramework/ESFrameworkAdditions.h>
 
 NSString *const ACAppUpdaterNewVersionDidChangeNotification = @"ACAppUpdaterNewVersionDidChangeNotification";
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ACURLSessionTaskInfo.h"
+#import <AppComponents/ACURLSessionTaskInfo.h>
 
 @interface NSURLSessionTask (ACNetworkingAdditions)
 

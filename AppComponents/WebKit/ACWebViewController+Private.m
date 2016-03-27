@@ -7,7 +7,7 @@
 //
 
 #import "ACWebViewController+Subclassing.h"
-#import <ESFramework/ESFrameworkStoreKit.h>
+#import <ESFramework/ESStoreProductViewControllerManager.h>
 
 @implementation ACWebViewController (Private)
 

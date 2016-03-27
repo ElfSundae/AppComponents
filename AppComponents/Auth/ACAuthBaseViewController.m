@@ -7,7 +7,7 @@
 //
 
 #import "ACAuthBaseViewController.h"
-#import <ESFramework/ESFrameworkAdditions.h>
+#import <ESFramework/ESFrameworkCore.h>
 
 @implementation ACAuthBaseViewController
 

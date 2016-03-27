@@ -8,7 +8,7 @@
 
 #import <ESFramework/ESApp.h>
 #import <JTSImageViewController/JTSImageViewController.h>
-#import "JTSImageInfo+ACAdditions.h"
+#import <AppComponents/JTSImageInfo+ACAdditions.h>
 
 @interface ESApp (ACImageViewController)
 <JTSImageViewControllerDismissalDelegate, JTSImageViewControllerInteractionsDelegate>

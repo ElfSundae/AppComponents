@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "AppComponents"
-  s.version           = "1.0.6"
+  s.version           = "1.0.7"
   s.license           = "MIT"
   s.summary           = "Components for iOS development."
   s.homepage          = "https://github.com/ElfSundae/AppComponents"
@@ -18,21 +18,17 @@ Pod::Spec.new do |s|
     ss.private_header_files = "AppComponents/Core/**/*+Private.h"
     ss.frameworks           = "AdSupport"
     ss.dependency           "ESFramework/Core"
-    ss.dependency           "ESFramework/Additions"
     ss.dependency           "UICKeyChainStore"
   end
 
   s.subspec "Ad" do |ss|
     ss.source_files         = "AppComponents/Ad/**/*.{h,m}"
     ss.dependency           "AppComponents/Core"
-    ss.dependency           "ESFramework/App"
   end
 
   s.subspec "AppUpdater" do |ss|
     ss.source_files         = "AppComponents/AppUpdater/**/*.{h,m}"
     ss.dependency           "AppComponents/Core"
-    ss.dependency           "ESFramework/App"
-    ss.dependency           "ESFramework/StoreKit"
   end
 
   s.subspec "Networking" do |ss|
@@ -44,7 +40,6 @@ Pod::Spec.new do |s|
   s.subspec "App" do |ss|
     ss.source_files         = "AppComponents/App/**/*.{h,m}"
     ss.dependency           "AppComponents/Core"
-    ss.dependency           "ESFramework/App"
     ss.dependency           "MBProgressHUD"
     ss.resource             = "AppComponents/App/AppComponentsApp.bundle"
   end
@@ -62,7 +57,7 @@ Pod::Spec.new do |s|
     ss.private_header_files = "AppComponents/Auth/**/*+Private.h"
     ss.dependency           "AppComponents/App"
     ss.dependency           "AppComponents/VendorServices/MobSMS"
-    ss.dependency           "ESFramework/UIKit/View"
+    ss.dependency           "ESFramework/UIKit"
     ss.dependency           "IconFontsKit/FontAwesome"
   end
 
@@ -71,9 +66,7 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/App"
     ss.dependency           "AppComponents/VendorServices/ImageViewController"
     ss.dependency           "AppComponents/VendorServices/WebViewJavascriptBridge"
-    ss.dependency           "ESFramework/UIKit/View"
-    ss.dependency           "ESFramework/UIKit/RefreshControl"
-    ss.dependency           "ESFramework/StoreKit"
+    ss.dependency           "ESFramework/UIKit"
   end
 
   s.subspec "VendorServices" do |ss|
@@ -82,13 +75,13 @@ Pod::Spec.new do |s|
     ss.subspec "UmengAnalytics" do |sss|
       sss.source_files      = "AppComponents/VendorServices/UmengAnalytics/**/*.{h,m}"
       sss.dependency        "APIService-UmengAnalytics"
-      sss.dependency        "ESFramework/App"
+      sss.dependency        "ESFramework/Core"
     end
 
     ss.subspec "TalkingDataAnalytics" do |sss|
       sss.source_files      = "AppComponents/VendorServices/TalkingDataAnalytics/**/*.{h,m}"
       sss.dependency        "APIService-TalkingData"
-      sss.dependency        "ESFramework/App"
+      sss.dependency        "ESFramework/Core"
     end
 
     ss.subspec "XGPush" do |sss|
@@ -101,7 +94,7 @@ Pod::Spec.new do |s|
       sss.source_files      = "AppComponents/VendorServices/MobSMS/**/*.{h,m}"
       sss.dependency        "MOBFoundation_IDFA"
       sss.dependency        "SMSSDK"
-      sss.dependency        "ESFramework/App"
+      sss.dependency        "ESFramework/Core"
     end
 
     ss.subspec "ImageViewController" do |sss|

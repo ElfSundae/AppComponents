@@ -7,7 +7,6 @@
 //
 
 #import "ACConfig.h"
-#import "NSDictionary+ACCoreAdditions.h"
 
 NSMutableDictionary *ACConfig(void)
 {
@@ -21,12 +20,12 @@ NSMutableDictionary *ACConfig(void)
 
 id ACConfigGet(NSString *keyPath)
 {
-        return [ACConfig() ac_valueForKeyPath:keyPath];
+        return [ACConfig() valueForKeyPath:keyPath];
 }
 
 BOOL ACConfigSet(NSString *keyPath, id object)
 {
-        return [ACConfig() ac_setValue:object forKeyPath:keyPath];
+        return [ACConfig() es_setValue:object forKeyPath:keyPath];
 }
 
 void ACConfigSetDictionary(NSDictionary *dictionary)

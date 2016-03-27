@@ -6,12 +6,8 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import <ESFramework/ESTableViewController.h>
 #import <ESFramework/ESFrameworkCore.h>
-#import <ESFramework/ESFrameworkAdditions.h>
-#import <ESFramework/ESErrorView.h>
-#import <ESFramework/ESActivityLabel.h>
-#import <ESFramework/ESButton.h>
+#import <ESFramework/ESFrameworkUIKit.h>
 #import <AppComponents/ACTableViewCell.h>
 
 /// NSString with class name

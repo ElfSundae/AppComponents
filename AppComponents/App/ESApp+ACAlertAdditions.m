@@ -7,7 +7,6 @@
 //
 
 #import "ESApp+ACAlertAdditions.h"
-#import <ESFramework/ESFrameworkAdditions.h>
 #import <AppComponents/ACConfig.h>
 
 @implementation ESApp (ACAlertAdditions)

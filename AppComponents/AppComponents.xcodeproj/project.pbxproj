@@ -32,6 +32,12 @@
 		E72B980F1C5F5C4600968230 /* ACBorderLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACBorderLabel.m; sourceTree = "<group>"; };
 		E72B98101C5F5C9100968230 /* ACFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFeedbackViewController.h; sourceTree = "<group>"; };
 		E72B98111C5F5C9100968230 /* ACFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFeedbackViewController.m; sourceTree = "<group>"; };
+		E7365DBF1CA867C700ADC777 /* ACAppUpdater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAppUpdater.h; sourceTree = "<group>"; };
+		E7365DC01CA867C700ADC777 /* ACAppUpdater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAppUpdater.m; sourceTree = "<group>"; };
+		E7365DC11CA8684300ADC777 /* ACAdBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAdBannerView.h; sourceTree = "<group>"; };
+		E7365DC21CA8684300ADC777 /* ACAdBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAdBannerView.m; sourceTree = "<group>"; };
+		E7365DC31CA8684300ADC777 /* ACAdViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAdViewManager.h; sourceTree = "<group>"; };
+		E7365DC41CA8684300ADC777 /* ACAdViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAdViewManager.m; sourceTree = "<group>"; };
 		E7777D8A1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationServiceRegister.h; sourceTree = "<group>"; };
 		E7777D8B1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACRemoteNotificationServiceRegister.m; sourceTree = "<group>"; };
 		E7777D8C1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationXGPushService.h; sourceTree = "<group>"; };
@@ -77,15 +83,6 @@
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
 		E7C3FA931C4E39BC00281993 /* ACConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACConfig.m; sourceTree = "<group>"; };
-		E7C3FA961C4EC29900281993 /* NSDictionary+ACCoreAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ACCoreAdditions.h"; sourceTree = "<group>"; };
-		E7C3FA971C4EC29900281993 /* NSDictionary+ACCoreAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ACCoreAdditions.m"; sourceTree = "<group>"; };
-		E7C3FAA51C4EF97500281993 /* AppComponentsAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsAd.h; sourceTree = "<group>"; };
-		E7C3FAAA1C4EF9CC00281993 /* ACAdBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAdBannerView.h; sourceTree = "<group>"; };
-		E7C3FAAB1C4EF9CC00281993 /* ACAdBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAdBannerView.m; sourceTree = "<group>"; };
-		E7C3FAAE1C4EFACB00281993 /* ACAdViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAdViewManager.h; sourceTree = "<group>"; };
-		E7C3FAAF1C4EFACB00281993 /* ACAdViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAdViewManager.m; sourceTree = "<group>"; };
-		E7C3FAB11C4F037200281993 /* ACAppUpdater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAppUpdater.h; sourceTree = "<group>"; };
-		E7C3FAB21C4F037200281993 /* ACAppUpdater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAppUpdater.m; sourceTree = "<group>"; };
 		E7C3FAB41C4F0A1F00281993 /* AppComponentsNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsNetworking.h; sourceTree = "<group>"; };
 		E7C3FAB71C4F0B8F00281993 /* ACNetworkingDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNetworkingDefines.h; sourceTree = "<group>"; };
 		E7C3FABA1C4FEBFE00281993 /* ACNetworkingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNetworkingHelper.h; sourceTree = "<group>"; };
@@ -118,6 +115,12 @@
 				E78835921C536C1F00F67C63 /* ESApp+ACRemoteNotification.m */,
 				E78F77591C561F5C00B9A33C /* NSDate+ACAppAdditions.h */,
 				E78F775A1C561F5C00B9A33C /* NSDate+ACAppAdditions.m */,
+				E7365DC11CA8684300ADC777 /* ACAdBannerView.h */,
+				E7365DC21CA8684300ADC777 /* ACAdBannerView.m */,
+				E7365DC31CA8684300ADC777 /* ACAdViewManager.h */,
+				E7365DC41CA8684300ADC777 /* ACAdViewManager.m */,
+				E7365DBF1CA867C700ADC777 /* ACAppUpdater.h */,
+				E7365DC01CA867C700ADC777 /* ACAppUpdater.m */,
 				E706D1891C84734200A64C7D /* AppComponentsApp.bundle */,
 			);
 			path = App;
@@ -270,13 +273,11 @@
 			children = (
 				E7A38B441C4DBFBD00972B01 /* AppComponents.h */,
 				E7A38B3A1C4DBE1200972B01 /* Core */,
-				E7C3FAA41C4EF96000281993 /* Ad */,
-				E7C3FAB31C4F09FF00281993 /* Networking */,
-				E7C3FAB01C4F035300281993 /* AppUpdater */,
 				E71B7CF61C50A315001910C2 /* App */,
-				E78834BE1C51A0C300F67C63 /* Auth */,
+				E7C3FAB31C4F09FF00281993 /* Networking */,
 				E78835781C51ED2C00F67C63 /* WebKit */,
 				E78F78311C59B0CF00B9A33C /* UIKit */,
+				E78834BE1C51A0C300F67C63 /* Auth */,
 				E78835B41C53D61100F67C63 /* VendorServices */,
 			);
 			indentWidth = 8;
@@ -288,8 +289,6 @@
 			children = (
 				E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */,
 				E71B7CF91C50A928001910C2 /* AppComponentsDefines.h */,
-				E7C3FA961C4EC29900281993 /* NSDictionary+ACCoreAdditions.h */,
-				E7C3FA971C4EC29900281993 /* NSDictionary+ACCoreAdditions.m */,
 				E7C3FA921C4E39BC00281993 /* ACConfig.h */,
 				E7C3FA931C4E39BC00281993 /* ACConfig.m */,
 				E71B7D021C51560B001910C2 /* ACSettings.h */,
@@ -300,27 +299,6 @@
 				E71004781C9D025C00EB14AE /* ACUDID.m */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		E7C3FAA41C4EF96000281993 /* Ad */ = {
-			isa = PBXGroup;
-			children = (
-				E7C3FAA51C4EF97500281993 /* AppComponentsAd.h */,
-				E7C3FAAE1C4EFACB00281993 /* ACAdViewManager.h */,
-				E7C3FAAF1C4EFACB00281993 /* ACAdViewManager.m */,
-				E7C3FAAA1C4EF9CC00281993 /* ACAdBannerView.h */,
-				E7C3FAAB1C4EF9CC00281993 /* ACAdBannerView.m */,
-			);
-			path = Ad;
-			sourceTree = "<group>";
-		};
-		E7C3FAB01C4F035300281993 /* AppUpdater */ = {
-			isa = PBXGroup;
-			children = (
-				E7C3FAB11C4F037200281993 /* ACAppUpdater.h */,
-				E7C3FAB21C4F037200281993 /* ACAppUpdater.m */,
-			);
-			path = AppUpdater;
 			sourceTree = "<group>";
 		};
 		E7C3FAB31C4F09FF00281993 /* Networking */ = {

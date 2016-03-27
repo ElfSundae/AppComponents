@@ -8,7 +8,6 @@
 
 #import "ESApp+ACHelper.h"
 #import <ESFramework/ESFrameworkCore.h>
-#import <ESFramework/ESFrameworkAdditions.h>
 #import "ESApp+ACAlertAdditions.h"
 
 #define kSaveImageToPhotoLibraryCompletionKey           @"completion"

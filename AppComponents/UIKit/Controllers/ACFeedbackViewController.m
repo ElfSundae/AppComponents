@@ -7,7 +7,6 @@
 //
 
 #import "ACFeedbackViewController.h"
-#import <ESFramework/ESFrameworkAdditions.h>
 #import <ESFramework/ESApp.h>
 #import <AppComponents/AppComponentsApp.h>
 #import <IconFontsKit/IFFontAwesome.h>
@@ -110,26 +109,26 @@
 
 - (void)commitFeedbackWithContent:(NSString *)content contact:(NSString *)contact
 {
-        NSMutableDictionary *params = [ESApp sharedApp].analyticsInformation.mutableCopy;
-        params[@"content"] = content;
-        if (ESIsStringWithAnyText(contact)) {
-                params[@"contact"] = contact;
-        }
-        
-        [ESApp dismissKeyboard];
-        
-        [[ESApp sharedApp] showProgressHUDWithTitle:@"提交中..." animated:YES];
-        ESWeakSelf;
-        // HTTP request to app server
-        ESDispatchAfter(2, ^{
-                [[ESApp sharedApp] hideProgressHUD:YES];
-                ESStrongSelf;
-                UIAlertView *alert = [UIAlertView alertViewWithTitle:@"感谢反馈！\n我们会尽快处理！" message:nil cancelButtonTitle:@"OK" didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                        ESStrongSelf;
-                        [_self.navigationController popViewControllerAnimated:YES];
-                } otherButtonTitles:nil];
-                [alert show];
-        });        
+        //   NSMutableDictionary *params = [ESApp sharedApp].analyticsInformation.mutableCopy;
+        //   params[@"content"] = content;
+        //   if (ESIsStringWithAnyText(contact)) {
+        //           params[@"contact"] = contact;
+        //   }
+        //
+        //   [ESApp dismissKeyboard];
+        //
+        //   [[ESApp sharedApp] showProgressHUDWithTitle:@"提交中..." animated:YES];
+        //   ESWeakSelf;
+        //   // HTTP request to app server
+        //   ESDispatchAfter(2, ^{
+        //           [[ESApp sharedApp] hideProgressHUD:YES];
+        //           ESStrongSelf;
+        //           UIAlertView *alert = [UIAlertView alertViewWithTitle:@"感谢反馈！\n我们会尽快处理！" message:nil cancelButtonTitle:@"OK" didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        //                   ESStrongSelf;
+        //                   [_self.navigationController popViewControllerAnimated:YES];
+        //           } otherButtonTitles:nil];
+        //           [alert show];
+        //   });
 }
 
 @end

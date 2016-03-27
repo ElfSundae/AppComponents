@@ -17,99 +17,72 @@ PODS:
   - APIService-TalkingData (2.2.24)
   - APIService-UmengAnalytics (3.6.6)
   - APIService-XGPush (2.4.6.1)
-  - AppComponents (1.0.6):
-    - AppComponents/Ad (= 1.0.6)
-    - AppComponents/App (= 1.0.6)
-    - AppComponents/AppUpdater (= 1.0.6)
-    - AppComponents/Auth (= 1.0.6)
-    - AppComponents/Core (= 1.0.6)
-    - AppComponents/Networking (= 1.0.6)
-    - AppComponents/UIKit (= 1.0.6)
-    - AppComponents/VendorServices (= 1.0.6)
-    - AppComponents/WebKit (= 1.0.6)
-  - AppComponents/Ad (1.0.6):
+  - AppComponents (1.0.7):
+    - AppComponents/Ad (= 1.0.7)
+    - AppComponents/App (= 1.0.7)
+    - AppComponents/AppUpdater (= 1.0.7)
+    - AppComponents/Auth (= 1.0.7)
+    - AppComponents/Core (= 1.0.7)
+    - AppComponents/Networking (= 1.0.7)
+    - AppComponents/UIKit (= 1.0.7)
+    - AppComponents/VendorServices (= 1.0.7)
+    - AppComponents/WebKit (= 1.0.7)
+  - AppComponents/Ad (1.0.7):
     - AppComponents/Core
-    - ESFramework/App
-  - AppComponents/App (1.0.6):
+  - AppComponents/App (1.0.7):
     - AppComponents/Core
-    - ESFramework/App
     - MBProgressHUD
-  - AppComponents/AppUpdater (1.0.6):
+  - AppComponents/AppUpdater (1.0.7):
     - AppComponents/Core
-    - ESFramework/App
-    - ESFramework/StoreKit
-  - AppComponents/Auth (1.0.6):
+  - AppComponents/Auth (1.0.7):
     - AppComponents/App
     - AppComponents/VendorServices/MobSMS
-    - ESFramework/UIKit/View
+    - ESFramework/UIKit
     - IconFontsKit/FontAwesome
-  - AppComponents/Core (1.0.6):
-    - ESFramework/Additions
+  - AppComponents/Core (1.0.7):
     - ESFramework/Core
     - UICKeyChainStore
-  - AppComponents/Networking (1.0.6):
+  - AppComponents/Networking (1.0.7):
     - AFNetworking (~> 3.0)
     - AppComponents/App
-  - AppComponents/UIKit (1.0.6):
+  - AppComponents/UIKit (1.0.7):
     - AppComponents/App
     - ESFramework/UIKit
     - IconFontsKit/FontAwesome
     - SDWebImage/Core
-  - AppComponents/VendorServices (1.0.6):
-    - AppComponents/VendorServices/ImageViewController (= 1.0.6)
-    - AppComponents/VendorServices/MobSMS (= 1.0.6)
-    - AppComponents/VendorServices/TalkingDataAnalytics (= 1.0.6)
-    - AppComponents/VendorServices/UmengAnalytics (= 1.0.6)
-    - AppComponents/VendorServices/WebViewJavascriptBridge (= 1.0.6)
-    - AppComponents/VendorServices/XGPush (= 1.0.6)
-  - AppComponents/VendorServices/ImageViewController (1.0.6):
+  - AppComponents/VendorServices (1.0.7):
+    - AppComponents/VendorServices/ImageViewController (= 1.0.7)
+    - AppComponents/VendorServices/MobSMS (= 1.0.7)
+    - AppComponents/VendorServices/TalkingDataAnalytics (= 1.0.7)
+    - AppComponents/VendorServices/UmengAnalytics (= 1.0.7)
+    - AppComponents/VendorServices/WebViewJavascriptBridge (= 1.0.7)
+    - AppComponents/VendorServices/XGPush (= 1.0.7)
+  - AppComponents/VendorServices/ImageViewController (1.0.7):
     - AppComponents/App
     - JTSImageViewController
-  - AppComponents/VendorServices/MobSMS (1.0.6):
-    - ESFramework/App
+  - AppComponents/VendorServices/MobSMS (1.0.7):
+    - ESFramework/Core
     - MOBFoundation_IDFA
     - SMSSDK
-  - AppComponents/VendorServices/TalkingDataAnalytics (1.0.6):
+  - AppComponents/VendorServices/TalkingDataAnalytics (1.0.7):
     - APIService-TalkingData
-    - ESFramework/App
-  - AppComponents/VendorServices/UmengAnalytics (1.0.6):
+    - ESFramework/Core
+  - AppComponents/VendorServices/UmengAnalytics (1.0.7):
     - APIService-UmengAnalytics
-    - ESFramework/App
-  - AppComponents/VendorServices/WebViewJavascriptBridge (1.0.6):
+    - ESFramework/Core
+  - AppComponents/VendorServices/WebViewJavascriptBridge (1.0.7):
     - ESFramework/Core
     - WebViewJavascriptBridge (~> 5.0)
-  - AppComponents/VendorServices/XGPush (1.0.6):
+  - AppComponents/VendorServices/XGPush (1.0.7):
     - APIService-XGPush
     - AppComponents/App
-  - AppComponents/WebKit (1.0.6):
+  - AppComponents/WebKit (1.0.7):
     - AppComponents/App
     - AppComponents/VendorServices/ImageViewController
     - AppComponents/VendorServices/WebViewJavascriptBridge
-    - ESFramework/StoreKit
-    - ESFramework/UIKit/RefreshControl
-    - ESFramework/UIKit/View
-  - ESFramework/Additions (2.4.2):
-    - ESFramework/Core
-  - ESFramework/App (2.4.2):
-    - ESFramework/Additions
-    - ESFramework/Core
-  - ESFramework/Core (2.4.2)
-  - ESFramework/StoreKit (2.4.2):
-    - ESFramework/Additions
-    - ESFramework/App
-    - ESFramework/Core
-  - ESFramework/UIKit (2.4.2):
-    - ESFramework/UIKit/Controller (= 2.4.2)
-    - ESFramework/UIKit/RefreshControl (= 2.4.2)
-    - ESFramework/UIKit/View (= 2.4.2)
-  - ESFramework/UIKit/Controller (2.4.2):
-    - ESFramework/App
-    - ESFramework/UIKit/RefreshControl
-    - ESFramework/UIKit/View
-  - ESFramework/UIKit/RefreshControl (2.4.2):
-    - ESFramework/UIKit/View
-  - ESFramework/UIKit/View (2.4.2):
-    - ESFramework/Additions
+    - ESFramework/UIKit
+  - ESFramework/Core (2.4.4)
+  - ESFramework/UIKit (2.4.4):
     - ESFramework/Core
   - IconFontsKit/Core (1.2.0)
   - IconFontsKit/FontAwesome (1.2.0):
@@ -134,8 +107,8 @@ SPEC CHECKSUMS:
   APIService-TalkingData: 82f6ca2c19e56d0e1acfc3eb8cc46367ca07f07c
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
-  AppComponents: a7bf5b77e353f3c4d5623bd6be0ee44ccdd04dd1
-  ESFramework: 81b743b3252aebe2b6941bd8eccb4afc45b8b0ab
+  AppComponents: 914d04a6604b321df50ccd871a47f75faf02689c
+  ESFramework: 2a7cde1313bc1be1f5b53b6b94b2ba859de82d5b
   IconFontsKit: f0588bbacea848f49ee5dfe58c218b6d3ecb2d97
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

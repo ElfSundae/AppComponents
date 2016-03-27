@@ -7,7 +7,6 @@
 //
 
 #import <ESFramework/ESFrameworkCore.h>
-#import <ESFramework/ESFrameworkAdditions.h>
 #import <UICKeyChainStore/UICKeyChainStore.h>
 #import <AppComponents/ACConfig.h>
 

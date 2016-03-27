@@ -10,6 +10,9 @@
 
 @interface ACEncryptor : NSObject
 
+/**
+ * Sample encryptor using XOR a random string.
+ */
 + (NSString *)sampleEncrypt:(NSString *)string password:(NSString *)password;
 
 @end

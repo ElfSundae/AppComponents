@@ -7,9 +7,8 @@
 //
 
 #import <AFNetworking/AFHTTPSessionManager.h>
-#import <ESFramework/ESFrameworkCore.h>
-#import "ACHTTPRequestSerializer.h"
-#import "NSURLSessionTask+ACNetworkingAdditions.h"
+#import <AppComponents/ACHTTPRequestSerializer.h>
+#import <AppComponents/NSURLSessionTask+ACNetworkingAdditions.h>
 
 /**
  * 支持 CSRF Token 和 API Token的HTTPSessionManager.

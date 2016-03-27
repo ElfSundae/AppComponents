@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ACNetworkingDefines.h"
+#import <AppComponents/ACNetworkingDefines.h>
 
 @interface ACURLSessionTaskInfo : NSObject <NSCopying>
 

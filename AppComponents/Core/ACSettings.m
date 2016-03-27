@@ -7,7 +7,6 @@
 //
 
 #import "ACSettings.h"
-#import "NSDictionary+ACCoreAdditions.h"
 #import <ESFramework/ESFrameworkCore.h>
 
 NSString *const ACSettingsIdentifierKey = @"__ACSettingsIdentifier__";
