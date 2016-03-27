@@ -15,6 +15,17 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ACApp
+#define kACConfigKey_ACApp @"ACApp"
+/// Default is kACAppDefaultTipsTimeInterval
+#define kACConfigKey_ACApp_DefaultTipsTimeInterval              kACConfigKey_ACApp@".DefaultTipsTimeInterval"
+/// Default is MBProgressHUDAnimationFade
+#define kACConfigKey_ACApp_DefaultTipsAnimationType             kACConfigKey_ACApp@".DefaultTipsAnimationType"
+
+#define kACAppDefaultTipsTimeInterval   1.3
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ACAdViewManager
 #define kACConfigKey_ACAdViewManager    @"ACAdViewManager"
 #define kACConfigKey_ACAdViewManager_AdConfigKey_Banner         kACConfigKey_ACAdViewManager@".AdConfigKey.Banner" // @"banner"
@@ -25,6 +36,16 @@
 #define kACConfigKey_ACAdViewManager_AdConfigKey_Banner_Height  kACConfigKey_ACAdViewManager@".AdConfigKey.Banner_Height" // "height"
 
 #define kACConfigKey_ACAdViewManager_AdConfigValue_Banner_Height kACConfigKey_ACAdViewManager@".AdConfigValue.Banner_Height" // @(50.f)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ACAppUpdater
+#define kACConfigKey_ACAppUpdater @"ACAppUpdater"
+#define kACConfigKey_ACAppUpdater_VersionDataKey_LatestVersion  kACConfigKey_ACAppUpdater@".AppVersion.LatestVersion" // version
+#define kACConfigKey_ACAppUpdater_VersionDataKey_UpdateWay      kACConfigKey_ACAppUpdater@".AppVersion.UpdateWay" // way
+#define kACConfigKey_ACAppUpdater_VersionDataKey_Description    kACConfigKey_ACAppUpdater@".AppVersion.Description" // desc
+#define kACConfigKey_ACAppUpdater_VersionDataKey_DownloadURL    kACConfigKey_ACAppUpdater@".AppVersion.DownloadURL" // url
+#define kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode     kACConfigKey_ACAppUpdater@".DefaultAppStoreContryCode" // default is nil
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,27 +80,6 @@
 #define kACNetworkingResponseMessageKey @"msg"
 #define kACNetworkingResponseErrorsKey  @"errors"
 #define kACNetworkingLocalNetworkErrorAlertTitle NSLocalizedString(@"Network is not connected.", nil)
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - ACAppUpdater
-#define kACConfigKey_ACAppUpdater @"ACAppUpdater"
-#define kACConfigKey_ACAppUpdater_VersionDataKey_LatestVersion  kACConfigKey_ACAppUpdater@".AppVersion.LatestVersion" // version
-#define kACConfigKey_ACAppUpdater_VersionDataKey_UpdateWay      kACConfigKey_ACAppUpdater@".AppVersion.UpdateWay" // way
-#define kACConfigKey_ACAppUpdater_VersionDataKey_Description    kACConfigKey_ACAppUpdater@".AppVersion.Description" // desc
-#define kACConfigKey_ACAppUpdater_VersionDataKey_DownloadURL    kACConfigKey_ACAppUpdater@".AppVersion.DownloadURL" // url
-#define kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode     kACConfigKey_ACAppUpdater@".DefaultAppStoreContryCode" // default is nil
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - ACApp
-#define kACConfigKey_ACApp @"ACApp"
-/// Default is kACAppDefaultTipsTimeInterval
-#define kACConfigKey_ACApp_DefaultTipsTimeInterval              kACConfigKey_ACApp@".DefaultTipsTimeInterval"
-/// Default is MBProgressHUDAnimationFade
-#define kACConfigKey_ACApp_DefaultTipsAnimationType             kACConfigKey_ACApp@".DefaultTipsAnimationType"
-
-#define kACAppDefaultTipsTimeInterval   1.3
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
