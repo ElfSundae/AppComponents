@@ -12,4 +12,4 @@
 #import <AppComponents/ESApp+ACXGPush.h>
 #import <AppComponents/ACRemoteNotificationXGPushService.h>
 #import <AppComponents/ESApp+ACImageViewController.h>
-#import <AppComponents/WebViewJavascriptBridge+ACMessageHandler.h>
+

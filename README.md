@@ -32,26 +32,6 @@ pod 'AppComponents', :subspecs => ['App', 'VendorServices/UmengAnalytics']
 pod 'AppComponents', :git => 'https://github.com/ElfSundae/AppComponents.git', :branch => 'develop'
 ```
 
-## Architecture
-
-+ `AppComponents/Core`
-+ `AppComponents/Encryptor` encryption and decryption
-+ `AppComponents/UDID` generates Unique Device Identifier via IDFA
-+ `AppComponents/Ad` shows a simple ad banner while app is reviewing, to use IDFA in app
-+ `AppComponents/AppUpdater` check/alert/download app new version
-+ `AppComponents/Networking` backed on AFNetworking
-+ `AppComponents/App`
-+ `AppComponents/UIKit`
-+ `AppComponents/Auth` user authentication
-+ `AppComponents/WebKit` UIWebViewController
-+ `AppComponents/VendorServices` third parts libraries or services
-    + `AppComponents/VendorServices/UmengAnalytics` 友盟统计
-    + `AppComponents/VendorServices/TalkingDataAnalytics` TalkingData统计
-    + `AppComponents/VendorServices/MobSMS` mob.com的免费短信验证码服务
-    + `AppComponents/VendorServices/XGPush` 腾讯信鸽推送服务
-    + `AppComponents/VendorServices/ImageViewController` 单张图片的查看大图
-
 ## License
 
 AppComponents is released under the MIT license. See [LICENSE](LICENSE) for details.
-

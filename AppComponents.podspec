@@ -21,14 +21,11 @@ Pod::Spec.new do |s|
     ss.dependency           "UICKeyChainStore"
   end
 
-  s.subspec "Ad" do |ss|
-    ss.source_files         = "AppComponents/Ad/**/*.{h,m}"
+  s.subspec "App" do |ss|
+    ss.source_files         = "AppComponents/App/**/*.{h,m}"
     ss.dependency           "AppComponents/Core"
-  end
-
-  s.subspec "AppUpdater" do |ss|
-    ss.source_files         = "AppComponents/AppUpdater/**/*.{h,m}"
-    ss.dependency           "AppComponents/Core"
+    ss.dependency           "MBProgressHUD"
+    ss.resource             = "AppComponents/App/AppComponentsApp.bundle"
   end
 
   s.subspec "Networking" do |ss|
@@ -37,19 +34,14 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/App"
   end
 
-  s.subspec "App" do |ss|
-    ss.source_files         = "AppComponents/App/**/*.{h,m}"
-    ss.dependency           "AppComponents/Core"
-    ss.dependency           "MBProgressHUD"
-    ss.resource             = "AppComponents/App/AppComponentsApp.bundle"
-  end
-
   s.subspec "UIKit" do |ss|
     ss.source_files         = "AppComponents/UIKit/**/*.{h,m}"
+    ss.private_header_files = "AppComponents/UIKit/**/*+Private.h"
     ss.dependency           "AppComponents/App"
-    ss.dependency           "IconFontsKit/FontAwesome"
     ss.dependency           "ESFramework/UIKit"
-    ss.dependency           "SDWebImage/Core"
+    ss.dependency           "SDWebImage"
+    ss.dependency           "IconFontsKit/FontAwesome"
+    ss.dependency           "WebViewJavascriptBridge"
   end
 
   s.subspec "Auth" do |ss|
@@ -59,14 +51,6 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/VendorServices/MobSMS"
     ss.dependency           "ESFramework/UIKit"
     ss.dependency           "IconFontsKit/FontAwesome"
-  end
-
-  s.subspec "WebKit" do |ss|
-    ss.source_files         = "AppComponents/WebKit/**/*.{h,m}"
-    ss.dependency           "AppComponents/App"
-    ss.dependency           "AppComponents/VendorServices/ImageViewController"
-    ss.dependency           "AppComponents/VendorServices/WebViewJavascriptBridge"
-    ss.dependency           "ESFramework/UIKit"
   end
 
   s.subspec "VendorServices" do |ss|
@@ -102,13 +86,5 @@ Pod::Spec.new do |s|
       sss.dependency        "JTSImageViewController"
       sss.dependency        "AppComponents/App"
     end
-
-    ss.subspec "WebViewJavascriptBridge" do |sss|
-      sss.source_files      = "AppComponents/VendorServices/WebViewJavascriptBridge/**/*.{h,m}"
-      sss.dependency        "WebViewJavascriptBridge", "~> 5.0"
-      sss.dependency        "ESFramework/Core"
-    end
-
   end # VendorServices
-
 end

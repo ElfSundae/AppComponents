@@ -65,9 +65,8 @@
 - (void)openWebViewController
 {
         ACWebViewController *webController = [[ACWebViewController alloc] initWithURL:[NSURL URLWithString:@"https://github.com/ElfSundae/AppComponents"]];
-        webController.activityOverlayEnabeld = YES;
-        webController.showsErrorViewWhenFailedLoading = YES;
-        webController.imageBrowserEnabled = YES;
+        // webController.activityOverlayEnabeld = YES;
+        webController.showsErrorViewWhenLoadingFailed = YES;
         webController.JSBridgeEnabled = YES;
         [self.navigationController pushViewController:webController animated:YES];
 }
