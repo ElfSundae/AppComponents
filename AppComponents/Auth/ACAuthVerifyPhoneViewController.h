@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, ACAuthVerifyPhoneCodeType) {
 
 @interface ACAuthVerifyPhoneViewController : ACAuthBaseViewController
 
+- (instancetype)initWithVerifyHandler:(void (^)(ACAuthVerifyPhoneViewController *controller, NSDictionary *data))verifyHandler;
+
 @property (nonatomic, copy) void (^verifyHandler)(ACAuthVerifyPhoneViewController *controller, NSDictionary *data);
 
 /**

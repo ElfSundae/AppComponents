@@ -46,7 +46,10 @@
          [self.tableData addObject:
           @[@{ ACTableViewCellConfigKeyText: @"WebViewController",
                ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDetailButton),
-               kCellConfigKeyAction: @"openWebViewController" }]
+               kCellConfigKeyAction: @"openWebViewController" },
+            @{ ACTableViewCellConfigKeyText: @"AuthViewController",
+               ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
+               kCellConfigKeyAction: @"openAuthViewController"}]
           ];
 }
 
@@ -69,6 +72,33 @@
         webController.showsErrorViewWhenLoadingFailed = YES;
         webController.JSBridgeEnabled = YES;
         [self.navigationController pushViewController:webController animated:YES];
+}
+
+- (void)openAuthViewController
+{
+        ACAuthVerifyPhoneViewController *authController = [[ACAuthVerifyPhoneViewController alloc] initWithVerifyHandler:^(ACAuthVerifyPhoneViewController *controller, NSDictionary *data) {
+                [[ESApp sharedApp] showProgressHUDWithTitle:nil animated:YES];
+                ESDispatchOnDefaultQueue(^{
+                        // verify phone and code
+                        [NSThread sleepForTimeInterval:2];
+                        BOOL verifyOK = ESRandomNumber(0, 1);
+                        ESDispatchOnMainThreadAsynchrony(^{
+                                [[ESApp sharedApp] hideProgressHUD:YES];
+                                if (verifyOK) {
+                                        [[controller class] cleanUp];
+                                        [controller dismissViewControllerAnimated:YES completion:^{
+                                                [UIAlertView showWithTitle:@"Welcome" message:@"Successfully login."];
+                                        }];
+                                } else {
+                                        controller.codeTextFiled.text = nil;
+                                        [controller updateUI];
+                                }
+                                
+                        });
+                });
+        }];
+        authController.titleForNavigationBar = @"Login";
+        [authController presentAnimated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

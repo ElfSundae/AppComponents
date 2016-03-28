@@ -6,7 +6,7 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ACAuthVerifyPhoneViewController+Private.h"
+#import "ACAuthVerifyPhoneViewController+Internal.h"
 #import <SMS_SDK/SMSSDK.h>
 #import <AppComponents/ESApp+ACAlertAdditions.h>
 

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ACAuthVerifyPhoneViewController+Private.h"
+#import "ACAuthVerifyPhoneViewController+Internal.h"
 #import <objc/message.h>
 #import <IconFontsKit/IFFontAwesome.h>
 
@@ -17,10 +17,11 @@ static NSDate *__gVerifyPhoneSharedDateOfPreviousSendingCode = nil;
 
 @implementation ACAuthVerifyPhoneViewController
 
-- (instancetype)init
+- (instancetype)initWithVerifyHandler:(void (^)(ACAuthVerifyPhoneViewController *controller, NSDictionary *data))verifyHandler
 {
         self = [super init];
         if (self) {
+                self.verifyHandler = verifyHandler;
                 self.titleForNavigationBar = @"验证手机号";
                 self.commitButtonTitle = @"验证手机号";
                 self.timeIntervalForRetrySendingCode = 40.0;
@@ -28,9 +29,14 @@ static NSDate *__gVerifyPhoneSharedDateOfPreviousSendingCode = nil;
                 self.supportedCodeTypes = @[@(ACAuthVerifyPhoneCodeTypeSMS), @(ACAuthVerifyPhoneCodeTypePhoneCall)];
                 self.sendCodeButtonTitles = @{@(ACAuthVerifyPhoneCodeTypeSMS) : @"获取验证码",
                                               @(ACAuthVerifyPhoneCodeTypePhoneCall) : @"接听语音验证码"};
-
+                
         }
         return self;
+}
+
+- (instancetype)init
+{
+        return [self initWithVerifyHandler:nil];
 }
 
 - (void)viewDidLoad

@@ -54,8 +54,8 @@
 		E78834C51C51A0F700F67C63 /* AppComponentsAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsAuth.h; sourceTree = "<group>"; };
 		E78834C91C51AC6000F67C63 /* ACAuthBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthBaseViewController.h; sourceTree = "<group>"; };
 		E78834CA1C51AC6000F67C63 /* ACAuthBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthBaseViewController.m; sourceTree = "<group>"; };
-		E78834CB1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACAuthVerifyPhoneViewController+Private.h"; sourceTree = "<group>"; };
-		E78834CC1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACAuthVerifyPhoneViewController+Private.m"; sourceTree = "<group>"; };
+		E78834CB1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACAuthVerifyPhoneViewController+Internal.h"; sourceTree = "<group>"; };
+		E78834CC1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Internal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACAuthVerifyPhoneViewController+Internal.m"; sourceTree = "<group>"; };
 		E78834CE1C51B29900F67C63 /* ACAuthVerifyPhoneViewController+Action.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACAuthVerifyPhoneViewController+Action.m"; sourceTree = "<group>"; };
 		E78835911C536C1F00F67C63 /* ESApp+ACRemoteNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACRemoteNotification.h"; sourceTree = "<group>"; };
 		E78835921C536C1F00F67C63 /* ESApp+ACRemoteNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACRemoteNotification.m"; sourceTree = "<group>"; };
@@ -172,8 +172,8 @@
 				E78834CA1C51AC6000F67C63 /* ACAuthBaseViewController.m */,
 				E78834C11C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.h */,
 				E78834C21C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.m */,
-				E78834CB1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.h */,
-				E78834CC1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.m */,
+				E78834CB1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Internal.h */,
+				E78834CC1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Internal.m */,
 				E78834CE1C51B29900F67C63 /* ACAuthVerifyPhoneViewController+Action.m */,
 			);
 			path = Auth;

@@ -25,8 +25,9 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-        if (!self.navigationController.navigationBar.barTintColor ||
-            self.navigationController.navigationBar.barTintColor.es_isLightColor) {
+        UIColor *barTintColor = (self.navigationController.navigationBar.barTintColor ?:
+                                 [UINavigationBar appearance].barTintColor);
+        if (!barTintColor || barTintColor.es_isLightColor) {
                 return UIStatusBarStyleDefault;
         } else {
                 return UIStatusBarStyleLightContent;
@@ -49,6 +50,12 @@
                 // Dismiss the keyboard
                 [self.view endEditing:NO];
         }
+}
+
+- (void)presentAnimated:(BOOL)animated
+{
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self];
+        [ESApp presentViewController:nav animated:animated completion:nil];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
