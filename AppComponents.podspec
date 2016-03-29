@@ -15,7 +15,6 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |ss|
     ss.source_files         = "AppComponents/Core/**/*.{h,m}"
-    ss.private_header_files = "AppComponents/Core/**/*+Private.h"
     ss.frameworks           = "AdSupport"
     ss.dependency           "ESFramework/Core"
     ss.dependency           "UICKeyChainStore"
@@ -46,7 +45,6 @@ Pod::Spec.new do |s|
 
   s.subspec "Auth" do |ss|
     ss.source_files         = "AppComponents/Auth/**/*.{h,m}"
-    ss.private_header_files = "AppComponents/Auth/**/*+Private.h"
     ss.dependency           "AppComponents/App"
     ss.dependency           "AppComponents/VendorServices/MobSMS"
     ss.dependency           "ESFramework/UIKit"
