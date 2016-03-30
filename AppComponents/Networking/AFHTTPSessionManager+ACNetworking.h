@@ -7,8 +7,9 @@
 //
 
 #import <AFNetworking/AFHTTPSessionManager.h>
+#import <AppComponents/AFHTTPRequestSerializer+ACNetworking.h>
 
-@interface AFHTTPSessionManager (ACNetworkingAdditions)
+@interface AFHTTPSessionManager (ACNetworking)
 
 /**
  * Returns the full URL for the given `path`.
@@ -21,7 +22,7 @@
  * @param URLString 如果self.baseURL不为nil，URLString可只传路径path。
  * @param method 如果method为nil，返回该URL上的所有请求
  */
-- (NSArray <NSURLSessionTask *> *)tasksWithURL:(NSString *)URLString method:(NSString *)method;
+- (NSArray<NSURLSessionTask *> *)tasksWithURL:(NSString *)URLString method:(NSString *)method;
 
 /**
  * 取消指定URLString和method的任务。
@@ -37,5 +38,13 @@
  * @param cancelPendingTasks 是否取消正在等待的task.
  */
 - (void)cancelAllTasks:(BOOL)cancelPendingTasks;
+
+/**
+ * Extra request serializer before sending. 
+ * It will be applied to all requestSerializer managed by this HTTP session manager.
+ *
+ * @see -[AFHTTPRequestSerializer extraRequestSerializer]
+ */
+@property (nonatomic, copy) void (^extraRequestSerializer)(AFHTTPRequestSerializer *serializer, NSMutableURLRequest *request, id parameters, NSError *__autoreleasing *error);
 
 @end

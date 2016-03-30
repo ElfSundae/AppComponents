@@ -13,6 +13,7 @@
 #import <AppComponents/ESApp+ACAlertAdditions.h>
 
 @implementation ACHTTPSessionManager
+/*
 @dynamic requestSerializer;
 
 - (instancetype)initWithBaseURL:(NSURL *)url sessionConfiguration:(NSURLSessionConfiguration *)configuration
@@ -136,5 +137,5 @@
          }];
         return task;
 }
-
+*/
 @end

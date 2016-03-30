@@ -7,9 +7,11 @@
 //
 
 #import <AppComponents/ACNetworkingDefines.h>
-#import <AppComponents/ACURLSessionTaskInfo.h>
-#import <AppComponents/NSURLSessionTask+ACNetworkingAdditions.h>
-#import <AppComponents/AFHTTPSessionManager+ACNetworkingAdditions.h>
+#import <AppComponents/NSURLSessionTask+ACNetworking.h>
+#import <AppComponents/AFHTTPSessionManager+ACNetworking.h>
+#import <AppComponents/NSMutableURLRequest+ACNetworking.h>
+#import <AppComponents/NSHTTPURLResponse+ACNetworking.h>
+
 #import <AppComponents/ACNetworkingHelper.h>
 #import <AppComponents/ACHTTPRequestSerializer.h>
 #import <AppComponents/ACHTTPSessionManager.h>

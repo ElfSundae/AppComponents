@@ -7,26 +7,17 @@
 //
 
 #import <AFNetworking/AFHTTPSessionManager.h>
-#import <AppComponents/ACHTTPRequestSerializer.h>
-#import <AppComponents/NSURLSessionTask+ACNetworkingAdditions.h>
+#import <AppComponents/NSURLSessionTask+ACNetworking.h>
 
-/**
- * 支持 CSRF Token 和 API Token的HTTPSessionManager.
- * 解析responseObject为NSDictionary.
- *
- * App的ApiClient可以直接继承ACHTTPSessionManager.
- */
 @interface ACHTTPSessionManager : AFHTTPSessionManager
-
-@property (nonatomic, strong) ACHTTPRequestSerializer *requestSerializer;
 
 /**
  * Process completion of task.
  */
-- (void)ac_sessionTaskCompletionHandler:(NSURLSessionTask *)task
-                            response:(NSURLResponse *)response
-                      responseObject:(id)responseObject
-                               error:(NSError *)error
-                     originalHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))originalHandler;
+//- (void)ac_sessionTaskCompletionHandler:(NSURLSessionTask *)task
+//                            response:(NSURLResponse *)response
+//                      responseObject:(id)responseObject
+//                               error:(NSError *)error
+//                     originalHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))originalHandler;
 
 @end

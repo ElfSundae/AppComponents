@@ -78,20 +78,22 @@
 		E78F78581C5B863A00B9A33C /* ACTableViewController+TableViewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACTableViewController+TableViewDataSource.m"; sourceTree = "<group>"; };
 		E7A38B431C4DBF9F00972B01 /* AppComponentsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsCore.h; sourceTree = "<group>"; };
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
+		E7BB71211CAB4D330042CB98 /* NSHTTPURLResponse+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+ACNetworking.h"; sourceTree = "<group>"; };
+		E7BB71221CAB4D330042CB98 /* NSHTTPURLResponse+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+ACNetworking.m"; sourceTree = "<group>"; };
+		E7BB71231CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+ACNetworking.h"; sourceTree = "<group>"; };
+		E7BB71241CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+ACNetworking.m"; sourceTree = "<group>"; };
+		E7BB71271CAB75A30042CB98 /* AFHTTPRequestSerializer+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestSerializer+ACNetworking.h"; sourceTree = "<group>"; };
+		E7BB71281CAB75A30042CB98 /* AFHTTPRequestSerializer+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestSerializer+ACNetworking.m"; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
 		E7C3FA931C4E39BC00281993 /* ACConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACConfig.m; sourceTree = "<group>"; };
 		E7C3FAB41C4F0A1F00281993 /* AppComponentsNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsNetworking.h; sourceTree = "<group>"; };
 		E7C3FAB71C4F0B8F00281993 /* ACNetworkingDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNetworkingDefines.h; sourceTree = "<group>"; };
 		E7C3FABA1C4FEBFE00281993 /* ACNetworkingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNetworkingHelper.h; sourceTree = "<group>"; };
 		E7C3FABB1C4FEBFE00281993 /* ACNetworkingHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACNetworkingHelper.m; sourceTree = "<group>"; };
-		E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworkingAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+ACNetworkingAdditions.h"; sourceTree = "<group>"; };
-		E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworkingAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+ACNetworkingAdditions.m"; sourceTree = "<group>"; };
-		E7C3FAC01C4FF57D00281993 /* NSURLSessionTask+ACNetworkingAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionTask+ACNetworkingAdditions.h"; sourceTree = "<group>"; };
-		E7C3FAC11C4FF57D00281993 /* NSURLSessionTask+ACNetworkingAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionTask+ACNetworkingAdditions.m"; sourceTree = "<group>"; };
-		E7C3FAC21C4FFDD400281993 /* ACURLSessionTaskInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACURLSessionTaskInfo.h; sourceTree = "<group>"; };
-		E7C3FAC31C4FFDD400281993 /* ACURLSessionTaskInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACURLSessionTaskInfo.m; sourceTree = "<group>"; };
-		E7C3FAC41C5014B800281993 /* ACHTTPRequestSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACHTTPRequestSerializer.h; sourceTree = "<group>"; };
-		E7C3FAC51C5014B800281993 /* ACHTTPRequestSerializer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHTTPRequestSerializer.m; sourceTree = "<group>"; };
+		E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+ACNetworking.h"; sourceTree = "<group>"; };
+		E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+ACNetworking.m"; sourceTree = "<group>"; };
+		E7C3FAC01C4FF57D00281993 /* NSURLSessionTask+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionTask+ACNetworking.h"; sourceTree = "<group>"; };
+		E7C3FAC11C4FF57D00281993 /* NSURLSessionTask+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionTask+ACNetworking.m"; sourceTree = "<group>"; };
 		E7E93D8B1C5DA2080034494E /* ACTableViewController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACTableViewController+Private.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -292,18 +294,20 @@
 			children = (
 				E7C3FAB41C4F0A1F00281993 /* AppComponentsNetworking.h */,
 				E7C3FAB71C4F0B8F00281993 /* ACNetworkingDefines.h */,
-				E7C3FAC21C4FFDD400281993 /* ACURLSessionTaskInfo.h */,
-				E7C3FAC31C4FFDD400281993 /* ACURLSessionTaskInfo.m */,
-				E7C3FAC01C4FF57D00281993 /* NSURLSessionTask+ACNetworkingAdditions.h */,
-				E7C3FAC11C4FF57D00281993 /* NSURLSessionTask+ACNetworkingAdditions.m */,
-				E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworkingAdditions.h */,
-				E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworkingAdditions.m */,
-				E7C3FABA1C4FEBFE00281993 /* ACNetworkingHelper.h */,
-				E7C3FABB1C4FEBFE00281993 /* ACNetworkingHelper.m */,
-				E7C3FAC41C5014B800281993 /* ACHTTPRequestSerializer.h */,
-				E7C3FAC51C5014B800281993 /* ACHTTPRequestSerializer.m */,
+				E7BB71231CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.h */,
+				E7BB71241CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.m */,
+				E7BB71211CAB4D330042CB98 /* NSHTTPURLResponse+ACNetworking.h */,
+				E7BB71221CAB4D330042CB98 /* NSHTTPURLResponse+ACNetworking.m */,
+				E7C3FAC01C4FF57D00281993 /* NSURLSessionTask+ACNetworking.h */,
+				E7C3FAC11C4FF57D00281993 /* NSURLSessionTask+ACNetworking.m */,
+				E7BB71271CAB75A30042CB98 /* AFHTTPRequestSerializer+ACNetworking.h */,
+				E7BB71281CAB75A30042CB98 /* AFHTTPRequestSerializer+ACNetworking.m */,
+				E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.h */,
+				E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.m */,
 				E71B7CEF1C5032A4001910C2 /* ACHTTPSessionManager.h */,
 				E71B7CF01C5032A4001910C2 /* ACHTTPSessionManager.m */,
+				E7C3FABA1C4FEBFE00281993 /* ACNetworkingHelper.h */,
+				E7C3FABB1C4FEBFE00281993 /* ACNetworkingHelper.m */,
 				E71B7CF41C509D21001910C2 /* ACApiClient.h */,
 				E71B7CF51C509D21001910C2 /* ACApiClient.m */,
 			);

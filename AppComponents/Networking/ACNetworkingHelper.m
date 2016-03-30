@@ -10,50 +10,10 @@
 #import <ESFramework/ESFrameworkCore.h>
 #import <ESFramework/ESApp.h>
 #import <AppComponents/ACEncryptor.h>
-#import "ACURLSessionTaskInfo.h"
 
 @implementation ACNetworkingHelper
 
-+ (double)timestampFromURLResponse:(NSHTTPURLResponse *)response
-{
-        double timestamp = 0.0;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                NSString *dateString = ESStringValue(response.allHeaderFields[@"Date"]);
-                timestamp = [[NSDate dateWithRFC1123String:dateString] timeIntervalSince1970];
-        }
-        return timestamp;
-}
-
-+ (void)setUserAgentForURLRequest:(NSMutableURLRequest *)request
-{
-        [request setValue:[ESApp sharedApp].userAgent forHTTPHeaderField:@"User-Agent"];
-}
-
-+ (void)setCSRFTokenForURLRequest:(NSMutableURLRequest *)request
-{
-        NSString *CSRFTokenCookieName = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_CSRFTokenCookieName), kACNetworkingCSRFTokenCookieName);
-        NSString *CSRFTokenNameForRequestHeader = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_RequestHeaderCSRFTokenName), kACNetworkingRequestHeaderCSRFTokenName);
-        if (CSRFTokenCookieName && CSRFTokenNameForRequestHeader) {
-                NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:request.URL];
-                if (cookies) {
-                        for (NSHTTPCookie *c in cookies) {
-                                if ([c.name isEqualToString:CSRFTokenCookieName]) {
-                                        [request setValue:c.value forHTTPHeaderField:CSRFTokenNameForRequestHeader];
-                                        break;
-                                }
-                        }
-                }
-        }
-}
-
-+ (void)setAPIToken:(NSString *)token forURLRequest:(NSMutableURLRequest *)request
-{
-        NSString *APITokenNameForRequestHeader = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_RequestHeaderApiTokenName), kACNetworkingRequestHeaderApiTokenName);
-        if (APITokenNameForRequestHeader && [token isKindOfClass:[NSString class]]) {
-                [request setValue:token forHTTPHeaderField:APITokenNameForRequestHeader];
-        }
-}
-
+/*
 + (NSDictionary *)parseResponseObject:(id)responseObject code:(ACNetworkingResponseCode *)outCode message:(NSString **)outMessage errors:(NSArray **)outErrors
 {
         NSString *ResponseCodeKey = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_ResponseKeyCode), kACNetworkingResponseCodeKey);
@@ -190,5 +150,5 @@ static double __sharedTimestampOffset = 0.0;
 {
         __sharedTimestampOffset = offset;
 }
-
+*/
 @end
