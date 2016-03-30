@@ -41,6 +41,8 @@
 		E7365DC21CA8684300ADC777 /* ACAdBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAdBannerView.m; sourceTree = "<group>"; };
 		E7365DC31CA8684300ADC777 /* ACAdViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAdViewManager.h; sourceTree = "<group>"; };
 		E7365DC41CA8684300ADC777 /* ACAdViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAdViewManager.m; sourceTree = "<group>"; };
+		E746B4AB1CABB8BA00EC634B /* AFURLSessionManager+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFURLSessionManager+ACNetworking.h"; sourceTree = "<group>"; };
+		E746B4AC1CABB8BA00EC634B /* AFURLSessionManager+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFURLSessionManager+ACNetworking.m"; sourceTree = "<group>"; };
 		E7777D8A1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationServiceRegister.h; sourceTree = "<group>"; };
 		E7777D8B1C5567B1005E41C7 /* ACRemoteNotificationServiceRegister.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACRemoteNotificationServiceRegister.m; sourceTree = "<group>"; };
 		E7777D8C1C556AC3005E41C7 /* ACRemoteNotificationXGPushService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRemoteNotificationXGPushService.h; sourceTree = "<group>"; };
@@ -87,7 +89,6 @@
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
 		E7C3FA931C4E39BC00281993 /* ACConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACConfig.m; sourceTree = "<group>"; };
 		E7C3FAB41C4F0A1F00281993 /* AppComponentsNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsNetworking.h; sourceTree = "<group>"; };
-		E7C3FAB71C4F0B8F00281993 /* ACNetworkingDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNetworkingDefines.h; sourceTree = "<group>"; };
 		E7C3FABA1C4FEBFE00281993 /* ACNetworkingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNetworkingHelper.h; sourceTree = "<group>"; };
 		E7C3FABB1C4FEBFE00281993 /* ACNetworkingHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACNetworkingHelper.m; sourceTree = "<group>"; };
 		E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+ACNetworking.h"; sourceTree = "<group>"; };
@@ -293,7 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				E7C3FAB41C4F0A1F00281993 /* AppComponentsNetworking.h */,
-				E7C3FAB71C4F0B8F00281993 /* ACNetworkingDefines.h */,
 				E7BB71231CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.h */,
 				E7BB71241CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.m */,
 				E7BB71211CAB4D330042CB98 /* NSHTTPURLResponse+ACNetworking.h */,
@@ -302,6 +302,8 @@
 				E7C3FAC11C4FF57D00281993 /* NSURLSessionTask+ACNetworking.m */,
 				E7BB71271CAB75A30042CB98 /* AFHTTPRequestSerializer+ACNetworking.h */,
 				E7BB71281CAB75A30042CB98 /* AFHTTPRequestSerializer+ACNetworking.m */,
+				E746B4AB1CABB8BA00EC634B /* AFURLSessionManager+ACNetworking.h */,
+				E746B4AC1CABB8BA00EC634B /* AFURLSessionManager+ACNetworking.m */,
 				E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.h */,
 				E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.m */,
 				E71B7CEF1C5032A4001910C2 /* ACHTTPSessionManager.h */,

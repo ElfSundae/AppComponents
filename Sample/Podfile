@@ -4,5 +4,6 @@ workspace "../AppComponents.xcworkspace"
 
 target "Sample" do
     pod "AppComponents", :path => "../AppComponents.podspec"
+    pod "ESFramework", :path => "/data/projects/ESFramework/ESFramework"
 end
 

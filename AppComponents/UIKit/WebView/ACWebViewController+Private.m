@@ -23,13 +23,13 @@
 - (BOOL)_getAFNetworkActivityIndicatorManagerEnabled
 {
         BOOL enabled = NO;
-        ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(isEnabled), NO, &enabled);
+        ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(isEnabled), &enabled);
         return enabled;
 }
 
 - (void)_setAFNetworkActivityIndicatorManagerEnabled:(BOOL)enabled
 {
-        ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(setEnabled:), NO, NULL, enabled);
+        ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(setEnabled:), NULL, enabled);
 }
 
 - (void)_setNetworkActivityIndicatorVisible:(BOOL)visible
