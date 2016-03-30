@@ -40,7 +40,6 @@ typedef void (^_ACDataTaskWillCompleteBlock)(NSURLSessionDataTask *dataTask, NSU
                  downloadProgress:(nullable void (^)(NSProgress *downloadProgress)) downloadProgressBlock
                 completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler
 {
-        
         if (self.dataTaskWillCompleteBlock) {
                 ESWeakSelf;
                 [self ac_addDelegateForDataTask:dataTask uploadProgress:uploadProgressBlock downloadProgress:downloadProgressBlock completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
