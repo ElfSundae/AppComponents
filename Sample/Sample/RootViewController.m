@@ -105,7 +105,7 @@
 {
         id action = [self cellConfigDictionaryForIndexPath:indexPath][kCellConfigKeyAction];
         if ([action isKindOfClass:[NSString class]]) {
-                ESInvokeSelector(self, NSSelectorFromString(action), NO, NULL);
+                ESInvokeSelector(self, NSSelectorFromString(action), NULL);
         } else if (action) {
                 dispatch_block_t block = action;
                 block();
