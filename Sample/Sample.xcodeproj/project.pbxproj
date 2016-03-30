@@ -138,10 +138,9 @@
 				TargetAttributes = {
 					E7A38B4D1C4DC81200972B01 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 93FB82XYEK;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -341,7 +340,7 @@
 				INFOPLIST_FILE = Sample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.Sample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.AppComponents.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -358,7 +357,7 @@
 				INFOPLIST_FILE = Sample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.Sample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.AppComponents.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
