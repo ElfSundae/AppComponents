@@ -14,7 +14,8 @@
  * The `dataTaskWillCompleteBlock` will be invoked before original `completionHandler` which you
  * supplied to `-[AFURLSessionManager dataTaskWithRequest: ...]`,
  * `-[AFURLSessionManager uploadTaskWithRequest: ...]` or `AFHTTPSessionManager`'s `GET`, `POST`, 
- * `PUT` methods.
+ * `PUT` methods. It will be applied to all `NSURLSessionDataTask`s and `NSURLSessionUploadTask`s that
+ * managed by this session manager.
  *
  * You can use this block to process general parser work for `responseObject`. For example, getting and
  * verifying X-API-Token from response's header fields; check status code of json responseObject and show
