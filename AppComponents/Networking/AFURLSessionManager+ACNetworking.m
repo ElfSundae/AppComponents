@@ -11,8 +11,6 @@
 
 ESDefineAssociatedObjectKey(dataTaskWillCompleteBlock);
 
-typedef void (^_ACDataTaskWillCompleteBlock)(NSURLSessionDataTask *dataTask, NSURLResponse *response, id responseObject, NSError *error, void (^completionHandler)(NSURLResponse *response, id responseObject, NSError *error));
-
 @implementation AFURLSessionManager (ACNetworking)
 
 + (void)load
@@ -21,7 +19,6 @@ typedef void (^_ACDataTaskWillCompleteBlock)(NSURLSessionDataTask *dataTask, NSU
 #pragma clang diagnostic ignored "-Wundeclared-selector"
         ESSwizzleInstanceMethod(self, @selector(addDelegateForDataTask:uploadProgress:downloadProgress:completionHandler:), @selector(ac_addDelegateForDataTask:uploadProgress:downloadProgress:completionHandler:));
         ESSwizzleInstanceMethod(self, @selector(addDelegateForUploadTask:progress:completionHandler:), @selector(ac_addDelegateForUploadTask:progress:completionHandler:));
-        ESSwizzleInstanceMethod(self, @selector(addDelegateForDownloadTask:progress:destination:completionHandler:), @selector(acaddDelegateForDownloadTask:progress:destination:completionHandler:));
 #pragma clang diagnostic pop
 }
 
