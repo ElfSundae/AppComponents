@@ -57,7 +57,7 @@
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 #pragma clang diagnostic ignored "-Wdeprecated"
         if ([hud respondsToSelector:@selector(hideAnimated:afterDelay:)]) {
-                ESInvokeSelector(hud, @selector(hideAnimated:afterDelay:), NO, NULL, animated, timeInterval);
+                ESInvokeSelector(hud, @selector(hideAnimated:afterDelay:), NULL, animated, timeInterval);
         } else {
                 hud.customView.tintColor = hud.labelColor;
                 [hud hide:animated afterDelay:timeInterval];
@@ -93,7 +93,7 @@
         if ([hud respondsToSelector:@selector(label)]) {
                 [(UILabel *)[hud valueForKey:@"label"] setText:text];
                 [(UILabel *)[hud valueForKey:@"detailsLabel"] setText:detail];
-                ESInvokeSelector(hud, @selector(hideAnimated:afterDelay:), NO, NULL, animated, timeInterval);
+                ESInvokeSelector(hud, @selector(hideAnimated:afterDelay:), NULL, animated, timeInterval);
         } else {
 #pragma clang diagnostic ignored "-Wdeprecated"
                 hud.labelText = text;
