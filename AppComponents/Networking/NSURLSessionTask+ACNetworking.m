@@ -29,8 +29,8 @@ ESDefineAssociatedObjectKey(responseErrors);
         if ([task isKindOfClass:[NSURLSessionTask class]]) {
                 task.taskConfig = self.taskConfig;
                 task.responseCode = self.responseCode;
-                task.responseMessage = [self.responseMessage copy];
-                task.responseErrors = [self.responseErrors copy];
+                task.responseMessage = [self.responseMessage copyWithZone:zone];
+                task.responseErrors = [self.responseErrors copyWithZone:zone];
         }
         return task;
 }
