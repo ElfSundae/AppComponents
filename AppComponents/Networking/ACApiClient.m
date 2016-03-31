@@ -49,7 +49,6 @@ ES_SINGLETON_IMP(client);
                 };
                 self.dataTaskWillCompleteBlock = ^(NSURLSessionDataTask *dataTask, NSURLResponse *response, id responseObject, NSError *error, void (^completionHandler)(NSURLResponse *response, id responseObject, NSError *error)) {
                         ESStrongSelf;
-                        NSLog(@"======== %ld %ld", ACApiResponseCodeError, ACApiResponseCodeUserAuthFailed);
                         [_self _dataTaskWillCompleteBlockHandler:dataTask response:response responseObject:responseObject error:error completionHandler:completionHandler];
                 };
         }
