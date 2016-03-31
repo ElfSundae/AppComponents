@@ -239,9 +239,13 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
         // iconImageView, on the most Left
         CGRect iconImageFrame = CGRectZero;
         if (self.alwaysShowsIconImageView || _iconImageView.image) {
+                CGSize iconSize = _iconImageView.image.size;
                 iconImageFrame.origin.x = self.iconImageViewInset.left;
                 if (self.iconImageViewSize.width > 0 && self.iconImageViewSize.height > 0) {
                         iconImageFrame.size = self.iconImageViewSize;
+                } else if (iconSize.width > 0 && iconSize.width <= (self.contentView.width - self.iconImageViewInset.left - self.iconImageViewInset.right) &&
+                           iconSize.height > 0 && iconSize.height <= (self.contentView.height - self.iconImageViewInset.top - self.iconImageViewInset.bottom)) {
+                        iconImageFrame.size = iconSize;
                 } else {
                         iconImageFrame.size.height = self.contentView.height - self.iconImageViewInset.top - self.iconImageViewInset.bottom;
                         iconImageFrame.size.width = iconImageFrame.size.height;
@@ -361,17 +365,17 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
 
 + (UIEdgeInsets)defaultIconImageViewInset
 {
-        return UIEdgeInsetsMake(10.f, 10.f, 10.f, 10.f);
+        return UIEdgeInsetsMake(8., 10., 8., 10.);
 }
 
 + (UIEdgeInsets)defaultDetailImageViewInset
 {
-        return UIEdgeInsetsMake(10.f, 5.f, 10.f, 5.f);
+        return UIEdgeInsetsMake(8., 5., 8., 5.);
 }
 
 + (CGFloat)defaultCellPadding
 {
-        return 5.f;
+        return 4.f;
 }
 + (CGFloat)defaultCellMarginLeft
 {

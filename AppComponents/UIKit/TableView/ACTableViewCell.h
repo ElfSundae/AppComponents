@@ -138,11 +138,11 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellMarginRight;
 
 /// [UIColor es_lightBorderColor]
 + (UIColor *)defaultBorderColor;
-/// (10.f, 10.f, 10.f, 10.f)
+/// (8.f, 10.f, 8.f, 10.f)
 + (UIEdgeInsets)defaultIconImageViewInset;
-/// (10.f, 5.f, 10.f, 5.f)
+/// (8.f, 5.f, 8.f, 5.f)
 + (UIEdgeInsets)defaultDetailImageViewInset;
-/// 5.f
+/// 4.f
 + (CGFloat)defaultCellPadding;
 /// 10.f
 + (CGFloat)defaultCellMarginLeft;
