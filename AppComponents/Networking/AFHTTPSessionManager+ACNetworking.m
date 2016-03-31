@@ -73,6 +73,7 @@ ESDefineAssociatedObjectKey(extraRequestSerializer);
 - (void)setExtraRequestSerializer:(void (^)(AFHTTPRequestSerializer *, NSMutableURLRequest *, id, NSError *__autoreleasing *))extraRequestSerializer
 {
         ESSetAssociatedObject(self, extraRequestSerializerKey, extraRequestSerializer, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        self.requestSerializer.extraRequestSerializer = extraRequestSerializer;
 }
 
 @end
