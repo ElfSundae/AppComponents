@@ -51,9 +51,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ACNetworking
 #define kACConfigKey_ACNetworking @"ACNetworking"
-#define kACConfigKey_ACNetworking_BaseURL               kACConfigKey_ACNetworking@".baseURL" // NSURL or NSString, default is nil
-#define kACConfigKey_ACNetworking_RequestTimeout        kACConfigKey_ACNetworking@".RequestTimeout" // default is 45.0
-#define kACConfigKey_ACNetworking_MaxConcurrentRequestCount     kACConfigKey_ACNetworking@".MaxConcurrentRequestCount" // default is 3
 
 /// 网络连接失败时的弹窗title, default is kACNetworkingLocalNetworkErrorAlertTitle
 #define kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle   kACConfigKey_ACNetworking@".LocalNetworkErrorAlertTitle"
