@@ -24,24 +24,29 @@ ESDefineAssociatedObjectKey(extraRequestSerializer);
 {
         NSError *__autoreleasing originalError = nil;
         NSURLRequest *originalRequest = [self ac_requestBySerializingRequest:request withParameters:parameters error:&originalError];
+        
         if (!originalError && originalRequest && self.extraRequestSerializer) {
                 NSMutableURLRequest *mutableRequest = ([originalRequest isKindOfClass:[NSMutableURLRequest class]] ? (NSMutableURLRequest *)originalRequest : [originalRequest mutableCopy]);
-                self.extraRequestSerializer(self, mutableRequest, parameters, error);
-                return mutableRequest;
+                self.extraRequestSerializer(self, mutableRequest, parameters, &originalError);
+                originalRequest = mutableRequest;
         }
         
-        if (error) {
-                *error = originalError;
+        if (originalError) {
+                if (error) {
+                        *error = originalError;
+                }
+                return nil;
         }
+        
         return originalRequest;
 }
 
-- (void (^)(AFHTTPRequestSerializer *, NSMutableURLRequest *, id, NSError *__autoreleasing *))extraRequestSerializer
+- (void (^)(AFHTTPRequestSerializer *serializer, NSMutableURLRequest *request, id parameters, NSError *__autoreleasing *error))extraRequestSerializer
 {
         return ESGetAssociatedObject(self, extraRequestSerializerKey);
 }
 
-- (void)setExtraRequestSerializer:(void (^)(AFHTTPRequestSerializer *, NSMutableURLRequest *, id, NSError *__autoreleasing *))extraRequestSerializer
+- (void)setExtraRequestSerializer:(void (^)(AFHTTPRequestSerializer *serializer, NSMutableURLRequest *request, id parameters, NSError *__autoreleasing *error))extraRequestSerializer
 {
         ESSetAssociatedObject(self, extraRequestSerializerKey, extraRequestSerializer, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
