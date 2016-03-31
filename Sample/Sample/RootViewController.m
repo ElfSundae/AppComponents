@@ -36,9 +36,9 @@
         [self.tableData addObject:
          @[@{ ACTableViewCellConfigKeyText: @"Hello",
               ACTableViewCellConfigKeyCellReuseIdentifier: @"HelloIdentifier",
-              ACTableViewCellConfigKeyIconImage: [IFFontAwesome imageWithType:IFFAStar color:nil fontSize:24],
+              ACTableViewCellConfigKeyIconImage: [IFFontAwesome imageWithType:IFFAStar color:[UIColor es_yellowColor] fontSize:24],
               ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
-              ACTableViewCellConfigKeyDetailText: [[NSAttributedString alloc] initWithString:@"world" attributes:@{NSForegroundColorAttributeName: [UIColor es_orangeColor]}],
+              ACTableViewCellConfigKeyDetailText: [[NSAttributedString alloc] initWithString:@"world" attributes:@{NSForegroundColorAttributeName: [UIColor es_oceanDarkColor]}],
               ACTableViewCellConfigKeyDetailImage: [IFFontAwesome imageWithType:IFFATwitter color:[UIColor es_twitterColor] fontSize:20],
               ACTableViewCellConfigKeyRightBadgeView: [ESBadgeView badgeViewWithText:@"New"],
               kCellConfigKeyAction:[helloAction copy] }]
@@ -57,7 +57,7 @@
          @[@{ ACTableViewCellConfigKeyText: @"Github API Client",
               ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
               ACTableViewCellConfigKeyIconImage: [IFFontAwesome imageWithType:IFFAGithub color:nil fontSize:24],
-              ACTableViewCellConfigKeyRightBadgeView: [UIButton buttonWithType:UIButtonTypeContactAdd],
+              ACTableViewCellConfigKeyRightBadgeView: [[UIImageView alloc] initWithImage:[IFFontAwesome imageWithType:IFFAGithubAlt color:nil fontSize:24]],
               kCellConfigKeyAction: @"testGithubApiClient" }
            ]
          ];
@@ -122,7 +122,7 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [ESApp hideProgressHUDIfNotAutoHidden:YES];
         }];
-        //dataTask.alertFailedResponseCodeUsingTips = YES;
+        // dataTask.alertFailedResponseCodeUsingTips = YES;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
