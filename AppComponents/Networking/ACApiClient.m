@@ -149,7 +149,7 @@ ES_SINGLETON_IMP(client);
                                         if (message || errorsString) {
                                                 ESDispatchOnMainThreadAsynchrony(^{
                                                         if (dataTask.alertFailedResponseCodeUsingTips) {
-                                                                [[ESApp sharedApp] showTips:message detail:errorsString addToView:nil timeInterval:0 animated:YES];
+                                                                [ESApp showTips:message detail:errorsString addToView:nil timeInterval:0 animated:YES];
                                                         } else {
                                                                 [UIAlertView showWithTitle:message message:errorsString];
                                                         }
@@ -159,12 +159,11 @@ ES_SINGLETON_IMP(client);
                         }
                 } else {
                         if (dataTask.alertNetworkError && [error isLocalNetworkError]) {
-                                NSString *title = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle), kACNetworkingLocalNetworkErrorAlertTitle);
                                 ESDispatchOnMainThreadAsynchrony(^{
                                         if (dataTask.alertNetworkErrorUsingTips) {
-                                                [[ESApp sharedApp] showTips:title];
+                                                [ESApp showLocalNetworkErrorTipsWithSuperview:nil];
                                         } else {
-                                                [UIAlertView showWithTitle:title message:nil];
+                                                [ESApp showLocalNetworkErrorAlertWithCompletion:nil];
                                         }
                                 });
                         }

@@ -51,7 +51,7 @@ ES_SINGLETON_IMP_AS(client, __githubClient);
                         }
                         
                         if (dataTask.alertFailedResponseCodeUsingTips) {
-                                [[ESApp sharedApp] showTips:dataTask.responseMessage detail:dataTask.responseErrors addToView:nil timeInterval:0 animated:YES];
+                                [ESApp showTips:dataTask.responseMessage detail:dataTask.responseErrors addToView:nil timeInterval:0 animated:YES];
                         } else {
                                 [UIAlertView showWithTitle:dataTask.responseMessage message:dataTask.responseErrors];
                         }

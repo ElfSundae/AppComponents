@@ -117,11 +117,11 @@
         //
         //   [ESApp dismissKeyboard];
         //
-        //   [[ESApp sharedApp] showProgressHUDWithTitle:@"提交中..." animated:YES];
+        //   [ESApp showProgressHUDWithTitle:@"提交中..." animated:YES];
         //   ESWeakSelf;
         //   // HTTP request to app server
         //   ESDispatchAfter(2, ^{
-        //           [[ESApp sharedApp] hideProgressHUD:YES];
+        //           [ESApp hideProgressHUD:YES];
         //           ESStrongSelf;
         //           UIAlertView *alert = [UIAlertView alertViewWithTitle:@"感谢反馈！\n我们会尽快处理！" message:nil cancelButtonTitle:@"OK" didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         //                   ESStrongSelf;

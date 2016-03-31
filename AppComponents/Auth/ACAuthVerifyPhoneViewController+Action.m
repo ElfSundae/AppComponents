@@ -60,7 +60,7 @@
         
         ESWeakSelf;
         void (^resultHandler)(NSError *) = ^(NSError *error) {
-                [[ESApp sharedApp] hideProgressHUD:YES];
+                [ESApp hideProgressHUD:YES];
                 ESStrongSelf;
                 
                 if (error) {
@@ -84,16 +84,16 @@
                         [_self updateUI];
                         NSString *tipsString = (ACAuthVerifyPhoneCodeTypeSMS == codeType) ? @"短信发送成功，请查收😀" :
                         (ACAuthVerifyPhoneCodeTypePhoneCall == codeType ? @"发送成功，请接听来电😀" : @"发送成功");
-                        [[ESApp sharedApp] showTips:tipsString detail:nil addToView:nil timeInterval:2 animated:YES];
+                        [ESApp showTips:tipsString detail:nil addToView:nil timeInterval:2 animated:YES];
                         ESDispatchAfter(2, ^{
                                 ESStrongSelf;
-                                [[ESApp sharedApp] hideProgressHUD:YES];
+                                [ESApp hideProgressHUD:YES];
                                 [_self.codeTextFiled becomeFirstResponder];
                         });
                 }
         };
         
-        [[ESApp sharedApp] showProgressHUDWithTitle:@"发送中..." animated:YES];
+        [ESApp showProgressHUDWithTitle:@"发送中..." animated:YES];
         [SMSSDK getVerificationCodeByMethod:(SMSGetCodeMethod)codeType phoneNumber:phoneNumber zone:@"86" customIdentifier:self.MobSMSSignature result:resultHandler];
 }
 
@@ -103,7 +103,7 @@
         
         ESWeakSelf;
         void (^resultHandler)(NSError *) = ^(NSError *error) {
-                [[ESApp sharedApp] hideProgressHUD:YES];
+                [ESApp hideProgressHUD:YES];
                 ESStrongSelf;
                 
                 if (error) {
@@ -123,16 +123,16 @@
                         [_self updateUI];
                         NSString *tipsString = (ACAuthVerifyPhoneCodeTypeSMS == codeType) ? @"短信发送成功，请查收😀" :
                         (ACAuthVerifyPhoneCodeTypePhoneCall == codeType ? @"发送成功，请接听来电😀" : @"发送成功");
-                        [[ESApp sharedApp] showTips:tipsString detail:nil addToView:nil timeInterval:2 animated:YES];
+                        [ESApp showTips:tipsString detail:nil addToView:nil timeInterval:2 animated:YES];
                         ESDispatchAfter(2, ^{
                                 ESStrongSelf;
-                                [[ESApp sharedApp] hideProgressHUD:YES];
+                                [ESApp hideProgressHUD:YES];
                                 [_self.codeTextFiled becomeFirstResponder];
                         });
                 }
         };
         
-        [[ESApp sharedApp] showProgressHUDWithTitle:@"发送中..." animated:YES];
+        [ESApp showProgressHUDWithTitle:@"发送中..." animated:YES];
         [SMSSDK getVerificationCodeByMethod:(SMSGetCodeMethod)codeType phoneNumber:phoneNumber zone:@"86" customIdentifier:self.MobSMSSignature result:resultHandler];
 }
 
