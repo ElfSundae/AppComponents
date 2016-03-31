@@ -13,6 +13,7 @@
 		E78834D61C51D61A00F67C63 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78834D51C51D61A00F67C63 /* RootViewController.m */; };
 		E7A38B531C4DC81200972B01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A38B521C4DC81200972B01 /* main.m */; };
 		E7A38B5E1C4DC81200972B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A38B5D1C4DC81200972B01 /* Assets.xcassets */; };
+		E7E3F1F91CACF05700A37557 /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3F1F81CACF05700A37557 /* ApiClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		E7A38B5D1C4DC81200972B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7A38B621C4DC81200972B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7C3FA9C1C4EDD2E00281993 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E7E3F1F71CACF05700A37557 /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClient.h; sourceTree = "<group>"; };
+		E7E3F1F81CACF05700A37557 /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 			children = (
 				E78834D11C51D55E00F67C63 /* App.h */,
 				E78834D21C51D55E00F67C63 /* App.m */,
+				E7E3F1F71CACF05700A37557 /* ApiClient.h */,
+				E7E3F1F81CACF05700A37557 /* ApiClient.m */,
 				E78834D41C51D61A00F67C63 /* RootViewController.h */,
 				E78834D51C51D61A00F67C63 /* RootViewController.m */,
 				E7A38B5D1C4DC81200972B01 /* Assets.xcassets */,
@@ -232,6 +237,7 @@
 				E78834D31C51D55E00F67C63 /* App.m in Sources */,
 				E7A38B531C4DC81200972B01 /* main.m in Sources */,
 				E78834D61C51D61A00F67C63 /* RootViewController.m in Sources */,
+				E7E3F1F91CACF05700A37557 /* ApiClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,11 +66,8 @@ PODS:
   - AppComponents/VendorServices/XGPush (1.0.7):
     - APIService-XGPush
     - AppComponents/App
-  - ESFramework (2.4.6):
-    - ESFramework/Core (= 2.4.6)
-    - ESFramework/UIKit (= 2.4.6)
-  - ESFramework/Core (2.4.6)
-  - ESFramework/UIKit (2.4.6):
+  - ESFramework/Core (2.4.7)
+  - ESFramework/UIKit (2.4.7):
     - ESFramework/Core
   - IconFontsKit/Core (1.2.0)
   - IconFontsKit/FontAwesome (1.2.0):
@@ -87,13 +84,10 @@ PODS:
 
 DEPENDENCIES:
   - AppComponents (from `../AppComponents.podspec`)
-  - ESFramework (from `/data/projects/ESFramework/ESFramework`)
 
 EXTERNAL SOURCES:
   AppComponents:
     :path: "../AppComponents.podspec"
-  ESFramework:
-    :path: "/data/projects/ESFramework/ESFramework"
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -101,7 +95,7 @@ SPEC CHECKSUMS:
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
   AppComponents: dc0ddcbe64359c44dd449265056e68392789262b
-  ESFramework: 27b09749c903369b656263eacbc42786b1a5bfc2
+  ESFramework: 544b54ba2ea96f15c2a6d1c9030f2f32122d60bc
   IconFontsKit: f0588bbacea848f49ee5dfe58c218b6d3ecb2d97
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

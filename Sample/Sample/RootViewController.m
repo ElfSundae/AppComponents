@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import <IconFontsKit/IFFontAwesome.h>
 #import <ESFramework/ESBadgeView.h>
+#import "ApiClient.h"
 
 #define kCellConfigKeyAction @"action"
 
@@ -51,6 +52,14 @@
                ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
                kCellConfigKeyAction: @"openAuthViewController"}]
           ];
+        
+        [self.tableData addObject:
+         @[@{ ACTableViewCellConfigKeyText: @"Github Api Client",
+              ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
+              ACTableViewCellConfigKeyIconImage: [IFFontAwesome imageWithType:IFFAGithub color:nil fontSize:20],
+              kCellConfigKeyAction: @"testGithubApiClient" }
+           ]
+         ];
 }
 
 - (BOOL)refreshData
@@ -99,6 +108,19 @@
         }];
         authController.titleForNavigationBar = @"Login";
         [authController presentAnimated:YES];
+}
+
+- (void)testGithubApiClient
+{
+        [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+        
+        [[ESApp sharedApp] showProgressHUDWithTitle:@"Loading..." animated:YES];
+        NSURLSessionDataTask *dataTask = [[GithubClient client] GET:@"repos/ElfSundae/AppComponents1" parameters:@{ @"sort": @"pushed"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [[ESApp sharedApp] showImageViewControllerFromView:nil imageURL:[NSURL URLWithString:responseObject[@"owner"][@"avatar_url"]] placeholderImage:nil backgroundOptions:JTSImageViewControllerBackgroundOption_Blurred imageInfoCustomization:nil];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [[ESApp sharedApp] hideProgressHUD:YES];
+        }];
+        dataTask.alertFailedResponseCodeUsingTips = YES;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
