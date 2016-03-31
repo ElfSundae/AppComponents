@@ -15,9 +15,15 @@ ESDefineAssociatedObjectKey(timeIntervalForAutoHide);
 
 + (void)load
 {
-        if ([MBProgressHUD instancesRespondToSelector:@selector(hideAnimated:afterDelay:)]) {
-                ESSwizzleInstanceMethod([MBProgressHUD class], @selector(hideAnimated:afterDelay:), @selector(ACAlert_hideAnimated:afterDelay:));
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated"
+        if ([self instancesRespondToSelector:@selector(hideAnimated:afterDelay:)]) {
+                ESSwizzleInstanceMethod(self, @selector(hideAnimated:afterDelay:), @selector(ACAlert_hideAnimated:afterDelay:));
+        } else {
+                ESSwizzleInstanceMethod(self, @selector(hide:afterDelay:), @selector(ACAlert_hideAnimated:afterDelay:));
         }
+#pragma clang diagnostic push
 }
 
 - (void)hideIfNotAutoHidden:(BOOL)animated
@@ -30,7 +36,7 @@ ESDefineAssociatedObjectKey(timeIntervalForAutoHide);
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 #pragma clang diagnostic ignored "-Wdeprecated"
         if ([self respondsToSelector:@selector(hideAnimated:)]) {
-                [self hideAnimated:animated];
+                ESInvokeSelector(self, @selector(hideAnimated:), NULL, animated);
         } else {
                 [self hide:animated];
         }
