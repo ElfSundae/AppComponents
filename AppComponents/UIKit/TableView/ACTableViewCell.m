@@ -303,8 +303,12 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
         // detailImageView, on the most right, or left aligned to detailTextLabel
         CGRect detailImageFrame = CGRectZero;
         if (self.alwaysShowsDetailImageView || _detailImageView.image) {
+                CGSize detailSize = _detailImageView.image.size;
                 if (self.detailImageViewSize.width > 0 && self.detailImageViewSize.height > 0) {
                         detailImageFrame.size = self.detailImageViewSize;
+                } else if (detailSize.width > 0 && detailSize.width <= (self.contentView.width - self.detailImageViewInset.left - self.detailImageViewInset.right) &&
+                           detailSize.height > 0 && detailSize.height <= (self.contentView.height - self.detailImageViewInset.top - self.detailImageViewInset.bottom)) {
+                        detailImageFrame.size = detailSize;
                 } else {
                         detailImageFrame.size.height = (self.contentView.height - self.detailImageViewInset.top - self.detailImageViewInset.bottom);
                         detailImageFrame.size.width = detailImageFrame.size.height;
@@ -351,6 +355,9 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                         rightBadgeFrame.origin.x = self.detailTextLabel.left - self.cellPadding - rightBadgeFrame.size.width;
                 } else if (self.contentView.right == self.width) {
                         rightBadgeFrame.origin.x = self.contentView.width - self.cellMarginRight - rightBadgeFrame.size.width;
+                } else if (self.accessoryType != UITableViewCellAccessoryNone && !self.accessoryView) {
+                        // standard accessory view already has margin
+                        rightBadgeFrame.origin.x = self.contentView.width - rightBadgeFrame.size.width;
                 } else {
                         rightBadgeFrame.origin.x = self.contentView.width - self.cellPadding - rightBadgeFrame.size.width;
                 }
