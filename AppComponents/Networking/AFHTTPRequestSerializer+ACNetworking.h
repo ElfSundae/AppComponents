@@ -13,7 +13,7 @@
 /**
  * Extra request serializer before sending.
  *
- * For example, set user agent, CSRF token to HTTP headers.
+ * For example, setting user agent and CSRF token to HTTP headers; appending extra parameters.
  */
 @property (nonatomic, copy) void (^extraRequestSerializer)(AFHTTPRequestSerializer *serializer, NSMutableURLRequest *request, id parameters, NSError *__autoreleasing *error);
 
