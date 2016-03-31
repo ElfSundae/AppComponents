@@ -9,6 +9,53 @@
 #import "ESApp+ACAlertAdditions.h"
 #import <AppComponents/ACConfig.h>
 
+ESDefineAssociatedObjectKey(timeIntervalForAutoHide);
+
+@implementation MBProgressHUD (ACAlertAdditions)
+
++ (void)load
+{
+        if ([MBProgressHUD instancesRespondToSelector:@selector(hideAnimated:afterDelay:)]) {
+                ESSwizzleInstanceMethod([MBProgressHUD class], @selector(hideAnimated:afterDelay:), @selector(ACAlert_hideAnimated:afterDelay:));
+        }
+}
+
+- (void)hideIfNotAutoHidden:(BOOL)animated
+{
+        if (self.timeIntervalForAutoHide > 0) {
+                return;
+        }
+        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated"
+        if ([self respondsToSelector:@selector(hideAnimated:)]) {
+                [self hideAnimated:animated];
+        } else {
+                [self hide:animated];
+        }
+#pragma clang diagnostic pop
+
+}
+
+- (void)ACAlert_hideAnimated:(BOOL)animated afterDelay:(NSTimeInterval)delay
+{
+        self.timeIntervalForAutoHide = delay;
+        [self ACAlert_hideAnimated:animated afterDelay:delay];
+}
+
+- (NSTimeInterval)timeIntervalForAutoHide
+{
+        return [self es_getAssociatedDoubleWithKey:timeIntervalForAutoHideKey defaultValue:0.];
+}
+
+- (void)setTimeIntervalForAutoHide:(NSTimeInterval)timeIntervalForAutoHide
+{
+        [self es_setAssociatedDoubleWithKey:timeIntervalForAutoHideKey value:timeIntervalForAutoHide];
+}
+
+@end
+
 @implementation ESApp (ACAlertAdditions)
 
 - (MBProgressHUD *)progressHUD
@@ -16,16 +63,39 @@
         return [MBProgressHUD HUDForView:[ESApp keyWindow]];
 }
 
++ (MBProgressHUD *)progressHUD
+{
+        return [[self sharedApp] progressHUD];
+}
+
 - (void)hideProgressHUD:(BOOL)animated
 {
         [MBProgressHUD hideHUDForView:[ESApp keyWindow] animated:animated];
+}
+
++ (void)hideProgressHUD:(BOOL)animated
+{
+        [[self sharedApp] hideProgressHUD:animated];
+}
+
+- (void)hideProgressHUDIfNotAutoHidden:(BOOL)animated
+{
+        MBProgressHUD *current = [self progressHUD];
+        if (current) {
+                current.removeFromSuperViewOnHide = YES;
+                [current hideIfNotAutoHidden:animated];
+        }
+}
+
++ (void)hideProgressHUDIfNotAutoHidden:(BOOL)animated
+{
+        [[self sharedApp] hideProgressHUDIfNotAutoHidden:animated];
 }
 
 - (MBProgressHUD *)showProgressHUDWithTitle:(NSString *)title animated:(BOOL)animated
 {
         [self hideProgressHUD:NO];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[ESApp keyWindow] animated:animated];
-        // TODO: remove -respondsToSelector: after MBProgressHUD released new Pod version
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
         if ([hud respondsToSelector:@selector(label)]) {
@@ -36,6 +106,11 @@
         }
 #pragma clang diagnostic pop
         return hud;
+}
+
++ (MBProgressHUD *)showProgressHUDWithTitle:(NSString *)title animated:(BOOL)animated
+{
+        return [[self sharedApp] showProgressHUDWithTitle:title animated:animated];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +127,6 @@
         if (timeInterval <= 0.0) {
                 timeInterval = ESDoubleValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsTimeInterval), kACAppDefaultTipsTimeInterval);
         }
-        // TODO: remove -respondsToSelector: after MBProgressHUD released new Pod version
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 #pragma clang diagnostic ignored "-Wdeprecated"
@@ -64,6 +138,11 @@
         }
 #pragma clang diagnostic pop
         return hud;
+}
+
++ (MBProgressHUD *)showCheckmarkHUDWithTitle:(NSString *)title timeInterval:(NSTimeInterval)timeInterval animated:(BOOL)animated
+{
+        return [[self sharedApp] showCheckmarkHUDWithTitle:title timeInterval:timeInterval animated:animated];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +166,6 @@
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:animated];
         hud.mode = MBProgressHUDModeText;
         hud.animationType = ESIntegerValueWithDefault(ACConfigGet(kACConfigKey_ACApp_DefaultTipsAnimationType), MBProgressHUDAnimationFade);
-        // TODO: remove -respondsToSelector: after MBProgressHUD released new Pod version
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
         if ([hud respondsToSelector:@selector(label)]) {
@@ -104,14 +182,29 @@
         return hud;
 }
 
++ (MBProgressHUD *)showTips:(NSString *)text detail:(NSString *)detail addToView:(UIView *)view timeInterval:(NSTimeInterval)timeInterval animated:(BOOL)animated
+{
+        return [[self sharedApp] showTips:text detail:detail addToView:view timeInterval:timeInterval animated:animated];
+}
+
 - (MBProgressHUD *)showTips:(NSString *)text addToView:(UIView *)view
 {
         return [self showTips:text detail:nil addToView:view timeInterval:0 animated:YES];
 }
 
++ (MBProgressHUD *)showTips:(NSString *)text addToView:(UIView *)view
+{
+        return [[self sharedApp] showTips:text addToView:view];
+}
+
 - (MBProgressHUD *)showTips:(NSString *)text
 {
         return [self showTips:text addToView:nil];
+}
+
++ (MBProgressHUD *)showTips:(NSString *)text
+{
+        return [[self sharedApp] showTips:text];
 }
 
 - (void)hideTipsOnView:(UIView *)view animated:(BOOL)animated
@@ -122,6 +215,11 @@
         [MBProgressHUD hideHUDForView:view animated:animated];
 }
 
++ (void)hideTipsOnView:(UIView *)view animated:(BOOL)animated
+{
+        [[self sharedApp] hideTipsOnView:view animated:animated];
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Common Tips
@@ -129,6 +227,11 @@
 - (MBProgressHUD *)showLocalNetworkErrorTipsWithSuperview:(UIView *)superview
 {
         return [self showTips:ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle), kACNetworkingLocalNetworkErrorAlertTitle) addToView:superview];
+}
+
++ (MBProgressHUD *)showLocalNetworkErrorTipsWithSuperview:(UIView *)superview
+{
+        return [[self sharedApp] showLocalNetworkErrorTipsWithSuperview:superview];
 }
 
 - (UIAlertView *)showLocalNetworkErrorAlertWithCompletion:(dispatch_block_t)completion
@@ -144,6 +247,11 @@
                               } otherButtonTitles:nil];
         [alert show];
         return alert;
+}
+
++ (UIAlertView *)showLocalNetworkErrorAlertWithCompletion:(dispatch_block_t)completion
+{
+        return [[self sharedApp] showLocalNetworkErrorAlertWithCompletion:completion];
 }
 
 @end
