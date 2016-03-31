@@ -12,8 +12,6 @@
 		E71004761C9CF79000EB14AE /* ACEncryptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACEncryptor.m; sourceTree = "<group>"; };
 		E71004771C9D025C00EB14AE /* ACUDID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACUDID.h; sourceTree = "<group>"; };
 		E71004781C9D025C00EB14AE /* ACUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACUDID.m; sourceTree = "<group>"; };
-		E71B7CEF1C5032A4001910C2 /* ACHTTPSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACHTTPSessionManager.h; sourceTree = "<group>"; };
-		E71B7CF01C5032A4001910C2 /* ACHTTPSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACHTTPSessionManager.m; sourceTree = "<group>"; };
 		E71B7CF41C509D21001910C2 /* ACApiClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACApiClient.h; sourceTree = "<group>"; };
 		E71B7CF51C509D21001910C2 /* ACApiClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACApiClient.m; sourceTree = "<group>"; };
 		E71B7CF71C50A352001910C2 /* AppComponentsApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsApp.h; sourceTree = "<group>"; };
@@ -89,8 +87,6 @@
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
 		E7C3FA931C4E39BC00281993 /* ACConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACConfig.m; sourceTree = "<group>"; };
 		E7C3FAB41C4F0A1F00281993 /* AppComponentsNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsNetworking.h; sourceTree = "<group>"; };
-		E7C3FABA1C4FEBFE00281993 /* ACNetworkingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNetworkingHelper.h; sourceTree = "<group>"; };
-		E7C3FABB1C4FEBFE00281993 /* ACNetworkingHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACNetworkingHelper.m; sourceTree = "<group>"; };
 		E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+ACNetworking.h"; sourceTree = "<group>"; };
 		E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+ACNetworking.m"; sourceTree = "<group>"; };
 		E7C3FAC01C4FF57D00281993 /* NSURLSessionTask+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionTask+ACNetworking.h"; sourceTree = "<group>"; };
@@ -306,10 +302,6 @@
 				E746B4AC1CABB8BA00EC634B /* AFURLSessionManager+ACNetworking.m */,
 				E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.h */,
 				E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.m */,
-				E71B7CEF1C5032A4001910C2 /* ACHTTPSessionManager.h */,
-				E71B7CF01C5032A4001910C2 /* ACHTTPSessionManager.m */,
-				E7C3FABA1C4FEBFE00281993 /* ACNetworkingHelper.h */,
-				E7C3FABB1C4FEBFE00281993 /* ACNetworkingHelper.m */,
 				E71B7CF41C509D21001910C2 /* ACApiClient.h */,
 				E71B7CF51C509D21001910C2 /* ACApiClient.m */,
 			);
