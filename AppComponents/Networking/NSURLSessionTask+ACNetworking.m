@@ -9,9 +9,11 @@
 #import "NSURLSessionTask+ACNetworking.h"
 #import <ESFramework/ESFrameworkCore.h>
 
-const ACURLSessionTaskConfig ACURLSessionTaskConfigDefault = { YES, YES, NO, YES, YES };
-
-ESDefineAssociatedObjectKey(taskConfig);
+ESDefineAssociatedObjectKey(shouldParseResponse);
+ESDefineAssociatedObjectKey(alertFailedResponseCode);
+ESDefineAssociatedObjectKey(alertFailedResponseCodeUsingTips);
+ESDefineAssociatedObjectKey(alertNetworkError);
+ESDefineAssociatedObjectKey(alertNetworkErrorUsingTips);
 ESDefineAssociatedObjectKey(responseCode);
 ESDefineAssociatedObjectKey(responseMessage);
 ESDefineAssociatedObjectKey(responseErrors);
@@ -27,7 +29,11 @@ ESDefineAssociatedObjectKey(responseErrors);
 {
         NSURLSessionTask *task = [self ac_copyWithZone:zone];
         if ([task isKindOfClass:[NSURLSessionTask class]]) {
-                task.taskConfig = self.taskConfig;
+                task.shouldParseResponse = self.shouldParseResponse;
+                task.alertFailedResponseCode = self.alertFailedResponseCode;
+                task.alertFailedResponseCodeUsingTips = self.alertFailedResponseCodeUsingTips;
+                task.alertNetworkError = self.alertNetworkError;
+                task.alertNetworkErrorUsingTips = self.alertNetworkErrorUsingTips;
                 task.responseCode = self.responseCode;
                 task.responseMessage = [self.responseMessage copyWithZone:zone];
                 task.responseErrors = [self.responseErrors copyWithZone:zone];
@@ -35,21 +41,54 @@ ESDefineAssociatedObjectKey(responseErrors);
         return task;
 }
 
-- (ACURLSessionTaskConfig)taskConfig
+- (BOOL)shouldParseResponse
 {
-        NSValue *value = ESGetAssociatedObject(self, taskConfigKey);
-        if ([value isKindOfClass:[NSValue class]]) {
-                ACURLSessionTaskConfig config = ACURLSessionTaskConfigDefault;
-                [value getValue:&config];
-                return config;
-        }
-        return ACURLSessionTaskConfigDefault;
+        return [self es_getAssociatedBooleanWithKey:shouldParseResponseKey defaultValue:YES];
 }
 
-- (void)setTaskConfig:(ACURLSessionTaskConfig)config
+- (void)setShouldParseResponse:(BOOL)shouldParseResponse
 {
-        NSValue *value = [NSValue value:&config withObjCType:@encode(ACURLSessionTaskConfig)];
-        ESSetAssociatedObject(self, taskConfigKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [self es_setAssociatedBooleanWithKey:shouldParseResponseKey value:shouldParseResponse];
+}
+
+- (BOOL)alertFailedResponseCode
+{
+        return [self es_getAssociatedBooleanWithKey:alertFailedResponseCodeKey defaultValue:YES];
+}
+
+- (void)setAlertFailedResponseCode:(BOOL)alertFailedResponseCode
+{
+        [self es_setAssociatedBooleanWithKey:alertFailedResponseCodeKey value:alertFailedResponseCode];
+}
+
+- (BOOL)alertFailedResponseCodeUsingTips
+{
+        return [self es_getAssociatedBooleanWithKey:alertFailedResponseCodeUsingTipsKey defaultValue:NO];
+}
+
+- (void)setAlertFailedResponseCodeUsingTips:(BOOL)alertFailedResponseCodeUsingTips
+{
+        [self es_setAssociatedBooleanWithKey:alertFailedResponseCodeUsingTipsKey value:alertFailedResponseCodeUsingTips];
+}
+
+- (BOOL)alertNetworkError
+{
+        return [self es_getAssociatedBooleanWithKey:alertNetworkErrorKey defaultValue:YES];
+}
+
+-(void)setAlertNetworkError:(BOOL)alertNetworkError
+{
+        [self es_setAssociatedBooleanWithKey:alertNetworkErrorKey value:alertNetworkError];
+}
+
+- (BOOL)alertNetworkErrorUsingTips
+{
+        return [self es_getAssociatedBooleanWithKey:alertNetworkErrorUsingTipsKey defaultValue:YES];
+}
+
+- (void)setAlertNetworkErrorUsingTips:(BOOL)alertNetworkErrorUsingTips
+{
+        [self es_setAssociatedBooleanWithKey:alertNetworkErrorUsingTipsKey value:alertNetworkErrorUsingTips];
 }
 
 - (NSInteger)responseCode

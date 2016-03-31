@@ -8,29 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-struct ACURLSessionTaskConfig {
-        /// Determines whether to parse received response data.
-        BOOL parseResponse;
-        /// Determines whether to alert responseMessage and responseErrors when response code is not success.
-        BOOL alertFailedResponseCode;
-        /// Indicates using UIAlertView or -[ESApp showTips:] to alert responseMessage and responseErrors.
-        BOOL alertFailedResponseCodeUsingTips;
-        /// Determines whether to alert local network error.
-        BOOL alertNetworkError;
-        /// Indicates using UIAlertView or -[ESApp showTips:] to alert local network error.
-        BOOL alertNetworkErrorUsingTips;
-};
-typedef struct ACURLSessionTaskConfig ACURLSessionTaskConfig;
-
-/**
- * parseResponseObject: YES
- * alertFailedResponseCode: YES
- * alertFailedResponseCodeUsingTips: NO
- * alertNetworkError: YES
- * alertNetworkErrorUsingTips: YES
- */
-FOUNDATION_EXTERN const ACURLSessionTaskConfig ACURLSessionTaskConfigDefault;
-
 /**
  * NSURLSessionTask (ACNetworking) can be used to provide task configurations and to store useful
  * decoded response objects. 
@@ -38,15 +15,27 @@ FOUNDATION_EXTERN const ACURLSessionTaskConfig ACURLSessionTaskConfigDefault;
  */
 @interface NSURLSessionTask (ACNetworking)
 
-/**
- * Returns config for task.
- */
-@property (nonatomic) ACURLSessionTaskConfig taskConfig;
+///=============================================
+/// @name Configurations
+///=============================================
+
+/// Determines whether to parse received response data, YES by default.
+@property (nonatomic) BOOL shouldParseResponse;
+/// Determines whether to alert responseMessage and responseErrors when response code is not success, YES by default.
+@property (nonatomic) BOOL alertFailedResponseCode;
+/// Indicates using UIAlertView or -[ESApp showTips:] to alert responseMessage and responseErrors, NO by default.
+@property (nonatomic) BOOL alertFailedResponseCodeUsingTips;
+/// Determines whether to alert local network error, YES by default.
+@property (nonatomic) BOOL alertNetworkError;
+/// Indicates using UIAlertView or -[ESApp showTips:] to alert local network error, YES by default.
+@property (nonatomic) BOOL alertNetworkErrorUsingTips;
+
+///=============================================
+/// @name Parsed Response Data
+///=============================================
 
 /**
  * Returns response code parsed from response data.
- *
- * @see enum ACNetworkingResponseCode 
  */
 @property (nonatomic) NSInteger responseCode;
 
