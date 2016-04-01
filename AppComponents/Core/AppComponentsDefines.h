@@ -21,8 +21,11 @@
 #define kACConfigKey_ACApp_DefaultTipsTimeInterval              kACConfigKey_ACApp@".DefaultTipsTimeInterval"
 /// Default is MBProgressHUDAnimationFade
 #define kACConfigKey_ACApp_DefaultTipsAnimationType             kACConfigKey_ACApp@".DefaultTipsAnimationType"
+/// 网络连接失败时的弹窗title, default is kACNetworkingLocalNetworkErrorAlertTitle
+#define kACConfigKey_ACApp_LocalNetworkErrorAlertTitle          kACConfigKey_ACApp@".LocalNetworkErrorAlertTitle"
 
-#define kACAppDefaultTipsTimeInterval   1.3
+#define kACAppLocalNetworkErrorAlertTitle       @"网络连接异常"
+#define kACAppDefaultTipsTimeInterval           1.3
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,37 +49,4 @@
 #define kACConfigKey_ACAppUpdater_VersionDataKey_Description    kACConfigKey_ACAppUpdater@".AppVersion.Description" // desc
 #define kACConfigKey_ACAppUpdater_VersionDataKey_DownloadURL    kACConfigKey_ACAppUpdater@".AppVersion.DownloadURL" // url
 #define kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode     kACConfigKey_ACAppUpdater@".DefaultAppStoreContryCode" // default is nil
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - ACNetworking
-#define kACConfigKey_ACNetworking @"ACNetworking"
-
-/// 网络连接失败时的弹窗title, default is kACNetworkingLocalNetworkErrorAlertTitle
-#define kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle   kACConfigKey_ACNetworking@".LocalNetworkErrorAlertTitle"
-/// 发送请求时设置ApiToken到request的header, 为nil时不设置ApiToken. 例如 "X-API-TOKEN"
-#define kACConfigKey_ACNetworking_RequestHeaderApiTokenName     kACConfigKey_ACNetworking@".RequestHeaderApiTokenName"
-/// 发送请求时将Cookie中的CSRF-Token传到request的header，为nil时不设置CSRF-Token. 例如 "X-CSRF-TOKEN"
-#define kACConfigKey_ACNetworking_RequestHeaderCSRFTokenName    kACConfigKey_ACNetworking@".RequestHeaderCSRFTokenName"
-/// Cookie中CSRF Token的名字, default is kACNetworkingCSRFTokenCookieName
-#define kACConfigKey_ACNetworking_CSRFTokenCookieName           kACConfigKey_ACNetworking@".CSRFTokenCookieName"
-/// 加密Api Token时用的密码, default is nil
-#define kACConfigKey_ACNetworking_ApiTokenPassword              kACConfigKey_ACNetworking@".ApiTokenPassword"
-/// default is @"code"
-#define kACConfigKey_ACNetworking_ResponseKeyCode               kACConfigKey_ACNetworking@".ResponseKeyCode"
-/// default is @"msg"
-#define kACConfigKey_ACNetworking_ResponseKeyMessage            kACConfigKey_ACNetworking@".ResponseKeyMessage"
-/// default is @"errors"
-#define kACConfigKey_ACNetworking_ResponseKeyErrors             kACConfigKey_ACNetworking@".ResponseKeyErrors"
-
-#define kACNetworkingCSRFTokenCookieName        @"XSRF-TOKEN"
-#define kACNetworkingResponseCodeKey    @"code"
-#define kACNetworkingResponseMessageKey @"msg"
-#define kACNetworkingResponseErrorsKey  @"errors"
-#define kACNetworkingLocalNetworkErrorAlertTitle @"网络连接异常"
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - ACAuth
-#define kACConfigKey_ACAuth @"ACAuth"
 
