@@ -12,6 +12,14 @@
 @interface AFHTTPSessionManager (ACNetworking)
 
 /**
+ * Extra request serializer before sending.
+ * It will be applied to all requestSerializer managed by this HTTP session manager.
+ *
+ * @see -[AFHTTPRequestSerializer extraRequestSerializer]
+ */
+@property (nonatomic, copy) void (^extraRequestSerializer)(AFHTTPRequestSerializer *serializer, NSMutableURLRequest *request, id parameters, NSError *__autoreleasing *error);
+
+/**
  * Returns the full URL for the given `path`.
  */
 - (NSURL *)fullURL:(NSString *)path;
@@ -38,13 +46,5 @@
  * @param cancelPendingTasks 是否取消正在等待的task.
  */
 - (void)cancelAllTasks:(BOOL)cancelPendingTasks;
-
-/**
- * Extra request serializer before sending. 
- * It will be applied to all requestSerializer managed by this HTTP session manager.
- *
- * @see -[AFHTTPRequestSerializer extraRequestSerializer]
- */
-@property (nonatomic, copy) void (^extraRequestSerializer)(AFHTTPRequestSerializer *serializer, NSMutableURLRequest *request, id parameters, NSError *__autoreleasing *error);
 
 @end
