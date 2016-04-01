@@ -80,6 +80,8 @@
 - (void)hideTipsOnView:(UIView *)view animated:(BOOL)animated;
 + (void)hideTipsOnView:(UIView *)view animated:(BOOL)animated;
 
++ (NSString *)localNetworkErrorAlertTitle;
+
 /**
  * Shows a tips view that title got from kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle
  */

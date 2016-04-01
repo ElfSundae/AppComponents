@@ -230,9 +230,14 @@ ESDefineAssociatedObjectKey(timeIntervalForAutoHide);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Common Tips
 
++ (NSString *)localNetworkErrorAlertTitle
+{
+        return ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACApp_LocalNetworkErrorAlertTitle), kACAppLocalNetworkErrorAlertTitle);
+}
+
 - (MBProgressHUD *)showLocalNetworkErrorTipsWithSuperview:(UIView *)superview
 {
-        return [self showTips:ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle), kACNetworkingLocalNetworkErrorAlertTitle) addToView:superview];
+        return [self showTips:[[self class] localNetworkErrorAlertTitle] addToView:superview];
 }
 
 + (MBProgressHUD *)showLocalNetworkErrorTipsWithSuperview:(UIView *)superview
@@ -242,7 +247,7 @@ ESDefineAssociatedObjectKey(timeIntervalForAutoHide);
 
 - (UIAlertView *)showLocalNetworkErrorAlertWithCompletion:(dispatch_block_t)completion
 {
-        UIAlertView *alert = [UIAlertView alertViewWithTitle:ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle), kACNetworkingLocalNetworkErrorAlertTitle)
+        UIAlertView *alert = [UIAlertView alertViewWithTitle:[[self class] localNetworkErrorAlertTitle]
                                                      message:nil
                                            cancelButtonTitle:@"OK"
                                              didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex)
