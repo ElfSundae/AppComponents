@@ -22,7 +22,7 @@
         return NO;
 }
 
-- (NSString *)talkingDataDeviceID
++ (NSString *)talkingDataDeviceID
 {
         return [TalkingData getDeviceID];
 }

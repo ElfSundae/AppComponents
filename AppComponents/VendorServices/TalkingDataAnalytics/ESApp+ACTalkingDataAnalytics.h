@@ -23,6 +23,6 @@
 /**
  * TalkingData的设备UDID.
  */
-- (NSString *)talkingDataDeviceID;
++ (NSString *)talkingDataDeviceID;
 
 @end
