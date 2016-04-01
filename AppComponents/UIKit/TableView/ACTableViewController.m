@@ -48,8 +48,8 @@ NSString *const ACTableViewCellConfigKeyCellReuseIdentifier = @"cellReuseIdentif
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-        if (!self.navigationController.navigationBar.barTintColor ||
-            self.navigationController.navigationBar.barTintColor.es_isLightColor) {
+        UIColor *barTintColor = (self.navigationController.navigationBar.barTintColor ?: [UINavigationBar appearance].barTintColor);
+        if (!barTintColor || barTintColor.es_isLightColor) {
                 return UIStatusBarStyleDefault;
         } else {
                 return UIStatusBarStyleLightContent;

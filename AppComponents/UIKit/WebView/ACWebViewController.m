@@ -134,8 +134,7 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-        UIColor *barTintColor = (self.navigationController.navigationBar.barTintColor ?:
-                                 [UINavigationBar appearance].barTintColor);
+        UIColor *barTintColor = (self.navigationController.navigationBar.barTintColor ?: [UINavigationBar appearance].barTintColor);
         if (!barTintColor || barTintColor.es_isLightColor) {
                 return UIStatusBarStyleDefault;
         } else {
