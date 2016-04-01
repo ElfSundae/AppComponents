@@ -7,13 +7,11 @@
 //
 
 #import "ESApp+ACImageViewController.h"
-#import <ESFramework/UIView+ESShortcut.h>
-#import <ESFramework/UIActionSheet+ESBlock.h>
-#import <ESFramework/NSObject+ESAssociatedObjectHelper.h>
+#import <ESFramework/ESFrameworkCore.h>
 #import <AppComponents/ESApp+ACHelper.h>
 
 ESDefineAssociatedObjectKey(imageViewControler);
-ESDefineAssociatedObjectKey(defaultImageViewControllerBackgroundOptions);
+ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
 
 @implementation ESApp (ACImageViewController)
 
@@ -27,14 +25,14 @@ ESDefineAssociatedObjectKey(defaultImageViewControllerBackgroundOptions);
         ESSetAssociatedObject(self, imageViewControlerKey, imageViewControler, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (JTSImageViewControllerBackgroundOptions)defaultImageViewControllerBackgroundOptions
+- (JTSImageViewControllerBackgroundOptions)imageViewControllerDefaultBackgroundOptions
 {
-        return [self es_getAssociatedIntegerWithKey:defaultImageViewControllerBackgroundOptionsKey defaultValue:JTSImageViewControllerBackgroundOption_Blurred];
+        return [self es_getAssociatedIntegerWithKey:imageViewControllerDefaultBackgroundOptionsKey defaultValue:JTSImageViewControllerBackgroundOption_Blurred];
 }
 
-- (void)setDefaultImageViewControllerBackgroundOptions:(JTSImageViewControllerBackgroundOptions)value
+- (void)setimageViewControllerDefaultBackgroundOptions:(JTSImageViewControllerBackgroundOptions)value
 {
-        [self es_setAssociatedIntegerWithKey:defaultImageViewControllerBackgroundOptionsKey value:value];
+        [self es_setAssociatedIntegerWithKey:imageViewControllerDefaultBackgroundOptionsKey value:value];
 }
 
 - (JTSImageViewController *)showImageViewControllerWithImageInfo:(JTSImageInfo *)imageInfo
@@ -71,11 +69,6 @@ ESDefineAssociatedObjectKey(defaultImageViewControllerBackgroundOptions);
         return self.imageViewControler;
 }
 
-- (JTSImageViewController *)showImageViewControllerWithImageInfo:(JTSImageInfo *)imageInfo
-{
-        return [self showImageViewControllerWithImageInfo:imageInfo backgroundOptions:self.defaultImageViewControllerBackgroundOptions];
-}
-
 - (JTSImageViewController *)ac_showImageViewControllerFromView:(UIView *)view
                                                          image:(UIImage *)image
                                                       imageURL:(NSURL *)imageURL
@@ -99,6 +92,11 @@ ESDefineAssociatedObjectKey(defaultImageViewControllerBackgroundOptions);
         return [self showImageViewControllerWithImageInfo:imageInfo backgroundOptions:backgroundOptions];
 }
 
+- (JTSImageViewController *)showImageViewControllerWithImageInfo:(JTSImageInfo *)imageInfo
+{
+        return [self showImageViewControllerWithImageInfo:imageInfo backgroundOptions:self.imageViewControllerDefaultBackgroundOptions];
+}
+
 - (JTSImageViewController *)showImageViewControllerFromView:(UIView *)view
                                                       image:(UIImage *)image
                                           backgroundOptions:(JTSImageViewControllerBackgroundOptions)backgroundOptions
@@ -115,6 +113,14 @@ ESDefineAssociatedObjectKey(defaultImageViewControllerBackgroundOptions);
 {
         return [self ac_showImageViewControllerFromView:view image:nil imageURL:imageURL placeholderImage:placeholderImage backgroundOptions:backgroundOptions imageInfoCustomization:imageInfoCustomization];
 }
+
+- (JTSImageViewController *)showImageViewControllerFromView:(UIView *)view
+                                                   imageURL:(NSURL *)imageURL
+                                           placeholderImage:(UIImage *)placeholderImage
+{
+        return [self showImageViewControllerFromView:view imageURL:imageURL placeholderImage:placeholderImage backgroundOptions:self.imageViewControllerDefaultBackgroundOptions imageInfoCustomization:nil];
+}
+
 
 - (void)dismissImageViewController:(BOOL)animated
 {

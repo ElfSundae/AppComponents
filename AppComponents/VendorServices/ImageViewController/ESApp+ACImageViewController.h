@@ -14,12 +14,12 @@
 <JTSImageViewControllerDismissalDelegate, JTSImageViewControllerInteractionsDelegate>
 
 @property (nonatomic, strong) JTSImageViewController *imageViewControler;
-@property (nonatomic) JTSImageViewControllerBackgroundOptions defaultImageViewControllerBackgroundOptions;
+@property (nonatomic) JTSImageViewControllerBackgroundOptions imageViewControllerDefaultBackgroundOptions;
 
 - (JTSImageViewController *)showImageViewControllerWithImageInfo:(JTSImageInfo *)imageInfo
                                                backgroundOptions:(JTSImageViewControllerBackgroundOptions)backgroundOptions;
 
-/// with [self defaultImageViewControllerBackgroundOptions]
+/// with [self imageViewControllerDefaultBackgroundOptions]
 - (JTSImageViewController *)showImageViewControllerWithImageInfo:(JTSImageInfo *)imageInfo;
 
 - (JTSImageViewController *)showImageViewControllerFromView:(UIView *)view
@@ -32,6 +32,11 @@
                                            placeholderImage:(UIImage *)placeholderImage
                                           backgroundOptions:(JTSImageViewControllerBackgroundOptions)backgroundOptions
                                      imageInfoCustomization:(void (^)(JTSImageInfo *imageInfo))imageInfoCustomization;
+
+- (JTSImageViewController *)showImageViewControllerFromView:(UIView *)view
+                                                   imageURL:(NSURL *)imageURL
+                                           placeholderImage:(UIImage *)placeholderImage;
+
 
 - (void)dismissImageViewController:(BOOL)animated;
 
