@@ -30,7 +30,7 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
         return [self es_getAssociatedIntegerWithKey:imageViewControllerDefaultBackgroundOptionsKey defaultValue:JTSImageViewControllerBackgroundOption_Blurred];
 }
 
-- (void)setimageViewControllerDefaultBackgroundOptions:(JTSImageViewControllerBackgroundOptions)value
+- (void)setImageViewControllerDefaultBackgroundOptions:(JTSImageViewControllerBackgroundOptions)value
 {
         [self es_setAssociatedIntegerWithKey:imageViewControllerDefaultBackgroundOptionsKey value:value];
 }
@@ -149,12 +149,14 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
         if (!imageViewer.image) {
                 return;
         }
+#define kSaveTitle @"保存图片"
+#define kCopyTitle @"复制"
         NSMutableArray *titles = [NSMutableArray array];
         if (imageViewer.imageInfo.canSaveToPhotoLibrary) {
-                [titles addObject:@"保存到手机"];
+                [titles addObject:kSaveTitle];
         }
         if (imageViewer.imageInfo.canCopy) {
-                [titles addObject:@"复制"];
+                [titles addObject:kCopyTitle];
         }
         
         if (titles.count == 0) {
@@ -165,9 +167,9 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
         UIActionSheet *action = [UIActionSheet actionSheetWithTitle:nil cancelButtonTitle:nil didDismissBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 ESStrong(imageViewer);
                 NSString *actionTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
-                if ([actionTitle isEqualToString:@"保存到手机"]) {
+                if ([actionTitle isEqualToString:kSaveTitle]) {
                         [[ESApp sharedApp] saveImageToPhotoLibrary:_imageViewer.image showsProgress:YES userInfo:nil completion:nil];
-                } else if ([actionTitle isEqualToString:@"复制"]) {
+                } else if ([actionTitle isEqualToString:kCopyTitle]) {
                         [[UIPasteboard generalPasteboard] setImage:_imageViewer.image];
                 }
         } otherButtonTitles:nil];
