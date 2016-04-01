@@ -9,7 +9,7 @@
 #import "RootViewController.h"
 #import <IconFontsKit/IFFontAwesome.h>
 #import <ESFramework/ESBadgeView.h>
-#import "ApiClient.h"
+#import "GithubClient.h"
 
 #define kCellConfigKeyAction @"action"
 
@@ -47,20 +47,28 @@
          [self.tableData addObject:
           @[@{ ACTableViewCellConfigKeyText: @"WebViewController",
                ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
-               kCellConfigKeyAction: @"openWebViewController" },
+               kCellConfigKeyAction: @"openWebViewController",
+               ACTableViewCellConfigKeyIconImage: [IFFontAwesome imageWithType:IFFASafari color:[UIColor es_primaryButtonColor] fontSize:24]
+               },
             @{ ACTableViewCellConfigKeyText: @"AuthViewController",
                ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
-               kCellConfigKeyAction: @"openAuthViewController"}]
-          ];
+               kCellConfigKeyAction: @"openAuthViewController",
+               ACTableViewCellConfigKeyIconImage: [IFFontAwesome imageWithType:IFFAUser color:[UIColor es_facebookColor] fontSize:24]
+               },
+            @{ ACTableViewCellConfigKeyText: @"FeedbackViewController",
+               ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
+               kCellConfigKeyAction: @"openFeedbackViewController",
+               ACTableViewCellConfigKeyIconImage: [IFFontAwesome imageWithType:IFFAComments color:[UIColor es_purpleColor] fontSize:24]
+               },
+            ]];
         
         [self.tableData addObject:
          @[@{ ACTableViewCellConfigKeyText: @"Github API Client",
               ACTableViewCellConfigKeyAccessoryType: @(UITableViewCellAccessoryDisclosureIndicator),
               ACTableViewCellConfigKeyIconImage: [IFFontAwesome imageWithType:IFFAGithub color:nil fontSize:24],
               ACTableViewCellConfigKeyRightBadgeView: [[UIImageView alloc] initWithImage:[IFFontAwesome imageWithType:IFFAGithubAlt color:nil fontSize:24]],
-              kCellConfigKeyAction: @"testGithubApiClient" }
-           ]
-         ];
+              kCellConfigKeyAction: @"testGithubApiClient" },
+           ]];
 }
 
 - (BOOL)refreshData
@@ -109,6 +117,12 @@
         }];
         authController.titleForNavigationBar = @"Login";
         [authController presentAnimated:YES];
+}
+
+- (void)openFeedbackViewController
+{
+        ACFeedbackViewController *feedbackController = [[ACFeedbackViewController alloc] init];
+        [self.navigationController pushViewController:feedbackController animated:YES];
 }
 
 - (void)testGithubApiClient
