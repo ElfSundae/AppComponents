@@ -199,7 +199,7 @@
         
         // Local network error
         if ([error isLocalNetworkError]) {
-                NSString *alertTitle = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_LocalNetworkErrorAlertTitle), kACNetworkingLocalNetworkErrorAlertTitle);
+                NSString *alertTitle = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACApp_LocalNetworkErrorAlertTitle), kACAppLocalNetworkErrorAlertTitle);
                 if (self.showsErrorViewWhenLoadingFailed) {
                         [self showErrorViewForLoadingFailedWithTitle:alertTitle];
                 } else {
