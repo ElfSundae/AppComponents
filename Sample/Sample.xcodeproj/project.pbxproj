@@ -11,6 +11,7 @@
 		E746B4AE1CABCA8D00EC634B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E746B4AD1CABCA8D00EC634B /* Launch Screen.storyboard */; };
 		E78834D31C51D55E00F67C63 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = E78834D21C51D55E00F67C63 /* App.m */; };
 		E78834D61C51D61A00F67C63 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78834D51C51D61A00F67C63 /* RootViewController.m */; };
+		E79EFCEE1CAE77E9004A468D /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFCED1CAE77E9004A468D /* ApiClient.m */; };
 		E7A38B531C4DC81200972B01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A38B521C4DC81200972B01 /* main.m */; };
 		E7A38B5E1C4DC81200972B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A38B5D1C4DC81200972B01 /* Assets.xcassets */; };
 		E7E3F1F91CACF05700A37557 /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3F1F81CACF05700A37557 /* ApiClient.m */; };
@@ -25,6 +26,8 @@
 		E78834D21C51D55E00F67C63 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		E78834D41C51D61A00F67C63 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		E78834D51C51D61A00F67C63 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		E79EFCEC1CAE77E9004A468D /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClient.h; sourceTree = "<group>"; };
+		E79EFCED1CAE77E9004A468D /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClient.m; sourceTree = "<group>"; };
 		E7A38B4E1C4DC81200972B01 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A38B521C4DC81200972B01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E7A38B5D1C4DC81200972B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,9 +57,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E79EFCEB1CAE77AF004A468D /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				E79EFCEC1CAE77E9004A468D /* ApiClient.h */,
+				E79EFCED1CAE77E9004A468D /* ApiClient.m */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
 		E7A38B451C4DC81200972B01 = {
 			isa = PBXGroup;
 			children = (
+				E79EFCEB1CAE77AF004A468D /* Reusable */,
 				E7A38B501C4DC81200972B01 /* Sample */,
 				E7A38B4F1C4DC81200972B01 /* Products */,
 				E9CF31F3FED7EC15828826DA /* Pods */,
@@ -236,6 +249,7 @@
 			files = (
 				E78834D31C51D55E00F67C63 /* App.m in Sources */,
 				E7A38B531C4DC81200972B01 /* main.m in Sources */,
+				E79EFCEE1CAE77E9004A468D /* ApiClient.m in Sources */,
 				E78834D61C51D61A00F67C63 /* RootViewController.m in Sources */,
 				E7E3F1F91CACF05700A37557 /* ApiClient.m in Sources */,
 			);

@@ -4,12 +4,9 @@ AppComponents
 [![Build Status](https://travis-ci.org/ElfSundae/AppComponents.svg)](https://travis-ci.org/ElfSundae/AppComponents)
 [![Pod Version](http://img.shields.io/cocoapods/v/AppComponents.svg)](http://cocoadocs.org/docsets/AppComponents)
 
-<center>**Warning: Work In Process, use it at your own risk!**</center>
-
 ## Summary
 
-**AppComponents** is a series of components for iOS development,
-it is based on several awesome third parts libraries.
+**AppComponents** is a series of components for iOS app development.
 
 ## Installation
 
@@ -21,11 +18,11 @@ or just install subspecs:
 
 ```ruby
 pod 'AppComponents/App'
-pod 'AppComponents/VendorServices/UmengAnalytics'
+pod 'AppComponents/Networking'
 ```
 
 ```ruby
-pod 'AppComponents', :subspecs => ['App', 'VendorServices/UmengAnalytics']
+pod 'AppComponents', :subspecs => ['App', 'Networking']
 ```
 
 ```ruby

@@ -12,8 +12,6 @@
 		E71004761C9CF79000EB14AE /* ACEncryptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACEncryptor.m; sourceTree = "<group>"; };
 		E71004771C9D025C00EB14AE /* ACUDID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACUDID.h; sourceTree = "<group>"; };
 		E71004781C9D025C00EB14AE /* ACUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACUDID.m; sourceTree = "<group>"; };
-		E71B7CF41C509D21001910C2 /* ACApiClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACApiClient.h; sourceTree = "<group>"; };
-		E71B7CF51C509D21001910C2 /* ACApiClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACApiClient.m; sourceTree = "<group>"; };
 		E71B7CF71C50A352001910C2 /* AppComponentsApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsApp.h; sourceTree = "<group>"; };
 		E71B7CF91C50A928001910C2 /* AppComponentsDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponentsDefines.h; sourceTree = "<group>"; };
 		E71B7CFA1C51314A001910C2 /* ESApp+ACAlertAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACAlertAdditions.h"; sourceTree = "<group>"; };
@@ -80,8 +78,6 @@
 		E7A38B441C4DBFBD00972B01 /* AppComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppComponents.h; sourceTree = "<group>"; };
 		E7BB71211CAB4D330042CB98 /* NSHTTPURLResponse+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+ACNetworking.h"; sourceTree = "<group>"; };
 		E7BB71221CAB4D330042CB98 /* NSHTTPURLResponse+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+ACNetworking.m"; sourceTree = "<group>"; };
-		E7BB71231CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+ACNetworking.h"; sourceTree = "<group>"; };
-		E7BB71241CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+ACNetworking.m"; sourceTree = "<group>"; };
 		E7BB71271CAB75A30042CB98 /* AFHTTPRequestSerializer+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestSerializer+ACNetworking.h"; sourceTree = "<group>"; };
 		E7BB71281CAB75A30042CB98 /* AFHTTPRequestSerializer+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestSerializer+ACNetworking.m"; sourceTree = "<group>"; };
 		E7C3FA921C4E39BC00281993 /* ACConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACConfig.h; sourceTree = "<group>"; };
@@ -259,8 +255,8 @@
 			children = (
 				E7A38B441C4DBFBD00972B01 /* AppComponents.h */,
 				E7A38B3A1C4DBE1200972B01 /* Core */,
-				E71B7CF61C50A315001910C2 /* App */,
 				E7C3FAB31C4F09FF00281993 /* Networking */,
+				E71B7CF61C50A315001910C2 /* App */,
 				E78F78311C59B0CF00B9A33C /* UIKit */,
 				E78834BE1C51A0C300F67C63 /* Auth */,
 				E78835B41C53D61100F67C63 /* VendorServices */,
@@ -290,8 +286,6 @@
 			isa = PBXGroup;
 			children = (
 				E7C3FAB41C4F0A1F00281993 /* AppComponentsNetworking.h */,
-				E7BB71231CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.h */,
-				E7BB71241CAB4DB90042CB98 /* NSMutableURLRequest+ACNetworking.m */,
 				E7BB71211CAB4D330042CB98 /* NSHTTPURLResponse+ACNetworking.h */,
 				E7BB71221CAB4D330042CB98 /* NSHTTPURLResponse+ACNetworking.m */,
 				E7C3FAC01C4FF57D00281993 /* NSURLSessionTask+ACNetworking.h */,
@@ -302,8 +296,6 @@
 				E746B4AC1CABB8BA00EC634B /* AFURLSessionManager+ACNetworking.m */,
 				E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.h */,
 				E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.m */,
-				E71B7CF41C509D21001910C2 /* ACApiClient.h */,
-				E71B7CF51C509D21001910C2 /* ACApiClient.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";

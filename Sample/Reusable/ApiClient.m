@@ -1,26 +1,17 @@
 //
-//  ACApiClient.m
-//  AppComponents
+//  ApiClient.m
+//  Sample
 //
-//  Created by Elf Sundae on 16/1/21.
+//  Created by Elf Sundae on 16/04/01.
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ACApiClient.h"
-#import <AppComponents/AppComponentsCore.h>
+#import "ApiClient.h"
 #import <AppComponents/AppComponentsApp.h>
 
-NSInteger ACApiResponseCodeError                = 0;
-NSInteger ACApiResponseCodeSuccess              = 1;
-NSInteger ACApiResponseCodeUserAuthFailed       = 401;
-NSInteger ACApiResponseCodeRequestAuthFailed    = 403;
-NSInteger ACApiResponseCodeServerInternalError  = 500;
-NSInteger ACApiResponseCodeServerIsMaintaining  = 503;
+@implementation ApiClient
 
-
-@implementation ACApiClient
-
-ES_SINGLETON_IMP(client);
+ES_SINGLETON_IMP_AS(client, __defaultClient);
 
 - (instancetype)init
 {
@@ -57,18 +48,13 @@ ES_SINGLETON_IMP(client);
 
 @end
 
-
-@implementation ACApiClient (Subclassing)
+@implementation ApiClient (Subclassing)
 
 - (NSString *)generateApiToken
 {
-        NSString *password = ESStringValue(ACConfigGet(kACConfigKey_ACNetworking_ApiTokenPassword));
-        if (password) {
-                NSTimeInterval timestamp = [NSDate timeIntervalSince1970] + self.timestampOffsetToServer;
-                NSString *string = [NSString stringWithFormat:@"%.0f", timestamp];
-                return [ACEncryptor sampleEncrypt:string password:password];
-        }
-        return nil;
+        NSTimeInterval timestamp = [NSDate timeIntervalSince1970] + self.timestampOffsetToServer;
+        NSString *string = [NSString stringWithFormat:@"%.0f", timestamp];
+        return [ACEncryptor sampleEncrypt:string password:kApiClientApiTokenEncryptionKey];
 }
 
 - (void)parseResponseForApiToken:(NSHTTPURLResponse *)response responseObject:(id)responseObject
@@ -83,22 +69,19 @@ ES_SINGLETON_IMP(client);
 
 - (NSDictionary *)parseResponseObject:(id)responseObject code:(NSInteger *)outCode message:(NSString *__autoreleasing *)outMessage errors:(NSString *__autoreleasing *)outErrors
 {
-        NSString *ResponseCodeKey = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_ResponseKeyCode), kACNetworkingResponseCodeKey);
-        NSString *ResponseMessageKey = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_ResponseKeyMessage), kACNetworkingResponseMessageKey);
-        NSString *ResponseErrorsKey = ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACNetworking_ResponseKeyErrors), kACNetworkingResponseErrorsKey);
         if (![responseObject isKindOfClass:[NSDictionary class]]) {
-                responseObject = @{ ResponseCodeKey: @(ACApiResponseCodeServerInternalError),
-                                    ResponseMessageKey: _e(@"Internal Server Error") };
+                responseObject = @{ kApiClientResponseCodeKey: @(ApiResponseCodeServerInternalError),
+                                    kApiClientResponseMessageKey: _e(@"Internal Server Error") };
         }
         
         if (outCode) {
-                *outCode = ESIntegerValueWithDefault(responseObject[ResponseCodeKey], ACApiResponseCodeError);
+                *outCode = ESIntegerValueWithDefault(responseObject[kApiClientResponseCodeKey], ApiResponseCodeError);
         }
         if (outMessage) {
-                *outMessage = ESStringValue(responseObject[ResponseMessageKey]);
+                *outMessage = ESStringValue(responseObject[kApiClientResponseMessageKey]);
         }
         if (outErrors) {
-                id errors = responseObject[ResponseErrorsKey];
+                id errors = responseObject[kApiClientResponseErrorsKey];
                 if ([errors isKindOfClass:[NSArray class]]) {
                         errors = [(NSArray *)errors matchesObjects:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
                                 return ESIsStringWithAnyText(obj);
@@ -119,13 +102,14 @@ ES_SINGLETON_IMP(client);
 {
         // Set User Agnet if the userAgent string is variable, for example there is a value stands for the current network type.
         // If your userAgent string is static, you can set user agent in ApiClient's requestSerializer.
-        [request setUserAgent:[ESApp sharedApp].userAgent];
+        [request setUserAgentForHTTPHeaderField:[ESApp sharedApp].userAgent];
         
         // Set CSRF Token if your API server verify it.
         // [request setCSRFTokenForHTTPHeaderField];
         
-        NSString *apiToken = [self generateApiToken];
-        [request setAPITokenForHTTPHeaderField:apiToken];
+        if (ESIsStringWithAnyText(kApiClientApiTokenEncryptionKey)) {
+                [request setAPITokenForHTTPHeaderField:[self generateApiToken]];
+        }
 }
 
 - (void)_dataTaskWillCompleteBlockHandler:(NSURLSessionDataTask *)dataTask response:(NSURLResponse *)response responseObject:(id)responseObject error:(NSError *)error completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler
@@ -145,7 +129,7 @@ ES_SINGLETON_IMP(client);
                                 dataTask.responseMessage = message;
                                 dataTask.responseErrors = errorsString;
                                 
-                                if (ACApiResponseCodeSuccess != code && !dataTask.alertFailedResponseCode) {
+                                if (ApiResponseCodeSuccess != code && !dataTask.alertFailedResponseCode) {
                                         if (message || errorsString) {
                                                 ESDispatchOnMainThreadAsynchrony(^{
                                                         if (dataTask.alertFailedResponseCodeUsingTips) {
@@ -172,7 +156,31 @@ ES_SINGLETON_IMP(client);
         
         if (completionHandler) {
                 completionHandler(response, responseObject, error);
-        }        
+        }
+}
+
+@end
+
+@implementation NSMutableURLRequest (ApiClient)
+
+- (void)setUserAgentForHTTPHeaderField:(NSString *)userAgent
+{
+        [self setValue:userAgent forHTTPHeaderField:@"User-Agent"];
+}
+
+- (void)setCSRFTokenForHTTPHeaderField
+{
+        for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:self.URL]) {
+                if ([cookie.name isEqualToString:kApiClientCSRFTokenCookieName]) {
+                        [self setValue:cookie.value forHTTPHeaderField:kApiClientCSRFTokenHTTPHeaderName];
+                        break;
+                }
+        }
+}
+
+- (void)setAPITokenForHTTPHeaderField:(NSString *)apiToken
+{
+        [self setValue:apiToken forHTTPHeaderField:kApiClientApiTokenHTTPHeaderName];
 }
 
 @end

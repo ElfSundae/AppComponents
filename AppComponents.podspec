@@ -20,17 +20,17 @@ Pod::Spec.new do |s|
     ss.dependency           "UICKeyChainStore"
   end
 
+  s.subspec "Networking" do |ss|
+    ss.source_files         = "AppComponents/Networking/**/*.{h,m}"
+    ss.dependency           "ESFramework/Core"
+    ss.dependency           "AFNetworking", "~> 3.0"
+  end
+
   s.subspec "App" do |ss|
     ss.source_files         = "AppComponents/App/**/*.{h,m}"
     ss.dependency           "AppComponents/Core"
     ss.dependency           "MBProgressHUD"
     ss.resource             = "AppComponents/App/AppComponentsApp.bundle"
-  end
-
-  s.subspec "Networking" do |ss|
-    ss.source_files         = "AppComponents/Networking/**/*.{h,m}"
-    ss.dependency           "AFNetworking", "~> 3.0"
-    ss.dependency           "AppComponents/App"
   end
 
   s.subspec "UIKit" do |ss|
