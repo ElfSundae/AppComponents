@@ -11,8 +11,10 @@
 		E746B4AE1CABCA8D00EC634B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E746B4AD1CABCA8D00EC634B /* Launch Screen.storyboard */; };
 		E78834D31C51D55E00F67C63 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = E78834D21C51D55E00F67C63 /* App.m */; };
 		E78834D61C51D61A00F67C63 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78834D51C51D61A00F67C63 /* RootViewController.m */; };
-		E79EFCEE1CAE77E9004A468D /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFCED1CAE77E9004A468D /* ApiClient.m */; };
 		E79EFCF11CAE8FF8004A468D /* GithubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFCF01CAE8FF8004A468D /* GithubClient.m */; };
+		E79EFD591CB059AB004A468D /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFD541CB059AB004A468D /* ApiClient.m */; };
+		E79EFD5A1CB059AB004A468D /* ESApp+VendorServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFD561CB059AB004A468D /* ESApp+VendorServices.m */; };
+		E79EFD5B1CB059AB004A468D /* VerifyPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFD581CB059AB004A468D /* VerifyPhoneViewController.m */; };
 		E7A38B531C4DC81200972B01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A38B521C4DC81200972B01 /* main.m */; };
 		E7A38B5E1C4DC81200972B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A38B5D1C4DC81200972B01 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -26,10 +28,14 @@
 		E78834D21C51D55E00F67C63 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		E78834D41C51D61A00F67C63 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		E78834D51C51D61A00F67C63 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		E79EFCEC1CAE77E9004A468D /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClient.h; sourceTree = "<group>"; };
-		E79EFCED1CAE77E9004A468D /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClient.m; sourceTree = "<group>"; };
 		E79EFCEF1CAE8FF8004A468D /* GithubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubClient.h; sourceTree = "<group>"; };
 		E79EFCF01CAE8FF8004A468D /* GithubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubClient.m; sourceTree = "<group>"; };
+		E79EFD531CB059AB004A468D /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClient.h; sourceTree = "<group>"; };
+		E79EFD541CB059AB004A468D /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClient.m; sourceTree = "<group>"; };
+		E79EFD551CB059AB004A468D /* ESApp+VendorServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+VendorServices.h"; sourceTree = "<group>"; };
+		E79EFD561CB059AB004A468D /* ESApp+VendorServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+VendorServices.m"; sourceTree = "<group>"; };
+		E79EFD571CB059AB004A468D /* VerifyPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyPhoneViewController.h; sourceTree = "<group>"; };
+		E79EFD581CB059AB004A468D /* VerifyPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyPhoneViewController.m; sourceTree = "<group>"; };
 		E7A38B4E1C4DC81200972B01 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A38B521C4DC81200972B01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E7A38B5D1C4DC81200972B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,19 +63,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E79EFCEB1CAE77AF004A468D /* Reusable */ = {
+		E79EFD521CB059AB004A468D /* AppComponentsReusable */ = {
 			isa = PBXGroup;
 			children = (
-				E79EFCEC1CAE77E9004A468D /* ApiClient.h */,
-				E79EFCED1CAE77E9004A468D /* ApiClient.m */,
+				E79EFD551CB059AB004A468D /* ESApp+VendorServices.h */,
+				E79EFD561CB059AB004A468D /* ESApp+VendorServices.m */,
+				E79EFD531CB059AB004A468D /* ApiClient.h */,
+				E79EFD541CB059AB004A468D /* ApiClient.m */,
+				E79EFD571CB059AB004A468D /* VerifyPhoneViewController.h */,
+				E79EFD581CB059AB004A468D /* VerifyPhoneViewController.m */,
 			);
-			path = Reusable;
+			name = AppComponentsReusable;
+			path = ../AppComponentsReusable;
 			sourceTree = "<group>";
 		};
 		E7A38B451C4DC81200972B01 = {
 			isa = PBXGroup;
 			children = (
-				E79EFCEB1CAE77AF004A468D /* Reusable */,
+				E79EFD521CB059AB004A468D /* AppComponentsReusable */,
 				E7A38B501C4DC81200972B01 /* Sample */,
 				E7A38B4F1C4DC81200972B01 /* Products */,
 				E9CF31F3FED7EC15828826DA /* Pods */,
@@ -248,9 +259,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78834D31C51D55E00F67C63 /* App.m in Sources */,
+				E79EFD5A1CB059AB004A468D /* ESApp+VendorServices.m in Sources */,
 				E7A38B531C4DC81200972B01 /* main.m in Sources */,
-				E79EFCEE1CAE77E9004A468D /* ApiClient.m in Sources */,
 				E79EFCF11CAE8FF8004A468D /* GithubClient.m in Sources */,
+				E79EFD5B1CB059AB004A468D /* VerifyPhoneViewController.m in Sources */,
+				E79EFD591CB059AB004A468D /* ApiClient.m in Sources */,
 				E78834D61C51D61A00F67C63 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

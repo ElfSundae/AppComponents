@@ -14,3 +14,4 @@
 #import <AppComponents/ACAdViewManager.h>
 #import <AppComponents/ACAdBannerView.h>
 #import <AppComponents/ACAppUpdater.h>
+#import <AppComponents/ESApp+ACImageViewController.h>

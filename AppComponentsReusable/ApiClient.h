@@ -9,8 +9,6 @@
 #import <AppComponents/AppComponentsNetworking.h>
 #import <ESFramework/ESFrameworkCore.h>
 
-#define kApiClientApiTokenEncryptionKey         @"" // Your secret password for encrypting Api Token.
-
 #define kApiClientResponseCodeKey               @"code"
 #define kApiClientResponseMessageKey            @"msg"
 #define kApiClientResponseErrorsKey             @"errors"

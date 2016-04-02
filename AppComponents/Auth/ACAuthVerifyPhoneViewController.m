@@ -6,7 +6,7 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ACAuthVerifyPhoneViewController+Internal.h"
+#import "ACAuthVerifyPhoneViewController.h"
 #import <objc/message.h>
 #import <IconFontsKit/IFFontAwesome.h>
 

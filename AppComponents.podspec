@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "AppComponents"
-  s.version           = "1.0.7"
+  s.version           = "1.0.8"
   s.license           = "MIT"
   s.summary           = "Components for iOS development."
   s.homepage          = "https://github.com/ElfSundae/AppComponents"
@@ -30,6 +30,7 @@ Pod::Spec.new do |s|
     ss.source_files         = "AppComponents/App/**/*.{h,m}"
     ss.dependency           "AppComponents/Core"
     ss.dependency           "MBProgressHUD"
+    ss.dependency           "JTSImageViewController"
     ss.resource             = "AppComponents/App/AppComponentsApp.bundle"
   end
 
@@ -46,43 +47,8 @@ Pod::Spec.new do |s|
   s.subspec "Auth" do |ss|
     ss.source_files         = "AppComponents/Auth/**/*.{h,m}"
     ss.dependency           "AppComponents/App"
-    ss.dependency           "AppComponents/VendorServices/MobSMS"
     ss.dependency           "ESFramework/UIKit"
     ss.dependency           "IconFontsKit/FontAwesome"
   end
 
-  s.subspec "VendorServices" do |ss|
-    ss.source_files         = "AppComponents/VendorServices/*.{h,m}"
-
-    ss.subspec "UmengAnalytics" do |sss|
-      sss.source_files      = "AppComponents/VendorServices/UmengAnalytics/**/*.{h,m}"
-      sss.dependency        "APIService-UmengAnalytics"
-      sss.dependency        "ESFramework/Core"
-    end
-
-    ss.subspec "TalkingDataAnalytics" do |sss|
-      sss.source_files      = "AppComponents/VendorServices/TalkingDataAnalytics/**/*.{h,m}"
-      sss.dependency        "APIService-TalkingData"
-      sss.dependency        "ESFramework/Core"
-    end
-
-    ss.subspec "XGPush" do |sss|
-      sss.source_files      = "AppComponents/VendorServices/XGPush/**/*.{h,m}"
-      sss.dependency        "APIService-XGPush"
-      sss.dependency        "AppComponents/App"
-    end
-
-    ss.subspec "MobSMS" do |sss|
-      sss.source_files      = "AppComponents/VendorServices/MobSMS/**/*.{h,m}"
-      sss.dependency        "MOBFoundation_IDFA"
-      sss.dependency        "SMSSDK"
-      sss.dependency        "ESFramework/Core"
-    end
-
-    ss.subspec "ImageViewController" do |sss|
-      sss.source_files      = "AppComponents/VendorServices/ImageViewController/**/*.{h,m}"
-      sss.dependency        "JTSImageViewController"
-      sss.dependency        "AppComponents/App"
-    end
-  end # VendorServices
 end

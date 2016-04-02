@@ -6,7 +6,10 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ACAuthVerifyPhoneViewController+Internal.h"
+#import "ACAuthVerifyPhoneViewController.h"
+
+// “发送验证码”的按钮相对于 textFiled 的 rightView 的右边距
+#define kUAVPSendCodeButtonRightMargin      20.f
 
 @implementation ACAuthVerifyPhoneViewController (Private)
 

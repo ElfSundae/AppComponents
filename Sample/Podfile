@@ -1,8 +1,15 @@
 platform :ios, '7.0'
 
-workspace "../AppComponents.xcworkspace"
+workspace '../AppComponents.xcworkspace'
 
-target "Sample" do
-    pod "AppComponents", :path => "../AppComponents.podspec"
+target 'Sample' do
+    pod 'AppComponents', :path => '../'
+    # pod 'APIService-UmengAnalytics'
+    # pod 'APIService-TalkingData'
+    # pod 'MOBFoundation_IDFA'
+    # pod 'SMSSDK'
+    # pod 'APIService-XGPush'
+    # pod 'JTSImageViewController', :git => 'https://github.com/ElfSundae/JTSImageViewController.git', :branch => 'elf-master'
+    # pod 'MBProgressHUD', :head
 end
 
