@@ -24,7 +24,7 @@
 /// 网络连接失败时的弹窗title, default is kACNetworkingLocalNetworkErrorAlertTitle
 #define kACConfigKey_ACApp_LocalNetworkErrorAlertTitle          kACConfigKey_ACApp@".LocalNetworkErrorAlertTitle"
 
-#define kACAppLocalNetworkErrorAlertTitle       @"网络连接异常"
+#define kACAppLocalNetworkErrorAlertTitle       @"网络异常，请检查网络连接"
 #define kACAppDefaultTipsTimeInterval           1.3
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
