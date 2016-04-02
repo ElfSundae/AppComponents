@@ -8,8 +8,8 @@
 
 #import "RootViewController.h"
 #import <IconFontsKit/IFFontAwesome.h>
-#import <ESFramework/ESBadgeView.h>
 #import "GithubClient.h"
+#import "VerifyPhoneViewController.h"
 
 #define kCellConfigKeyAction @"action"
 
@@ -94,28 +94,7 @@
 
 - (void)openAuthViewController
 {
-        ACAuthVerifyPhoneViewController *authController = [[ACAuthVerifyPhoneViewController alloc] initWithVerifyHandler:^(ACAuthVerifyPhoneViewController *controller, NSDictionary *data) {
-                [ESApp showProgressHUDWithTitle:nil animated:YES];
-                ESDispatchOnDefaultQueue(^{
-                        // verify phone and code
-                        [NSThread sleepForTimeInterval:2];
-                        BOOL verifyOK = ESRandomNumber(0, 1);
-                        ESDispatchOnMainThreadAsynchrony(^{
-                                [ESApp hideProgressHUD:YES];
-                                if (verifyOK) {
-                                        [[controller class] cleanUp];
-                                        [controller dismissViewControllerAnimated:YES completion:^{
-                                                [UIAlertView showWithTitle:@"Welcome" message:@"Successfully login."];
-                                        }];
-                                } else {
-                                        controller.codeTextFiled.text = nil;
-                                        [controller updateUI];
-                                }
-                                
-                        });
-                });
-        }];
-        authController.titleForNavigationBar = @"Login";
+        VerifyPhoneViewController *authController = [[VerifyPhoneViewController alloc] init];
         [authController presentAnimated:YES];
 }
 

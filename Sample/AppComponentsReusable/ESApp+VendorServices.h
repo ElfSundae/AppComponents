@@ -6,8 +6,6 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import <ESFramework/ESApp.h>
-
 #define kAppChannel_AppStore    @"App Store"
 #define kAppChannel_Debug       @"Debug"
 #define kAppChannel_AdHoc       @"Ad Hoc"
@@ -21,13 +19,19 @@
 
 #define kAppStoreID                     @""
 #define kApiClientBaseURL               @""
+// Your secret password for encrypting Api Token.
+#define kApiClientApiTokenEncryptionKey @""
 
-#define kUmengAppKey            @""
-#define kTalkingDataAppKey      @""
-#define kMobSMSAppKey           @""
-#define kMobSMSAppSecret        @""
-#define kXGPushAppID            0
-#define kXGPushAppKey           @"IX5AU523XG2S"
+//#define kUmengAppKey            @""
+//#define kTalkingDataAppKey      @""
+//#define kMobSMSAppKey           @""
+//#define kMobSMSAppSecret        @""
+//#define kMobSMSSignature        nil
+//#define kXGPushAppID            0
+//#define kXGPushAppKey           @""
+
+
+#import <ESFramework/ESApp.h>
 
 @interface ESApp (VendorServices)
 

@@ -7,6 +7,7 @@
 //
 
 #import "ESApp+VendorServices.h"
+#import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 
 // 友盟统计：http://www.umeng.com/
 // pod 'APIService-UmengAnalytics'
@@ -39,6 +40,8 @@
 
 - (void)setupVendorServices
 {
+        [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+        
 #ifdef kUmengAppKey
         [MobClick setAppVersion:[self.class appVersionWithBuildVersion]];
         [MobClick setLogSendInterval:120];

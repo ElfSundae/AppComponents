@@ -8,6 +8,7 @@
 
 #import "ApiClient.h"
 #import <AppComponents/AppComponentsApp.h>
+#import "ESApp+VendorServices.h"
 
 @implementation ApiClient
 
@@ -15,7 +16,7 @@ ES_SINGLETON_IMP_AS(client, __defaultClient);
 
 - (instancetype)init
 {
-        return [self initWithBaseURL:nil timeoutIntervalForRequest:45. maxConcurrentRequestCount:3];
+        return [self initWithBaseURL:[NSURL URLWithString:kApiClientBaseURL] timeoutIntervalForRequest:45. maxConcurrentRequestCount:3];
 }
 
 - (instancetype)initWithBaseURL:(NSURL *)url timeoutIntervalForRequest:(NSTimeInterval)timeoutIntervalForRequest maxConcurrentRequestCount:(NSInteger)maxConcurrentRequestCount
