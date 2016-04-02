@@ -62,7 +62,7 @@
         
 #if defined(kXGPushAppID) && defined(kXGPushAppKey)
         [[XGSetting getInstance] setChannel:self.appChannel];
-        [XGPush startApp:ESUIntValue(kXGPushAppID) appKey:kXGPushAppKey];
+        [XGPush startApp:kXGPushAppID appKey:kXGPushAppKey];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ESAppDidReceiveRemoteNotificationNotification_XGPushHandler:) name:ESAppDidReceiveRemoteNotificationNotification object:nil];
 #endif
 }
