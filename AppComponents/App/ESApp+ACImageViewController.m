@@ -10,6 +10,41 @@
 #import <ESFramework/ESFrameworkCore.h>
 #import <AppComponents/ESApp+ACHelper.h>
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - JTSImageInfo (ACAdditions)
+
+ESDefineAssociatedObjectKey(canSaveToPhotoLibrary);
+ESDefineAssociatedObjectKey(canCopy);
+
+@implementation JTSImageInfo (ACAdditions)
+
+- (BOOL)canSaveToPhotoLibrary
+{
+        return [self es_getAssociatedBooleanWithKey:canSaveToPhotoLibraryKey defaultValue:YES];
+}
+
+- (void)setCanSaveToPhotoLibrary:(BOOL)can
+{
+        [self es_setAssociatedBooleanWithKey:canSaveToPhotoLibraryKey value:can];
+}
+
+- (BOOL)canCopy
+{
+        return [self es_getAssociatedBooleanWithKey:canCopyKey defaultValue:NO];
+}
+
+- (void)setCanCopy:(BOOL)can
+{
+        [self es_setAssociatedBooleanWithKey:canCopyKey value:can];
+}
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ESApp (ACImageViewController)
+
 ESDefineAssociatedObjectKey(imageViewControler);
 ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
 
@@ -137,7 +172,7 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Delegate
+#pragma mark - JTSImageViewController Delegate
 
 - (void)imageViewerDidDismiss:(JTSImageViewController *)imageViewer
 {

@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.0.4):
-    - AFNetworking/NSURLSession (= 3.0.4)
-    - AFNetworking/Reachability (= 3.0.4)
-    - AFNetworking/Security (= 3.0.4)
-    - AFNetworking/Serialization (= 3.0.4)
-    - AFNetworking/UIKit (= 3.0.4)
-  - AFNetworking/NSURLSession (3.0.4):
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.0.4)
-  - AFNetworking/Security (3.0.4)
-  - AFNetworking/Serialization (3.0.4)
-  - AFNetworking/UIKit (3.0.4):
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - APIService-TalkingData (2.2.24)
   - APIService-UmengAnalytics (3.6.6)
@@ -23,13 +23,12 @@ PODS:
     - AppComponents/Core (= 1.0.7)
     - AppComponents/Networking (= 1.0.7)
     - AppComponents/UIKit (= 1.0.7)
-    - AppComponents/VendorServices (= 1.0.7)
   - AppComponents/App (1.0.7):
     - AppComponents/Core
+    - JTSImageViewController
     - MBProgressHUD
   - AppComponents/Auth (1.0.7):
     - AppComponents/App
-    - AppComponents/VendorServices/MobSMS
     - ESFramework/UIKit
     - IconFontsKit/FontAwesome
   - AppComponents/Core (1.0.7):
@@ -44,28 +43,6 @@ PODS:
     - IconFontsKit/FontAwesome
     - SDWebImage
     - WebViewJavascriptBridge
-  - AppComponents/VendorServices (1.0.7):
-    - AppComponents/VendorServices/ImageViewController (= 1.0.7)
-    - AppComponents/VendorServices/MobSMS (= 1.0.7)
-    - AppComponents/VendorServices/TalkingDataAnalytics (= 1.0.7)
-    - AppComponents/VendorServices/UmengAnalytics (= 1.0.7)
-    - AppComponents/VendorServices/XGPush (= 1.0.7)
-  - AppComponents/VendorServices/ImageViewController (1.0.7):
-    - AppComponents/App
-    - JTSImageViewController
-  - AppComponents/VendorServices/MobSMS (1.0.7):
-    - ESFramework/Core
-    - MOBFoundation_IDFA
-    - SMSSDK
-  - AppComponents/VendorServices/TalkingDataAnalytics (1.0.7):
-    - APIService-TalkingData
-    - ESFramework/Core
-  - AppComponents/VendorServices/UmengAnalytics (1.0.7):
-    - APIService-UmengAnalytics
-    - ESFramework/Core
-  - AppComponents/VendorServices/XGPush (1.0.7):
-    - APIService-XGPush
-    - AppComponents/App
   - ESFramework/Core (2.4.7)
   - ESFramework/UIKit (2.4.7):
     - ESFramework/Core
@@ -83,18 +60,33 @@ PODS:
   - WebViewJavascriptBridge (5.0.5)
 
 DEPENDENCIES:
-  - AppComponents (from `../AppComponents.podspec`)
+  - APIService-TalkingData
+  - APIService-UmengAnalytics
+  - APIService-XGPush
+  - AppComponents (from `../`)
+  - JTSImageViewController (from `https://github.com/ElfSundae/JTSImageViewController.git`,
+    branch `elf-master`)
+  - MOBFoundation_IDFA
+  - SMSSDK
 
 EXTERNAL SOURCES:
   AppComponents:
-    :path: "../AppComponents.podspec"
+    :path: "../"
+  JTSImageViewController:
+    :branch: elf-master
+    :git: https://github.com/ElfSundae/JTSImageViewController.git
+
+CHECKOUT OPTIONS:
+  JTSImageViewController:
+    :commit: c1be09aaaed0831793583ccf8d3d86c69117046a
+    :git: https://github.com/ElfSundae/JTSImageViewController.git
 
 SPEC CHECKSUMS:
-  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   APIService-TalkingData: 82f6ca2c19e56d0e1acfc3eb8cc46367ca07f07c
   APIService-UmengAnalytics: 7702860e2b4273017b1c0be38934071af11d0e94
   APIService-XGPush: 00846176c18ed90b92fa5ed2c203cb81cf20bc97
-  AppComponents: 12edf22eadfd86f39fdf8998855e103eba547fff
+  AppComponents: 723feab78b401e14de678b92d2d1eb1f2cf29e18
   ESFramework: 544b54ba2ea96f15c2a6d1c9030f2f32122d60bc
   IconFontsKit: f0588bbacea848f49ee5dfe58c218b6d3ecb2d97
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9

@@ -11,4 +11,3 @@
 #import <AppComponents/AppComponentsNetworking.h>
 #import <AppComponents/AppComponentsUIKit.h>
 #import <AppComponents/AppComponentsAuth.h>
-#import <AppComponents/AppComponentsVendorServices.h>
