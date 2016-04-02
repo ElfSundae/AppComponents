@@ -12,7 +12,7 @@
 #import <ESFramework/UIColor+ESAdditions.h>
 #import <ESFramework/ESValue.h>
 #import <ESFramework/ESTableViewController.h>
-#import <UIImageView+WebCache.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *const ACTableViewCellConfigKeyAccessoryType               = @"accessoryType";
 NSString *const ACTableViewCellConfigKeySelectionStyle              = @"selectionStyle";
