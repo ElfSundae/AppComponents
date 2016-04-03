@@ -14,6 +14,10 @@
 FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellClass;
 /// NSString
 FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellReuseIdentifier;
+/// NSNumber with CGFloat
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellHeight;
+/// NSString with selector name, selector can optionally accept one param current selected "indexPath"
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellSelector;
 
 @interface ACTableViewController : ESTableViewController
 {
@@ -131,23 +135,37 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellReuseIdentifier;
  * 该方法仅在self.configuresCellWithTableData为YES时有效.
  */
 - (NSDictionary *)cellConfigDictionaryForIndexPath:(NSIndexPath *)indexPath;
+
 /**
  * Returns cell class via ACTableViewCellConfigKeyCellClass.
  * Default is ACTableViewDetailCell (self.configuresCellWithTableData is YES) or UITableViewCell.
  */
 - (Class)cellClassForIndexPath:(NSIndexPath *)indexPath;
+
 /** 
  * Returns cell reuse identifier via ACTableViewCellConfigKeyCellReuseIdentifier.
  * Default is `NSStringFromClass([self cellClassForIndexPath:indexPath])`.
  */
 - (NSString *)cellReuseIdentifierForIndexPath:(NSIndexPath *)indexPath;
+
 /**
  * Returns text stored in ACTableViewCellConfigKeyText.
  */
 - (NSString *)cellTitleForIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ * Returns value stored in ACTableViewCellConfigKeyCellHeight, default is 44.
+ *
+ * You can use it in your -tableView:heightForRowAtIndexPath:
+ */
+- (CGFloat)cellHeightForIndexPath:(NSIndexPath *)indexPath;
+
 // UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+// UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
+
 @end

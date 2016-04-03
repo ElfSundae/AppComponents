@@ -51,9 +51,14 @@
         return nil;
 }
 
+- (CGFloat)cellHeightForIndexPath:(NSIndexPath *)indexPath
+{
+        return ESFloatValueWithDefault([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellHeight], 44.);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - UITableViewDataSource
+#pragma mark - UITableViewDataSource & Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -87,6 +92,19 @@
                 return cell;
         }
         return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        NSString *selector = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellSelector]);
+        if (selector) {
+                ESInvokeSelector(self, NSSelectorFromString(selector), NULL, indexPath);
+        }
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+        [self tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 @end
