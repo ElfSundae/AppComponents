@@ -10,8 +10,8 @@
 #import <ESFramework/ESFrameworkUIKit.h>
 #import <AppComponents/ACTableViewCell.h>
 
-/// NSString with class name
-FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellClassName;
+/// Class or NSString with class name
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellClass;
 /// NSString
 FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellReuseIdentifier;
 
@@ -132,7 +132,7 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellReuseIdentifier;
  */
 - (NSDictionary *)cellConfigDictionaryForIndexPath:(NSIndexPath *)indexPath;
 /**
- * Returns cell class via ACTableViewCellConfigKeyCellClassName.
+ * Returns cell class via ACTableViewCellConfigKeyCellClass.
  * Default is ACTableViewDetailCell (self.configuresCellWithTableData is YES) or UITableViewCell.
  */
 - (Class)cellClassForIndexPath:(NSIndexPath *)indexPath;

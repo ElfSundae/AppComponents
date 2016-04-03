@@ -18,8 +18,14 @@
 - (Class)cellClassForIndexPath:(NSIndexPath *)indexPath
 {
         if (self.configuresCellWithTableData) {
-                NSString *className = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellClassName]);
-                return className ? NSClassFromString(className) : [ACTableViewDetailCell class];
+                id cellClass = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellClass];
+                if (cellClass && class_isMetaClass(object_getClass(cellClass))) {
+                        return (Class)cellClass;
+                } else if ([cellClass isKindOfClass:[NSString class]]) {
+                        return NSClassFromString((NSString *)cellClass);
+                } else {
+                        return [ACTableViewDetailCell class];
+                }
         }
         return [UITableViewCell class];
 }
