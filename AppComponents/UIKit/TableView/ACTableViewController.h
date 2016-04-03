@@ -141,6 +141,10 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellReuseIdentifier;
  * Default is `NSStringFromClass([self cellClassForIndexPath:indexPath])`.
  */
 - (NSString *)cellReuseIdentifierForIndexPath:(NSIndexPath *)indexPath;
+/**
+ * Returns text stored in ACTableViewCellConfigKeyText.
+ */
+- (NSString *)cellTitleForIndexPath:(NSIndexPath *)indexPath;
 
 // UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;

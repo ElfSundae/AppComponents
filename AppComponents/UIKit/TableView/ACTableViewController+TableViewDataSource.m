@@ -40,6 +40,17 @@
         return identifier ?: NSStringFromClass([self cellClassForIndexPath:indexPath]);
 }
 
+- (NSString *)cellTitleForIndexPath:(NSIndexPath *)indexPath
+{
+        NSString *title = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyText];
+        if ([title isKindOfClass:[NSAttributedString class]]) {
+                return [(NSAttributedString *)title string];
+        } else if ([title isKindOfClass:[NSString class]]) {
+                return title;
+        }
+        return nil;
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UITableViewDataSource
