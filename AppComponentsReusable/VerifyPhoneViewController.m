@@ -8,7 +8,7 @@
 
 #import "VerifyPhoneViewController.h"
 #import <AppComponents/AppComponentsApp.h>
-#import "ESApp+VendorServices.h"
+#import "VendorServices.h"
 #if defined(kMobSMSAppKey) && defined(kMobSMSAppSecret)
 #import <SMS_SDK/SMSSDK.h>
 #endif

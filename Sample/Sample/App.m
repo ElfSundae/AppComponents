@@ -7,7 +7,7 @@
 //
 
 #import "App.h"
-#import "ESApp+VendorServices.h"
+#import "VendorServices.h"
 
 @implementation App
 @dynamic rootViewController;

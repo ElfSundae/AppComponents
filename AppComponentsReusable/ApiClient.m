@@ -8,7 +8,7 @@
 
 #import "ApiClient.h"
 #import <AppComponents/AppComponentsApp.h>
-#import "ESApp+VendorServices.h"
+#import "VendorServices.h"
 
 @implementation ApiClient
 
