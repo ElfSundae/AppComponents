@@ -49,7 +49,7 @@
         
         // 开启状态栏菊花
         [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-                
+        
 #ifdef kUmengAppKey
         [MobClick setAppVersion:[self.class appVersionWithBuildVersion]];
         [MobClick setLogSendInterval:120];
