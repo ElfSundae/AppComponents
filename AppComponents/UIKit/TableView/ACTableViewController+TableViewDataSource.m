@@ -18,8 +18,14 @@
 - (Class)cellClassForIndexPath:(NSIndexPath *)indexPath
 {
         if (self.configuresCellWithTableData) {
-                NSString *className = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellClassName]);
-                return className ? NSClassFromString(className) : [ACTableViewDetailCell class];
+                id cellClass = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellClass];
+                if (cellClass && class_isMetaClass(object_getClass(cellClass))) {
+                        return (Class)cellClass;
+                } else if ([cellClass isKindOfClass:[NSString class]]) {
+                        return NSClassFromString((NSString *)cellClass);
+                } else {
+                        return [ACTableViewDetailCell class];
+                }
         }
         return [UITableViewCell class];
 }
@@ -34,9 +40,25 @@
         return identifier ?: NSStringFromClass([self cellClassForIndexPath:indexPath]);
 }
 
+- (NSString *)cellTitleForIndexPath:(NSIndexPath *)indexPath
+{
+        NSString *title = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyText];
+        if ([title isKindOfClass:[NSAttributedString class]]) {
+                return [(NSAttributedString *)title string];
+        } else if ([title isKindOfClass:[NSString class]]) {
+                return title;
+        }
+        return nil;
+}
+
+- (CGFloat)cellHeightForIndexPath:(NSIndexPath *)indexPath
+{
+        return ESFloatValueWithDefault([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellHeight], 44.);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - UITableViewDataSource
+#pragma mark - UITableViewDataSource & Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -70,6 +92,19 @@
                 return cell;
         }
         return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        NSString *selector = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellSelector]);
+        if (selector) {
+                ESInvokeSelector(self, NSSelectorFromString(selector), NULL, indexPath);
+        }
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+        [self tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 @end

@@ -13,7 +13,7 @@
 		E78834D61C51D61A00F67C63 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78834D51C51D61A00F67C63 /* RootViewController.m */; };
 		E79EFCF11CAE8FF8004A468D /* GithubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFCF01CAE8FF8004A468D /* GithubClient.m */; };
 		E79EFD591CB059AB004A468D /* ApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFD541CB059AB004A468D /* ApiClient.m */; };
-		E79EFD5A1CB059AB004A468D /* ESApp+VendorServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFD561CB059AB004A468D /* ESApp+VendorServices.m */; };
+		E79EFD5A1CB059AB004A468D /* VendorServices.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFD561CB059AB004A468D /* VendorServices.m */; };
 		E79EFD5B1CB059AB004A468D /* VerifyPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E79EFD581CB059AB004A468D /* VerifyPhoneViewController.m */; };
 		E7A38B531C4DC81200972B01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A38B521C4DC81200972B01 /* main.m */; };
 		E7A38B5E1C4DC81200972B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A38B5D1C4DC81200972B01 /* Assets.xcassets */; };
@@ -32,8 +32,8 @@
 		E79EFCF01CAE8FF8004A468D /* GithubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubClient.m; sourceTree = "<group>"; };
 		E79EFD531CB059AB004A468D /* ApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiClient.h; sourceTree = "<group>"; };
 		E79EFD541CB059AB004A468D /* ApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiClient.m; sourceTree = "<group>"; };
-		E79EFD551CB059AB004A468D /* ESApp+VendorServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+VendorServices.h"; sourceTree = "<group>"; };
-		E79EFD561CB059AB004A468D /* ESApp+VendorServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+VendorServices.m"; sourceTree = "<group>"; };
+		E79EFD551CB059AB004A468D /* VendorServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VendorServices.h; sourceTree = "<group>"; };
+		E79EFD561CB059AB004A468D /* VendorServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VendorServices.m; sourceTree = "<group>"; };
 		E79EFD571CB059AB004A468D /* VerifyPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyPhoneViewController.h; sourceTree = "<group>"; };
 		E79EFD581CB059AB004A468D /* VerifyPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyPhoneViewController.m; sourceTree = "<group>"; };
 		E7A38B4E1C4DC81200972B01 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,8 +66,8 @@
 		E79EFD521CB059AB004A468D /* AppComponentsReusable */ = {
 			isa = PBXGroup;
 			children = (
-				E79EFD551CB059AB004A468D /* ESApp+VendorServices.h */,
-				E79EFD561CB059AB004A468D /* ESApp+VendorServices.m */,
+				E79EFD551CB059AB004A468D /* VendorServices.h */,
+				E79EFD561CB059AB004A468D /* VendorServices.m */,
 				E79EFD531CB059AB004A468D /* ApiClient.h */,
 				E79EFD541CB059AB004A468D /* ApiClient.m */,
 				E79EFD571CB059AB004A468D /* VerifyPhoneViewController.h */,
@@ -259,7 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78834D31C51D55E00F67C63 /* App.m in Sources */,
-				E79EFD5A1CB059AB004A468D /* ESApp+VendorServices.m in Sources */,
+				E79EFD5A1CB059AB004A468D /* VendorServices.m in Sources */,
 				E7A38B531C4DC81200972B01 /* main.m in Sources */,
 				E79EFCF11CAE8FF8004A468D /* GithubClient.m in Sources */,
 				E79EFD5B1CB059AB004A468D /* VerifyPhoneViewController.m in Sources */,

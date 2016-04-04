@@ -1,12 +1,12 @@
 //
-//  ESApp+VendorServices.m
+//  VendorServices.m
 //  Sample
 //
 //  Created by Elf Sundae on 16/04/03.
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+VendorServices.h"
+#import "VendorServices.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 
 // 友盟统计：http://www.umeng.com/
@@ -40,6 +40,14 @@
 
 - (void)setupVendorServices
 {
+        // 配置AppComponents
+        NSDictionary *config =
+        @{ kACConfigKey_ACUDID_KeychainAccessGroup: @"B2A67GNGYE.*",
+           kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode: ESAppStoreCountryCodeChina
+           };
+        ACConfigSetDictionary(config);
+        
+        // 开启状态栏菊花
         [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
         
 #ifdef kUmengAppKey
@@ -67,13 +75,6 @@
 #endif
 }
 
-#ifdef kTalkingDataAppKey
-+ (NSString *)talkingDataDeviceID
-{
-        return [TalkingData getDeviceID];
-}
-#endif
-
 #if defined(kXGPushAppID) && defined(kXGPushAppKey)
 - (void)ESAppDidReceiveRemoteNotificationNotification_XGPushHandler:(NSNotification *)notification
 {
@@ -82,6 +83,17 @@
         } else if (notification.userInfo[ESAppRemoteNotificationKey]) {
                 [XGPush handleReceiveNotification:notification.userInfo[ESAppRemoteNotificationKey]];
         }
+}
+#endif
+
+@end
+
+@implementation UIDevice (VendorServices)
+
+#ifdef kTalkingDataAppKey
++ (NSString *)talkingDataDeviceID
+{
+        return [TalkingData getDeviceID];
 }
 #endif
 

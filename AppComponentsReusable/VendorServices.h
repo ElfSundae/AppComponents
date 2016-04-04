@@ -1,5 +1,5 @@
 //
-//  ESApp+VendorServices.h
+//  VendorServices.h
 //  Sample
 //
 //  Created by Elf Sundae on 16/04/03.
@@ -40,6 +40,10 @@
  * `-application:didFinishLaunchingWithOptions:` method.
  */
 - (void)setupVendorServices;
+
+@end
+
+@interface UIDevice (VendorServices)
 
 #ifdef kTalkingDataAppKey
 + (NSString *)talkingDataDeviceID;

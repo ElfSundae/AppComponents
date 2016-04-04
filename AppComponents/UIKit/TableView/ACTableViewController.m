@@ -8,8 +8,10 @@
 
 #import "ACTableViewController.h"
 
-NSString *const ACTableViewCellConfigKeyCellClassName = @"cellClassName";
+NSString *const ACTableViewCellConfigKeyCellClass = @"cellClass";
 NSString *const ACTableViewCellConfigKeyCellReuseIdentifier = @"cellReuseIdentifier";
+NSString *const ACTableViewCellConfigKeyCellHeight = @"cellHeight";
+NSString *const ACTableViewCellConfigKeyCellSelector = @"cellSelector";
 
 @implementation ACTableViewController
 

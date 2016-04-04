@@ -110,7 +110,8 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
 - (void)setConfigDictionary:(NSDictionary *)configDictionary
 {
         _configDictionary = configDictionary;
-        [self configureWithDictionary:_configDictionary];
+        [self configureWithDictionary:_configDictionary ?: @{}];
+        [self setNeedsLayout];
 }
 
 - (void)applyDefaults
@@ -126,8 +127,6 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
 
 - (void)configureWithDictionary:(NSDictionary *)configDictionary
 {
-        configDictionary || (configDictionary = @{});
-        
         self.accessoryType = ESIntegerValueWithDefault(configDictionary[ACTableViewCellConfigKeyAccessoryType], UITableViewCellAccessoryNone);
         self.selectionStyle = ESIntegerValueWithDefault(configDictionary[ACTableViewCellConfigKeySelectionStyle], UITableViewCellSelectionStyleDefault);
         self.leftBadgeView = [configDictionary[ACTableViewCellConfigKeyLeftBadgeView] isKindOfClass:[UIView class]] ? configDictionary[ACTableViewCellConfigKeyLeftBadgeView] : nil;
@@ -228,8 +227,6 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                 [self.detailImageView sd_cancelCurrentImageLoad];
                 self.detailImageView.image = detailImage;
         }
-        
-        [self setNeedsLayout];
 }
 
 - (void)layoutSubviews
