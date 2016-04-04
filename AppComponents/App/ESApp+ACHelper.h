@@ -11,30 +11,6 @@
 @interface ESApp (ACHelper)
 
 /**
- * Returns the shared NSDateFormatter instance with timeZone of [self appWebServerTimeZone],
- * and dateFormat of @"yyyy'-'MM'-'dd HH':'mm':'ss"
- */
-- (NSDateFormatter *)appWebServerDateFormatterWithFullStyle;
-
-/**
- * Returns the shared NSDateFormatter instance with timeZone of [self appWebServerTimeZone],
- * and dateFormat of @"yyyy'-'MM'-'dd HH':'mm"
- */
-- (NSDateFormatter *)appWebServerDateFormatterWithFullDateStyle;
-
-/**
- * Returns the shared NSDateFormatter instance with timeZone of [self appWebServerTimeZone],
- * and dateFormat of @"MM'-'dd HH':'mm"
- */
-- (NSDateFormatter *)appWebServerDateFormatterWithShortStyle;
-
-/**
- * Returns the shared NSDateFormatter instance with timeZone of [self appWebServerTimeZone],
- * and dateFormat of @"MM'-'dd HH':'mm':'ss"
- */
-- (NSDateFormatter *)appWebServerDateFormatterWithShortSecondsStyle;
-
-/**
  * Invokes UIImageWriteToSavedPhotosAlbum() and callbacks completion on the main thread after finished writing.
  */
 - (void)saveImageToPhotoLibrary:(UIImage *)image showsProgress:(BOOL)showsProgress userInfo:(id)userInfo completion:(void (^)(id userInfo, NSError *error))completion;

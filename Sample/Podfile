@@ -4,6 +4,7 @@ workspace '../AppComponents.xcworkspace'
 
 target 'Sample' do
     pod 'AppComponents', :path => '../'
+    # pod 'ESFramework', :git => 'https://github.com/ElfSundae/ESFramework.git', :branch => 'develop'
     # pod 'APIService-UmengAnalytics'
     # pod 'APIService-TalkingData'
     # pod 'MOBFoundation_IDFA'

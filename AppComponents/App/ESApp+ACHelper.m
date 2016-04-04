@@ -16,54 +16,6 @@
 
 @implementation ESApp (ACHelper)
 
-- (NSDateFormatter *)appWebServerDateFormatterWithFullStyle
-{
-        static NSDateFormatter *__appWebServerDateFormatterWithFullStyle = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __appWebServerDateFormatterWithFullStyle = [[NSDateFormatter alloc] init];
-                __appWebServerDateFormatterWithFullStyle.timeZone = self.appWebServerTimeZone;
-                __appWebServerDateFormatterWithFullStyle.dateFormat = @"yyyy'-'MM'-'dd HH':'mm':'ss";
-        });
-        return __appWebServerDateFormatterWithFullStyle;
-}
-
-- (NSDateFormatter *)appWebServerDateFormatterWithFullDateStyle
-{
-        static NSDateFormatter *__appWebServerDateFormatterWithFullDateStyle = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __appWebServerDateFormatterWithFullDateStyle = [[NSDateFormatter alloc] init];
-                __appWebServerDateFormatterWithFullDateStyle.timeZone = self.appWebServerTimeZone;
-                __appWebServerDateFormatterWithFullDateStyle.dateFormat = @"yyyy'-'MM'-'dd HH':'mm";
-        });
-        return __appWebServerDateFormatterWithFullDateStyle;
-}
-
-- (NSDateFormatter *)appWebServerDateFormatterWithShortStyle
-{
-        static NSDateFormatter *__appWebServerDateFormatterWithShortStyle = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __appWebServerDateFormatterWithShortStyle = [[NSDateFormatter alloc] init];
-                __appWebServerDateFormatterWithShortStyle.timeZone = self.appWebServerTimeZone;
-                __appWebServerDateFormatterWithShortStyle.dateFormat = @"MM'-'dd HH':'mm";
-        });
-        return __appWebServerDateFormatterWithShortStyle;
-}
-
-- (NSDateFormatter *)appWebServerDateFormatterWithShortSecondsStyle
-{
-        static NSDateFormatter *__appWebServerDateFormatterWithShortSecondsStyle = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __appWebServerDateFormatterWithShortSecondsStyle = [[NSDateFormatter alloc] init];
-                __appWebServerDateFormatterWithShortSecondsStyle.timeZone = self.appWebServerTimeZone;
-                __appWebServerDateFormatterWithShortSecondsStyle.dateFormat = @"MM'-'dd HH':'mm':'ss";
-        });
-        return __appWebServerDateFormatterWithShortSecondsStyle;
-}
-
 - (void)saveImageToPhotoLibrary:(UIImage *)image showsProgress:(BOOL)showsProgress userInfo:(id)userInfo completion:(void (^)(id userInfo, NSError *error))completion
 {
         ESDispatchOnMainThreadAsynchrony(^{
@@ -88,21 +40,22 @@
                 
                 UIImageWriteToSavedPhotosAlbum(image,
                                                self,
-                                               @selector(ac_saveImageToPhotoLibraryDidFinishHandler:error:contextInfo:),
+                                               @selector(_ac_saveImageToPhotoLibraryDidFinishHandler:error:contextInfo:),
                                                (__bridge_retained void *)context);
         });
         
 }
 
-- (void)ac_saveImageToPhotoLibraryDidFinishHandler:(UIImage *)image error:(NSError *)error contextInfo:(void *)contextInfo
+- (void)_ac_saveImageToPhotoLibraryDidFinishHandler:(UIImage *)image error:(NSError *)error contextInfo:(void *)contextInfo
 {
         NSMutableDictionary *context = (__bridge_transfer NSMutableDictionary *)contextInfo;
         void (^completion)(id, NSError *) = context[kSaveImageToPhotoLibraryCompletionKey];
         [context removeObjectForKey:kSaveImageToPhotoLibraryCompletionKey];
         
-        if (ESBoolValue(context[kSaveImageToPhotoLibraryShowsProgressKey])) {
+        if ([context[kSaveImageToPhotoLibraryShowsProgressKey] boolValue]) {
                 if (error) {
                         [self hideProgressHUD:YES];
+                        [UIAlertView showWithTitle:error.localizedDescription message:error.localizedFailureReason];
                 } else {
                         [self showCheckmarkHUDWithTitle:nil timeInterval:0.7 animated:YES];
                 }

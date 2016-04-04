@@ -40,8 +40,16 @@
 
 - (void)setupVendorServices
 {
-        [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+        // 配置AppComponents
+        NSDictionary *config =
+        @{ kACConfigKey_ACUDID_KeychainAccessGroup: @"B2A67GNGYE.*",
+           kACConfigKey_ACAppUpdater_DefaultAppStoreContryCode: ESAppStoreCountryCodeChina
+           };
+        ACConfigSetDictionary(config);
         
+        // 开启状态栏菊花
+        [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+                
 #ifdef kUmengAppKey
         [MobClick setAppVersion:[self.class appVersionWithBuildVersion]];
         [MobClick setLogSendInterval:120];
