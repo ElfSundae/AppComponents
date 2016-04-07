@@ -29,9 +29,16 @@
 //#define kMobSMSSignature        nil
 //#define kXGPushAppID            0
 //#define kXGPushAppKey           @""
-
+//#define kShareSDKAppKey         @""
+//#define kWeChatAppID            @""
+//#define kWeChatAppSecret        @""
+//#define kQQAppID                @""
+//#define kQQAppKey               @""
 
 #import <ESFramework/ESApp.h>
+#if defined(kShareSDKAppKey)
+#import <ShareSDK/ShareSDK.h>
+#endif
 
 @interface ESApp (VendorServices)
 
@@ -40,6 +47,34 @@
  * `-application:didFinishLaunchingWithOptions:` method.
  */
 - (void)setupVendorServices;
+
+#if defined(kShareSDKAppKey)
+
+/**
+ * shareData: { platforms:[1,2,3], type, title, text, icon, img, url }
+ *
+ * platforms: 要分享的平台，必须。SSDKPlatformType
+ *
+ * type支持以下几种： text, web, app.
+ * icon: NSString, NSURL, UIImage, 默认为AppIcon
+ * img: NSString, NSURL, UIImage, 目前只在邮件里起作用。如果要分享图片消息，请使用web类型。
+ *
+ * @code
+ * {
+ *      platforms: [22, 23, 37, 24, 6, 18, 19, 21],
+ *      type:  'web',
+ *      title: '这里是标题',
+ *      text:  '这里是文本',
+ *      icon:  // NSString, NSURL, UIImage, 默认为AppIcon
+ *      img:   // NSString, NSURL, UIImage
+ *      url:   // NSString, NSURL
+ *      mail_recv: 'admin@qq.com',
+ *      sms_recv:  '10086'
+ *}
+ * @endcode
+ */
+- (BOOL)showShareWithData:(NSDictionary *)shareData shareStateChanged:(void (^)(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL isEnd))shareStateChanged;
+#endif
 
 @end
 

@@ -12,5 +12,9 @@ target 'Sample' do
     # pod 'APIService-XGPush'
     # pod 'JTSImageViewController', :git => 'https://github.com/ElfSundae/JTSImageViewController.git', :branch => 'elf-master'
     # pod 'MBProgressHUD', :head
+    # pod 'ShareSDK3'
+    # pod 'ShareSDK3/ShareSDKUI'
+    # pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
+    # pod 'ShareSDK3/ShareSDKPlatforms/QQ'
 end
 
