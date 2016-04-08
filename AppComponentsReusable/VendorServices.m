@@ -55,6 +55,11 @@
 
 - (void)setupVendorServices
 {
+#define _DISPATCH_ONCE_BEGIN    static dispatch_once_t onceToken; dispatch_once(&onceToken,^{
+#define _DISPATCH_ONCE_END      });
+        
+        _DISPATCH_ONCE_BEGIN
+        
         // 配置AppComponents
         NSDictionary *config =
         @{ kACConfigKey_ACUDID_KeychainAccessGroup: @"B2A67GNGYE.*",
@@ -121,6 +126,7 @@
                  }
          }];
 #endif
+        _DISPATCH_ONCE_END
 }
 
 #if defined(kXGPushAppID) && defined(kXGPushAppKey)
