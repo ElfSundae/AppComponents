@@ -66,9 +66,7 @@ ESDefineAssociatedObjectKey(extraRequestSerializer);
 
 - (void)cancelTasksWithURL:(NSString *)URLString method:(NSString *)method
 {
-        dispatch_async(dispatch_get_main_queue(), ^{
-                [[self tasksWithURL:URLString method:method] makeObjectsPerformSelector:@selector(cancel)];
-        });
+        [[self tasksWithURL:URLString method:method] makeObjectsPerformSelector:@selector(cancel)];
 }
 
 - (void)cancelAllTasks:(BOOL)cancelPendingTasks
