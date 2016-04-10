@@ -21,8 +21,11 @@ static NSString *__sharedNewVersion = nil;
 
 + (void)setNewVersion:(NSString *)newVersion
 {
-        if (ESIsStringWithAnyText(newVersion) &&
-            (!__sharedNewVersion || ![__sharedNewVersion isEqualToString:newVersion])) {
+        newVersion = ESStringValue(newVersion);
+        if (!newVersion) {
+                return;
+        }
+        if (!__sharedNewVersion || ![__sharedNewVersion isEqualToString:newVersion]) {
                 __sharedNewVersion = newVersion;
                 [[NSNotificationCenter defaultCenter] postNotificationName:ACAppUpdaterNewVersionDidChangeNotification object:self];
         }
@@ -30,7 +33,7 @@ static NSString *__sharedNewVersion = nil;
 
 + (BOOL)newVersionExists
 {
-        return [[self newVersion] isEqualToString:[ESApp appVersion]];
+        return ![[self newVersion] isEqualToString:[ESApp appVersion]];
 }
 
 + (void)checkNewVersionWithData:(NSDictionary *)serverData alertByMinWay:(ACAppUpdateWay)minWay completion:(dispatch_block_t)completion
