@@ -147,8 +147,8 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
                 self.detailTextLabel.text = nil;
                 self.detailTextLabel.attributedText = detailText;
         } else if ([detailText isKindOfClass:[NSString class]]) {
-                self.detailTextLabel.text = detailText;
                 self.detailTextLabel.attributedText = nil;
+                self.detailTextLabel.text = detailText;
         } else {
                 self.detailTextLabel.text = nil;
                 self.detailTextLabel.attributedText = nil;
