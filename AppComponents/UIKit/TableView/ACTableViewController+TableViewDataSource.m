@@ -65,7 +65,7 @@
         if (self.configuresCellWithTableData) {
                 return self.tableData.count;
         }
-        return 0;
+        return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
