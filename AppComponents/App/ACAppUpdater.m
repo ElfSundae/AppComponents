@@ -16,16 +16,17 @@ static NSString *__sharedNewVersion = nil;
 
 + (NSString *)newVersion
 {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                __sharedNewVersion = [ESApp appVersion];
+        });
         return __sharedNewVersion;
 }
 
 + (void)setNewVersion:(NSString *)newVersion
 {
         newVersion = ESStringValue(newVersion);
-        if (!newVersion) {
-                return;
-        }
-        if (!__sharedNewVersion || ![__sharedNewVersion isEqualToString:newVersion]) {
+        if (newVersion && ![newVersion isEqualToString:[self newVersion]]) {
                 __sharedNewVersion = newVersion;
                 [[NSNotificationCenter defaultCenter] postNotificationName:ACAppUpdaterNewVersionDidChangeNotification object:self];
         }
