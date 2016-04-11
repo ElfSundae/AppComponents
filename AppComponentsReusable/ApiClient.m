@@ -115,43 +115,41 @@ ES_SINGLETON_IMP_AS(client, __defaultClient);
 
 - (void)_dataTaskWillCompleteBlockHandler:(NSURLSessionDataTask *)dataTask response:(NSURLResponse *)response responseObject:(id)responseObject error:(NSError *)error completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler
 {
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        if ([response isKindOfClass:[NSHTTPURLResponse class]] && !error) {
                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                if (!error) {
-                        [self parseResponseForApiToken:httpResponse responseObject:responseObject];
+                [self parseResponseForApiToken:httpResponse responseObject:responseObject];
+                
+                if (responseObject/* HEAD has no responseObject */ && dataTask.shouldParseResponse) {
+                        NSInteger code = 0;
+                        NSString *message = nil;
+                        NSString *errorsString = nil;
                         
-                        if (dataTask.shouldParseResponse && responseObject/* HEAD has no responseObject */) {
-                                NSInteger code = 0;
-                                NSString *message = nil;
-                                NSString *errorsString = nil;
-                                
-                                responseObject = [self parseResponseObject:responseObject code:&code message:&message errors:&errorsString];
-                                dataTask.responseCode = code;
-                                dataTask.responseMessage = message;
-                                dataTask.responseErrors = errorsString;
-                                
-                                if (ApiResponseCodeSuccess != code && !dataTask.alertFailedResponseCode) {
-                                        if (message || errorsString) {
-                                                ESDispatchOnMainThreadAsynchrony(^{
-                                                        if (dataTask.alertFailedResponseCodeUsingTips) {
-                                                                [ESApp showTips:message detail:errorsString addToView:nil timeInterval:0 animated:YES];
-                                                        } else {
-                                                                [UIAlertView showWithTitle:message message:errorsString];
-                                                        }
-                                                });
-                                        }
+                        responseObject = [self parseResponseObject:responseObject code:&code message:&message errors:&errorsString];
+                        dataTask.responseCode = code;
+                        dataTask.responseMessage = message;
+                        dataTask.responseErrors = errorsString;
+                        
+                        if (ApiResponseCodeSuccess != code && !dataTask.alertFailedResponseCode) {
+                                if (message || errorsString) {
+                                        ESDispatchOnMainThreadAsynchrony(^{
+                                                if (dataTask.alertFailedResponseCodeUsingTips) {
+                                                        [ESApp showTips:message detail:errorsString addToView:nil timeInterval:0 animated:YES];
+                                                } else {
+                                                        [UIAlertView showWithTitle:message message:errorsString];
+                                                }
+                                        });
                                 }
                         }
-                } else {
-                        if (dataTask.alertNetworkError && [error isLocalNetworkError]) {
-                                ESDispatchOnMainThreadAsynchrony(^{
-                                        if (dataTask.alertNetworkErrorUsingTips) {
-                                                [ESApp showLocalNetworkErrorTipsWithSuperview:nil];
-                                        } else {
-                                                [ESApp showLocalNetworkErrorAlertWithCompletion:nil];
-                                        }
-                                });
-                        }
+                }
+        } else if (error){
+                if (dataTask.alertNetworkError && [error isLocalNetworkError]) {
+                        ESDispatchOnMainThreadAsynchrony(^{
+                                if (dataTask.alertNetworkErrorUsingTips) {
+                                        [ESApp showLocalNetworkErrorTipsWithSuperview:nil];
+                                } else {
+                                        [ESApp showLocalNetworkErrorAlertWithCompletion:nil];
+                                }
+                        });
                 }
         }
         
