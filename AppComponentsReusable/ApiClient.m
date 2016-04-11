@@ -129,7 +129,7 @@ ES_SINGLETON_IMP_AS(client, __defaultClient);
                         dataTask.responseMessage = message;
                         dataTask.responseErrors = errorsString;
                         
-                        if (ApiResponseCodeSuccess != code && !dataTask.alertFailedResponseCode) {
+                        if (ApiResponseCodeSuccess != code && dataTask.alertFailedResponseCode) {
                                 if (message || errorsString) {
                                         ESDispatchOnMainThreadAsynchrony(^{
                                                 if (dataTask.alertFailedResponseCodeUsingTips) {
