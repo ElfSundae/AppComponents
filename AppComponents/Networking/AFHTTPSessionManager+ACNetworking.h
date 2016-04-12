@@ -27,7 +27,7 @@
 /**
  * 返回指定URLString和method的任务， 没有对应task时返回空数组。
  *
- * @param URLString 如果self.baseURL不为nil，URLString可只传路径path。
+ * @param URLString 如果self.baseURL不为nil，URLString可只传路径path。如果URLString传nil，返回符合method的所有请求。
  * @param method 如果method为nil，返回该URL上的所有请求
  */
 - (NSArray<NSURLSessionTask *> *)tasksWithURL:(NSString *)URLString method:(NSString *)method;
@@ -42,9 +42,7 @@
 
 /**
  * 取消所有网络任务。
- *
- * @param cancelPendingTasks 是否取消正在等待的task.
  */
-- (void)cancelAllTasks:(BOOL)cancelPendingTasks;
+- (void)cancelAllTasks;
 
 @end

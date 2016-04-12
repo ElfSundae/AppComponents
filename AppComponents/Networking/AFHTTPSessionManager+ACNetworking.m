@@ -52,16 +52,23 @@ ESDefineAssociatedObjectKey(extraRequestSerializer);
         NSMutableArray *result = [NSMutableArray array];
         if ([URLString isKindOfClass:[NSString class]]) {
                 NSString *fullURLString = [self fullURL:URLString].absoluteString;
-                NSArray *allTasks = self.tasks;
-                for (NSURLSessionTask *t in allTasks) {
+                for (NSURLSessionTask *t in self.tasks) {
                         if ([t.originalRequest.URL.absoluteString isEqualToString:fullURLString]) {
                                 if (!method || [method isEqualToString:t.originalRequest.HTTPMethod]) {
                                         [result addObject:t];
                                 }
                         }
                 }
+        } else if (method) {
+                for (NSURLSessionTask *t in self.tasks) {
+                        if ([method isEqualToString:t.originalRequest.HTTPMethod]) {
+                                [result addObject:t];
+                        }
+                }
+        } else {
+                return self.tasks;
         }
-        return result;
+        return [result copy];
 }
 
 - (void)cancelTasksWithURL:(NSString *)URLString method:(NSString *)method
@@ -69,9 +76,9 @@ ESDefineAssociatedObjectKey(extraRequestSerializer);
         [[self tasksWithURL:URLString method:method] makeObjectsPerformSelector:@selector(cancel)];
 }
 
-- (void)cancelAllTasks:(BOOL)cancelPendingTasks
+- (void)cancelAllTasks
 {
-        [self invalidateSessionCancelingTasks:cancelPendingTasks];
+        [self.tasks makeObjectsPerformSelector:@selector(cancel)];
 }
 
 @end
