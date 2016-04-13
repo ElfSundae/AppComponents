@@ -9,7 +9,6 @@
 #import <AppComponents/ESApp+ACAlertAdditions.h>
 #import <AppComponents/ESApp+ACSettings.h>
 #import <AppComponents/ESApp+ACHelper.h>
-#import <AppComponents/ESApp+ACRemoteNotification.h>
 #import <AppComponents/NSDate+ACAppAdditions.h>
 #import <AppComponents/ACAdViewManager.h>
 #import <AppComponents/ACAdBannerView.h>
