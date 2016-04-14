@@ -7,11 +7,11 @@ target 'Sample' do
     # pod 'ESFramework', :git => 'https://github.com/ElfSundae/ESFramework.git', :branch => 'develop'
     # pod 'APIService-UmengAnalytics'
     # pod 'APIService-TalkingData'
-    # pod 'MOBFoundation_IDFA'
-    # pod 'SMSSDK'
     # pod 'APIService-XGPush'
     # pod 'JTSImageViewController', :git => 'https://github.com/ElfSundae/JTSImageViewController.git', :branch => 'elf-master'
     # pod 'MBProgressHUD', :head
+    # pod 'MOBFoundation_IDFA'
+    # pod 'SMSSDK'
     # pod 'ShareSDK3'
     # pod 'ShareSDK3/ShareSDKUI'
     # pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
