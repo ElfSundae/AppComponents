@@ -8,8 +8,7 @@ Pod::Spec.new do |s|
   s.source            = { :git => "https://github.com/ElfSundae/AppComponents.git", :tag => s.version, :submodules => true }
   s.social_media_url  = "https://twitter.com/ElfSundae"
 
-  s.platform              = :ios
-  s.ios.deployment_target = "7.0"
+  s.platform              = :ios, "7.0"
   s.requires_arc          = true
   s.source_files          = "AppComponents/AppComponents.h"
 
@@ -30,7 +29,7 @@ Pod::Spec.new do |s|
     ss.source_files         = "AppComponents/App/**/*.{h,m}"
     ss.dependency           "AppComponents/Core"
     ss.dependency           "MBProgressHUD"
-    ss.dependency           "JTSImageViewController"
+    ss.dependency           "ElfSundae-JTSImageViewController"
     ss.resource             = "AppComponents/App/AppComponentsApp.bundle"
   end
 
