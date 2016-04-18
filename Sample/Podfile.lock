@@ -22,7 +22,7 @@ PODS:
     - AppComponents/UIKit (= 1.1.2)
   - AppComponents/App (1.1.2):
     - AppComponents/Core
-    - JTSImageViewController
+    - ElfSundae-JTSImageViewController
     - MBProgressHUD
   - AppComponents/Auth (1.1.2):
     - AppComponents/App
@@ -40,13 +40,13 @@ PODS:
     - IconFontsKit/FontAwesome
     - SDWebImage
     - WebViewJavascriptBridge
-  - ESFramework/Core (2.4.10)
-  - ESFramework/UIKit (2.4.10):
+  - ElfSundae-JTSImageViewController (1.5.2)
+  - ESFramework/Core (2.4.11)
+  - ESFramework/UIKit (2.4.11):
     - ESFramework/Core
   - IconFontsKit/Core (1.2.0)
   - IconFontsKit/FontAwesome (1.2.0):
     - IconFontsKit/Core
-  - JTSImageViewController (1.5.1)
   - MBProgressHUD (0.9.2)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
@@ -63,10 +63,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AppComponents: 9fd7a0f15c4cf134bf3de514ef7ae5c4a3cc433a
-  ESFramework: 9d7d9ddfb59d4edba0d97b653ad28e942a3e9e4c
+  AppComponents: fc8f846b18137e2f66b1500f2f839bf686850bf2
+  ElfSundae-JTSImageViewController: ddac4115a595bd00463ad1b6f5d267f014c37ca9
+  ESFramework: 233004606fcb46ed9302d4cf35a57751ffcc881b
   IconFontsKit: f0588bbacea848f49ee5dfe58c218b6d3ecb2d97
-  JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432

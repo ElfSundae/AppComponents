@@ -8,7 +8,6 @@
 
 #import "ApiClient.h"
 #import <AppComponents/AppComponentsApp.h>
-#import "VendorServices.h"
 
 @implementation ApiClient
 
@@ -50,13 +49,6 @@ ES_SINGLETON_IMP_AS(client, __defaultClient);
 @end
 
 @implementation ApiClient (Subclassing)
-
-- (NSString *)generateApiToken
-{
-        NSTimeInterval timestamp = [NSDate timeIntervalSince1970] + self.timestampOffsetToServer;
-        NSString *string = [NSString stringWithFormat:@"%.0f", timestamp];
-        return [ACEncryptor sampleEncrypt:string password:kApiClientApiTokenEncryptionKey];
-}
 
 - (void)parseResponseForApiToken:(NSHTTPURLResponse *)response responseObject:(id)responseObject
 {
@@ -107,10 +99,6 @@ ES_SINGLETON_IMP_AS(client, __defaultClient);
         
         // Set CSRF Token if your API server verify it.
         // [request setCSRFTokenForHTTPHeaderField];
-        
-        if (ESIsStringWithAnyText(kApiClientApiTokenEncryptionKey)) {
-                [request setAPITokenForHTTPHeaderField:[self generateApiToken]];
-        }
 }
 
 - (void)_dataTaskWillCompleteBlockHandler:(NSURLSessionDataTask *)dataTask response:(NSURLResponse *)response responseObject:(id)responseObject error:(NSError *)error completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler
@@ -175,11 +163,6 @@ ES_SINGLETON_IMP_AS(client, __defaultClient);
                         break;
                 }
         }
-}
-
-- (void)setAPITokenForHTTPHeaderField:(NSString *)apiToken
-{
-        [self setValue:apiToken forHTTPHeaderField:kApiClientApiTokenHTTPHeaderName];
 }
 
 @end

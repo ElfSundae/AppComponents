@@ -7,7 +7,6 @@
 //
 
 #import "App.h"
-#import "VendorServices.h"
 
 @implementation App
 @dynamic rootViewController;
@@ -16,7 +15,6 @@
 {
         [super application:application didFinishLaunchingWithOptions:launchOptions];
         
-        [self setupVendorServices];
         [self setupGlobalUIAppearances];
         
         self.window.rootViewController = self.rootViewController =
@@ -24,19 +22,6 @@
         
         [self.window makeKeyAndVisible];
         return YES;
-}
-
-- (NSString *)appStoreID
-{
-        return kAppStoreID;
-}
-- (NSString *)appChannel
-{
-        return kAppChannel;
-}
-- (NSTimeZone *)appWebServerTimeZone
-{
-        return [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
 }
 
 - (void)setupGlobalUIAppearances

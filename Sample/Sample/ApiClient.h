@@ -9,6 +9,8 @@
 #import <AppComponents/AppComponentsNetworking.h>
 #import <ESFramework/ESFrameworkCore.h>
 
+#define kApiClientBaseURL                       @""
+
 #define kApiClientResponseCodeKey               @"code"
 #define kApiClientResponseMessageKey            @"msg"
 #define kApiClientResponseErrorsKey             @"errors"
@@ -69,11 +71,6 @@ typedef NS_ENUM(NSInteger, ApiResponseCode) {
 @interface ApiClient (Subclassing)
 
 /**
- * Generates API Token using kApiClientApiTokenEncryptionKey.
- */
-- (NSString *)generateApiToken;
-
-/**
  * Parses response and responseObject, gets informations that needed to generate API Token.
  */
 - (void)parseResponseForApiToken:(NSHTTPURLResponse *)response responseObject:(id)responseObject;
@@ -109,10 +106,5 @@ typedef NS_ENUM(NSInteger, ApiResponseCode) {
  * Sets CSRF token for HTTP header field.
  */
 - (void)setCSRFTokenForHTTPHeaderField;
-
-/**
- * Sets API token for HTTP header field.
- */
-- (void)setAPITokenForHTTPHeaderField:(NSString *)apiToken;
 
 @end
