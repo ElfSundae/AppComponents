@@ -21,7 +21,7 @@
         ESDispatchOnMainThreadAsynchrony(^{
                 if (![image isKindOfClass:[UIImage class]]) {
                         if (completion) {
-                                completion(userInfo, [NSError errorWithDomain:ESAppErrorDomain code:-1 description:@"image is not a kind of UIImage."]);
+                                completion(userInfo, [NSError errorWithDomain:@"com.0x123.ESAppErrorDomain" code:-1 description:@"image is not a kind of UIImage."]);
                         }
                         return;
                 }

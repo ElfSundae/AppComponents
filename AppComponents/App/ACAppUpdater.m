@@ -84,7 +84,7 @@ static NSString *__sharedNewVersion = nil;
         UIAlertView *alert = [UIAlertView alertViewWithTitle:title message:desc cancelButtonTitle:cancelTitle didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 ESStrongSelf;
                 if (buttonIndex != alertView.cancelButtonIndex) {
-                        [ESApp openURL:url];
+                        [[UIApplication sharedApplication] openURL:url];
                         if (ACAppUpdateWayForce == way) {
                                 exit(0);
                         }
