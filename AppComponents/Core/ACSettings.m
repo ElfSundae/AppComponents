@@ -90,6 +90,11 @@ NSString *const ACSettingsIdentifierKey = @"__ACSettingsIdentifier__";
         return [NSString stringWithFormat:@"%@-%@", NSStringFromClass(self), identifier ?: @"" ];
 }
 
+- (NSString *)description
+{
+        return [[super description] stringByAppendingFormat:@"\n%@", self.dictionary];
+}
+
 @end
 
 @implementation ACSettings (Subclassing)
