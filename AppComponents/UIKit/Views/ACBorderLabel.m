@@ -91,11 +91,13 @@
 {
         [super drawRect:rect];
         
-        UIBezierPath *borderPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.borderWidth/2.f, self.borderWidth/2.f)
-                                                              cornerRadius:self.borderCornerRadius];
-        borderPath.lineWidth = self.borderWidth;
-        [self.textColor setStroke];
-        [borderPath stroke];
+        if (!CGRectIsEmpty(self.bounds)) {
+                UIBezierPath *borderPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.borderWidth/2.f, self.borderWidth/2.f)
+                                                                      cornerRadius:self.borderCornerRadius];
+                borderPath.lineWidth = self.borderWidth;
+                [self.textColor setStroke];
+                [borderPath stroke];
+        }
 }
 
 @end
