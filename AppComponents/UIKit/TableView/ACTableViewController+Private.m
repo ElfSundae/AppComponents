@@ -75,9 +75,9 @@
         [view addSubview:activityLabel];
         
         if (self.showsLoadingMoreViewTopBorder) {
-                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.width * 0.8, 0.85)];
-                line.centerX = view.width / 2;
-                line.backgroundColor = [UIColor colorWithRed:0.784 green:0.780 blue:0.8 alpha:1];
+                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.width, 1.0/3)];
+                // line.centerX = view.width / 2;
+                line.backgroundColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.80 alpha:1.0];
                 line.tag = 101;
                 [view addSubview:line];
         }
