@@ -14,27 +14,27 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - AppComponents (1.1.4):
-    - AppComponents/App (= 1.1.4)
-    - AppComponents/Auth (= 1.1.4)
-    - AppComponents/Core (= 1.1.4)
-    - AppComponents/Networking (= 1.1.4)
-    - AppComponents/UIKit (= 1.1.4)
-  - AppComponents/App (1.1.4):
+  - AppComponents (1.1.5):
+    - AppComponents/App (= 1.1.5)
+    - AppComponents/Auth (= 1.1.5)
+    - AppComponents/Core (= 1.1.5)
+    - AppComponents/Networking (= 1.1.5)
+    - AppComponents/UIKit (= 1.1.5)
+  - AppComponents/App (1.1.5):
     - AppComponents/Core
     - ElfSundae-JTSImageViewController
     - MBProgressHUD
-  - AppComponents/Auth (1.1.4):
+  - AppComponents/Auth (1.1.5):
     - AppComponents/App
     - ESFramework/UIKit
     - IconFontsKit/FontAwesome
-  - AppComponents/Core (1.1.4):
+  - AppComponents/Core (1.1.5):
     - ESFramework/Core
     - UICKeyChainStore
-  - AppComponents/Networking (1.1.4):
+  - AppComponents/Networking (1.1.5):
     - AFNetworking (~> 3.0)
     - ESFramework/Core
-  - AppComponents/UIKit (1.1.4):
+  - AppComponents/UIKit (1.1.5):
     - AppComponents/App
     - ESFramework/UIKit
     - IconFontsKit/FontAwesome
@@ -63,7 +63,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AppComponents: bd4b799419474536f50fc484d863ce4036cf179b
+  AppComponents: f3d1635c164caa2c4cc40b260b971fe32714da6f
   ElfSundae-JTSImageViewController: ddac4115a595bd00463ad1b6f5d267f014c37ca9
   ESFramework: 700a40439bcc0b296fa70ac8765b409b8157044f
   IconFontsKit: f0588bbacea848f49ee5dfe58c218b6d3ecb2d97
