@@ -7,8 +7,7 @@ Pod::Spec.new do |s|
   s.authors           = { "Tencent" => "http://xg.qq.com" }
   s.license           = { :type => "Copyright", :text => "Copyright http://xg.qq.com" }
   s.source            = { :http => "http://xg.qq.com/pigeon_v2/resource/sdk/Xg-Push-SDK-iOS-2.4.9.zip" }
-  s.platform          = :ios
-  s.ios.deployment_target = "6.0"
+  s.platform          = :ios, "6.0"
   s.frameworks        = "Security", "SystemConfiguration", "CoreTelephony", "CFNetwork"
   s.libraries         = "z", "sqlite3"
   s.source_files      = "**/XGPush.h", "**/XGSetting.h"
