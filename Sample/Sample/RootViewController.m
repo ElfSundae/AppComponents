@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import <IconFontsKit/IFFontAwesome.h>
+#import <IconFontKit/IFFontAwesome.h>
 #import "GithubClient.h"
 #import "VerifyPhoneViewController.h"
 

@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
     ss.dependency           "AppComponents/App"
     ss.dependency           "ESFramework/UIKit"
     ss.dependency           "SDWebImage"
-    ss.dependency           "IconFontsKit/FontAwesome"
+    ss.dependency           "IconFontKit/FontAwesome"
     ss.dependency           "WebViewJavascriptBridge"
   end
 
@@ -47,7 +47,7 @@ Pod::Spec.new do |s|
     ss.source_files         = "AppComponents/Auth/**/*.{h,m}"
     ss.dependency           "AppComponents/App"
     ss.dependency           "ESFramework/UIKit"
-    ss.dependency           "IconFontsKit/FontAwesome"
+    ss.dependency           "IconFontKit/FontAwesome"
   end
 
 end

@@ -9,7 +9,7 @@
 #import "ACFeedbackViewController.h"
 #import <ESFramework/ESApp.h>
 #import <AppComponents/AppComponentsApp.h>
-#import <IconFontsKit/IFFontAwesome.h>
+#import <IconFontKit/IFFontAwesome.h>
 
 @implementation ACFeedbackViewController
 

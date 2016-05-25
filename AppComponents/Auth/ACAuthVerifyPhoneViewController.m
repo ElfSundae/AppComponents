@@ -8,7 +8,7 @@
 
 #import "ACAuthVerifyPhoneViewController.h"
 #import <objc/message.h>
-#import <IconFontsKit/IFFontAwesome.h>
+#import <IconFontKit/IFFontAwesome.h>
 
 static NSString *__gPhoneNumberRegexPattern = @"^1\\d{10}$";
 static NSString *__gVerifyPhoneSharedPhoneZone = nil;
