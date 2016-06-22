@@ -11,12 +11,13 @@ Pod::Spec.new do |s|
     :type => "Copyright",
     :text => "Copyright http://push.baidu.com"
   }
-  s.platform          = :ios, "5.1"
   s.source            = {
     :http => "http://boscdn.bpc.baidu.com/channelpush/sdk/BPush-SDK-iOS-1.4.5.zip"
   }
+  s.platform          = :ios, "5.1"
   s.frameworks        = "SystemConfiguration", "CoreTelephony"
   s.libraries         = "z"
+
   s.default_subspec   = "IDFA"
   s.subspec "IDFA" do |ss|
     ss.frameworks             = "AdSupport"
