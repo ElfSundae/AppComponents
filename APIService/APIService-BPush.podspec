@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "APIService-BPush"
-  s.version           = "1.4.4"
+  s.version           = "1.4.5"
   s.summary           = "Baidu push SDK. http://push.baidu.com"
   s.homepage          = "https://github.com/ElfSundae/AppComponents"
   s.documentation_url = "http://push.baidu.com/doc/ios/api"
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   }
   s.platform          = :ios, "5.1"
   s.source            = {
-    :http => "http://boscdn.bpc.baidu.com/channelpush/BPush-SDK-iOS-1.4.4.zip"
+    :http => "http://boscdn.bpc.baidu.com/channelpush/sdk/BPush-SDK-iOS-1.4.5.zip"
   }
   s.frameworks        = "SystemConfiguration", "CoreTelephony"
   s.libraries         = "z"
