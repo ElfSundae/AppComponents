@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "APIService-WeChatSDK"
-  s.version           = "1.7.1"
+  s.version           = "1.7.2"
   s.summary           = "Wechat SDK. https://open.weixin.qq.com"
   s.homepage          = "https://github.com/ElfSundae/AppComponents"
   s.documentation_url = "https://open.weixin.qq.com"
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
     :text => "Copyright http://open.weixin.qq.com"
   }
   s.source            = {
-    :http => "https://res.wx.qq.com/open/zh_CN/htmledition/res/dev/download/sdk/WeChatSDK1.7.1.zip"
+    :http => "https://res.wx.qq.com/open/zh_CN/htmledition/res/dev/download/sdk/WeChatSDK1.7.2.zip"
   }
   s.platform          = :ios, "6.0"
   s.frameworks        = "SystemConfiguration", "CoreTelephony"
