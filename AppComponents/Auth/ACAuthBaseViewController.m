@@ -33,6 +33,12 @@
         }
 }
 
+- (void)setTitleForNavigationBar:(NSString *)titleForNavigationBar
+{
+        _titleForNavigationBar = titleForNavigationBar;
+        self.navigationItem.title = titleForNavigationBar;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
         [super viewWillAppear:animated];
