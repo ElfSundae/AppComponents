@@ -21,9 +21,9 @@
 
 /// Determines whether to parse received response data, YES by default.
 @property (nonatomic) BOOL shouldParseResponse;
-/// Determines whether to alert responseMessage and responseErrors when response code is not success, YES by default.
+/// Determines whether to alert responseMessage when response code is not success, YES by default.
 @property (nonatomic) BOOL alertFailedResponseCode;
-/// Indicates using UIAlertView or -[ESApp showTips:] to alert responseMessage and responseErrors, NO by default.
+/// Indicates using UIAlertView or -[ESApp showTips:] to alert responseMessage, NO by default.
 @property (nonatomic) BOOL alertFailedResponseCodeUsingTips;
 /// Determines whether to alert local network error, YES by default.
 @property (nonatomic) BOOL alertNetworkError;
@@ -43,10 +43,5 @@
  * Returns response message parsed from response data.
  */
 @property (nonatomic, copy) NSString *responseMessage;
-
-/**
- * Returns response errors parsed from response data.
- */
-@property (nonatomic, copy) NSString *responseErrors;
 
 @end

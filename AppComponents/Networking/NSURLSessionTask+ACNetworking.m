@@ -16,7 +16,6 @@ ESDefineAssociatedObjectKey(alertNetworkError);
 ESDefineAssociatedObjectKey(alertNetworkErrorUsingTips);
 ESDefineAssociatedObjectKey(responseCode);
 ESDefineAssociatedObjectKey(responseMessage);
-ESDefineAssociatedObjectKey(responseErrors);
 
 @implementation NSURLSessionTask (ACNetworking)
 
@@ -36,7 +35,6 @@ ESDefineAssociatedObjectKey(responseErrors);
                 task.alertNetworkErrorUsingTips = self.alertNetworkErrorUsingTips;
                 task.responseCode = self.responseCode;
                 task.responseMessage = [self.responseMessage copyWithZone:zone];
-                task.responseErrors = [self.responseErrors copyWithZone:zone];
         }
         return task;
 }
@@ -109,16 +107,6 @@ ESDefineAssociatedObjectKey(responseErrors);
 - (void)setResponseMessage:(NSString *)responseMessage
 {
         [self es_setAssociatedStringWithKey:responseMessageKey value:responseMessage];
-}
-
-- (NSString *)responseErrors
-{
-        return [self es_getAssociatedStringWithKey:responseErrorsKey defaultValue:nil];
-}
-
-- (void)setResponseErrors:(NSString *)responseErrors
-{
-        [self es_setAssociatedStringWithKey:responseErrorsKey value:responseErrors];
 }
 
 @end
