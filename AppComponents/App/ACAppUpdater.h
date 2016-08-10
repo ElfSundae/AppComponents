@@ -19,9 +19,9 @@ FOUNDATION_EXTERN NSString *const ACAppUpdaterNewVersionDidChangeNotification;
  * App更新方式： 可选，强制
  */
 typedef NS_ENUM(int, ACAppUpdateWay){
-        ACAppUpdateWayNone        = 0,
-        ACAppUpdateWayOptional    = 1,
-        ACAppUpdateWayForce       = 2
+    ACAppUpdateWayNone        = 0,
+    ACAppUpdateWayOptional    = 1,
+    ACAppUpdateWayForce       = 2
 };
 
 /*!

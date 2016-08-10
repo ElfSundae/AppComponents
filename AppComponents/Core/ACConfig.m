@@ -10,30 +10,29 @@
 
 NSMutableDictionary *ACConfig(void)
 {
-        static NSMutableDictionary *__gConfig = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __gConfig = [NSMutableDictionary dictionary];
-        });
-        return __gConfig;
+    static NSMutableDictionary *__gConfig = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __gConfig = [NSMutableDictionary dictionary];
+    });
+    return __gConfig;
 }
 
 id ACConfigGet(NSString *keyPath)
 {
-        return [ACConfig() valueForKeyPath:keyPath];
+    return [ACConfig() valueForKeyPath:keyPath];
 }
 
 BOOL ACConfigSet(NSString *keyPath, id object)
 {
-        return [ACConfig() es_setValue:object forKeyPath:keyPath];
+    return [ACConfig() es_setValue:object forKeyPath:keyPath];
 }
 
 void ACConfigSetDictionary(NSDictionary *dictionary)
 {
-        if (ESIsDictionaryWithItems(dictionary)) {
-                for (NSString *key in dictionary.allKeys) {
-                        ACConfigSet(key, dictionary[key]);
-                }
+    if (ESIsDictionaryWithItems(dictionary)) {
+        for (NSString *key in dictionary.allKeys) {
+            ACConfigSet(key, dictionary[key]);
         }
+    }
 }
-

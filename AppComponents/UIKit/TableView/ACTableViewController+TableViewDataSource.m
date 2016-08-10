@@ -12,48 +12,48 @@
 
 - (NSDictionary *)cellConfigDictionaryForIndexPath:(NSIndexPath *)indexPath
 {
-        return (self.configuresCellWithTableData ? self.tableData[indexPath.section][indexPath.row]: nil);
+    return (self.configuresCellWithTableData ? self.tableData[indexPath.section][indexPath.row] : nil);
 }
 
 - (Class)cellClassForIndexPath:(NSIndexPath *)indexPath
 {
-        if (self.configuresCellWithTableData) {
-                id cellClass = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellClass];
-                if (cellClass && class_isMetaClass(object_getClass(cellClass))) {
-                        return (Class)cellClass;
-                } else if ([cellClass isKindOfClass:[NSString class]]) {
-                        return NSClassFromString((NSString *)cellClass);
-                } else {
-                        return [ACTableViewDetailCell class];
-                }
+    if (self.configuresCellWithTableData) {
+        id cellClass = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellClass];
+        if (cellClass && class_isMetaClass(object_getClass(cellClass))) {
+            return (Class)cellClass;
+        } else if ([cellClass isKindOfClass:[NSString class]]) {
+            return NSClassFromString((NSString *)cellClass);
+        } else {
+            return [ACTableViewDetailCell class];
         }
-        return [UITableViewCell class];
+    }
+    return [UITableViewCell class];
 }
 
 - (NSString *)cellReuseIdentifierForIndexPath:(NSIndexPath *)indexPath
 {
-        NSString *identifier = nil;
-        if (self.configuresCellWithTableData) {
-                identifier = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellReuseIdentifier]);
-                
-        }
-        return identifier ?: NSStringFromClass([self cellClassForIndexPath:indexPath]);
+    NSString *identifier = nil;
+    if (self.configuresCellWithTableData) {
+        identifier = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellReuseIdentifier]);
+
+    }
+    return identifier ?: NSStringFromClass([self cellClassForIndexPath:indexPath]);
 }
 
 - (NSString *)cellTitleForIndexPath:(NSIndexPath *)indexPath
 {
-        NSString *title = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyText];
-        if ([title isKindOfClass:[NSAttributedString class]]) {
-                return [(NSAttributedString *)title string];
-        } else if ([title isKindOfClass:[NSString class]]) {
-                return title;
-        }
-        return nil;
+    NSString *title = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyText];
+    if ([title isKindOfClass:[NSAttributedString class]]) {
+        return [(NSAttributedString *) title string];
+    } else if ([title isKindOfClass:[NSString class]]) {
+        return title;
+    }
+    return nil;
 }
 
 - (CGFloat)cellHeightForIndexPath:(NSIndexPath *)indexPath
 {
-        return ESFloatValueWithDefault([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellHeight], 44.);
+    return ESFloatValueWithDefault([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellHeight], 44.);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,49 +62,49 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-        if (self.configuresCellWithTableData) {
-                return self.tableData.count;
-        }
-        return 1;
+    if (self.configuresCellWithTableData) {
+        return self.tableData.count;
+    }
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        if (self.configuresCellWithTableData) {
-                return [self.tableData[section] count];
-        }
-        return 0;
+    if (self.configuresCellWithTableData) {
+        return [self.tableData[section] count];
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        if (self.configuresCellWithTableData) {
-                NSString *identifier = [self cellReuseIdentifierForIndexPath:indexPath];
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-                if (!cell) {
-                        Class cellClass = [self cellClassForIndexPath:indexPath];
-                        cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-                }
-                if ([cell isKindOfClass:[ACTableViewCell class]]) {
-                        ACTableViewCell *acCell = (ACTableViewCell *)cell;
-                        acCell.configDictionary = [self cellConfigDictionaryForIndexPath:indexPath];
-                }
-                return cell;
+    if (self.configuresCellWithTableData) {
+        NSString *identifier = [self cellReuseIdentifierForIndexPath:indexPath];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            Class cellClass = [self cellClassForIndexPath:indexPath];
+            cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
-        return nil;
+        if ([cell isKindOfClass:[ACTableViewCell class]]) {
+            ACTableViewCell *acCell = (ACTableViewCell *)cell;
+            acCell.configDictionary = [self cellConfigDictionaryForIndexPath:indexPath];
+        }
+        return cell;
+    }
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        NSString *selector = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellSelector]);
-        if (selector) {
-                ESInvokeSelector(self, NSSelectorFromString(selector), NULL, indexPath);
-        }
+    NSString *selector = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellSelector]);
+    if (selector) {
+        ESInvokeSelector(self, NSSelectorFromString(selector), NULL, indexPath);
+    }
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-        [self tableView:tableView didSelectRowAtIndexPath:indexPath];
+    [self tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 @end

@@ -11,16 +11,16 @@
 
 @interface ACWebViewController ()
 {
-        /// viewAppear时是否需要加载
-        BOOL _shouldLoadOnViewAppeared;
-        /// 在viewDidLoad中加载本地网页（file:///....) 默认值为YES
-        BOOL _loadLocalFileURLOnViewDidLoad;
-        
-        BOOL _storedAFNetworkActivityIndicatorManagerEnabled;
-        NSString *_storedUserAgent;
+    /// viewAppear时是否需要加载
+    BOOL _shouldLoadOnViewAppeared;
+    /// 在viewDidLoad中加载本地网页（file:///....) 默认值为YES
+    BOOL _loadLocalFileURLOnViewDidLoad;
+
+    BOOL _storedAFNetworkActivityIndicatorManagerEnabled;
+    NSString *_storedUserAgent;
 }
 
-@property (nonatomic, getter=isLoading) BOOL loading;
+@property (nonatomic, getter = isLoading) BOOL loading;
 
 @end
 

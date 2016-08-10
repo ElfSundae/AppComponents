@@ -13,7 +13,7 @@
 /**
  * The `dataTaskWillCompleteBlock` will be invoked before original `completionHandler` which you
  * supplied to `-[AFURLSessionManager dataTaskWithRequest: ...]`,
- * `-[AFURLSessionManager uploadTaskWithRequest: ...]` or `AFHTTPSessionManager`'s `GET`, `POST`, 
+ * `-[AFURLSessionManager uploadTaskWithRequest: ...]` or `AFHTTPSessionManager`'s `GET`, `POST`,
  * `PUT` methods. It will be applied to all `NSURLSessionDataTask`s and `NSURLSessionUploadTask`s that
  * managed by this session manager.
  *

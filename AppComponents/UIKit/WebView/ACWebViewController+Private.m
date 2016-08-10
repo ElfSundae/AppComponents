@@ -15,32 +15,32 @@
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-        Class AFNetworkActivityIndicatorManagerClass = NSClassFromString(@"AFNetworkActivityIndicatorManager");
-        return [AFNetworkActivityIndicatorManagerClass performSelector:@selector(sharedManager)];
+    Class AFNetworkActivityIndicatorManagerClass = NSClassFromString(@"AFNetworkActivityIndicatorManager");
+    return [AFNetworkActivityIndicatorManagerClass performSelector:@selector(sharedManager)];
 #pragma clang diagnostic pop
 }
 
 - (BOOL)_getAFNetworkActivityIndicatorManagerEnabled
 {
-        BOOL enabled = NO;
-        ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(isEnabled), &enabled);
-        return enabled;
+    BOOL enabled = NO;
+    ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(isEnabled), &enabled);
+    return enabled;
 }
 
 - (void)_setAFNetworkActivityIndicatorManagerEnabled:(BOOL)enabled
 {
-        ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(setEnabled:), NULL, enabled);
+    ESInvokeSelector([self _AFNetworkActivityIndicatorSharedManager], @selector(setEnabled:), NULL, enabled);
 }
 
 - (void)_setNetworkActivityIndicatorVisible:(BOOL)visible
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-        if (visible) {
-                [[self _AFNetworkActivityIndicatorSharedManager] performSelector:@selector(incrementActivityCount)];
-        } else {
-                [[self _AFNetworkActivityIndicatorSharedManager] performSelector:@selector(decrementActivityCount)];
-        }
+    if (visible) {
+        [[self _AFNetworkActivityIndicatorSharedManager] performSelector:@selector(incrementActivityCount)];
+    } else {
+        [[self _AFNetworkActivityIndicatorSharedManager] performSelector:@selector(decrementActivityCount)];
+    }
 #pragma clang diagnostic pop
 }
 

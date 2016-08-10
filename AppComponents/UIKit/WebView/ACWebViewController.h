@@ -35,16 +35,16 @@
 
 @interface ACWebViewController : UIViewController <UIWebViewDelegate, ACWebViewControllerDelegate>
 
-///=============================================
+/// =============================================
 /// @name Initializer
-///=============================================
+/// =============================================
 
 - (instancetype)initWithURL:(NSURL *)URL;
 - (instancetype)initWithURL:(NSURL *)URL title:(NSString *)title;
 
-///=============================================
+/// =============================================
 /// @name WebView Loading
-///=============================================
+/// =============================================
 
 - (void)loadURL:(NSURL *)URL;
 - (void)stopLoading;
@@ -55,15 +55,15 @@
 /**
  * Indicates webView loading state.
  */
-@property (nonatomic, getter=isLoading, readonly) BOOL loading;
+@property (nonatomic, getter = isLoading, readonly) BOOL loading;
 /**
  * Indicates the coming loading is the first loading.
  */
-@property (nonatomic, readonly, getter=isFirstLoading) BOOL firstLoading;
+@property (nonatomic, readonly, getter = isFirstLoading) BOOL firstLoading;
 
-///=============================================
+/// =============================================
 /// @name Configurations
-///=============================================
+/// =============================================
 
 /// Default is [ESApp sharedApp].userAgentForWebView, set to nil to use the system default user agent for UIWebView.
 /// @warning It can only be set before the first loading.
@@ -72,15 +72,15 @@
 @property (nonatomic, copy) NSString *customScheme;
 /// Default is YES, uses `SKStoreProductViewController` to open iTunes links like https//itunes.apple.com/xx/idxxxx
 /// @warning It can only be set before the first loading.
-@property (nonatomic, getter=isInAppStoreEnabled) BOOL inAppStoreEnabled;
+@property (nonatomic, getter = isInAppStoreEnabled) BOOL inAppStoreEnabled;
 /// Default is NO.
 /// @warning It can only be set before view loaded.
-@property (nonatomic, getter=isJSBridgeEnabled) BOOL JSBridgeEnabled;
+@property (nonatomic, getter = isJSBridgeEnabled) BOOL JSBridgeEnabled;
 
 /// Default is YES. Use AFNetworkActivityIndicatorManager to show or hide network activity indicator.
-@property (nonatomic, getter=isNetworkActivityIndicatorEnabeld) BOOL networkActivityIndicatorEnabeld;
+@property (nonatomic, getter = isNetworkActivityIndicatorEnabeld) BOOL networkActivityIndicatorEnabeld;
 /// Default is NO
-@property (nonatomic, getter=isActivityOverlayEnabeld) BOOL activityOverlayEnabeld;
+@property (nonatomic, getter = isActivityOverlayEnabeld) BOOL activityOverlayEnabeld;
 /// Default is NO
 @property (nonatomic) BOOL showsErrorViewWhenLoadingFailed;
 /// Default is YES
@@ -94,9 +94,9 @@
 /// Default is YES：如果当前是因为网络错误导致的加载失败了的网页，网络正常后是否自动刷新
 @property (nonatomic) BOOL automaticallyReloadWhenNetworkBecomesReachable;
 
-///=============================================
+/// =============================================
 /// @name Properties
-///=============================================
+/// =============================================
 
 @property (nonatomic, weak) id<ACWebViewControllerDelegate> __weak delegate; // default is self
 @property (nonatomic, strong, readonly) UIWebView *webView;

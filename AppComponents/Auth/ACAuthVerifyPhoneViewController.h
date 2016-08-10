@@ -15,10 +15,10 @@
  * 验证手机号的验证码类型
  */
 typedef NS_ENUM(NSInteger, ACAuthVerifyPhoneCodeType) {
-        /// 短信验证码
-        ACAuthVerifyPhoneCodeTypeSMS = 0,
-        /// 语音验证码
-        ACAuthVerifyPhoneCodeTypePhoneCall
+    /// 短信验证码
+    ACAuthVerifyPhoneCodeTypeSMS = 0,
+    /// 语音验证码
+    ACAuthVerifyPhoneCodeTypePhoneCall
 };
 
 @interface ACAuthVerifyPhoneViewController : ACAuthBaseViewController
@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger, ACAuthVerifyPhoneCodeType) {
  * @param zone     区号
  * @param strictly 严格模式， 为NO时只检查号码位数
  */
-//+ (NSString *)validatePhoneNumber:(id)phone zone:(NSString *)zone strictly:(BOOL)strictly;
+// + (NSString *)validatePhoneNumber:(id)phone zone:(NSString *)zone strictly:(BOOL)strictly;
 
 /// 共享的属性，子类可以实现自己的共享属性.
 /// 比如修改手机号的验证，可以继承UAVerifyPhoneViewController并修改共享属性

@@ -21,25 +21,25 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellSelector;
 
 @interface ACTableViewController : ESTableViewController
 {
-        /// use it for tableView.tableFooterView
-        UIView *_loadingMoreView;
-        /// store the original tableFooterView
-        UIView *_originalTableFooterView;
-        
-        ESErrorView *_errorView;
+    /// use it for tableView.tableFooterView
+    UIView *_loadingMoreView;
+    /// store the original tableFooterView
+    UIView *_originalTableFooterView;
 
-        struct {
-                /** KVO flags */
-                unsigned int isObserveredTableViewsContentSize:1;
-                unsigned int isObserveredTableViewsContentOffset:1;
-        } _flags;
+    ESErrorView *_errorView;
+
+    struct {
+        /** KVO flags */
+        unsigned int isObserveredTableViewsContentSize : 1;
+        unsigned int isObserveredTableViewsContentOffset : 1;
+    } _flags;
 }
 
 @property (nonatomic, strong) NSMutableArray *tableData;
 
-///=============================================
+/// =============================================
 /// @name Configuration
-///=============================================
+/// =============================================
 
 /**
  * Determines whether to show the refreshControl. Default is NO.
@@ -60,12 +60,12 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellSelector;
  */
 @property (nonatomic) BOOL showsLoadingMoreViewTopBorder;
 
-///=============================================
+/// =============================================
 /// @name Data Loading
-///=============================================
+/// =============================================
 
-@property (nonatomic, getter=isRefreshingData, readonly) BOOL refreshingData;
-@property (nonatomic, getter=isLoadingMoreData, readonly) BOOL loadingMoreData;
+@property (nonatomic, getter = isRefreshingData, readonly) BOOL refreshingData;
+@property (nonatomic, getter = isLoadingMoreData, readonly) BOOL loadingMoreData;
 
 /**
  * 是否还有更多数据，用于显示或隐藏loadingMoreView
@@ -97,9 +97,9 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellSelector;
  */
 - (void)loadingMoreDataDidFinish:(id)data __attribute__((objc_requires_super));
 
-///=============================================
+/// =============================================
 /// @name ErrorView
-///=============================================
+/// =============================================
 
 - (ESErrorView *)showErrorViewWithTitle:(NSString *)title subtitle:(NSString *)subtitle image:(UIImage *)image tag:(NSInteger)tag actionButtonTitle:(NSString *)actionButtonTitle actionButtonHandle:(ESUIControlHandler)actionButtonHandler;
 - (ESErrorView *)showErrorViewForNoData:(NSString *)title;
@@ -142,7 +142,7 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellSelector;
  */
 - (Class)cellClassForIndexPath:(NSIndexPath *)indexPath;
 
-/** 
+/**
  * Returns cell reuse identifier via ACTableViewCellConfigKeyCellReuseIdentifier.
  * Default is `NSStringFromClass([self cellClassForIndexPath:indexPath])`.
  */

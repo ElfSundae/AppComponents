@@ -18,7 +18,7 @@ FOUNDATION_EXTERN NSString *ACAdBannerViewDidUpdateNotification;
 
 @interface ACAdViewManager : NSObject
 
-ES_SINGLETON_DEC(sharedManager);
+    ES_SINGLETON_DEC(sharedManager);
 
 @property (nonatomic, strong) ACAdBannerView *bannerView;
 /**

@@ -13,8 +13,8 @@
 
 - (NSDate *)dateOfHeaderField
 {
-        NSString *dateString = ESStringValue(self.allHeaderFields[@"Date"]);
-        return [NSDate dateWithRFC1123String:dateString];
+    NSString *dateString = ESStringValue(self.allHeaderFields[@"Date"]);
+    return [NSDate dateWithRFC1123String:dateString];
 }
 
 @end

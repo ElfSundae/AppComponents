@@ -15,30 +15,30 @@ NSString *const ACAppConfigIdentifier = @"AppConfig";
 
 - (ACSettings *)userSettings
 {
-        static ACSettings *__gUserSettings = nil;
-        NSString *identifier = [self userSettingsIdentifierForUserID:[self currentUserID]];
-        if (!__gUserSettings || ![__gUserSettings.identifier?:@"" isEqualToString:identifier?:@""]) {
-                __gUserSettings = [[ACSettings alloc] initWithIdentifier:identifier defaultValues:[self userSettingsDefaults]];
-        }
-        return __gUserSettings;
+    static ACSettings *__gUserSettings = nil;
+    NSString *identifier = [self userSettingsIdentifierForUserID:[self currentUserID]];
+    if (!__gUserSettings || ![__gUserSettings.identifier ?: @"" isEqualToString:identifier ?: @""]) {
+        __gUserSettings = [[ACSettings alloc] initWithIdentifier:identifier defaultValues:[self userSettingsDefaults]];
+    }
+    return __gUserSettings;
 }
 
 - (ACSettings *)appConfig
 {
-        static ACSettings *__gAppConfig = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                if ([[self class] isFreshLaunch:NULL]) {
-                        [ACSettings deleteWithIdentifier:ACAppConfigIdentifier];
-                }
-                __gAppConfig = [[ACSettings alloc] initWithIdentifier:ACAppConfigIdentifier defaultValues:[self appConfigDefaults]];
-        });
-        return __gAppConfig;
+    static ACSettings *__gAppConfig = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if ([[self class] isFreshLaunch:NULL]) {
+            [ACSettings deleteWithIdentifier:ACAppConfigIdentifier];
+        }
+        __gAppConfig = [[ACSettings alloc] initWithIdentifier:ACAppConfigIdentifier defaultValues:[self appConfigDefaults]];
+    });
+    return __gAppConfig;
 }
 
 - (NSString *)userSettingsIdentifierForUserID:(NSString *)uid
 {
-        return [NSString stringWithFormat:@"%@%@", ACAppUserSettingsIdentifierPrefix, ESIsStringWithAnyText(uid) ? uid : @""];
+    return [NSString stringWithFormat:@"%@%@", ACAppUserSettingsIdentifierPrefix, ESIsStringWithAnyText(uid) ? uid : @""];
 }
 
 @end
@@ -51,17 +51,17 @@ NSString *const ACAppConfigIdentifier = @"AppConfig";
 
 - (NSString *)currentUserID
 {
-        return nil;
+    return nil;
 }
 
 - (NSDictionary *)userSettingsDefaults
 {
-        return nil;
+    return nil;
 }
 
 - (NSDictionary *)appConfigDefaults
 {
-        return nil;
+    return nil;
 }
 
 @end

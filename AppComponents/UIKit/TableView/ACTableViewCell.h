@@ -70,10 +70,10 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellMarginRight;
  */
 @interface ACTableViewCell : UITableViewCell
 {
-        UIImageView *_iconImageView;
-        UIImageView *_detailImageView;
-        UIView *_leftBadgeView;
-        UIView *_rightBadgeView;
+    UIImageView *_iconImageView;
+    UIImageView *_detailImageView;
+    UIView *_leftBadgeView;
+    UIView *_rightBadgeView;
 }
 
 @property (nonatomic, readonly) UITableViewCellStyle cellStyle;
@@ -117,7 +117,7 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellMarginRight;
 /// default is +[ACTableViewCell defaultBorderColor]
 @property (nonatomic, strong) UIColor *detailImageViewBorderColor;
 /// Determines the detailImageView is on the mostright of contentView, defaults to NO.
-@property (nonatomic, getter=isDetailImageViewMostRight) BOOL detailImageViewMostRight;
+@property (nonatomic, getter = isDetailImageViewMostRight) BOOL detailImageViewMostRight;
 
 /// default is 5.f, contentView中各个view的padding
 @property (nonatomic) CGFloat cellPadding;

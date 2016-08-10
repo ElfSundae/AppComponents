@@ -60,7 +60,7 @@ FOUNDATION_EXTERN NSString *const ACSettingsIdentifierKey;
  * You can subclass `ACSettings` to present a different storage.
  */
 @interface ACSettings (Subclassing)
-+ (NSDictionary<NSString *,id> *)savedDictionaryForKey:(NSString *)key;
++ (NSDictionary<NSString *, id> *)savedDictionaryForKey:(NSString *)key;
 + (void)saveDictionary:(NSDictionary *)dictionary forKey:(NSString *)key;
 + (void)deleteDictionaryForKey:(NSString *)key;
 @end

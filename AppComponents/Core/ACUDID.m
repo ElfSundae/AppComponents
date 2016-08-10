@@ -28,85 +28,85 @@ static NSString *__gACUDID = nil;
 
 static NSString *_ACUDIDCachedFilePath(void)
 {
-        return ESPathForLibraryResource(@".DS_Store.acudid");
+    return ESPathForLibraryResource(@".DS_Store.acudid");
 }
 
 static BOOL _ACUDIDSaveToKeychain(NSString *UDID)
 {
-        return (ESIsStringWithAnyText(UDID) ?
-                [ACUDIDKeychainStore() setString:UDID forKey:kACUDIDKeychainKey] :
-                [ACUDIDKeychainStore() removeItemForKey:kACUDIDKeychainKey]);
+    return (ESIsStringWithAnyText(UDID) ?
+            [ACUDIDKeychainStore() setString:UDID forKey:kACUDIDKeychainKey] :
+            [ACUDIDKeychainStore() removeItemForKey:kACUDIDKeychainKey]);
 }
 
 static NSString *_ACUDIDGetFromKeychain(void)
 {
-        NSString *udid = [ACUDIDKeychainStore() stringForKey:kACUDIDKeychainKey];
-        if (ACIsUDIDValid(udid, NULL)) {
-                return udid;
-        } else {
-                _ACUDIDSaveToKeychain(nil);
-                return nil;
-        }
+    NSString *udid = [ACUDIDKeychainStore() stringForKey:kACUDIDKeychainKey];
+    if (ACIsUDIDValid(udid, NULL)) {
+        return udid;
+    } else {
+        _ACUDIDSaveToKeychain(nil);
+        return nil;
+    }
 }
 
 static BOOL _ACUDIDSaveToFile(NSString *UDID)
 {
-        NSString *filePath = _ACUDIDCachedFilePath();
-        return (ESIsStringWithAnyText(UDID) ?
-                [NSKeyedArchiver archiveRootObject:@[UDID] toFile:filePath] :
-                [[NSFileManager defaultManager] removeItemAtPath:filePath error:NULL]);
+    NSString *filePath = _ACUDIDCachedFilePath();
+    return (ESIsStringWithAnyText(UDID) ?
+            [NSKeyedArchiver archiveRootObject:@[UDID] toFile:filePath] :
+            [[NSFileManager defaultManager] removeItemAtPath:filePath error:NULL]);
 }
 
 static NSString *_ACUDIDGetFromFile(void)
 {
-        NSString *filePath = _ACUDIDCachedFilePath();
-        NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-        if (ESIsArrayWithItems(array)) {
-                NSString *udid = ESStringValue(array.firstObject);
-                if (ACIsUDIDValid(udid, NULL)) {
-                        return udid;
-                }
+    NSString *filePath = _ACUDIDCachedFilePath();
+    NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    if (ESIsArrayWithItems(array)) {
+        NSString *udid = ESStringValue(array.firstObject);
+        if (ACIsUDIDValid(udid, NULL)) {
+            return udid;
         }
-        
-        if (array) {
-                _ACUDIDSaveToFile(nil);
-        }
-        return nil;
+    }
+
+    if (array) {
+        _ACUDIDSaveToFile(nil);
+    }
+    return nil;
 }
 
 static NSString *_ACUDIDCreate(void)
 {
-        NSString *baseString = nil;
-        NSString *basedTag = nil;
-        if (!ESBoolValue(ACConfigGet(kACConfigKey_ACUDID_IDFADisabled))) {
-                baseString = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
+    NSString *baseString = nil;
+    NSString *basedTag = nil;
+    if (!ESBoolValue(ACConfigGet(kACConfigKey_ACUDID_IDFADisabled))) {
+        baseString = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
+    }
+
+    if (!ESIsStringWithAnyText(baseString)) {
+        baseString = ESUUID();
+        basedTag = kACUDIDBasedUUIDTag;
+    }
+
+    if (!ESIsStringWithAnyText(baseString)) {
+        baseString = ESRandomStringOfLength(36);
+        basedTag = kACUDIDBasedRandomTag;
+    }
+
+    const NSString *baseStringMD5 = [baseString es_md5HashString];
+
+    if (!basedTag) {
+        basedTag = [baseStringMD5 substringWithRange:NSMakeRange(15, 1)];
+        if ([basedTag isEqualToString:kACUDIDBasedUUIDTag] || [basedTag isEqualToString:kACUDIDBasedRandomTag]) {
+            basedTag = kACUDIDBasedIDFAPossibleTag;
         }
-        
-        if (!ESIsStringWithAnyText(baseString)) {
-                baseString = ESUUID();
-                basedTag = kACUDIDBasedUUIDTag;
-        }
-        
-        if (!ESIsStringWithAnyText(baseString)) {
-                baseString = ESRandomStringOfLength(36);
-                basedTag = kACUDIDBasedRandomTag;
-        }
-        
-        const NSString *baseStringMD5 = [baseString es_md5HashString];
-        
-        if (!basedTag) {
-                basedTag = [baseStringMD5 substringWithRange:NSMakeRange(15, 1)];
-                if ([basedTag isEqualToString:kACUDIDBasedUUIDTag] || [basedTag isEqualToString:kACUDIDBasedRandomTag]) {
-                        basedTag = kACUDIDBasedIDFAPossibleTag;
-                }
-        }
-        
-        NSString *resetString = [baseString stringByReplacingOccurrencesOfString:@"-" withString:@""];
-        resetString = [[@"abcdwxyz0123456789" stringByAppendingString:resetString] es_md5HashString];
-        resetString = [resetString substringWithRange:NSMakeRange(17, kACUDIDLength - baseStringMD5.length - basedTag.length)];
-        
-        NSString *result = [NSString stringWithFormat:@"%@%@%@", baseStringMD5, basedTag, resetString];
-        return (NSString *)result;
+    }
+
+    NSString *resetString = [baseString stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    resetString = [[@"abcdwxyz0123456789" stringByAppendingString:resetString] es_md5HashString];
+    resetString = [resetString substringWithRange:NSMakeRange(17, kACUDIDLength - baseStringMD5.length - basedTag.length)];
+
+    NSString *result = [NSString stringWithFormat:@"%@%@%@", baseStringMD5, basedTag, resetString];
+    return (NSString *)result;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,64 +115,65 @@ static NSString *_ACUDIDCreate(void)
 
 NSString *ACGetUDID(void)
 {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                _ACUDIDSaveToKeychain(nil);
-                
-                NSString *udidFromKeychain = _ACUDIDGetFromKeychain();
-                NSString *udidFromFile = _ACUDIDGetFromFile();
-                NSString *udid = ((udidFromKeychain ?: udidFromFile) ?: _ACUDIDCreate());
-                __gACUDID = udid.copy;
-                
-                ESDispatchOnDefaultQueue(^{
-                        if (!udidFromKeychain || ![udidFromKeychain isEqualToString:udid]) {
-                                _ACUDIDSaveToKeychain(udid);
-                        }
-                        if (!udidFromFile || ![udidFromFile isEqualToString:udid]) {
-                                _ACUDIDSaveToFile(udid);
-                        }
-                        ACUDIDSetKeychainStore(nil);
-                });
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _ACUDIDSaveToKeychain(nil);
+
+        NSString *udidFromKeychain = _ACUDIDGetFromKeychain();
+        NSString *udidFromFile = _ACUDIDGetFromFile();
+        NSString *udid = ((udidFromKeychain ?: udidFromFile) ?: _ACUDIDCreate());
+        __gACUDID = udid.copy;
+
+        ESDispatchOnDefaultQueue(^{
+            if (!udidFromKeychain || ![udidFromKeychain isEqualToString:udid]) {
+                _ACUDIDSaveToKeychain(udid);
+            }
+            if (!udidFromFile || ![udidFromFile isEqualToString:udid]) {
+                _ACUDIDSaveToFile(udid);
+            }
+            ACUDIDSetKeychainStore(nil);
         });
-        
-        return __gACUDID;
+    });
+
+    return __gACUDID;
 }
 
 BOOL ACSetUDID(NSString *newUDID)
 {
-        if (ACIsUDIDValid(newUDID, NULL)) {
-                __gACUDID = [newUDID copy];
-                return (_ACUDIDSaveToKeychain(newUDID) && _ACUDIDSaveToFile(newUDID));
-        }
-        return NO;
+    if (ACIsUDIDValid(newUDID, NULL)) {
+        __gACUDID = [newUDID copy];
+        return (_ACUDIDSaveToKeychain(newUDID) && _ACUDIDSaveToFile(newUDID));
+    }
+    return NO;
 }
 
 BOOL ACIsUDIDValid(NSString *UDID, NSString **outBasedTag)
 {
-        if ([UDID isKindOfClass:[NSString class]] &&
-            [UDID isMatch:NSStringWith(@"^[0-9a-f]{%d}$", (int)kACUDIDLength)]) {
-                if (outBasedTag) {
-                        *outBasedTag = [UDID substringWithRange:NSMakeRange(33, 1)];
-                }
-                return YES;
+    if ([UDID isKindOfClass:[NSString class]] &&
+        [UDID isMatch:NSStringWith(@"^[0-9a-f]{%d}$", (int)kACUDIDLength)])
+    {
+        if (outBasedTag) {
+            *outBasedTag = [UDID substringWithRange:NSMakeRange(33, 1)];
         }
-        return NO;
+        return YES;
+    }
+    return NO;
 }
 
 UICKeyChainStore *ACUDIDKeychainStore(void)
 {
-        if (!__gACUDIDKeychainStore) {
-                __gACUDIDKeychainStore = [UICKeyChainStore keyChainStoreWithService:kACUDIDKeychainService
-                                                                        accessGroup:ACConfigGet(kACConfigKey_ACUDID_KeychainAccessGroup)];
-        }
-        return __gACUDIDKeychainStore;
+    if (!__gACUDIDKeychainStore) {
+        __gACUDIDKeychainStore = [UICKeyChainStore keyChainStoreWithService:kACUDIDKeychainService
+                                                                accessGroup:ACConfigGet(kACConfigKey_ACUDID_KeychainAccessGroup)];
+    }
+    return __gACUDIDKeychainStore;
 }
 
 BOOL ACUDIDSetKeychainStore(UICKeyChainStore *store)
 {
-        if (!store || [store isKindOfClass:[UICKeyChainStore class]]) {
-                __gACUDIDKeychainStore = store;
-                return YES;
-        }
-        return NO;
+    if (!store || [store isKindOfClass:[UICKeyChainStore class]]) {
+        __gACUDIDKeychainStore = store;
+        return YES;
+    }
+    return NO;
 }
