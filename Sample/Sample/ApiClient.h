@@ -21,18 +21,18 @@
 
 
 typedef NS_ENUM(NSInteger, ApiResponseCode) {
-        /// General error.
-        ApiResponseCodeError                    = 0,
-        /// Requesting succeed and response data is OK.
-        ApiResponseCodeSuccess                  = 1,
-        /// User authorization failure, e.g. requesting resouce is not public to Guest user.
-        ApiResponseCodeUserAuthFailed           = 401,
-        /// API request is not authorized, e.g. CSRF token is not correct.
-        ApiResponseCodeRequestAuthFailed        = 403,
-        /// Server Internal Error. e.g. JSON decoded response object is not a dictionary.
-        ApiResponseCodeServerInternalError      = 500,
-        /// Server is maintaining.
-        ApiResponseCodeServerIsMaintaining      = 503,
+    /// General error.
+    ApiResponseCodeError                    = 0,
+    /// Requesting succeed and response data is OK.
+    ApiResponseCodeSuccess                  = 1,
+    /// User authorization failure, e.g. requesting resouce is not public to Guest user.
+    ApiResponseCodeUserAuthFailed           = 401,
+    /// API request is not authorized, e.g. CSRF token is not correct.
+    ApiResponseCodeRequestAuthFailed        = 403,
+    /// Server Internal Error. e.g. JSON decoded response object is not a dictionary.
+    ApiResponseCodeServerInternalError      = 500,
+    /// Server is maintaining.
+    ApiResponseCodeServerIsMaintaining      = 503,
 };
 
 /**
@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, ApiResponseCode) {
 /**
  * The shared client instance, you can overwrite -init method to return different client.
  *
- * If there are more than one ApiClient, you must define a different global static variable 
+ * If there are more than one ApiClient, you must define a different global static variable
  * for each shared client. e.g. `ES_SINGLETON_IMP_AS(client, __ItemsClient);`
  */
 + (instancetype)client;
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, ApiResponseCode) {
 - (instancetype)initWithBaseURL:(NSURL *)url timeoutIntervalForRequest:(NSTimeInterval)timeoutIntervalForRequest maxConcurrentRequestCount:(NSInteger)maxConcurrentRequestCount;
 
 /**
- * The timestamp offset between server and local.  
+ * The timestamp offset between server and local.
  * offset = (serverTimestamp - localTimestamp)
  */
 @property (nonatomic) NSTimeInterval timestampOffsetToServer;
@@ -76,10 +76,10 @@ typedef NS_ENUM(NSInteger, ApiResponseCode) {
 - (void)parseResponseForApiToken:(NSHTTPURLResponse *)response responseObject:(id)responseObject;
 
 /**
- * Parses responseObject, gets code, message and errors values.  
+ * Parses responseObject, gets code, message and errors values.
  * Returns parsed responseObject.
  */
-- (NSDictionary *)parseResponseObject:(id)responseObject code:(NSInteger *)outCode message:(NSString *__autoreleasing *)outMessage errors:(NSString *__autoreleasing *)outErrors;
+- (NSDictionary *)parseResponseObject:(id)responseObject code:(NSInteger *)outCode message:(NSString *__autoreleasing *)outMessage;
 
 /**
  * Handler for self.extraRequestSerializer
