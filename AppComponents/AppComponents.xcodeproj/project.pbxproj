@@ -95,10 +95,10 @@
 				E7365DC01CA867C700ADC777 /* ACAppUpdater.m */,
 				E706D1891C84734200A64C7D /* AppComponentsApp.bundle */,
 			);
-			indentWidth = 8;
+			indentWidth = 4;
 			path = App;
 			sourceTree = "<group>";
-			tabWidth = 8;
+			tabWidth = 4;
 		};
 		E7259D901CA8936F004633B7 /* WebView */ = {
 			isa = PBXGroup;
@@ -141,10 +141,10 @@
 				E78834CC1C51B26900F67C63 /* ACAuthVerifyPhoneViewController+Private.m */,
 				E78834CE1C51B29900F67C63 /* ACAuthVerifyPhoneViewController+Subclassing.m */,
 			);
-			indentWidth = 8;
+			indentWidth = 4;
 			path = Auth;
 			sourceTree = "<group>";
-			tabWidth = 8;
+			tabWidth = 4;
 		};
 		E78F78311C59B0CF00B9A33C /* UIKit */ = {
 			isa = PBXGroup;
@@ -155,10 +155,10 @@
 				E78F78381C5B4BFC00B9A33C /* TableView */,
 				E7259D901CA8936F004633B7 /* WebView */,
 			);
-			indentWidth = 8;
+			indentWidth = 4;
 			path = UIKit;
 			sourceTree = "<group>";
-			tabWidth = 8;
+			tabWidth = 4;
 		};
 		E78F78381C5B4BFC00B9A33C /* TableView */ = {
 			isa = PBXGroup;
@@ -183,9 +183,9 @@
 				E78F78311C59B0CF00B9A33C /* UIKit */,
 				E78834BE1C51A0C300F67C63 /* Auth */,
 			);
-			indentWidth = 8;
+			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 8;
+			tabWidth = 4;
 		};
 		E7A38B3A1C4DBE1200972B01 /* Core */ = {
 			isa = PBXGroup;
@@ -201,10 +201,10 @@
 				E71004771C9D025C00EB14AE /* ACUDID.h */,
 				E71004781C9D025C00EB14AE /* ACUDID.m */,
 			);
-			indentWidth = 8;
+			indentWidth = 4;
 			path = Core;
 			sourceTree = "<group>";
-			tabWidth = 8;
+			tabWidth = 4;
 		};
 		E7C3FAB31C4F09FF00281993 /* Networking */ = {
 			isa = PBXGroup;
@@ -221,10 +221,10 @@
 				E7C3FABE1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.h */,
 				E7C3FABF1C4FF09200281993 /* AFHTTPSessionManager+ACNetworking.m */,
 			);
-			indentWidth = 8;
+			indentWidth = 4;
 			path = Networking;
 			sourceTree = "<group>";
-			tabWidth = 8;
+			tabWidth = 4;
 		};
 /* End PBXGroup section */
 
