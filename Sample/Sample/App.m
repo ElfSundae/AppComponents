@@ -17,8 +17,9 @@
 
     [self setupGlobalUIAppearances];
 
-    self.window.rootViewController = self.rootViewController =
-                                         [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
+    self.window.rootViewController =
+        self.rootViewController =
+            [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
 
     [self.window makeKeyAndVisible];
     return YES;
