@@ -23,6 +23,11 @@ NSString *const ACAppConfigIdentifier = @"AppConfig";
     return __gUserSettings;
 }
 
++ (NSMutableDictionary *)userSettings
+{
+    return [[[self sharedApp] userSettings] dictionary];
+}
+
 - (ACSettings *)appConfig
 {
     static ACSettings *__gAppConfig = nil;
@@ -34,6 +39,11 @@ NSString *const ACAppConfigIdentifier = @"AppConfig";
         __gAppConfig = [[ACSettings alloc] initWithIdentifier:ACAppConfigIdentifier defaultValues:[self appConfigDefaults]];
     });
     return __gAppConfig;
+}
+
++ (NSMutableDictionary *)appConfig
+{
+    return [[[self sharedApp] appConfig] dictionary];
 }
 
 - (NSString *)userSettingsIdentifierForUserID:(NSString *)uid
