@@ -28,6 +28,11 @@ NSString *const ACAppConfigIdentifier = @"AppConfig";
     return [[[self sharedApp] userSettings] dictionary];
 }
 
++ (void)saveUserSettings
+{
+    [[[self sharedApp] userSettings] save];
+}
+
 - (ACSettings *)appConfig
 {
     static ACSettings *__gAppConfig = nil;
@@ -44,6 +49,11 @@ NSString *const ACAppConfigIdentifier = @"AppConfig";
 + (NSMutableDictionary *)appConfig
 {
     return [[[self sharedApp] appConfig] dictionary];
+}
+
++ (void)saveAppConfig
+{
+    [[[self sharedApp] appConfig] save];
 }
 
 - (NSString *)userSettingsIdentifierForUserID:(NSString *)uid

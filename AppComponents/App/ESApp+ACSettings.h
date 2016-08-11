@@ -16,9 +16,11 @@ FOUNDATION_EXTERN NSString *const ACAppConfigIdentifier;
 
 - (ACSettings *)userSettings;
 + (NSMutableDictionary *)userSettings;
++ (void)saveUserSettings;
 
 - (ACSettings *)appConfig;
 + (NSMutableDictionary *)appConfig;
++ (void)saveAppConfig;
 
 /**
  * Returns settingsIdentifier for uid: "ACAppUserSettingsIdentifierPrefix + uid"
