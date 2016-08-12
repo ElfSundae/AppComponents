@@ -40,9 +40,8 @@
     }
 
     // 4. 对result data进行base64得到ASCII字符串
-    NSString *result = [data es_base64EncodedString];
-    // 5. 删除base64结尾的等号
-    result = [result stringByReplacingOccurrencesOfString:@"=" withString:@""];
+    NSString *result = [data es_base64EncodedURLSafeString];
+
     // 6. 加密后的字符串前面追加四个随机串
     result = [ESRandomStringOfLength(4) stringByAppendingString:result];
 
