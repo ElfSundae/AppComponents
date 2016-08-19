@@ -167,8 +167,15 @@
     ESDispatchOnMainThreadAsynchrony(^{
         if (self.presentingViewController || self.navigationController.presentingViewController) {
             [self dismissViewControllerAnimated:animated completion:nil];
-        } else if (self.navigationController.topViewController == self) {
-            [self.navigationController popViewControllerAnimated:animated];
+        } else if (self.navigationController) {
+            if (self.navigationController.topViewController == self) {
+                [self.navigationController popViewControllerAnimated:animated];
+            } else {
+                NSUInteger myIndex = [[self.navigationController viewControllers] indexOfObjectIdenticalTo:self];
+                if (myIndex != NSNotFound && myIndex > 0) {
+                    [self.navigationController popToViewController:self.navigationController.viewControllers[myIndex - 1] animated:animated];
+                }
+            }
         }
     });
 }
