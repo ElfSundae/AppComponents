@@ -15,6 +15,11 @@
 @property (nonatomic, strong) UITextField *contactTextField;
 @property (nonatomic, strong) ESButton *sendButton;
 
+/// Default is 5
+@property (nonatomic) NSInteger minContentLength;
+/// Default is 300
+@property (nonatomic) NSInteger maxContentLength;
+
 - (void)commitAction:(id)sender;
 
 // subclassing

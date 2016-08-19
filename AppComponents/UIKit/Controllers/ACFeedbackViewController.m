@@ -18,6 +18,8 @@
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = YES;
+        self.minContentLength = 5;
+        self.maxContentLength = 300;
     }
     return self;
 }
@@ -90,11 +92,14 @@
     NSString *error = nil;
     if (!ESIsStringWithAnyText(content)) {
         error = @"请填写意见内容";
-    } else if (content.length < 5) {
-        error = @"反馈内容太少，请描述清楚你的问题";
-    } else if (content.length > 300) {
-        error = @"意见内容太长，请删减后再提交";
+    } else {
+        if (self.minContentLength > 0 && content.length < self.minContentLength) {
+            error = @"反馈内容太少，请描述清楚你的问题";
+        } else if (self.maxContentLength > 0 && content.length > self.maxContentLength) {
+            error = @"反馈内容太长，请删减后再提交";
+        }
     }
+
     if (error) {
         ESWeakSelf;
         UIAlertView *alert = [UIAlertView alertViewWithTitle:error message:nil cancelButtonTitle:@"OK" didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
