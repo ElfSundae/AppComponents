@@ -106,7 +106,7 @@
 @property (nonatomic, strong) UIView *errorView;
 
 @property (nonatomic, copy, readonly) NSURL *initializationURL;
-@property (nonatomic, copy, readonly) NSString *initializationTitle;
+@property (nonatomic, copy) NSString *initializationTitle;
 @property (nonatomic, copy, readonly) NSString *currentPageTitle;
 /// Indicates the current loading failed because that network was not reachable.
 @property (nonatomic, readonly) BOOL currentLoadingErrorIsLocalNetworkError;
