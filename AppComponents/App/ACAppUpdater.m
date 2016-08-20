@@ -71,7 +71,7 @@ static NSString *__sharedNewVersion = nil;
     NSString *okTitle = hasUpdate ? @"立即更新" : nil;
     NSString *cancelTitle = hasUpdate ? (ACAppUpdateWayForce == way ? nil : @"取消") : @"确定";
     NSString *desc = ESStringValue(serverData[ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACAppUpdater_VersionDataKey_Description), @"desc")]);
-    desc = hasUpdate ? desc : @"\n恭喜，当前已经是最新版本！\n";
+    desc = hasUpdate ? desc : @"\n恭喜！当前已经是最新版本！\n";
     NSString *urlString = ESStringValue(serverData[ESStringValueWithDefault(ACConfigGet(kACConfigKey_ACAppUpdater_VersionDataKey_DownloadURL), @"url")]);
     NSURL *url = [NSURL URLWithString:urlString];
     if (!url) {
