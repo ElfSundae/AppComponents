@@ -281,6 +281,10 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
     // detailTextLabel
     if (UITableViewCellStyleSubtitle == self.cellStyle) {
         self.detailTextLabel.left = self.textLabel.left;
+    } else if (self.detailTextLabel.left < self.textLabel.right) {
+        CGFloat diff = self.textLabel.right - self.detailTextLabel.left;
+        self.detailTextLabel.left += diff;
+        self.detailTextLabel.width -= diff;
     }
 
     // leftBadgeView, right aligned to iconImageView or textLabel
