@@ -141,6 +141,12 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
 }
 
 - (JTSImageViewController *)showImageViewControllerFromView:(UIView *)view
+                                                      image:(UIImage *)image
+{
+    return [self showImageViewControllerFromView:view image:image backgroundOptions:self.imageViewControllerDefaultBackgroundOptions imageInfoCustomization:nil];
+}
+
+- (JTSImageViewController *)showImageViewControllerFromView:(UIView *)view
                                                    imageURL:(NSURL *)imageURL
                                            placeholderImage:(UIImage *)placeholderImage
                                           backgroundOptions:(JTSImageViewControllerBackgroundOptions)backgroundOptions
@@ -156,6 +162,16 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
     return [self showImageViewControllerFromView:view imageURL:imageURL placeholderImage:placeholderImage backgroundOptions:self.imageViewControllerDefaultBackgroundOptions imageInfoCustomization:nil];
 }
 
+- (JTSImageViewController *)showImageViewController:(id)imageOrURL
+{
+    if ([imageOrURL isKindOfClass:[UIImage class]]) {
+        return [self showImageViewControllerFromView:nil image:imageOrURL];
+    } else if (imageOrURL = ESURLValue(imageOrURL)) {
+        return [self showImageViewControllerFromView:nil imageURL:imageOrURL placeholderImage:nil];
+    }
+
+    return nil;
+}
 
 - (void)dismissImageViewController:(BOOL)animated
 {

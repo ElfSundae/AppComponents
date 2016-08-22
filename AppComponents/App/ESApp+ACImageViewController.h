@@ -44,6 +44,9 @@
                                      imageInfoCustomization:(void (^)(JTSImageInfo *imageInfo))imageInfoCustomization;
 
 - (JTSImageViewController *)showImageViewControllerFromView:(UIView *)view
+                                                      image:(UIImage *)image;
+
+- (JTSImageViewController *)showImageViewControllerFromView:(UIView *)view
                                                    imageURL:(NSURL *)imageURL
                                            placeholderImage:(UIImage *)placeholderImage
                                           backgroundOptions:(JTSImageViewControllerBackgroundOptions)backgroundOptions
@@ -53,6 +56,7 @@
                                                    imageURL:(NSURL *)imageURL
                                            placeholderImage:(UIImage *)placeholderImage;
 
+- (JTSImageViewController *)showImageViewController:(id)imageOrURL;
 
 - (void)dismissImageViewController:(BOOL)animated;
 
