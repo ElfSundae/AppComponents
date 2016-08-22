@@ -16,10 +16,12 @@ FOUNDATION_EXTERN NSString *const ACAppConfigIdentifier;
 
 - (ACSettings *)userSettings;
 + (NSMutableDictionary *)userSettings;
++ (id)userSettingsValue:(NSString *)keyPath;
 + (void)saveUserSettings;
 
 - (ACSettings *)appConfig;
 + (NSMutableDictionary *)appConfig;
++ (id)appConfigValue:(NSString *)keyPath;
 + (void)saveAppConfig;
 
 /**

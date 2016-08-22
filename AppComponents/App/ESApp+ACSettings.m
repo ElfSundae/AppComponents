@@ -28,6 +28,11 @@ NSString *const ACAppConfigIdentifier = @"AppConfig";
     return [[[self sharedApp] userSettings] dictionary];
 }
 
++ (id)userSettingsValue:(NSString *)keyPath
+{
+    return [[self userSettings] valueForKeyPath:keyPath];
+}
+
 + (void)saveUserSettings
 {
     [[[self sharedApp] userSettings] save];
@@ -49,6 +54,11 @@ NSString *const ACAppConfigIdentifier = @"AppConfig";
 + (NSMutableDictionary *)appConfig
 {
     return [[[self sharedApp] appConfig] dictionary];
+}
+
++ (id)appConfigValue:(NSString *)keyPath
+{
+    return [[self appConfig] valueForKeyPath:keyPath];
 }
 
 + (void)saveAppConfig
