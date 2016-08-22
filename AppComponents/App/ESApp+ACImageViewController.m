@@ -94,14 +94,20 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
         }
     }
 
-    [self dismissImageViewController:NO];
-    self.imageViewControler = [[JTSImageViewController alloc] initWithImageInfo:imageInfo
-                                                                           mode:(imageInfo.altText ? JTSImageViewControllerMode_AltText : JTSImageViewControllerMode_Image)
-                                                                backgroundStyle:backgroundOptions];
-    self.imageViewControler.dismissalDelegate = self;
-    self.imageViewControler.interactionsDelegate = self;
-    [self.imageViewControler showFromViewController:self.rootViewController transition:JTSImageViewControllerTransition_FromOriginalPosition];
-    return self.imageViewControler;
+    JTSImageViewController *imageViewControler = [[JTSImageViewController alloc] initWithImageInfo:imageInfo
+                                                                                              mode:(imageInfo.altText ? JTSImageViewControllerMode_AltText : JTSImageViewControllerMode_Image)
+                                                                                   backgroundStyle:backgroundOptions];
+
+    ESWeakSelf;
+    [self dismissImageViewController:NO completion:^{
+        ESStrongSelf;
+        imageViewControler.dismissalDelegate = _self;
+        imageViewControler.interactionsDelegate = _self;
+        [imageViewControler showFromViewController:_self.rootViewController
+                                        transition:JTSImageViewControllerTransition_FromOriginalPosition];
+    }];
+
+    return self.imageViewControler = imageViewControler;
 }
 
 - (JTSImageViewController *)ac_showImageViewControllerFromView:(UIView *)view
@@ -173,16 +179,19 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
     return nil;
 }
 
-- (void)dismissImageViewController:(BOOL)animated
+- (void)dismissImageViewController:(BOOL)animated completion:(dispatch_block_t)completion
 {
     if (self.imageViewControler) {
-        self.imageViewControler.dismissalDelegate = nil;
-        self.imageViewControler.optionsDelegate = nil;
-        self.imageViewControler.interactionsDelegate = nil;
-        self.imageViewControler.accessibilityDelegate = nil;
-        self.imageViewControler.animationDelegate = nil;
         [self.imageViewControler dismiss:animated];
         self.imageViewControler = nil;
+
+        if (completion) {
+            ESDispatchAfter(0.5, completion);
+        }
+    } else {
+        if (completion) {
+            completion();
+        }
     }
 }
 
@@ -192,7 +201,9 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
 
 - (void)imageViewerDidDismiss:(JTSImageViewController *)imageViewer
 {
-    [self dismissImageViewController:NO];
+    if (imageViewer == self.imageViewControler) {
+        self.imageViewControler = nil;
+    }
 }
 
 - (void)imageViewerDidLongPress:(JTSImageViewController *)imageViewer atRect:(CGRect)rect
