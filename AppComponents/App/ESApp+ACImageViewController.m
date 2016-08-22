@@ -172,8 +172,11 @@ ESDefineAssociatedObjectKey(imageViewControllerDefaultBackgroundOptions);
 {
     if ([imageOrURL isKindOfClass:[UIImage class]]) {
         return [self showImageViewControllerFromView:nil image:imageOrURL];
-    } else if (imageOrURL = ESURLValue(imageOrURL)) {
-        return [self showImageViewControllerFromView:nil imageURL:imageOrURL placeholderImage:nil];
+    }
+
+    NSURL *imageURL = ESURLValue(imageOrURL);
+    if (imageURL) {
+        return [self showImageViewControllerFromView:nil imageURL:imageURL placeholderImage:nil];
     }
 
     return nil;
