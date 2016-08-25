@@ -41,8 +41,10 @@ PODS:
     - SDWebImage
     - WebViewJavascriptBridge
   - ElfSundae-JTSImageViewController (1.5.2)
-  - ESFramework/Core (2.4.15)
-  - ESFramework/UIKit (2.4.15):
+  - ESFramework/Core (2.5.1):
+    - ESFramework/Reachability
+  - ESFramework/Reachability (2.5.1)
+  - ESFramework/UIKit (2.5.1):
     - ESFramework/Core
   - IconFontKit/Core (2.1.1)
   - IconFontKit/FontAwesome (2.1.1):
@@ -65,7 +67,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppComponents: d51dc440623eb463681be69de1ca26ad86f01558
   ElfSundae-JTSImageViewController: ddac4115a595bd00463ad1b6f5d267f014c37ca9
-  ESFramework: 7f1a9b1b2cc40568b185c0c5efdcc5ef4cb83485
+  ESFramework: e92297229b6dbc56ebec3cd74eabd81c4b5ec430
   IconFontKit: 10d365534a9f9f92f87651a225b8f90e41054bb8
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91

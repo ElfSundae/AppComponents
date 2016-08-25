@@ -7,6 +7,7 @@
 //
 
 #import "ACWebViewController+Private.h"
+#import <ESFramework/ESNetworkReachability.h>
 
 @implementation ACWebViewController
 
@@ -93,7 +94,7 @@
         }];
     }
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_networkReachabilityDidChangeNotification:) name:ESNetworkReachabilityDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_networkReachabilityDidChangeNotification:) name:ESNetworkReachabilityStatusDidChangeNotification object:nil];
 
     // 如果是本地网页,就在viewDidLoad中加载，这样一进入WebViewController就能看见网页内容.
     // 否则在viewDidAppear中加载, 让WebViewController先展示出来。
@@ -269,7 +270,7 @@
 
 - (void)_networkReachabilityDidChangeNotification:(NSNotification *)notification
 {
-    if ([UIDevice isInternetConnectionReachable] &&
+    if ([ESNetworkReachability defaultReachability].isReachable &&
         _currentLoadingErrorIsLocalNetworkError &&
         self.automaticallyReloadWhenNetworkBecomesReachable)
     {
