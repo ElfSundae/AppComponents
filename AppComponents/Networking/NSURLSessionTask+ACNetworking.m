@@ -27,6 +27,7 @@ ESDefineAssociatedObjectKey(responseMessage);
 - (id)ac_copyWithZone:(NSZone *)zone
 {
     NSURLSessionTask *task = [self ac_copyWithZone:zone];
+
     if ([task isKindOfClass:[NSURLSessionTask class]]) {
         task.shouldParseResponse = self.shouldParseResponse;
         task.alertFailedResponseCode = self.alertFailedResponseCode;
@@ -36,6 +37,7 @@ ESDefineAssociatedObjectKey(responseMessage);
         task.responseCode = self.responseCode;
         task.responseMessage = [self.responseMessage copyWithZone:zone];
     }
+
     return task;
 }
 

@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 /**
- * NSURLSessionTask (ACNetworking) can be used to provide task configurations and to store useful
- * decoded response objects.
+ * NSURLSessionTask (ACNetworking) can be used to provide task configurations and to store useful decoded response objects.
+ *
  * In general, these additional properties will be managed by URLSessionManager like `AFHTTPSessionManager`.
  */
 @interface NSURLSessionTask (ACNetworking)
