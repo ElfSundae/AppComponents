@@ -11,7 +11,7 @@
 /**
  * NSURLSessionTask (ACNetworking) can be used to provide task configurations and to store useful decoded response objects.
  *
- * In general, these additional properties will be managed by URLSessionManager like `AFHTTPSessionManager`.
+ * In general, these additional properties will be managed by an URL session manager.
  */
 @interface NSURLSessionTask (ACNetworking)
 

@@ -17,28 +17,48 @@ ESDefineAssociatedObjectKey(alertNetworkErrorUsingTips);
 ESDefineAssociatedObjectKey(responseCode);
 ESDefineAssociatedObjectKey(responseMessage);
 
-@implementation NSURLSessionTask (ACNetworking)
+/**
+ * -[NSURLSession dataTaskWithURL:] returns different class on different OS versions.
+ *
+ *  iOS 7: __NSCFLocalDataTask << __NSCFLocalSessionTask << __NSCFURLSessionTask << NSObject
+ *  iOS 8: __NSCFLocalDataTask << __NSCFLocalSessionTask << NSURLSessionTask << NSObject
+ *  iOS 9: __NSCFLocalDataTask << __NSCFLocalSessionTask << __NSCFURLSessionTask << NSURLSessionTask << NSObject
+ *
+ * `_ACURLSessionTaskHacking` hacks class exactly returns from `dataTaskWithURL` to add category methods.
+ */
+@interface _ACURLSessionTaskHacking : NSObject
+@end
+
+@implementation _ACURLSessionTaskHacking
 
 + (void)load
 {
-    ESSwizzleInstanceMethod(self, @selector(copyWithZone:), @selector(ac_copyWithZone:));
+    NSURLSessionDataTask *instance = [[NSURLSession sessionWithConfiguration:
+                                       [NSURLSessionConfiguration ephemeralSessionConfiguration]]
+                                      dataTaskWithURL:[NSURL URLWithString:@""]];
+
+    Class cls = [instance class];
+
+    [self _addSelector:@selector(shouldParseResponse) forClass:cls];
+    [self _addSelector:@selector(setShouldParseResponse:) forClass:cls];
+    [self _addSelector:@selector(alertFailedResponseCode) forClass:cls];
+    [self _addSelector:@selector(setAlertFailedResponseCode:) forClass:cls];
+    [self _addSelector:@selector(alertFailedResponseCodeUsingTips) forClass:cls];
+    [self _addSelector:@selector(setAlertFailedResponseCodeUsingTips:) forClass:cls];
+    [self _addSelector:@selector(alertNetworkError) forClass:cls];
+    [self _addSelector:@selector(setAlertNetworkError:) forClass:cls];
+    [self _addSelector:@selector(alertNetworkErrorUsingTips) forClass:cls];
+    [self _addSelector:@selector(setAlertNetworkErrorUsingTips:) forClass:cls];
+    [self _addSelector:@selector(responseCode) forClass:cls];
+    [self _addSelector:@selector(setResponseCode:) forClass:cls];
+    [self _addSelector:@selector(responseMessage) forClass:cls];
+    [self _addSelector:@selector(setResponseMessage:) forClass:cls];
 }
 
-- (id)ac_copyWithZone:(NSZone *)zone
++ (BOOL)_addSelector:(SEL)selector forClass:(Class)cls
 {
-    NSURLSessionTask *task = [self ac_copyWithZone:zone];
-
-    if ([task isKindOfClass:[NSURLSessionTask class]]) {
-        task.shouldParseResponse = self.shouldParseResponse;
-        task.alertFailedResponseCode = self.alertFailedResponseCode;
-        task.alertFailedResponseCodeUsingTips = self.alertFailedResponseCodeUsingTips;
-        task.alertNetworkError = self.alertNetworkError;
-        task.alertNetworkErrorUsingTips = self.alertNetworkErrorUsingTips;
-        task.responseCode = self.responseCode;
-        task.responseMessage = [self.responseMessage copyWithZone:zone];
-    }
-
-    return task;
+    Method method = class_getInstanceMethod(self, selector);
+    return class_addMethod(cls, selector, method_getImplementation(method), method_getTypeEncoding(method));
 }
 
 - (BOOL)shouldParseResponse
@@ -112,3 +132,11 @@ ESDefineAssociatedObjectKey(responseMessage);
 }
 
 @end
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-implementation"
+
+@implementation NSURLSessionTask (ACNetworking)
+@end
+
+#pragma clang diagnostic pop
