@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "AppComponents"
-  s.version           = "1.1.7"
+  s.version           = "1.1.8"
   s.license           = "MIT"
   s.summary           = "Components for iOS development."
   s.homepage          = "https://github.com/ElfSundae/AppComponents"
