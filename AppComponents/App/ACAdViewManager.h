@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <ESFramework/ESFrameworkCore.h>
-#import <AppComponents/ACConfig.h>
-#import <AppComponents/ACAdBannerView.h>
+#import "ACConfig.h"
+#import "ACAdBannerView.h"
 
 /**
  * Posted when bannerView is showing or hidden.

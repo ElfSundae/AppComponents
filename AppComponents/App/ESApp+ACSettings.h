@@ -7,7 +7,7 @@
 //
 
 #import <ESFramework/ESApp.h>
-#import <AppComponents/ACSettings.h>
+#import "ACSettings.h"
 
 FOUNDATION_EXTERN NSString *const ACAppUserSettingsIdentifierPrefix;
 FOUNDATION_EXTERN NSString *const ACAppConfigIdentifier;

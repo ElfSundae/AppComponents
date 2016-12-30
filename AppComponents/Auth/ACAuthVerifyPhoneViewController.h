@@ -6,7 +6,7 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import <AppComponents/ACAuthBaseViewController.h>
+#import "ACAuthBaseViewController.h"
 #import <ESFramework/ESFrameworkCore.h>
 #import <ESFramework/ESButton.h>
 @class ACAuthVerifyPhoneViewController;

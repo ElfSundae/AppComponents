@@ -8,7 +8,7 @@
 
 #import <ESFramework/ESFrameworkCore.h>
 #import <ESFramework/ESFrameworkUIKit.h>
-#import <AppComponents/ACTableViewCell.h>
+#import "ACTableViewCell.h"
 
 /// Class or NSString with class name
 FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellClass;

@@ -6,7 +6,8 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import <AppComponents/ACConfig.h>
-#import <AppComponents/ACSettings.h>
-#import <AppComponents/ACEncryptor.h>
-#import <AppComponents/ACUDID.h>
+#import "AppComponentsDefines.h"
+#import "ACConfig.h"
+#import "ACSettings.h"
+#import "ACEncryptor.h"
+#import "ACUDID.h"

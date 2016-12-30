@@ -7,7 +7,7 @@
 //
 
 #import <AFNetworking/AFHTTPSessionManager.h>
-#import <AppComponents/AFHTTPRequestSerializer+ACNetworking.h>
+#import "AFHTTPRequestSerializer+ACNetworking.h"
 
 @interface AFHTTPSessionManager (ACNetworking)
 

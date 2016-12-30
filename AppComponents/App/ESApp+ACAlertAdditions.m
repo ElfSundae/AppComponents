@@ -7,7 +7,7 @@
 //
 
 #import "ESApp+ACAlertAdditions.h"
-#import <AppComponents/ACConfig.h>
+#import "ACConfig.h"
 
 ESDefineAssociatedObjectKey(timeIntervalForAutoHide);
 

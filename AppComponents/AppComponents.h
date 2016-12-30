@@ -6,8 +6,8 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import <AppComponents/AppComponentsCore.h>
-#import <AppComponents/AppComponentsApp.h>
-#import <AppComponents/AppComponentsNetworking.h>
-#import <AppComponents/AppComponentsUIKit.h>
-#import <AppComponents/AppComponentsAuth.h>
+#import "AppComponentsCore.h"
+#import "AppComponentsApp.h"
+#import "AppComponentsNetworking.h"
+#import "AppComponentsUIKit.h"
+#import "AppComponentsAuth.h"

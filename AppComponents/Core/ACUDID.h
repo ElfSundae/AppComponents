@@ -8,7 +8,7 @@
 
 #import <ESFramework/ESFrameworkCore.h>
 #import <UICKeyChainStore/UICKeyChainStore.h>
-#import <AppComponents/ACConfig.h>
+#import "ACConfig.h"
 
 FOUNDATION_EXTERN const NSInteger kACUDIDLength; // 40
 

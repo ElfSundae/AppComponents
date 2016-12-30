@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ESFramework/ESFrameworkCore.h>
-#import <AppComponents/ACConfig.h>
+#import "ACConfig.h"
 
 /**
  * App版本有所变化，可能发现了新版本， 用 +newVersionExists 检查是否存在新版本。
