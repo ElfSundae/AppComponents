@@ -231,12 +231,12 @@
 
 - (ESRefreshControl *)refreshControl
 {
-    return _webView.scrollView.refreshControl;
+    return _webView.scrollView.es_refreshControl;
 }
 
 - (void)setRefreshControl:(ESRefreshControl *)refreshControl
 {
-    _webView.scrollView.refreshControl = refreshControl;
+    _webView.scrollView.es_refreshControl = refreshControl;
 }
 
 - (void)setActivityOverlay:(UIView *)view
