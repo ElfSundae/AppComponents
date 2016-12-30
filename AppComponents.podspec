@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name              = "AppComponents"
   s.version           = "1.1.8"
   s.license           = "MIT"
-  s.summary           = "Components for iOS development."
+  s.summary           = "A series of components for iOS app development."
   s.homepage          = "https://github.com/ElfSundae/AppComponents"
   s.authors           = { "Elf Sundae" => "http://0x123.com" }
   s.source            = { :git => "https://github.com/ElfSundae/AppComponents.git", :tag => s.version, :submodules => true }
@@ -49,5 +49,4 @@ Pod::Spec.new do |s|
     ss.dependency           "ESFramework/UIKit"
     ss.dependency           "IconFontKit/FontAwesome"
   end
-
 end
