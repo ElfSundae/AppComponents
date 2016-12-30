@@ -4,6 +4,6 @@ workspace '../AppComponents.xcworkspace'
 
 target 'Sample' do
     pod 'AppComponents', :path => '../'
-    # pod 'ESFramework', :git => 'https://github.com/ElfSundae/ESFramework.git', :branch => 'develop'
+    # pod 'ESFramework', :git => 'https://github.com/ElfSundae/ESFramework.git'
 end
 
