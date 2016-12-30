@@ -41,10 +41,6 @@ PODS:
     - SDWebImage
     - WebViewJavascriptBridge
   - ElfSundae-JTSImageViewController (1.5.2)
-  - ESFramework (2.6.1):
-    - ESFramework/Core (= 2.6.1)
-    - ESFramework/Reachability (= 2.6.1)
-    - ESFramework/UIKit (= 2.6.1)
   - ESFramework/Core (2.6.1):
     - ESFramework/Reachability
   - ESFramework/Reachability (2.6.1)
@@ -62,18 +58,10 @@ PODS:
 
 DEPENDENCIES:
   - AppComponents (from `../`)
-  - ESFramework (from `https://github.com/ElfSundae/ESFramework.git`)
 
 EXTERNAL SOURCES:
   AppComponents:
     :path: "../"
-  ESFramework:
-    :git: https://github.com/ElfSundae/ESFramework.git
-
-CHECKOUT OPTIONS:
-  ESFramework:
-    :commit: 2c458ea3926748572509afd043818e4d1e56fe74
-    :git: https://github.com/ElfSundae/ESFramework.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -86,6 +74,6 @@ SPEC CHECKSUMS:
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
   WebViewJavascriptBridge: f99dac16105500a570a12b0b03e6bc46501eeb00
 
-PODFILE CHECKSUM: 7544344af44d0f2448d1403a2653b74aaef81824
+PODFILE CHECKSUM: c36e8cb06d569ce56950e66ac45b42cb058f82d7
 
 COCOAPODS: 1.1.1
