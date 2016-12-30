@@ -41,39 +41,51 @@ PODS:
     - SDWebImage
     - WebViewJavascriptBridge
   - ElfSundae-JTSImageViewController (1.5.2)
-  - ESFramework/Core (2.5.1):
+  - ESFramework (2.6.1):
+    - ESFramework/Core (= 2.6.1)
+    - ESFramework/Reachability (= 2.6.1)
+    - ESFramework/UIKit (= 2.6.1)
+  - ESFramework/Core (2.6.1):
     - ESFramework/Reachability
-  - ESFramework/Reachability (2.5.1)
-  - ESFramework/UIKit (2.5.1):
+  - ESFramework/Reachability (2.6.1)
+  - ESFramework/UIKit (2.6.1):
     - ESFramework/Core
-  - IconFontKit/Core (2.1.1)
-  - IconFontKit/FontAwesome (2.1.1):
+  - IconFontKit/Core (2.1.2)
+  - IconFontKit/FontAwesome (2.1.2):
     - IconFontKit/Core
   - MBProgressHUD (1.0.0)
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - UICKeyChainStore (2.1.0)
-  - WebViewJavascriptBridge (5.0.5)
+  - WebViewJavascriptBridge (5.1.2)
 
 DEPENDENCIES:
   - AppComponents (from `../`)
+  - ESFramework (from `https://github.com/ElfSundae/ESFramework.git`)
 
 EXTERNAL SOURCES:
   AppComponents:
     :path: "../"
+  ESFramework:
+    :git: https://github.com/ElfSundae/ESFramework.git
+
+CHECKOUT OPTIONS:
+  ESFramework:
+    :commit: 2c458ea3926748572509afd043818e4d1e56fe74
+    :git: https://github.com/ElfSundae/ESFramework.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AppComponents: 4379e7f5e222a6b4beeabc69fe7f2179fdb79169
+  AppComponents: 4cf73a9342f2b3fcf3781f13a27261af65dc82e3
   ElfSundae-JTSImageViewController: ddac4115a595bd00463ad1b6f5d267f014c37ca9
-  ESFramework: e92297229b6dbc56ebec3cd74eabd81c4b5ec430
-  IconFontKit: 10d365534a9f9f92f87651a225b8f90e41054bb8
+  ESFramework: e2fa7bf004bcdbbd4740845f72ae436a01287910
+  IconFontKit: 3ce6ef3f532016042405819cf983fed8d649dff7
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
-  WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
+  WebViewJavascriptBridge: f99dac16105500a570a12b0b03e6bc46501eeb00
 
-PODFILE CHECKSUM: 93bf668eacbe36a26915453ab3629be336e6ebd0
+PODFILE CHECKSUM: 7544344af44d0f2448d1403a2653b74aaef81824
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
