@@ -39,7 +39,7 @@
 		E7365DC41CA8684300ADC777 /* ACAdViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAdViewManager.m; sourceTree = "<group>"; };
 		E746B4AB1CABB8BA00EC634B /* AFURLSessionManager+ACNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFURLSessionManager+ACNetworking.h"; sourceTree = "<group>"; };
 		E746B4AC1CABB8BA00EC634B /* AFURLSessionManager+ACNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFURLSessionManager+ACNetworking.m"; sourceTree = "<group>"; };
-		E78834C11C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ACAuthVerifyPhoneViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		E78834C11C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ACAuthVerifyPhoneViewController.h; sourceTree = "<group>"; };
 		E78834C21C51A0F700F67C63 /* ACAuthVerifyPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAuthVerifyPhoneViewController.m; sourceTree = "<group>"; };
 		E78834C51C51A0F700F67C63 /* AppComponentsAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppComponentsAuth.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		E78834C91C51AC6000F67C63 /* ACAuthBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAuthBaseViewController.h; sourceTree = "<group>"; };
