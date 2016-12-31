@@ -54,7 +54,7 @@ NSString *const ACSettingsIdentifierKey = @"__ACSettingsIdentifier__";
     return [[self class] keyForIdentifier:self.identifier];
 }
 
-- (void)cleanUp
+- (void)removeAll
 {
     NSString *identifier = self.identifier;
     [self.dictionary removeAllObjects];

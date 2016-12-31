@@ -34,7 +34,7 @@ FOUNDATION_EXTERN NSString *const ACSettingsIdentifierKey;
 /**
  * Removes all settings values except identifier.
  */
-- (void)cleanUp;
+- (void)removeAll;
 
 /**
  * Saves dictionary to storage.
