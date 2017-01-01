@@ -260,7 +260,7 @@
         [self setActivityOverlayVisible:_loading];
     }
 
-    [self.webView.scrollView.refreshControl endRefreshing];
+    [self.webView.scrollView.es_refreshControl endRefreshing];
     [self hideErrorView];
 }
 
