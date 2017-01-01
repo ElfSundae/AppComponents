@@ -22,6 +22,7 @@
 		E71B7D051C515DB1001910C2 /* ESApp+ACSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACSettings.m"; sourceTree = "<group>"; };
 		E71B7D0A1C51748A001910C2 /* ESApp+ACHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+ACHelper.h"; sourceTree = "<group>"; };
 		E71B7D0B1C51748A001910C2 /* ESApp+ACHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ACHelper.m"; sourceTree = "<group>"; };
+		E72077101E198F4D00815CB9 /* ACTableViewController+TableViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACTableViewController+TableViewDelegate.m"; sourceTree = "<group>"; };
 		E7259D921CA8936F004633B7 /* ACWebViewController+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACWebViewController+Helper.m"; sourceTree = "<group>"; };
 		E7259D931CA8936F004633B7 /* ACWebViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "ACWebViewController+Private.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		E7259D941CA8936F004633B7 /* ACWebViewController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ACWebViewController+Private.m"; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 				E78F78521C5B84E600B9A33C /* ACTableViewController.m */,
 				E7E93D8B1C5DA2080034494E /* ACTableViewController+Private.m */,
 				E78F78581C5B863A00B9A33C /* ACTableViewController+TableViewDataSource.m */,
+				E72077101E198F4D00815CB9 /* ACTableViewController+TableViewDelegate.m */,
 			);
 			path = TableView;
 			sourceTree = "<group>";

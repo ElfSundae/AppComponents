@@ -10,7 +10,7 @@
 
 @implementation ACTableViewController (TableViewDataSource)
 
-- (NSDictionary *)cellConfigDictionaryForIndexPath:(NSIndexPath *)indexPath
+- (NSDictionary *)cellConfigForIndexPath:(NSIndexPath *)indexPath
 {
     return (self.configuresCellWithTableData ? self.tableData[indexPath.section][indexPath.row] : nil);
 }
@@ -18,7 +18,7 @@
 - (Class)cellClassForIndexPath:(NSIndexPath *)indexPath
 {
     if (self.configuresCellWithTableData) {
-        id cellClass = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellClass];
+        id cellClass = [self cellConfigForIndexPath:indexPath][ACTableViewCellConfigKeyCellClass];
         if (cellClass && class_isMetaClass(object_getClass(cellClass))) {
             return (Class)cellClass;
         } else if ([cellClass isKindOfClass:[NSString class]]) {
@@ -34,7 +34,7 @@
 {
     NSString *identifier = nil;
     if (self.configuresCellWithTableData) {
-        identifier = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellReuseIdentifier]);
+        identifier = ESStringValue([self cellConfigForIndexPath:indexPath][ACTableViewCellConfigKeyCellReuseIdentifier]);
 
     }
     return identifier ?: NSStringFromClass([self cellClassForIndexPath:indexPath]);
@@ -42,7 +42,7 @@
 
 - (NSString *)cellTitleForIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = [self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyText];
+    NSString *title = [self cellConfigForIndexPath:indexPath][ACTableViewCellConfigKeyText];
     if ([title isKindOfClass:[NSAttributedString class]]) {
         return [(NSAttributedString *) title string];
     } else if ([title isKindOfClass:[NSString class]]) {
@@ -53,7 +53,7 @@
 
 - (CGFloat)cellHeightForIndexPath:(NSIndexPath *)indexPath
 {
-    return ESFloatValueWithDefault([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellHeight], 44.);
+    return ESFloatValueWithDefault([self cellConfigForIndexPath:indexPath][ACTableViewCellConfigKeyCellHeight], 44.);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,24 +87,11 @@
         }
         if ([cell isKindOfClass:[ACTableViewCell class]]) {
             ACTableViewCell *acCell = (ACTableViewCell *)cell;
-            acCell.configDictionary = [self cellConfigDictionaryForIndexPath:indexPath];
+            acCell.configDictionary = [self cellConfigForIndexPath:indexPath];
         }
         return cell;
     }
     return nil;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *selector = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellAction]);
-    if (selector) {
-        ESInvokeSelector(self, NSSelectorFromString(selector), NULL, indexPath);
-    }
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    [self tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 @end

@@ -134,7 +134,7 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellAction;
 /**
  * 该方法仅在self.configuresCellWithTableData为YES时有效.
  */
-- (NSDictionary *)cellConfigDictionaryForIndexPath:(NSIndexPath *)indexPath;
+- (NSDictionary *)cellConfigForIndexPath:(NSIndexPath *)indexPath;
 
 /**
  * Returns cell class via ACTableViewCellConfigKeyCellClass.
@@ -164,6 +164,11 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellAction;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+@interface ACTableViewController (TableViewDelegate)
+
 // UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
