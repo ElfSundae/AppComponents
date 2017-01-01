@@ -17,7 +17,7 @@ FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellReuseIdentifier;
 /// NSNumber with CGFloat
 FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellHeight;
 /// NSString with selector name, selector can optionally accept one param current selected "indexPath"
-FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellSelector;
+FOUNDATION_EXTERN NSString *const ACTableViewCellConfigKeyCellAction;
 
 @interface ACTableViewController : ESTableViewController
 {

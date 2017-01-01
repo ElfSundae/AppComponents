@@ -96,7 +96,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *selector = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellSelector]);
+    NSString *selector = ESStringValue([self cellConfigDictionaryForIndexPath:indexPath][ACTableViewCellConfigKeyCellAction]);
     if (selector) {
         ESInvokeSelector(self, NSSelectorFromString(selector), NULL, indexPath);
     }

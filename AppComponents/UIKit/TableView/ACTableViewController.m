@@ -11,7 +11,7 @@
 NSString *const ACTableViewCellConfigKeyCellClass = @"cellClass";
 NSString *const ACTableViewCellConfigKeyCellReuseIdentifier = @"cellReuseIdentifier";
 NSString *const ACTableViewCellConfigKeyCellHeight = @"cellHeight";
-NSString *const ACTableViewCellConfigKeyCellSelector = @"cellSelector";
+NSString *const ACTableViewCellConfigKeyCellAction = @"cellAction";
 
 @implementation ACTableViewController
 
