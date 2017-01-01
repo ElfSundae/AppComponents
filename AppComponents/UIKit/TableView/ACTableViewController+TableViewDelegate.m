@@ -12,9 +12,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *selector = ESStringValue([self cellConfigForIndexPath:indexPath][ACTableViewCellConfigKeyCellAction]);
-    if (selector) {
-        ESInvokeSelector(self, NSSelectorFromString(selector), NULL, indexPath);
+    NSString *action = ESStringValue([self cellConfigForIndexPath:indexPath][ACTableViewCellConfigKeyCellAction]);
+    if (action) {
+        ESInvokeSelector(self, NSSelectorFromString(action), NULL, indexPath);
     }
 }
 
