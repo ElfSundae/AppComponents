@@ -203,6 +203,16 @@ ESDefineAssociatedObjectKey(timeIntervalForAutoHide);
     return [[self sharedApp] showTips:text addToView:view];
 }
 
+- (MBProgressHUD *)showTips:(NSString *)text timeInterval:(NSTimeInterval)timeInterval
+{
+    return [self showTips:text detail:nil addToView:nil timeInterval:timeInterval animated:YES];
+}
+
++ (MBProgressHUD *)showTips:(NSString *)text timeInterval:(NSTimeInterval)timeInterval
+{
+    return [[self sharedApp] showTips:text timeInterval:timeInterval];
+}
+
 - (MBProgressHUD *)showTips:(NSString *)text
 {
     return [self showTips:text addToView:nil];

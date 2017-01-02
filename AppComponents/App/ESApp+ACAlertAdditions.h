@@ -75,6 +75,12 @@
 + (MBProgressHUD *)showTips:(NSString *)text addToView:(UIView *)view;
 
 /**
+ * 显示Tips，timeInterval 后自动隐藏。
+ */
+- (MBProgressHUD *)showTips:(NSString *)text timeInterval:(NSTimeInterval)timeInterval;
++ (MBProgressHUD *)showTips:(NSString *)text timeInterval:(NSTimeInterval)timeInterval;
+
+/**
  * 强制隐藏view上的所有Tips。view为nil时隐藏keyWindow上的所有tips.
  */
 - (void)hideTipsOnView:(UIView *)view animated:(BOOL)animated;
