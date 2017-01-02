@@ -136,9 +136,14 @@
 
 - (BOOL)shouldOpenURL:(NSURL *)URL
 {
+    if ([URL.scheme isEqualToStringCaseInsensitive:@"itms-apps"]) {
+        return YES;
+    }
+
     if ([[URL pathExtension] isEqualToStringCaseInsensitive:@"mobileprovision"]) {
         return YES;
     }
+
     return NO;
 }
 

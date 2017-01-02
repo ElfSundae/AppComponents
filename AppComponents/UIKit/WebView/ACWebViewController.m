@@ -328,6 +328,13 @@
         return NO;
     }
 
+    // [UIApplication openURL:]
+    if ([self shouldOpenURL:request.URL] && [[UIApplication sharedApplication] canOpenURL:request.URL]) {
+        [self openURL:request.URL closeMe:self.isFirstLoading];
+
+        return NO;
+    }
+
     // iTunes download link
     if ([ESStoreHelper itemIDFromURL:request.URL]) {
         if ([request.URL.scheme.lowercaseString hasPrefix:@"http"]) {
@@ -336,14 +343,9 @@
                 return NO;
             }
         }
-        // openURL for "itms-app"
-        [self openURL:request.URL closeMe:self.isFirstLoading];
-        return NO;
-    }
 
-    // [UIApplication openURL:]
-    if ([self shouldOpenURL:request.URL] && [[UIApplication sharedApplication] canOpenURL:request.URL]) {
         [self openURL:request.URL closeMe:self.isFirstLoading];
+        
         return NO;
     }
 
@@ -354,6 +356,7 @@
             return NO;
         }
     }
+    
     return YES;
 }
 
