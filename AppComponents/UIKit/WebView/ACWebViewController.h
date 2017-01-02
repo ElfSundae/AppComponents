@@ -17,9 +17,9 @@
 @protocol ACWebViewControllerDelegate <NSObject>
 @optional
 /**
- * Handles request which URL scheme is ACWebViewController's customScheme.
+ * Handles request which URL domain is ACWebViewController's bridgeDomain.
  */
-- (void)webViewController:(ACWebViewController *)controller handleCustomScheme:(UIWebView *)webView request:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+- (void)webViewController:(ACWebViewController *)controller handleBridge:(UIWebView *)webView request:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
 
 /**
  * JSBridge handler for ACWebViewJSBridgeDefaultHandlerName.
@@ -68,8 +68,8 @@
 /// Default is [ESApp sharedApp].userAgentForWebView, set to nil to use the system default user agent for UIWebView.
 /// @warning It can only be set before the first loading.
 @property (nonatomic, copy) NSString *requestUserAgent;
-/// Custom scheme used to communicate to ObjC. Default is nil.
-@property (nonatomic, copy) NSString *customScheme;
+/// Custom domain used to communicate to ObjC. Default is nil.
+@property (nonatomic, copy) NSString *bridgeDomain;
 /// Default is YES, uses `SKStoreProductViewController` to open iTunes links like https//itunes.apple.com/xx/idxxxx
 /// @warning It can only be set before the first loading.
 @property (nonatomic, getter = isInAppStoreEnabled) BOOL inAppStoreEnabled;

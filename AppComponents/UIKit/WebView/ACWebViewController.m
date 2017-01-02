@@ -319,11 +319,12 @@
 {
     _currentLoadingErrorIsLocalNetworkError = NO;
 
-    if ([self.customScheme isKindOfClass:[NSString class]] && [request.URL.scheme isEqualToStringCaseInsensitive:self.customScheme]) {
-        // Custom scheme
-        if (self.delegate && [self.delegate respondsToSelector:@selector(webViewController:handleCustomScheme:request:navigationType:)]) {
-            [self.delegate webViewController:self handleCustomScheme:webView request:request navigationType:navigationType];
+    // Custom bridge scheme
+    if ([self.bridgeDomain isKindOfClass:[NSString class]] && [request.URL.host isEqualToStringCaseInsensitive:self.bridgeDomain]) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(webViewController:handleBridge:request:navigationType:)]) {
+            [self.delegate webViewController:self handleBridge:webView request:request navigationType:navigationType];
         }
+
         return NO;
     }
 
