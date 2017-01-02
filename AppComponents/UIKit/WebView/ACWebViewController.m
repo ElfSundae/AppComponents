@@ -319,10 +319,7 @@
 {
     _currentLoadingErrorIsLocalNetworkError = NO;
 
-    if ([request.URL.scheme isEqualToStringCaseInsensitive:kCustomProtocolScheme]) {
-        // JSBridge
-        return NO;
-    } else if ([self.customScheme isKindOfClass:[NSString class]] && [request.URL.scheme isEqualToStringCaseInsensitive:self.customScheme]) {
+    if ([self.customScheme isKindOfClass:[NSString class]] && [request.URL.scheme isEqualToStringCaseInsensitive:self.customScheme]) {
         // Custom scheme
         if (self.delegate && [self.delegate respondsToSelector:@selector(webViewController:handleCustomScheme:request:navigationType:)]) {
             [self.delegate webViewController:self handleCustomScheme:webView request:request navigationType:navigationType];
