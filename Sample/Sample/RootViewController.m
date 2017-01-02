@@ -117,7 +117,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id action = [self cellConfigDictionaryForIndexPath:indexPath][kCellConfigKeyAction];
+    id action = [self cellConfigForIndexPath:indexPath][kCellConfigKeyAction];
     if ([action isKindOfClass:[NSString class]]) {
         ESInvokeSelector(self, NSSelectorFromString(action), NULL);
     } else if (action) {
