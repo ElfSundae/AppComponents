@@ -187,11 +187,11 @@ NSString *const ACTableViewCellConfigKeyCellMarginRight             = @"cellMarg
     UIImage *iconImagePlaceholder = configDictionary[ACTableViewCellConfigKeyIconImagePlaceholder];
     [iconImagePlaceholder isKindOfClass:[UIImage class]] || (iconImagePlaceholder = nil);
     UIImage *iconImage = configDictionary[ACTableViewCellConfigKeyIconImage];
-    [iconImage isKindOfClass:[UIImage class]] || (iconImage = iconImagePlaceholder);
+    [iconImage isKindOfClass:[UIImage class]] || (iconImage = self.alwaysShowsIconImageView ? iconImagePlaceholder : nil);
     UIImage *detailImagePlaceholder = configDictionary[ACTableViewCellConfigKeyDetailImagePlaceholder];
     [detailImagePlaceholder isKindOfClass:[UIImage class]] || (detailImagePlaceholder = nil);
     UIImage *detailImage = configDictionary[ACTableViewCellConfigKeyDetailImage];
-    [detailImage isKindOfClass:[UIImage class]] || (detailImage = nil);
+    [detailImage isKindOfClass:[UIImage class]] || (detailImage = self.alwaysShowsDetailImageView ? detailImagePlaceholder : nil);
     NSURL *iconImageURL = ESURLValue(configDictionary[ACTableViewCellConfigKeyIconImage]);
     NSURL *detailImageURL = ESURLValue(configDictionary[ACTableViewCellConfigKeyDetailImage]);
 
