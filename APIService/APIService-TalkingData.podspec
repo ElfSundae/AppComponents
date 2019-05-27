@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "APIService-TalkingData"
-  s.version           = "2.2.36"
+  s.version           = "2.2.88"
   s.summary           = "TalkingData Analytics SDK. https://www.talkingdata.com"
   s.homepage          = "https://github.com/ElfSundae/AppComponents"
   s.documentation_url = "http://doc.talkingdata.com/posts/20"
@@ -20,4 +20,6 @@ Pod::Spec.new do |s|
 
   s.source_files      = "**/TalkingData.h", "**/TalkingDataSMS.h"
   s.vendored_libraries = "**/libTalkingData.a"
+
+  s.deprecated_in_favor_of = 'TalkingDataSDK-AppAnalytics'
 end
